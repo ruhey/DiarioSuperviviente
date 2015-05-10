@@ -22,6 +22,7 @@ public class Principal extends Activity {
     }
 
     @Override
+    //Commit inicial para ver si funciona
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
