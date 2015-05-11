@@ -8,8 +8,16 @@
     android:orientation="vertical"
     tools:context=".Principal">
 
-    <TextView android:text="@string/saludo"
+    <TextView android:text="@string/despedida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/botonCreditos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
 
 </LinearLayout>
