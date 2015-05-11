@@ -1,7 +1,7 @@
 package org.aecc.superdiary;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 
-public class BienvenidaActivity extends ActionBarActivity {
+public class BienvenidaActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class BienvenidaActivity extends ActionBarActivity {
         });
 
         ImageView imagenLogo = (ImageView)findViewById(R.id.imagenEntrada);
-        imagenLogo.setImageResource(R.drawable.aeccLogo);
+        imagenLogo.setImageResource(R.drawable.aecclogo);
 
     }
 
