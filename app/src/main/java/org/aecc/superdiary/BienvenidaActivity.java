@@ -19,12 +19,14 @@ public class BienvenidaActivity extends Activity {
         setContentView(R.layout.activity_bienvenida);
 
 
-        Button botonBienvenida = (Button)findViewById(R.id.botonBienvenida);
+        Button botonBienvenida = (Button)findViewById(R.id.botonEnMarcha);
         Button botonEnMarcha = (Button)findViewById(R.id.botonEnMarcha);
         Button botonCalendario = (Button)findViewById(R.id.botonCalendario);
         Button botonMisPersonas = (Button)findViewById(R.id.botonMisPersonas);
         Button botonMisCitas = (Button)findViewById(R.id.botonMisCitas);
         Button botonOtros = (Button)findViewById(R.id.botonOtros);
+        Button botonInicio = (Button)findViewById(R.id.botonInicio);
+
 
         botonBienvenida.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

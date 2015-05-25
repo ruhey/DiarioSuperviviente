@@ -19,12 +19,11 @@
     <!-- DESCRIPCIONES DE INICIO DE LAS ACTIVIDADES  -->
     <string name="descripcionEnMarcha">EVENTOS HOY EN MARCHA</string>
     <string name="descripcionCalendario">VISTA GENERAL CALENDARIO MES</string>
-    <string name="descripcionCitas">ESTAS SON MIS CITAS PRÓXIMAS</string>
+    <string name="descripcionCitas">ESTAS SON MIS CITAS PROXIMAS</string>
     <string name="descripcionPersonajes">ESTA ES MI LISTA DE GENTE</string>
     <string name="descripcionOtros">TELEFONES DE INTERES, NOTICIAS, FOROS, AUTOAYUDA</string>
     <string name="title_activity_citas">Citas</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_otros">Otros</string>
     <string name="title_activity_calendario">Calendario</string>
     <string name="volver">INICIO</string>
