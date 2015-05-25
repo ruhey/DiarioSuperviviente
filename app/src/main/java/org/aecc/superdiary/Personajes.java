@@ -1,38 +1,46 @@
 package org.aecc.superdiary;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
+public class Personajes extends Activity {
 
-public class Principal extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+        setContentView(R.layout.activity_personajes);
 
-        final Button botonCreditos = (Button)findViewById(R.id.botonCreditos);
-        final EditText login = (EditText)findViewById(R.id.insertaTextoLogin);
+        //Array que asociaremos al adaptador
+        String[] array = new String[] {
+                "Elemento 1"
+                ,"Elemento 2"
+                ,"Elemento 3"
+                ,"Elemento 4"
+                ,"Elemento 5"
+                ,"Elemento 6"
+        };
 
-        botonCreditos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        //Creación del adaptador, vamos a escoger el layout
+        //simple_list_item_1, que los mostr
+        ListAdapter adaptador = new ArrayAdapter<>(
+                this, android.R.layout.simple_list_item_1, array);
 
-                Editable nombre = login.getText();
-                Toast toast = Toast.makeText(getApplicationContext(), "BIENVENIDO " + nombre + "Designed by Rubén Toquero and Fernando Santaolaya", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
+        //Asociamos el adaptador a la vista.
+        ListView lv = (ListView) findViewById(android.R.id.list);
+        lv.setAdapter(adaptador);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,9 +52,6 @@ public class Principal extends Activity {
     @Override
     //Commit inicial para ver si funciona
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         int id2 = item.getItemId();
 
@@ -58,3 +63,4 @@ public class Principal extends Activity {
         return super.onOptionsItemSelected(item);
     }
 }
+

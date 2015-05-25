@@ -20,6 +20,12 @@ public class BienvenidaActivity extends Activity {
 
 
         Button botonBienvenida = (Button)findViewById(R.id.botonBienvenida);
+        Button botonEnMarcha = (Button)findViewById(R.id.botonEnMarcha);
+        Button botonCalendario = (Button)findViewById(R.id.botonCalendario);
+        Button botonMisPersonas = (Button)findViewById(R.id.botonMisPersonas);
+        Button botonMisCitas = (Button)findViewById(R.id.botonMisCitas);
+        Button botonOtros = (Button)findViewById(R.id.botonOtros);
+
         botonBienvenida.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(BienvenidaActivity.this, Principal.class);

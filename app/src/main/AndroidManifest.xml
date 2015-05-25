@@ -7,18 +7,42 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name=".Principal"
             android:label="@string/app_name" >
         </activity>
+
+        <activity
+            android:name=".Personajes"
+            android:label="Personajes" >
+        </activity>
+
         <activity
             android:name=".BienvenidaActivity"
             android:label="@string/title_activity_bienvenida" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Citas"
+            android:label="@string/title_activity_citas" >
+        </activity>
+
+        <activity
+            android:name=".Otros"
+            android:label="@string/title_activity_otros" >
+        </activity>
+
+        <activity
+            android:name=".Calendario"
+            android:label="@string/title_activity_calendario" >
+        </activity>
+
     </application>
 
 </manifest>
