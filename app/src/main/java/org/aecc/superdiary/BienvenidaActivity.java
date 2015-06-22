@@ -35,6 +35,34 @@ public class BienvenidaActivity extends Activity {
             }
         });
 
+        botonCalendario.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(BienvenidaActivity.this, Calendario.class);
+                startActivity(intent);
+            }
+        });
+
+        botonMisPersonas.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(BienvenidaActivity.this, Personajes.class);
+                startActivity(intent);
+            }
+        });
+
+        botonMisCitas.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(BienvenidaActivity.this, Citas.class);
+                startActivity(intent);
+            }
+        });
+
+        botonOtros.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(BienvenidaActivity.this, Otros.class);
+                startActivity(intent);
+            }
+        });
+
         ImageView imagenLogo = (ImageView)findViewById(R.id.imagenEntrada);
         imagenLogo.setImageResource(R.drawable.aecclogo);
 
