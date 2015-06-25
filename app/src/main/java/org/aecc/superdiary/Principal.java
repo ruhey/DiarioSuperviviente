@@ -12,13 +12,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.aecc.superdiary.Activity.DiaryBaseActivity;
 
-public class Principal extends Activity {
+
+public class Principal extends DiaryBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+        getLayoutInflater().inflate(R.layout.activity_principal, frameLayout);
+        mDrawerList.setItemChecked(position, true);
+        setTitle(titulos[position]);
+        //setContentView(R.layout.activity_principal);
 
         final Button botonCreditos = (Button)findViewById(R.id.botonCreditos);
         final EditText login = (EditText)findViewById(R.id.insertaTextoLogin);
@@ -28,7 +33,7 @@ public class Principal extends Activity {
             public void onClick(View v) {
 
                 Editable nombre = login.getText();
-                Toast toast = Toast.makeText(getApplicationContext(), "BIENVENIDO " + nombre + "Designed by Rubén Toquero and Fernando Santaolaya", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "BIENVENIDO " + nombre + "Designed by Rubï¿½n Toquero and Fernando Santaolaya", Toast.LENGTH_SHORT);
                 toast.show();
             }
         });

@@ -28,5 +28,24 @@
     <string name="title_activity_calendario">Calendario</string>
     <string name="volver">INICIO</string>
 
+    <string-array name="nav_options">
+        <item>Bienvenida</item>
+        <item>Calendario</item>
+        <item>Citas</item>
+        <item>Otros</item>
+        <item>Personajes</item>
+        <item>Principal</item>
+    </string-array>
+    <!-- Lista de iconos de navegacion-->
+    <array name="navigation_iconos">
+        <item>@drawable/ic_action_user</item>
+        <item>@drawable/ic_action_star</item>
+        <item>@drawable/ic_action_event</item>
+        <item>@drawable/ic_action_place</item>
+        <item>@drawable/ic_action_labels</item>
+        <item>@drawable/ic_action_settings</item>
+    </array>
 
+    <string name="open_drawer">Drawer Open</string>
+    <string name="close_drawer">Drawer Close</string>
 </resources>

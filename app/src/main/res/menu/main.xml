@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compat="http://schemas.android.com/apk/res-auto" >
+    <item
+        android:id="@+id/item_refresh"
+        android:icon="@drawable/ic_action_event"
+        android:title="Refresh"
+        compat:showAsAction="ifRoom|withText" />
+
+    <item
+        android:title="Save"
+        android:id="@+id/item_save"
+        android:icon="@drawable/ic_action_labels"
+        compat:showAsAction="ifRoom|withText" />
+</menu>

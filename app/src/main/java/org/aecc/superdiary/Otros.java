@@ -5,13 +5,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.aecc.superdiary.Activity.DiaryBaseActivity;
 
-public class Otros extends ActionBarActivity {
+
+public class Otros extends DiaryBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_otros);
+        getLayoutInflater().inflate(R.layout.activity_otros, frameLayout);
+        mDrawerList.setItemChecked(position, true);
+        setTitle(titulos[position]);
+        //setContentView(R.layout.activity_otros);
     }
 
     @Override

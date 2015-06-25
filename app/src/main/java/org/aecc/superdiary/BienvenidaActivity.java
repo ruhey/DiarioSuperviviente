@@ -10,14 +10,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import org.aecc.superdiary.Activity.DiaryBaseActivity;
 
-public class BienvenidaActivity extends Activity {
+
+public class BienvenidaActivity extends DiaryBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bienvenida);
-
+        getLayoutInflater().inflate(R.layout.activity_bienvenida, frameLayout);
+        mDrawerList.setItemChecked(position, true);
+        setTitle(titulos[position]);
 
         Button botonBienvenida = (Button)findViewById(R.id.botonEnMarcha);
         Button botonEnMarcha = (Button)findViewById(R.id.botonEnMarcha);
@@ -64,7 +67,7 @@ public class BienvenidaActivity extends Activity {
         });
 
         ImageView imagenLogo = (ImageView)findViewById(R.id.imagenEntrada);
-        imagenLogo.setImageResource(R.drawable.aecclogo);
+        imagenLogo.setImageResource(R.drawable.ic_launcher);
 
     }
 

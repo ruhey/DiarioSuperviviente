@@ -5,13 +5,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.aecc.superdiary.Activity.DiaryBaseActivity;
 
-public class Calendario extends ActionBarActivity {
+
+public class Calendario extends DiaryBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendario);
+        getLayoutInflater().inflate(R.layout.activity_calendario, frameLayout);
+        mDrawerList.setItemChecked(position, true);
+        setTitle(titulos[position]);
+        //setContentView(R.layout.activity_calendario);
     }
 
     @Override

@@ -1,25 +1,25 @@
 package org.aecc.superdiary;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class Personajes extends Activity {
+import org.aecc.superdiary.Activity.DiaryBaseActivity;
 
+public class Personajes extends DiaryBaseActivity {
+    ListView listViewCharacters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personajes);
+        View view = getLayoutInflater().inflate(R.layout.activity_personajes, frameLayout);
+        mDrawerList.setItemChecked(position, true);
+        setTitle(titulos[position]);
+        //setContentView(R.layout.activity_personajes);
 
         //Array que asociaremos al adaptador
         String[] array = new String[] {
@@ -31,14 +31,14 @@ public class Personajes extends Activity {
                 ,"Elemento 6"
         };
 
-        //Creación del adaptador, vamos a escoger el layout
+        //Creaciï¿½n del adaptador, vamos a escoger el layout
         //simple_list_item_1, que los mostr
         ListAdapter adaptador = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, array);
 
         //Asociamos el adaptador a la vista.
-        ListView lv = (ListView) findViewById(android.R.id.list);
-        lv.setAdapter(adaptador);
+        listViewCharacters = (ListView) view.findViewById(R.id.list);
+        listViewCharacters.setAdapter(adaptador);
     }
 
 
