@@ -1,5 +1,7 @@
-package org.aecc.superdiary;
+package org.aecc.superdiary.presentation.view.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,17 +10,27 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import org.aecc.superdiary.Activity.DiaryBaseActivity;
+import org.aecc.superdiary.R;
+import org.aecc.superdiary.presentation.internal.di.HasComponent;
+import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
+import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
+import org.aecc.superdiary.presentation.model.ContactModel;
+import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
-public class Personajes extends DiaryBaseActivity {
+public class PersonajesActivity extends DiaryBaseActivity implements HasComponent<ContactComponent>{
     ListView listViewCharacters;
+    public static Intent getCallingIntent(Context context) {
+        return new Intent(context, PersonajesActivity.class);
+    }
 
+    private ContactComponent contactComponent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = getLayoutInflater().inflate(R.layout.activity_personajes, frameLayout);
         mDrawerList.setItemChecked(position, true);
         setTitle(titulos[position]);
+        this.initializeInjector();
         //setContentView(R.layout.activity_personajes);
 
         //Array que asociaremos al adaptador
@@ -41,6 +53,20 @@ public class Personajes extends DiaryBaseActivity {
         listViewCharacters.setAdapter(adaptador);
     }
 
+    private void initializeInjector() {
+        this.contactComponent = DaggerContactComponent.builder()
+                .applicationComponent(getApplicationComponent())
+                .activityModule(getActivityModule())
+                .build();
+    }
+
+    @Override public ContactComponent getComponent() {
+        return contactComponent;
+    }
+
+    /*@Override public void onUserClicked(ContactModel contactModel) {
+        this.navigator.navigateToContacDetails(this, contactModel.getContactId());
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

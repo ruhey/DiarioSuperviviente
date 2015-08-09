@@ -1,4 +1,4 @@
-package org.aecc.superdiary.Activity;
+package org.aecc.superdiary.presentation.view.activity;
 
 public class Item_objct {
     private String titulo;
