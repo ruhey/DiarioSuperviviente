@@ -5,7 +5,7 @@ import android.app.Activity;
 import org.aecc.superdiary.presentation.AndroidApplication;
 import org.aecc.superdiary.presentation.internal.di.components.ApplicationComponent;
 import org.aecc.superdiary.presentation.internal.di.modules.ActivityModule;
-import org.aecc.superdiary.presentation.navigation.Navigator;
+import org.aecc.superdiary.presentation.navigator.Navigator;
 
 import javax.inject.Inject;
 

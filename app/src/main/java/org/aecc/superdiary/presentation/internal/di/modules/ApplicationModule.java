@@ -11,7 +11,7 @@ import org.aecc.superdiary.domain.executor.ThreadExecutor;
 import org.aecc.superdiary.domain.repository.ContactRepository;
 import org.aecc.superdiary.presentation.AndroidApplication;
 import org.aecc.superdiary.presentation.UIThread;
-import org.aecc.superdiary.presentation.navigation.Navigator;
+import org.aecc.superdiary.presentation.navigator.Navigator;
 
 import javax.inject.Singleton;
 
