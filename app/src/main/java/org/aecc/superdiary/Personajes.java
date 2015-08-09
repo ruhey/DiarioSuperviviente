@@ -1,17 +1,26 @@
 package org.aecc.superdiary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import android.support.design.widget.FloatingActionButton;
+import android.widget.Toast;
+
 import org.aecc.superdiary.Activity.DiaryBaseActivity;
 
+import java.util.Random;
+
 public class Personajes extends DiaryBaseActivity {
+
     ListView listViewCharacters;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +48,32 @@ public class Personajes extends DiaryBaseActivity {
         //Asociamos el adaptador a la vista.
         listViewCharacters = (ListView) view.findViewById(R.id.list);
         listViewCharacters.setAdapter(adaptador);
-    }
+        listViewCharacters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                // ListView Clicked item index
+                int itemPosition = position;
+
+                // ListView Clicked item value
+                String itemValue = (String) listViewCharacters.getItemAtPosition(position);
+
+                // Show Alert
+                /*Toast.makeText(getApplicationContext(),
+                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        .show();*/
+
+                Intent intent = new Intent(Personajes.this, Personaje.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,5 +95,7 @@ public class Personajes extends DiaryBaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
 

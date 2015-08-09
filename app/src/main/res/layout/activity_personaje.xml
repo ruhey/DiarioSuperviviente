@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contact_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            app:popupTheme="@style/AppTheme"
+            app:layout_collapseMode="pin" />
+
+        <ImageView
+            android:id="@+id/fotoContacto"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@color/blancoVerdoso"
+            android:src="@drawable/personas"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp">
+
+            <!--relacion por ahora no lo sacamos de la base de datos -->
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="RELACIÓN"
+                    style="@style/textoDatosEntidades"/>
+
+                <Spinner
+                    android:id="@+id/spinerRelaccionContacto"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="20dp">
+
+                </Spinner>
+            </LinearLayout>
+
+
+                <!-- NOMBRE Y APELLIDOS -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="NOMBRE"
+                    style="@style/textoDatosEntidades"/>
+
+                <EditText
+                    android:id="@+id/nombreInsert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="APELLIDOS"
+                    style="@style/textoDatosEntidades"/>
+
+                <EditText
+                    android:id="@+id/apellidosInsert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="#728C93"/>
+
+            <!-- TELEFONO -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="0.80">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="MOBILE"
+                        style="@style/textoDatosEntidades"/>
+
+                    <EditText
+                        android:id="@+id/telefonoInsert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="phone" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_weight="0.20">
+
+                    <ImageButton
+                        android:id="@+id/llamadaContacto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_phone"
+                        android:background="@android:color/transparent"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="#728C93"/>
+
+            <!-- Correo -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="0.80">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="EMAIL"
+                        style="@style/textoDatosEntidades"/>
+
+                    <EditText
+                        android:id="@+id/emailInsert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="textEmailAddress" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_weight="0.20">
+
+                    <ImageButton
+                        android:id="@+id/correoEmailContacto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mail"
+                        android:background="@android:color/transparent"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
