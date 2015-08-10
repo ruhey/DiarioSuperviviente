@@ -1,6 +1,5 @@
-package org.aecc.superdiary.Activity;
+package org.aecc.superdiary.presentation.view.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -14,22 +13,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.aecc.superdiary.BienvenidaActivity;
-import org.aecc.superdiary.Calendario;
-import org.aecc.superdiary.Citas;
-import org.aecc.superdiary.Otros;
-import org.aecc.superdiary.Personajes;
-import org.aecc.superdiary.Principal;
 import org.aecc.superdiary.R;
 
 import java.util.ArrayList;
 
-public class DiaryBaseActivity extends Activity {
+public class DiaryBaseActivity extends BaseActivity {
+
 
     protected FrameLayout frameLayout;
     protected ListView mDrawerList;
@@ -68,7 +61,7 @@ public class DiaryBaseActivity extends Activity {
         NavItms.add(new Item_objct(titulos[2], NavIcons.getResourceId(2, -1)));
         //otros
         NavItms.add(new Item_objct(titulos[3], NavIcons.getResourceId(3, -1)));
-        //Personajes
+        //PersonajesActivity
         NavItms.add(new Item_objct(titulos[4], NavIcons.getResourceId(4, -1)));
         //principal
         NavItms.add(new Item_objct(titulos[5], NavIcons.getResourceId(5, -1)));
@@ -151,7 +144,7 @@ public class DiaryBaseActivity extends Activity {
                 startActivity(new Intent(this, Otros.class));
                 break;
             case 5:
-                startActivity(new Intent(this, Personajes.class));
+                startActivity(new Intent(this, PersonajesActivity.class));
                 break;
             case 6:
                 startActivity(new Intent(this, Principal.class));

@@ -1,4 +1,4 @@
-package org.aecc.superdiary.Activity;
+package org.aecc.superdiary.presentation.view.activity;
 
 import java.util.ArrayList;
 

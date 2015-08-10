@@ -1,6 +1,5 @@
-package org.aecc.superdiary;
+package org.aecc.superdiary.presentation.view.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,25 +8,29 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-
-import android.support.design.widget.FloatingActionButton;
-import android.widget.Toast;
+import android.content.Intent;
 
 import org.aecc.superdiary.Activity.DiaryBaseActivity;
+import org.aecc.superdiary.R;
+import org.aecc.superdiary.presentation.internal.di.HasComponent;
+import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
+import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
+import org.aecc.superdiary.presentation.model.ContactModel;
+import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
-import java.util.Random;
 
-public class Personajes extends DiaryBaseActivity {
-
+public class Personajes extends DiaryBaseActivity implements HasComponent<ContactComponent>{
     ListView listViewCharacters;
     FloatingActionButton floatingActionButton;
 
+    private ContactComponent contactComponent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = getLayoutInflater().inflate(R.layout.activity_personajes, frameLayout);
         mDrawerList.setItemChecked(position, true);
         setTitle(titulos[position]);
+        this.initializeInjector();
         //setContentView(R.layout.activity_personajes);
 
         //Array que asociaremos al adaptador
@@ -50,9 +53,6 @@ public class Personajes extends DiaryBaseActivity {
         listViewCharacters.setAdapter(adaptador);
         listViewCharacters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
 
                 // ListView Clicked item index
                 int itemPosition = position;
@@ -74,6 +74,21 @@ public class Personajes extends DiaryBaseActivity {
 
 
     }
+
+    private void initializeInjector() {
+        this.contactComponent = DaggerContactComponent.builder()
+                .applicationComponent(getApplicationComponent())
+                .activityModule(getActivityModule())
+                .build();
+    }
+
+    @Override public ContactComponent getComponent() {
+        return contactComponent;
+    }
+
+    /*@Override public void onUserClicked(ContactModel contactModel) {
+        this.navigator.navigateToContacDetails(this, contactModel.getContactId());
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

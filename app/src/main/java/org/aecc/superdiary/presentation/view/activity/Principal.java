@@ -1,10 +1,7 @@
-package org.aecc.superdiary;
+package org.aecc.superdiary.presentation.view.activity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.aecc.superdiary.Activity.DiaryBaseActivity;
+import org.aecc.superdiary.R;
+import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
 
 public class Principal extends DiaryBaseActivity {

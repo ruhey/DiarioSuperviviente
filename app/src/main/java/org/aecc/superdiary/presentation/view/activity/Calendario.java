@@ -1,28 +1,28 @@
-package org.aecc.superdiary;
+package org.aecc.superdiary.presentation.view.activity;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.aecc.superdiary.Activity.DiaryBaseActivity;
+import org.aecc.superdiary.R;
+import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
 
-public class Citas extends DiaryBaseActivity {
+public class Calendario extends DiaryBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLayoutInflater().inflate(R.layout.activity_citas, frameLayout);
+        getLayoutInflater().inflate(R.layout.activity_calendario, frameLayout);
         mDrawerList.setItemChecked(position, true);
         setTitle(titulos[position]);
-        //setContentView(R.layout.activity_citas);
+        //setContentView(R.layout.activity_calendario);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_citas, menu);
+        getMenuInflater().inflate(R.menu.menu_calendario, menu);
         return true;
     }
 

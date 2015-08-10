@@ -1,8 +1,6 @@
-package org.aecc.superdiary;
+package org.aecc.superdiary.presentation.view.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import org.aecc.superdiary.Activity.DiaryBaseActivity;
+import org.aecc.superdiary.R;
 
 
 public class BienvenidaActivity extends DiaryBaseActivity {
@@ -47,7 +45,7 @@ public class BienvenidaActivity extends DiaryBaseActivity {
 
         botonMisPersonas.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(BienvenidaActivity.this, Personajes.class);
+                Intent intent = new Intent(BienvenidaActivity.this, PersonajesActivity.class);
                 startActivity(intent);
             }
         });
