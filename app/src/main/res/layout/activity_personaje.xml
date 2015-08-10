@@ -12,13 +12,7 @@
         android:orientation="vertical"
         android:background="@color/colorPrimary">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            app:popupTheme="@style/AppTheme"
-            app:layout_collapseMode="pin" />
-
+        <!--
         <ImageView
             android:id="@+id/fotoContacto"
             android:layout_width="match_parent"
@@ -26,6 +20,8 @@
             android:layout_gravity="center"
             android:background="@color/blancoVerdoso"
             android:src="@drawable/personas"/>
+    -->
+
     </LinearLayout>
 
     <ScrollView
@@ -44,7 +40,7 @@
             <!--relacion por ahora no lo sacamos de la base de datos -->
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -57,8 +53,8 @@
                 <Spinner
                     android:id="@+id/spinerRelaccionContacto"
                     android:layout_width="fill_parent"
-                    android:layout_height="40dp"
-                    android:paddingLeft="20dp">
+                    android:layout_height="30dp"
+                    >
 
                 </Spinner>
             </LinearLayout>
@@ -81,6 +77,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/textoInsercionCampos"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -94,7 +91,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/textoInsercionCampos"
                     android:inputType="textPersonName" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="DRIRECCIÓN"
+                    style="@style/textoDatosEntidades"/>
+
+                <EditText
+                    android:id="@+id/direccionInsert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/textoInsercionCampos"
+                    android:inputType="textPersonName" />
+
+
+
             </LinearLayout>
 
             <View
@@ -127,6 +142,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        style="@style/textoInsercionCampos"
                         android:inputType="phone" />
 
                 </LinearLayout>
@@ -179,10 +195,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        style="@style/textoInsercionCampos"
                         android:inputType="textEmailAddress" />
-
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_marginTop="10dp"

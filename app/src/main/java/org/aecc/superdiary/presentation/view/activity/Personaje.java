@@ -1,4 +1,4 @@
-package org.aecc.superdiary;
+package org.aecc.superdiary.presentation.view.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,7 +20,8 @@ import android.widget.Spinner;
 
 import com.bumptech.glide.Glide;
 
-import org.aecc.superdiary.Activity.DiaryBaseActivity;
+import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
+import org.aecc.superdiary.R;
 
 public class Personaje extends DiaryBaseActivity {
 

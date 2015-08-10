@@ -1,5 +1,6 @@
 package org.aecc.superdiary.presentation.view.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,7 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.content.Intent;
 
-import org.aecc.superdiary.Activity.DiaryBaseActivity;
+import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
@@ -19,9 +20,8 @@ import org.aecc.superdiary.presentation.model.ContactModel;
 import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
 
-public class Personajes extends DiaryBaseActivity implements HasComponent<ContactComponent>{
+public class PersonajesActivity extends DiaryBaseActivity implements HasComponent<ContactComponent>{
     ListView listViewCharacters;
-    FloatingActionButton floatingActionButton;
 
     private ContactComponent contactComponent;
     @Override
@@ -51,10 +51,16 @@ public class Personajes extends DiaryBaseActivity implements HasComponent<Contac
         //Asociamos el adaptador a la vista.
         listViewCharacters = (ListView) view.findViewById(R.id.list);
         listViewCharacters.setAdapter(adaptador);
+
         listViewCharacters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 
-                // ListView Clicked item index
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            // ListView Clicked item index
                 int itemPosition = position;
 
                 // ListView Clicked item value
@@ -65,10 +71,9 @@ public class Personajes extends DiaryBaseActivity implements HasComponent<Contac
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
                         .show();*/
 
-                Intent intent = new Intent(Personajes.this, Personaje.class);
-                startActivity(intent);
+                Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
+                //startActivity(intent);
 
-            }
 
         });
 
@@ -112,5 +117,9 @@ public class Personajes extends DiaryBaseActivity implements HasComponent<Contac
     }
 
 
+    public static Intent getCallingIntent(Context context) {
+        //Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
+        return null;
+    }
 }
 
