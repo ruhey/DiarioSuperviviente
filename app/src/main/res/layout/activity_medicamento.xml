@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/medic_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/fotoMedic"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@color/blancoVerdoso"
+            android:src="@drawable/medicamento"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp">
+
+
+            <!-- NOMBRE Y APELLIDOS -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="MEDICAMENTO"
+                    style="@style/textoDatosEntidades"/>
+
+                <EditText
+                    android:id="@+id/nombreMedic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/textoInsercionCampos"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="#728C93"/>
+
+            <!-- FECHA Y HORA INICIO-->
+            <LinearLayout
+
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="0.40">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="DIA INICIO"
+                        style="@style/textoDatosEntidades"/>
+
+                    <EditText
+                        android:id="@+id/fechaInicMedic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/textoInsercionCampos"
+                        android:inputType="date" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="0.40">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="HORA INICIO"
+                        style="@style/textoDatosEntidades"/>
+
+
+                    <EditText
+                        android:id="@+id/horaIniMedic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:layout_weight="1"
+                        android:inputType="time"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- FECHA Y HORA FIN-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="0.40">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="DIA FIN"
+                        style="@style/textoDatosEntidades"/>
+
+                    <EditText
+                        android:id="@+id/fechaFinMedic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/textoInsercionCampos"
+                        android:inputType="date" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="0.40">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="HORA FIN"
+                        style="@style/textoDatosEntidades"/>
+
+
+                    <EditText
+                        android:id="@+id/horaFinMedic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:layout_weight="1"
+                        android:inputType="time"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="#728C93"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="TOMAR CADA"
+                    style="@style/textoDatosEntidades"/>
+
+                <SeekBar
+                    android:id="@+id/seekBarMedic"
+                    android:layout_width="180dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:progress="1"
+                    android:max="24"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="HORAS"
+                    style="@style/textoDatosEntidades"/>
+            </LinearLayout>
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="#728C93"/>
+
+            <!-- DESCRIPCIÓN -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="DESCRIPCIÓN"
+                        style="@style/textoDatosEntidades"/>
+
+                    <EditText
+                        android:id="@+id/descripcionPrueba"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left"
+                        android:inputType="textPersonName|textMultiLine"
+                        android:lines="15"
+                        android:minLines="10"
+                        android:scrollHorizontally="false"
+                        android:scrollbars="vertical"
+                        android:singleLine="false"
+                        style="@style/textoInsercionCampos"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
