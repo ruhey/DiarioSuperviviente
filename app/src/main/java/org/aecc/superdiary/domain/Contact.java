@@ -69,7 +69,7 @@ public class Contact {
     @Override public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append("***** User Details *****\n");
+        stringBuilder.append("***** Contact Details *****\n");
         stringBuilder.append("id=" + this.getContactId() + "\n");
         stringBuilder.append("name=" + this.getName() + "\n");
         stringBuilder.append("surname=" + this.getSurname() + "\n");

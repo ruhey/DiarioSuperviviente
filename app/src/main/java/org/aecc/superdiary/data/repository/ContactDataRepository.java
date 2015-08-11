@@ -2,6 +2,8 @@ package org.aecc.superdiary.data.repository;
 
 import org.aecc.superdiary.data.entity.ContactEntity;
 import org.aecc.superdiary.data.entity.mapper.ContactEntityDataMapper;
+import org.aecc.superdiary.data.exception.CantCreateContactException;
+import org.aecc.superdiary.data.exception.CantSaveContactException;
 import org.aecc.superdiary.data.exception.ContactNotFoundException;
 import org.aecc.superdiary.data.exception.RepositoryErrorBundle;
 import org.aecc.superdiary.data.repository.datasource.ContactDataStore;
@@ -61,6 +63,68 @@ public class ContactDataRepository implements ContactRepository{
             @Override
             public void onError(Exception exception) {
                 contactCallback.onError(new RepositoryErrorBundle(exception));
+            }
+        });
+    }
+
+    @Override
+    public void createContact(final Contact contact, final ContactCreationCallback contactCreateCallback) {
+        final ContactDataStore contactDataStore = this.contactDataStoreFactory.createDatabaseDataStore();
+        contactDataStore.createContactEntity(contact, new ContactDataStore.ContactCreationCallback(){
+
+            @Override
+            public void onContactCreated(ContactEntity contactEntity) {
+                Contact contact = ContactDataRepository.this.contactEntityDataMapper.transform(contactEntity);
+                if(contact != null) {
+                    contactCreateCallback.onContactCreated(contact);
+                } else {
+                    contactCreateCallback.onError(new RepositoryErrorBundle(new CantCreateContactException()));
+                }
+            }
+
+            @Override
+            public void onError(Exception exception) {
+                contactCreateCallback.onError(new RepositoryErrorBundle(new CantCreateContactException()));
+            }
+        });
+    }
+
+    @Override
+    public void saveContact(final Contact contact, final ContactSaveCallback contactSaveCallback) {
+        final ContactDataStore contactDataStore = this.contactDataStoreFactory.createDatabaseDataStore();
+        contactDataStore.saveContactEntity(contact, new ContactDataStore.ContactSaveCallback(){
+
+            @Override
+            public void onContactSaved(ContactEntity contactEntity) {
+                Contact contact = ContactDataRepository.this.contactEntityDataMapper.transform(contactEntity);
+                if(contact != null){
+                    contactSaveCallback.onContactSaved(contact);
+                } else {
+                    contactSaveCallback.onError(new RepositoryErrorBundle(new CantSaveContactException()));
+                }
+            }
+
+            @Override
+            public void onError(Exception exception) {
+                contactSaveCallback.onError(new RepositoryErrorBundle(exception));
+            }
+        });
+    }
+
+    @Override
+    public void deleteContact(final int contactId, final ContactDetionCallback contactDeletionCallback) {
+        final ContactDataStore contactDataStore = this.contactDataStoreFactory.createDatabaseDataStore();
+        contactDataStore.deleteContactEntity(contactId, new ContactDataStore.ContactDeletionCallback(){
+           @Override
+            public void onContactDeleted(Collection<ContactEntity> contactsCollection){
+               Collection<Contact> contacts =
+                       ContactDataRepository.this.contactEntityDataMapper.transform(contactsCollection);
+               contactDeletionCallback.onContactDeleted(contacts);
+           }
+
+            @Override
+            public void onError(Exception exception){
+                contactDeletionCallback.onError(new RepositoryErrorBundle(exception));
             }
         });
     }

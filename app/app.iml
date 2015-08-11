@@ -101,7 +101,7 @@
     <orderEntry type="library" exported="" name="dagger-producers-2.0-beta" level="project" />
     <orderEntry type="library" exported="" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.3" level="project" />
-    <orderEntry type="library" exported="" name="guava-18.0" level="project" />
     <orderEntry type="library" exported="" name="rxjava-1.0.3" level="project" />
+    <orderEntry type="library" exported="" name="guava-18.0" level="project" />
   </component>
 </module>

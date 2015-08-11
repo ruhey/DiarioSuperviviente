@@ -3,8 +3,8 @@ package org.aecc.superdiary.data.repository.datasource;
 import android.content.Context;
 
 import org.aecc.superdiary.data.cache.ContactCache;
-import org.aecc.superdiary.data.database.DatabaseAPI;
-import org.aecc.superdiary.data.database.DatabaseAPIImpl;
+import org.aecc.superdiary.data.database.ContactDatabaseAPI;
+import org.aecc.superdiary.data.database.ContactDatabaseAPIImpl;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -21,10 +21,10 @@ public class ContactDataStoreFactory {
         this.contactCache = contactCache;
     }
 
-    public ContactDataStore create(int userId) {
+    public ContactDataStore create(int contactId) {
         ContactDataStore contactDataStore;
 
-        if (!this.contactCache.isExpired() && this.contactCache.isCached(userId)) {
+        if (!this.contactCache.isExpired() && this.contactCache.isCached(contactId)) {
             //TODO: vamos a suar Cache?
             //contactDataStore = new DiskContactDataStore(this.contactCache);
             contactDataStore = createDatabaseDataStore();
@@ -37,7 +37,7 @@ public class ContactDataStoreFactory {
 
     public ContactDataStore createDatabaseDataStore() {
        //TODO: implementar mejjor esta creacion
-        DatabaseAPI dataBaseAPI = new DatabaseAPIImpl(this.context);
+        ContactDatabaseAPI dataBaseAPI = new ContactDatabaseAPIImpl(this.context);
         return new DatabaseContactDataStore(this.contactCache, dataBaseAPI);
     }
 }

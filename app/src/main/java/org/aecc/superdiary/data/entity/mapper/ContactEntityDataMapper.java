@@ -32,6 +32,23 @@ public class ContactEntityDataMapper {
         return contact;
     }
 
+    public ContactEntity untransform(Contact contact) {
+        ContactEntity contactEntity = null;
+
+        if (contact != null){
+            contactEntity.setContactId(contact.getContactId());
+            contactEntity.setName(contact.getName());
+            contactEntity.setSurname(contact.getSurname());
+            contactEntity.setEmail(contact.getEmail());
+            //TODO:ver como hacer lo de la imagen
+            contactEntity.setImage(contact.getImage());
+            contactEntity.setPhone(contact.getPhone());
+            //TODO: ver como va lo de los enumerados
+            contactEntity.setCategoryType(contact.getCategory());
+        }
+        return contactEntity;
+    }
+
     public Collection<Contact> transform(Collection<ContactEntity> contactEntityCollection){
         List<Contact> contactList = new ArrayList<Contact>();
         Contact contact;
@@ -42,5 +59,17 @@ public class ContactEntityDataMapper {
             }
         }
         return contactList;
+    }
+
+    public Collection<ContactEntity> untransform(Collection<Contact> contactCollection){
+        List<ContactEntity> contactEntityList = new ArrayList<ContactEntity>();
+        ContactEntity contactEntity;
+        for(Contact contact : contactCollection){
+            contactEntity = untransform(contact);
+            if (contactEntity != null) {
+                contactEntityList.add(contactEntity);
+            }
+        }
+        return contactEntityList;
     }
 }

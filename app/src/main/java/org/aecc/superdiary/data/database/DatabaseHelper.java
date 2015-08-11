@@ -17,20 +17,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CONTACTS_COLUMN_IMAGE = "image";
     public static final String CONTACTS_COLUMN_CATEGORY = "category";
 
+    public static final String TABLE_COMMENTS = "comments";
+    public static final String COMMENTS_COLUMN_ID = "_id";
+    public static final String COMMENTS_COLUMN_DATEPOSTED = "datePosted";
+    public static final String COMMENTS_COLUMN_CONTENT = "content";
+    public static final String COMMENTS_COLUMN_DISCARDED = "discarded";
+    public static final String COMMENTS_COLUMN_REMINDER = "reminder";
+    public static final String COMMENTS_COLUMN_TIMESELAPSED = "timesElapsed";
+
     private static final String DATABASE_NAME = "superdiary";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String CONTACTS_CREATE = TABLE_CONTACTS
+    private static final String CONTACTS_CREATE = " create table (" + TABLE_CONTACTS
             + "(" + CONTACTS_COLUMN_ID + " integer primary key autoincrement, "
             + CONTACTS_COLUMN_NAME + " text not null,"
             + CONTACTS_COLUMN_SURNAME + " text not null,"
             + CONTACTS_COLUMN_PHONE + " text not null,"
             + CONTACTS_COLUMN_EMAIL + " text not null,"
             + CONTACTS_COLUMN_IMAGE + " text not null,"
-            + CONTACTS_COLUMN_CATEGORY + " text not null,"
-            + " text not null);";;
+            + CONTACTS_COLUMN_CATEGORY + " text not null);";
 
-    private static final String DATABASE_CREATE = "create table "
+    private static final String COMMENTS_CREATE = " create table (" + TABLE_COMMENTS
+            + "(" + COMMENTS_COLUMN_ID + " integer primary key autoincrement, "
+            + COMMENTS_COLUMN_DATEPOSTED + " text not null,"
+            + COMMENTS_COLUMN_CONTENT + " text not null,"
+            + COMMENTS_COLUMN_DISCARDED + " text not null,"
+            + COMMENTS_COLUMN_REMINDER + " text not null,"
+            + COMMENTS_COLUMN_TIMESELAPSED + " text not null);";
+
+    private static final String DATABASE_CREATE = COMMENTS_CREATE
             + CONTACTS_CREATE;
 
     public DatabaseHelper(Context context) {
@@ -39,7 +54,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        database.execSQL(DATABASE_CREATE);
+
+        database.execSQL(CONTACTS_CREATE);
+        database.execSQL(COMMENTS_CREATE);
     }
 
     @Override
@@ -48,6 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_CONTACTS);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMENTS);
         onCreate(database);
     }
 }

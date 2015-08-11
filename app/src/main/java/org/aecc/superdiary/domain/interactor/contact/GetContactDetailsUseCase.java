@@ -1,7 +1,8 @@
-package org.aecc.superdiary.domain.interactor;
+package org.aecc.superdiary.domain.interactor.contact;
 
 import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
+import org.aecc.superdiary.domain.interactor.Interactor;
 
 
 public interface GetContactDetailsUseCase extends Interactor {

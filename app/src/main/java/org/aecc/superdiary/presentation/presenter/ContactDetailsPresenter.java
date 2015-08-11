@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 
 import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
-import org.aecc.superdiary.domain.interactor.GetContactDetailsUseCase;
+import org.aecc.superdiary.domain.interactor.contact.GetContactDetailsUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.ContactModelDataMapper;
 import org.aecc.superdiary.presentation.model.ContactModel;

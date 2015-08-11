@@ -1,4 +1,4 @@
-package org.aecc.superdiary.domain.interactor;
+package org.aecc.superdiary.domain.interactor.contact;
 
 import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
@@ -8,9 +8,6 @@ import org.aecc.superdiary.domain.repository.ContactRepository;
 
 import javax.inject.Inject;
 
-/**
- * Created by a555148 on 09/08/2015.
- */
 public class GetContactDetailsUseCaseImpl implements GetContactDetailsUseCase {
 
     private final ContactRepository contactRepository;

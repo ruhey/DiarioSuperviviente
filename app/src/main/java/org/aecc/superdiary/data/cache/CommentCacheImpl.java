@@ -1,22 +1,23 @@
 package org.aecc.superdiary.data.cache;
 
+
 import android.content.Context;
 
 import org.aecc.superdiary.data.cache.serializer.JSONSerializer;
-import org.aecc.superdiary.data.entity.ContactEntity;
-import org.aecc.superdiary.data.exception.ContactNotFoundException;
+import org.aecc.superdiary.data.entity.CommentEntity;
+import org.aecc.superdiary.data.exception.CommentNotFoundException;
 import org.aecc.superdiary.domain.executor.ThreadExecutor;
 
 import java.io.File;
 
 import javax.inject.Inject;
 
-public class ContactCacheImpl implements ContactCache {
+public class CommentCacheImpl implements CommentCache {
 
     private static final String SETTINGS_FILE_NAME = "org.aecc.superdiary.SETTINGS";
     private static final String SETTINGS_KEY_LAST_CACHE_UPDATE = "last_cache_update";
 
-    private static final String DEFAULT_FILE_NAME = "contact_";
+    private static final String DEFAULT_FILE_NAME = "comment_";
     private static final long EXPIRATION_TIME = 60 * 10 * 1000;
 
     private final Context context;
@@ -26,7 +27,7 @@ public class ContactCacheImpl implements ContactCache {
     private final ThreadExecutor threadExecutor;
 
     @Inject
-    public ContactCacheImpl(Context context, JSONSerializer serializer, ThreadExecutor threadExecutor, FileManager filemanager){
+    public CommentCacheImpl(Context context, JSONSerializer serializer, ThreadExecutor threadExecutor, FileManager filemanager){
         this.context = context;
         this.cacheDir = this.context.getCacheDir();
         this.serializer = serializer;
@@ -35,25 +36,25 @@ public class ContactCacheImpl implements ContactCache {
     }
 
     @Override
-    public synchronized void get(int contactId, ContactCache.ContactCacheCallback callback) {
-        File contactEntitiyFile = this.buildFile(contactId);
-        String fileContent = this.fileManager.readFileContent(contactEntitiyFile);
-        ContactEntity contactEntity = this.serializer.deserializeContact(fileContent);
+    public synchronized void get(int commentId, CommentCache.CommentCacheCallback callback) {
+        File commentEntitiyFile = this.buildFile(commentId);
+        String fileContent = this.fileManager.readFileContent(commentEntitiyFile);
+        CommentEntity commentEntity = this.serializer.deserializeComment(fileContent);
 
-        if (contactEntity != null) {
-            callback.onContactEntityLoaded(contactEntity);
+        if (commentEntity != null) {
+            callback.onCommentEntityLoaded(commentEntity);
         } else {
-            callback.onError(new ContactNotFoundException());
+            callback.onError(new CommentNotFoundException());
         }
     }
 
     @Override
-    public synchronized void put(ContactEntity contactEntity) {
-        if (contactEntity != null) {
-            File contactEntitiyFile = this.buildFile(contactEntity.getContactId());
-            if (!isCached(contactEntity.getContactId())) {
-                String jsonString = this.serializer.serializeContact(contactEntity);
-                this.executeAsynchronously(new CacheWriter(this.fileManager, contactEntitiyFile,
+    public synchronized void put(CommentEntity commentEntity) {
+        if (commentEntity != null) {
+            File commentEntitiyFile = this.buildFile(commentEntity.getCommentId());
+            if (!isCached(commentEntity.getCommentId())) {
+                String jsonString = this.serializer.serializeComment(commentEntity);
+                this.executeAsynchronously(new CacheWriter(this.fileManager, commentEntitiyFile,
                         jsonString));
                 setLastCacheUpdateTimeMillis();
             }
@@ -61,9 +62,9 @@ public class ContactCacheImpl implements ContactCache {
     }
 
     @Override
-    public boolean isCached(int contactId) {
-        File contactEntitiyFile = this.buildFile(contactId);
-        return this.fileManager.exists(contactEntitiyFile);
+    public boolean isCached(int commentId) {
+        File commentEntitiyFile = this.buildFile(commentId);
+        return this.fileManager.exists(commentEntitiyFile);
     }
 
     @Override
@@ -85,12 +86,12 @@ public class ContactCacheImpl implements ContactCache {
         this.executeAsynchronously(new CacheEvictor(this.fileManager, this.cacheDir));
     }
 
-    private File buildFile(int contactId) {
+    private File buildFile(int commentId) {
         StringBuilder fileNameBuilder = new StringBuilder();
         fileNameBuilder.append(this.cacheDir.getPath());
         fileNameBuilder.append(File.separator);
         fileNameBuilder.append(DEFAULT_FILE_NAME);
-        fileNameBuilder.append(contactId);
+        fileNameBuilder.append(commentId);
 
         return new File(fileNameBuilder.toString());
     }
@@ -139,5 +140,4 @@ public class ContactCacheImpl implements ContactCache {
             this.fileManager.clearDirectory(this.cacheDir);
         }
     }
-
 }
