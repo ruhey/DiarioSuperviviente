@@ -54,5 +54,8 @@
     <string name="exception_message_no_connection">No se ha encontrado conexión a internet</string>
     <string name="exception_message_contact_not_found">No se ha podido recuperar los contactos o contacto no encontrado</string>
     <string name="title_activity_personaje">Personaje</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

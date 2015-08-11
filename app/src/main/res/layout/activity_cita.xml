@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/medic_layout"
+    android:id="@+id/cita_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -18,7 +18,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:background="@color/blancoVerdoso"
-            android:src="@drawable/medicamento"/>
+            android:src="@drawable/cita"/>
 
     </LinearLayout>
 
@@ -45,11 +45,25 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="MEDICAMENTO"
+                    android:text="¿QUE ES?"
                     style="@style/textoDatosEntidades"/>
 
                 <EditText
-                    android:id="@+id/nombreMedic"
+                    android:id="@+id/nombreCita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/textoInsercionCampos"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="¿DONDE ES?"
+                    style="@style/textoDatosEntidades"/>
+
+                <EditText
+                    android:id="@+id/lugarCita"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -63,9 +77,46 @@
                 android:layout_width="match_parent"
                 android:background="#728C93"/>
 
+            <!-- PREGUNTAS -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="PREGUNTAS"
+                        style="@style/textoDatosEntidades"/>
+
+                    <EditText
+                        android:id="@+id/descripcionCita"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left"
+                        android:inputType="textPersonName|textMultiLine"
+                        android:lines="15"
+                        android:minLines="3"
+                        android:scrollHorizontally="false"
+                        android:scrollbars="vertical"
+                        android:singleLine="false"
+                        style="@style/textoInsercionCampos"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="#728C93"/>
+
             <!-- FECHA Y HORA INICIO-->
             <LinearLayout
-
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -80,11 +131,11 @@
                     <TextView
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:text="DIA INICIO"
+                        android:text="DIA CITA"
                         style="@style/textoDatosEntidades"/>
 
                     <EditText
-                        android:id="@+id/fechaInicMedic"
+                        android:id="@+id/fechaCita"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -92,7 +143,6 @@
                         android:inputType="date" />
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -104,12 +154,12 @@
                     <TextView
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:text="HORA INICIO"
+                        android:text="HORA CITA"
                         style="@style/textoDatosEntidades"/>
 
 
                     <EditText
-                        android:id="@+id/horaIniMedic"
+                        android:id="@+id/horaCita"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -134,11 +184,11 @@
                     <TextView
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:text="DIA FIN"
+                        android:text="DIA AVISO"
                         style="@style/textoDatosEntidades"/>
 
                     <EditText
-                        android:id="@+id/fechaFinMedic"
+                        android:id="@+id/fechaAvisoCita"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -157,12 +207,12 @@
                     <TextView
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:text="HORA FIN"
+                        android:text="HORA AVISO"
                         style="@style/textoDatosEntidades"/>
 
 
                     <EditText
-                        android:id="@+id/horaFinMedic"
+                        android:id="@+id/horaAvisoCita"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -187,16 +237,16 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="TOMAR CADA"
+                    android:text="DURACIÓN"
                     style="@style/textoDatosEntidades"/>
 
                 <SeekBar
-                    android:id="@+id/seekBarMedic"
+                    android:id="@+id/seekBarDuracCitas"
                     android:layout_width="180dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:progress="1"
-                    android:max="24"
+                    android:max="12"
                     android:layout_height="wrap_content"/>
 
                 <TextView
@@ -206,43 +256,6 @@
                     style="@style/textoDatosEntidades"/>
             </LinearLayout>
 
-            <View
-                android:layout_height="1dp"
-                android:layout_width="match_parent"
-                android:background="#728C93"/>
-
-            <!-- DESCRIPCIÓN -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="DESCRIPCIÓN"
-                        style="@style/textoDatosEntidades"/>
-
-                    <EditText
-                        android:id="@+id/descripcionPrueba"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="top|left"
-                        android:inputType="textPersonName|textMultiLine"
-                        android:lines="15"
-                        android:minLines="10"
-                        android:scrollHorizontally="false"
-                        android:scrollbars="vertical"
-                        android:singleLine="false"
-                        style="@style/textoInsercionCampos"/>
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
