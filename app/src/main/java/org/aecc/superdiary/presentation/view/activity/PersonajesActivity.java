@@ -1,15 +1,17 @@
 package org.aecc.superdiary.presentation.view.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.content.Intent;
 
+import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
@@ -17,11 +19,9 @@ import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComp
 import org.aecc.superdiary.presentation.model.ContactModel;
 import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
+
 public class PersonajesActivity extends DiaryBaseActivity implements HasComponent<ContactComponent>{
     ListView listViewCharacters;
-    public static Intent getCallingIntent(Context context) {
-        return new Intent(context, PersonajesActivity.class);
-    }
 
     private ContactComponent contactComponent;
     @Override
@@ -51,6 +51,33 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         //Asociamos el adaptador a la vista.
         listViewCharacters = (ListView) view.findViewById(R.id.list);
         listViewCharacters.setAdapter(adaptador);
+
+        listViewCharacters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            // ListView Clicked item index
+                int itemPosition = position;
+
+                // ListView Clicked item value
+                String itemValue = (String) listViewCharacters.getItemAtPosition(position);
+
+                // Show Alert
+                /*Toast.makeText(getApplicationContext(),
+                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        .show();*/
+
+                Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
+                //startActivity(intent);
+
+
+        });
+
+
     }
 
     private void initializeInjector() {
@@ -87,6 +114,12 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public static Intent getCallingIntent(Context context) {
+        //Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
+        return null;
     }
 }
 
