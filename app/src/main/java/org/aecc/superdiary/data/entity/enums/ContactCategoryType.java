@@ -8,7 +8,7 @@ public enum ContactCategoryType {
     private int value;
     private  String literal;
 
-    private ContactCategoryType(int value, String literal) {
+    ContactCategoryType(int value, String literal) {
         this.value = value;
         this.literal = literal;
     }

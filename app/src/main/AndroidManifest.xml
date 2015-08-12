@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.aecc.superdiary" >
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.aecc.superdiary">
 
-    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
-    <uses-permission android:name="android.permission."></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission." />
 
     <application
         android:name="org.aecc.superdiary.presentation.AndroidApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Holo.Light" >
+        android:theme="@android:style/Theme.Holo.Light">
         <activity
             android:name=".presentation.view.activity.Principal"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light" >
-        </activity>
+            android:theme="@android:style/Theme.Holo.Light" />
 
         <activity
             android:name=".presentation.view.activity.PersonajesActivity"
             android:label="Personajes"
-            android:theme="@android:style/Theme.Holo.Light" >
-        </activity>
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".presentation.view.activity.BienvenidaActivity"
             android:label="@string/title_activity_bienvenida"
-            android:theme="@android:style/Theme.Holo.Light" >
+            android:theme="@android:style/Theme.Holo.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,23 +34,19 @@
         <activity
             android:name=".presentation.view.activity.Citas"
             android:label="@string/title_activity_citas"
-            android:theme="@android:style/Theme.Holo.Light" >
-        </activity>
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".presentation.view.activity.Otros"
             android:label="@string/title_activity_otros"
-            android:theme="@android:style/Theme.Holo.Light" >
-        </activity>
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".presentation.view.activity.Calendario"
             android:label="@string/title_activity_calendario"
-            android:theme="@android:style/Theme.Holo.Light" >
-        </activity>
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".presentation.view.activity.Personaje"
             android:label="@string/title_activity_personaje"
-            android:theme="@android:style/Theme.Holo.Light" >
-        </activity>
+            android:theme="@android:style/Theme.Holo.Light" />
     </application>
 
 </manifest>

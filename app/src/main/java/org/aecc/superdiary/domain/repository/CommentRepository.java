@@ -2,7 +2,6 @@ package org.aecc.superdiary.domain.repository;
 
 
 import org.aecc.superdiary.domain.Comment;
-import org.aecc.superdiary.domain.Comment;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
 
 import java.util.Collection;

@@ -15,5 +15,5 @@ public interface DeleteCommentUseCase extends Interactor {
     }
 
 
-    public void execute(int commentId, Callback callback);
+    void execute(int commentId, Callback callback);
 }

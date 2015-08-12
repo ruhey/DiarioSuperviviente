@@ -12,5 +12,5 @@ public interface GetCommentDetailsUseCase extends Interactor {
     }
 
 
-    public void execute(int commentId, Callback callback);
+    void execute(int commentId, Callback callback);
 }

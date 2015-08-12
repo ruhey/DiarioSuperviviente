@@ -17,22 +17,18 @@ public class JSONSerializer {
     public JSONSerializer() {}
 
     public String serializeContact(ContactEntity contactEntity) {
-        String jsonString = gson.toJson(contactEntity, ContactEntity.class);
-        return jsonString;
+        return gson.toJson(contactEntity, ContactEntity.class);
     }
 
     public ContactEntity deserializeContact(String jsonString) {
-        ContactEntity contactEntity = gson.fromJson(jsonString, ContactEntity.class);
-        return contactEntity;
+        return gson.fromJson(jsonString, ContactEntity.class);
     }
 
     public String serializeComment(CommentEntity commentEntity) {
-        String jsonString = gson.toJson(commentEntity, CommentEntity.class);
-        return jsonString;
+        return gson.toJson(commentEntity, CommentEntity.class);
     }
 
     public CommentEntity deserializeComment(String jsonString) {
-        CommentEntity commentEntity = gson.fromJson(jsonString, CommentEntity.class);
-        return commentEntity;
+        return gson.fromJson(jsonString, CommentEntity.class);
     }
 }

@@ -7,7 +7,6 @@ import org.aecc.superdiary.domain.executor.ThreadExecutor;
 import org.aecc.superdiary.domain.repository.ContactRepository;
 import org.aecc.superdiary.presentation.internal.di.modules.ApplicationModule;
 import org.aecc.superdiary.presentation.view.activity.BaseActivity;
-import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
 import javax.inject.Singleton;
 
