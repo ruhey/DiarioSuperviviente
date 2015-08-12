@@ -4,10 +4,8 @@ import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
 import org.aecc.superdiary.domain.interactor.Interactor;
 
-
 public interface GetContactDetailsUseCase extends Interactor {
-    public void execute(int contactId, Callback callback);
-
+    void execute(int contactId, Callback callback);
 
     interface Callback {
         void onContactDataLoaded(Contact contact);
