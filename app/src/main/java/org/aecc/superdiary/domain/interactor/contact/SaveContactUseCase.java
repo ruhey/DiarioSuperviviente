@@ -13,6 +13,6 @@ public interface SaveContactUseCase extends Interactor{
     }
 
 
-    public void execute(Contact contact, Callback callback);
+    void execute(Contact contact, Callback callback);
 
 }

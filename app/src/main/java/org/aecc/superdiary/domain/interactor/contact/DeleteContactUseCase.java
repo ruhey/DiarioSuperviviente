@@ -14,5 +14,5 @@ public interface DeleteContactUseCase extends Interactor{
     }
 
 
-    public void execute(int contactId, Callback callback);
+    void execute(int contactId, Callback callback);
 }

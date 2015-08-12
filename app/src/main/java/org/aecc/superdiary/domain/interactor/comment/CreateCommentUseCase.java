@@ -13,5 +13,5 @@ public interface CreateCommentUseCase extends Interactor {
     }
 
 
-    public void execute(Comment comment, Callback callback);
+    void execute(Comment comment, Callback callback);
 }
