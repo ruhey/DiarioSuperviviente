@@ -14,7 +14,8 @@ import javax.inject.Inject;
 public class ContactModelDataMapper {
 
     @Inject
-    public ContactModelDataMapper() {}
+    public ContactModelDataMapper() {
+    }
 
     public ContactModel transform(Contact contact) {
         if (contact == null) {

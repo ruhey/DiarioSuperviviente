@@ -6,11 +6,12 @@ import org.aecc.superdiary.domain.interactor.Interactor;
 
 
 public interface GetCommentDetailsUseCase extends Interactor {
+    void execute(int commentId, Callback callback);
+
+
     interface Callback {
         void onCommentDataLoaded(Comment comment);
+
         void onError(ErrorBundle errorBundle);
     }
-
-
-    void execute(int commentId, Callback callback);
 }

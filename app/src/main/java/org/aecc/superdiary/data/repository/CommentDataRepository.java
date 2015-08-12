@@ -23,7 +23,7 @@ public class CommentDataRepository implements CommentRepository {
     private final CommentEntityDataMapper commentEntityDataMapper;
 
     @Inject
-    public CommentDataRepository(CommentDataStoreFactory commentDataStoreFactory, CommentEntityDataMapper commentEntityDataMapper){
+    public CommentDataRepository(CommentDataStoreFactory commentDataStoreFactory, CommentEntityDataMapper commentEntityDataMapper) {
         this.commentDataStoreFactory = commentDataStoreFactory;
         this.commentEntityDataMapper = commentEntityDataMapper;
     }

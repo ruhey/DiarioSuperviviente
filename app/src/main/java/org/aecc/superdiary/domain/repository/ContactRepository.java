@@ -7,6 +7,16 @@ import java.util.Collection;
 
 public interface ContactRepository {
 
+    void getContactList(ContactListCallback ContactListCallback);
+
+    void getContactById(final int contactId, ContactDetailsCallback contactCallback);
+
+    void createContact(final Contact contact, ContactCreationCallback contactCallback);
+
+    void saveContact(final Contact contact, ContactSaveCallback contactCallback);
+
+    void deleteContact(final int contactId, ContactDetionCallback contactDeletionCallback);
+
     interface ContactListCallback {
         void onContactListLoaded(Collection<Contact> contactsCollection);
 
@@ -36,14 +46,4 @@ public interface ContactRepository {
 
         void onError(ErrorBundle errorBundle);
     }
-
-    void getContactList(ContactListCallback ContactListCallback);
-
-    void getContactById(final int contactId, ContactDetailsCallback contactCallback);
-
-    void createContact(final Contact contact, ContactCreationCallback contactCallback);
-
-    void saveContact(final Contact contact, ContactSaveCallback contactCallback);
-
-    void deleteContact(final int contactId, ContactDetionCallback contactDeletionCallback);
 }

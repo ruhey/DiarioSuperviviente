@@ -7,6 +7,16 @@ import java.util.Collection;
 
 public interface CommentDatabaseAPI {
 
+    void getCommentEntityList(final CommentListCallback commentListCallback);
+
+    void getCommentEntityById(final int commentId, final CommentDetailsCallback commentDetailsCallback);
+
+    void createCommentEntity(final CommentEntity comment, CommentCreationCallback commentCreationCallback);
+
+    void saveCommentEntity(final CommentEntity comment, CommentSaveCallback commentSaveCallback);
+
+    void deleteCommentEntity(final int commentId, CommentDeletionCallback commentDeletionCallback);
+
     interface CommentListCallback {
         void onCommentListLoaded(Collection<CommentEntity> commentsCollection);
 
@@ -36,14 +46,4 @@ public interface CommentDatabaseAPI {
 
         void onError(Exception exception);
     }
-
-    void getCommentEntityList(final CommentListCallback commentListCallback);
-
-    void getCommentEntityById(final int commentId, final CommentDetailsCallback commentDetailsCallback);
-
-    void createCommentEntity(final CommentEntity comment, CommentCreationCallback commentCreationCallback);
-
-    void saveCommentEntity(final CommentEntity comment, CommentSaveCallback commentSaveCallback);
-
-    void deleteCommentEntity(final int commentId, CommentDeletionCallback commentDeletionCallback);
 }

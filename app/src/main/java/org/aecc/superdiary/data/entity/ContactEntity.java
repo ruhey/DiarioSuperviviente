@@ -25,7 +25,7 @@ public class ContactEntity {
     @SerializedName("category_type")
     private String categoryType;
 
-    public ContactEntity(){
+    public ContactEntity() {
         //empty
     }
 
@@ -85,7 +85,8 @@ public class ContactEntity {
         this.categoryType = categoryType;
     }
 
-    @Override public String toString(){
+    @Override
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("***** User Entity Details *****\n");

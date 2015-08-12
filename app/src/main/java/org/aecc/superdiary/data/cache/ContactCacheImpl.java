@@ -26,7 +26,7 @@ public class ContactCacheImpl implements ContactCache {
     private final ThreadExecutor threadExecutor;
 
     @Inject
-    public ContactCacheImpl(Context context, JSONSerializer serializer, ThreadExecutor threadExecutor, FileManager filemanager){
+    public ContactCacheImpl(Context context, JSONSerializer serializer, ThreadExecutor threadExecutor, FileManager filemanager) {
         this.context = context;
         this.cacheDir = this.context.getCacheDir();
         this.serializer = serializer;
@@ -121,7 +121,8 @@ public class ContactCacheImpl implements ContactCache {
             this.fileContent = fileContent;
         }
 
-        @Override public void run() {
+        @Override
+        public void run() {
             this.fileManager.writeToFile(fileToWrite, fileContent);
         }
     }
@@ -135,7 +136,8 @@ public class ContactCacheImpl implements ContactCache {
             this.cacheDir = cacheDir;
         }
 
-        @Override public void run() {
+        @Override
+        public void run() {
             this.fileManager.clearDirectory(this.cacheDir);
         }
     }

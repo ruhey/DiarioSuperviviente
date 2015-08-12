@@ -6,11 +6,12 @@ import org.aecc.superdiary.domain.interactor.Interactor;
 
 
 public interface SaveCommentUseCase extends Interactor {
+    void execute(Comment comment, Callback callback);
+
+
     interface Callback {
         void onCommentDataSaved(Comment comment);
+
         void onError(ErrorBundle errorBundle);
     }
-
-
-    void execute(Comment comment, Callback callback);
 }

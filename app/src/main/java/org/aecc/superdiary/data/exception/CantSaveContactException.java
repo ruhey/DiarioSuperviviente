@@ -1,7 +1,7 @@
 package org.aecc.superdiary.data.exception;
 
 
-public class CantSaveContactException extends Exception{
+public class CantSaveContactException extends Exception {
 
     public CantSaveContactException() {
         super();

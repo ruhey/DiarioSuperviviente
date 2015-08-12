@@ -16,16 +16,29 @@ public class GetContactDetailsUseCaseImpl implements GetContactDetailsUseCase {
 
     private int contactId = -1;
     private GetContactDetailsUseCase.Callback callback;
+    private final ContactRepository.ContactDetailsCallback repositoryCallback =
+            new ContactRepository.ContactDetailsCallback() {
+                @Override
+                public void onContactLoaded(Contact contact) {
+                    notifyGetContactDetailsSuccessfully(contact);
+                }
+
+                @Override
+                public void onError(ErrorBundle errorBundle) {
+                    notifyError(errorBundle);
+                }
+            };
 
     @Inject
     public GetContactDetailsUseCaseImpl(ContactRepository contactRepository, ThreadExecutor threadExecutor,
-                                     PostExecutionThread postExecutionThread) {
+                                        PostExecutionThread postExecutionThread) {
         this.contactRepository = contactRepository;
         this.threadExecutor = threadExecutor;
         this.postExecutionThread = postExecutionThread;
     }
 
-    @Override public void execute(int contactId, Callback callback) {
+    @Override
+    public void execute(int contactId, Callback callback) {
         if (contactId < 0 || callback == null) {
             throw new IllegalArgumentException("Invalid parameter!!!");
         }
@@ -34,24 +47,15 @@ public class GetContactDetailsUseCaseImpl implements GetContactDetailsUseCase {
         this.threadExecutor.execute(this);
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         this.contactRepository.getContactById(this.contactId, this.repositoryCallback);
     }
 
-    private final ContactRepository.ContactDetailsCallback repositoryCallback =
-            new ContactRepository.ContactDetailsCallback() {
-                @Override public void onContactLoaded(Contact contact) {
-                    notifyGetContactDetailsSuccessfully(contact);
-                }
-
-                @Override public void onError(ErrorBundle errorBundle) {
-                    notifyError(errorBundle);
-                }
-            };
-
     private void notifyGetContactDetailsSuccessfully(final Contact contact) {
         this.postExecutionThread.post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 callback.onContactDataLoaded(contact);
             }
         });
@@ -59,7 +63,8 @@ public class GetContactDetailsUseCaseImpl implements GetContactDetailsUseCase {
 
     private void notifyError(final ErrorBundle errorBundle) {
         this.postExecutionThread.post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 callback.onError(errorBundle);
             }
         });

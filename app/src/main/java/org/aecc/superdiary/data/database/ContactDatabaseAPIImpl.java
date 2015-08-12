@@ -12,11 +12,12 @@ import java.util.Collection;
 
 public class ContactDatabaseAPIImpl implements ContactDatabaseAPI {
 
+    private final Context context;
     private SQLiteDatabase database;
     private DatabaseHelper databaseHelper;
-    private String[] contactListColumns = { DatabaseHelper.CONTACTS_COLUMN_ID,
-            DatabaseHelper.CONTACTS_COLUMN_NAME };
-    private String[] contactAllColumns = { DatabaseHelper.CONTACTS_COLUMN_ID,
+    private String[] contactListColumns = {DatabaseHelper.CONTACTS_COLUMN_ID,
+            DatabaseHelper.CONTACTS_COLUMN_NAME};
+    private String[] contactAllColumns = {DatabaseHelper.CONTACTS_COLUMN_ID,
             DatabaseHelper.CONTACTS_COLUMN_NAME,
             DatabaseHelper.CONTACTS_COLUMN_SURNAME,
             DatabaseHelper.CONTACTS_COLUMN_EMAIL,
@@ -24,10 +25,8 @@ public class ContactDatabaseAPIImpl implements ContactDatabaseAPI {
             DatabaseHelper.CONTACTS_COLUMN_IMAGE,
             DatabaseHelper.CONTACTS_COLUMN_CATEGORY};
 
-    private final Context context;
-
     public ContactDatabaseAPIImpl(Context context) {
-        if (context == null ) {
+        if (context == null) {
             throw new IllegalArgumentException("The constructor parameters cannot be null!!!");
         }
         this.context = context.getApplicationContext();
@@ -35,11 +34,11 @@ public class ContactDatabaseAPIImpl implements ContactDatabaseAPI {
         //this.userEntityJsonMapper = userEntityJsonMapper;
     }
 
-    private void openHelper(){
+    private void openHelper() {
         database = databaseHelper.getWritableDatabase();
     }
 
-    private void closeHelper(){
+    private void closeHelper() {
         databaseHelper.close();
     }
 
@@ -130,7 +129,7 @@ public class ContactDatabaseAPIImpl implements ContactDatabaseAPI {
         values.put(DatabaseHelper.CONTACTS_COLUMN_CATEGORY, contact.getCategoryType());
         openHelper();
 
-        database.update(DatabaseHelper.TABLE_CONTACTS, values, DatabaseHelper.CONTACTS_COLUMN_ID + " = ?", new String[] {String.valueOf(contact.getContactId())});
+        database.update(DatabaseHelper.TABLE_CONTACTS, values, DatabaseHelper.CONTACTS_COLUMN_ID + " = ?", new String[]{String.valueOf(contact.getContactId())});
         Cursor cursor = database.query(DatabaseHelper.TABLE_CONTACTS,
                 contactAllColumns, null, null, null, null, null);
 
@@ -177,7 +176,6 @@ public class ContactDatabaseAPIImpl implements ContactDatabaseAPI {
         return contact;
     }
     //private final ContactEntityJsonMapper contactEntityJsonMapper;
-
 
 
     private ContactEntity cursorToDetailContact(Cursor cursor) {

@@ -6,6 +6,16 @@ import java.util.Collection;
 
 public interface ContactDatabaseAPI {
 
+    void getContactEntityList(final ContactListCallback contactListCallback);
+
+    void getContactEntityById(final int contactId, final ContactDetailsCallback contactDetailsCallback);
+
+    void createContactEntity(final ContactEntity contact, final ContactCreationCallback contactCreationCallback);
+
+    void saveContactEntity(final ContactEntity contact, final ContactSaveCallback contactSaveCallback);
+
+    void deleteContactEntity(final int contactId, final ContactDeletionCallback contactDeletionCallback);
+
     interface ContactListCallback {
         void onContactListLoaded(Collection<ContactEntity> contactsCollection);
 
@@ -35,14 +45,4 @@ public interface ContactDatabaseAPI {
 
         void onError(Exception exception);
     }
-
-    void getContactEntityList(final ContactListCallback contactListCallback);
-
-    void getContactEntityById(final int contactId, final ContactDetailsCallback contactDetailsCallback);
-
-    void createContactEntity(final ContactEntity contact, final ContactCreationCallback contactCreationCallback);
-
-    void saveContactEntity(final ContactEntity contact, final ContactSaveCallback contactSaveCallback);
-
-    void deleteContactEntity(final int contactId, final ContactDeletionCallback contactDeletionCallback);
 }

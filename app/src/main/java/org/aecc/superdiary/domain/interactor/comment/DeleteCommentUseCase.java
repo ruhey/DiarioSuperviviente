@@ -9,11 +9,12 @@ import java.util.Collection;
 
 public interface DeleteCommentUseCase extends Interactor {
 
+    void execute(int commentId, Callback callback);
+
+
     interface Callback {
         void onCommentDataDeleted(Collection<Comment> commentsCollection);
+
         void onError(ErrorBundle errorBundle);
     }
-
-
-    void execute(int commentId, Callback callback);
 }

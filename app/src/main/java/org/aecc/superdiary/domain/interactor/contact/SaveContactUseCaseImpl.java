@@ -17,16 +17,29 @@ public class SaveContactUseCaseImpl implements SaveContactUseCase {
 
     private Contact contact = null;
     private SaveContactUseCase.Callback callback;
+    private final ContactRepository.ContactSaveCallback repositoryCallback =
+            new ContactRepository.ContactSaveCallback() {
+                @Override
+                public void onContactSaved(Contact contact) {
+                    notifySaveContactSuccessfully(contact);
+                }
+
+                @Override
+                public void onError(ErrorBundle errorBundle) {
+                    notifyError(errorBundle);
+                }
+            };
 
     @Inject
     public SaveContactUseCaseImpl(ContactRepository contactRepository, ThreadExecutor threadExecutor,
-                                        PostExecutionThread postExecutionThread) {
+                                  PostExecutionThread postExecutionThread) {
         this.contactRepository = contactRepository;
         this.threadExecutor = threadExecutor;
         this.postExecutionThread = postExecutionThread;
     }
 
-    @Override public void execute(Contact contact, Callback callback) {
+    @Override
+    public void execute(Contact contact, Callback callback) {
         if (contact == null || callback == null) {
             throw new IllegalArgumentException("Invalid parameter!!!");
         }
@@ -35,20 +48,10 @@ public class SaveContactUseCaseImpl implements SaveContactUseCase {
         this.threadExecutor.execute(this);
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         this.contactRepository.saveContact(this.contact, this.repositoryCallback);
     }
-
-    private final ContactRepository.ContactSaveCallback repositoryCallback =
-            new ContactRepository.ContactSaveCallback() {
-                @Override public void onContactSaved(Contact contact) {
-                    notifySaveContactSuccessfully(contact);
-                }
-
-                @Override public void onError(ErrorBundle errorBundle) {
-                    notifyError(errorBundle);
-                }
-            };
 
     private void notifySaveContactSuccessfully(final Contact contact) {
         this.postExecutionThread.post(new Runnable() {

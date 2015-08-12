@@ -1,44 +1,44 @@
 package org.aecc.superdiary.presentation.view.activity;
 
-import android.os.Bundle;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.view.Window;
 
 import org.aecc.superdiary.R;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class SplashScreenActivity extends DiaryBaseActivity {
 
-        private static final long SPLASH_SCREEN_DELAY = 3000;
+    private static final long SPLASH_SCREEN_DELAY = 3000;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-            // Set portrait orientation
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            // Hide title bar
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // Set portrait orientation
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        // Hide title bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-            setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_splash_screen);
 
-            TimerTask task = new TimerTask() {
-                @Override
-                public void run() {
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
 
-                    Intent mainIntent = new Intent().setClass(
-                            SplashScreenActivity.this, BienvenidaActivity.class);
-                    startActivity(mainIntent);
+                Intent mainIntent = new Intent().setClass(
+                        SplashScreenActivity.this, BienvenidaActivity.class);
+                startActivity(mainIntent);
 
-                    finish();
-                }
-            };
+                finish();
+            }
+        };
 
-            Timer timer = new Timer();
-            timer.schedule(task, SPLASH_SCREEN_DELAY);
-        }
-
+        Timer timer = new Timer();
+        timer.schedule(task, SPLASH_SCREEN_DELAY);
     }
+
+}

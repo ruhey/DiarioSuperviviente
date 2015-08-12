@@ -17,6 +17,18 @@ public class CreateCommentUseCaseImpl implements CreateCommentUseCase {
 
     private Comment comment = null;
     private CreateCommentUseCase.Callback callback;
+    private final CommentRepository.CommentCreationCallback repositoryCallback =
+            new CommentRepository.CommentCreationCallback() {
+                @Override
+                public void onCommentCreated(Comment comment) {
+                    notifyCreateCommentSuccessfully(comment);
+                }
+
+                @Override
+                public void onError(ErrorBundle errorBundle) {
+                    notifyError(errorBundle);
+                }
+            };
 
     @Inject
     public CreateCommentUseCaseImpl(CommentRepository commentRepository, ThreadExecutor threadExecutor,
@@ -26,7 +38,8 @@ public class CreateCommentUseCaseImpl implements CreateCommentUseCase {
         this.postExecutionThread = postExecutionThread;
     }
 
-    @Override public void execute(Comment comment, Callback callback) {
+    @Override
+    public void execute(Comment comment, Callback callback) {
         if (comment == null || callback == null) {
             throw new IllegalArgumentException("Invalid parameter!!!");
         }
@@ -35,20 +48,10 @@ public class CreateCommentUseCaseImpl implements CreateCommentUseCase {
         this.threadExecutor.execute(this);
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         this.commentRepository.createComment(this.comment, this.repositoryCallback);
     }
-
-    private final CommentRepository.CommentCreationCallback repositoryCallback =
-            new CommentRepository.CommentCreationCallback() {
-                @Override public void onCommentCreated(Comment comment) {
-                    notifyCreateCommentSuccessfully(comment);
-                }
-
-                @Override public void onError(ErrorBundle errorBundle) {
-                    notifyError(errorBundle);
-                }
-            };
 
     private void notifyCreateCommentSuccessfully(final Comment comment) {
         this.postExecutionThread.post(new Runnable() {
