@@ -7,6 +7,7 @@ public class Comment {
     private boolean discarded;
     private boolean reminder;
     private String timesElapsed;
+
     public Comment(int commentId) {
         this.commentId = commentId;
     }
