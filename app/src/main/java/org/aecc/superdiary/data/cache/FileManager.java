@@ -17,7 +17,8 @@ import javax.inject.Singleton;
 public class FileManager {
 
     @Inject
-    public FileManager() {}
+    public FileManager() {
+    }
 
     public void writeToFile(File file, String fileContent) {
         if (!file.exists()) {

@@ -11,7 +11,7 @@ public class ContactModel {
     private String image;
     private String category;
 
-    public ContactModel(int contactId){
+    public ContactModel(int contactId) {
         this.contactId = contactId;
     }
 
@@ -68,7 +68,8 @@ public class ContactModel {
     }
 
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("***** User Details *****\n");

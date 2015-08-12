@@ -13,21 +13,20 @@ import java.util.Collection;
 
 public class CommentDatabaseAPIImpl implements CommentDatabaseAPI {
 
+    private final Context context;
     private SQLiteDatabase database;
     private DatabaseHelper databaseHelper;
-    private String[] commentListColumns = { DatabaseHelper.COMMENTS_COLUMN_ID,
+    private String[] commentListColumns = {DatabaseHelper.COMMENTS_COLUMN_ID,
             DatabaseHelper.COMMENTS_COLUMN_CONTENT, DatabaseHelper.COMMENTS_COLUMN_DISCARDED};
-    private String[] commentAllColumns = { DatabaseHelper.COMMENTS_COLUMN_ID,
+    private String[] commentAllColumns = {DatabaseHelper.COMMENTS_COLUMN_ID,
             DatabaseHelper.COMMENTS_COLUMN_DATEPOSTED,
             DatabaseHelper.COMMENTS_COLUMN_CONTENT,
             DatabaseHelper.COMMENTS_COLUMN_DISCARDED,
             DatabaseHelper.COMMENTS_COLUMN_REMINDER,
             DatabaseHelper.COMMENTS_COLUMN_TIMESELAPSED};
 
-    private final Context context;
-
     public CommentDatabaseAPIImpl(Context context) {
-        if (context == null ) {
+        if (context == null) {
             throw new IllegalArgumentException("The constructor parameters cannot be null!!!");
         }
         this.context = context.getApplicationContext();
@@ -35,11 +34,11 @@ public class CommentDatabaseAPIImpl implements CommentDatabaseAPI {
         //this.userEntityJsonMapper = userEntityJsonMapper;
     }
 
-    private void openHelper(){
+    private void openHelper() {
         database = databaseHelper.getWritableDatabase();
     }
 
-    private void closeHelper(){
+    private void closeHelper() {
         databaseHelper.close();
     }
 
@@ -56,7 +55,7 @@ public class CommentDatabaseAPIImpl implements CommentDatabaseAPI {
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            if(Boolean.parseBoolean(cursor.getString(2))){
+            if (Boolean.parseBoolean(cursor.getString(2))) {
                 CommentEntity comment = cursorToListItemComment(cursor);
                 commentsCollection.add(comment);
             }
@@ -80,7 +79,7 @@ public class CommentDatabaseAPIImpl implements CommentDatabaseAPI {
         cursor.moveToFirst();
         CommentEntity commentEntity = null;
         while (!cursor.isAfterLast()) {
-            if(Boolean.parseBoolean(cursor.getString(3))){
+            if (Boolean.parseBoolean(cursor.getString(3))) {
                 commentEntity = cursorToDetailComment(cursor);
                 cursor.moveToNext();
             }
@@ -183,7 +182,6 @@ public class CommentDatabaseAPIImpl implements CommentDatabaseAPI {
         return comment;
     }
     //private final CommentEntityJsonMapper commentEntityJsonMapper;
-
 
 
     private CommentEntity cursorToListItemComment(Cursor cursor) {

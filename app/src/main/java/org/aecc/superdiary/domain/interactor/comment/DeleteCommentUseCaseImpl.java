@@ -19,6 +19,18 @@ public class DeleteCommentUseCaseImpl implements DeleteCommentUseCase {
 
     private int commentId = -1;
     private DeleteCommentUseCase.Callback callback;
+    private final CommentRepository.CommentDetionCallback repositoryCallback =
+            new CommentRepository.CommentDetionCallback() {
+                @Override
+                public void onCommentDeleted(Collection<Comment> commentsCollection) {
+                    notifyDeleteCommentSuccessfully(commentsCollection);
+                }
+
+                @Override
+                public void onError(ErrorBundle errorBundle) {
+                    notifyError(errorBundle);
+                }
+            };
 
     @Inject
     public DeleteCommentUseCaseImpl(CommentRepository commentRepository, ThreadExecutor threadExecutor,
@@ -28,7 +40,8 @@ public class DeleteCommentUseCaseImpl implements DeleteCommentUseCase {
         this.postExecutionThread = postExecutionThread;
     }
 
-    @Override public void execute(int commentId, Callback callback) {
+    @Override
+    public void execute(int commentId, Callback callback) {
         if (commentId < 0 || callback == null) {
             throw new IllegalArgumentException("Invalid parameter!!!");
         }
@@ -37,24 +50,15 @@ public class DeleteCommentUseCaseImpl implements DeleteCommentUseCase {
         this.threadExecutor.execute(this);
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         this.commentRepository.deleteComment(this.commentId, this.repositoryCallback);
     }
 
-    private final CommentRepository.CommentDetionCallback repositoryCallback =
-            new CommentRepository.CommentDetionCallback() {
-                @Override public void onCommentDeleted(Collection<Comment> commentsCollection) {
-                    notifyDeleteCommentSuccessfully(commentsCollection);
-                }
-
-                @Override public void onError(ErrorBundle errorBundle) {
-                    notifyError(errorBundle);
-                }
-            };
-
     private void notifyDeleteCommentSuccessfully(final Collection<Comment> commentsCollection) {
         this.postExecutionThread.post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 callback.onCommentDataDeleted(commentsCollection);
             }
         });

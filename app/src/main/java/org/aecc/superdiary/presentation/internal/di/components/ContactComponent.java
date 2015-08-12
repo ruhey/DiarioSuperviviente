@@ -10,6 +10,6 @@ import dagger.Component;
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class, ContactModule.class})
 public interface ContactComponent extends ActivityComponent {
-   // void inject(UserListFragment userListFragment);
+    // void inject(UserListFragment userListFragment);
     //void inject(UserDetailsFragment userDetailsFragment);
 }

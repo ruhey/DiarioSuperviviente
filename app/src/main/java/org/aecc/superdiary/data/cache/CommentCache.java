@@ -5,12 +5,6 @@ import org.aecc.superdiary.data.entity.CommentEntity;
 
 public interface CommentCache {
 
-    interface CommentCacheCallback {
-        void onCommentEntityLoaded(CommentEntity commentEntity);
-
-        void onError(Exception exception);
-    }
-
     void get(final int commentId, final CommentCacheCallback callback);
 
     void put(CommentEntity commentEntity);
@@ -20,6 +14,12 @@ public interface CommentCache {
     boolean isExpired();
 
     void evictAll();
+
+    interface CommentCacheCallback {
+        void onCommentEntityLoaded(CommentEntity commentEntity);
+
+        void onError(Exception exception);
+    }
 
     /**
      * Created by fer on 12/08/2015.

@@ -13,12 +13,13 @@ import javax.inject.Singleton;
 @Singleton
 public class CommentEntityDataMapper {
     @Inject
-    public CommentEntityDataMapper(){}
+    public CommentEntityDataMapper() {
+    }
 
     public Comment transform(CommentEntity commentEntity) {
         Comment comment = null;
 
-        if (commentEntity != null){
+        if (commentEntity != null) {
             comment = new Comment(commentEntity.getCommentId());
             comment.setDatePosted(commentEntity.getDatePosted());
             comment.setContent(commentEntity.getContent());
@@ -34,7 +35,7 @@ public class CommentEntityDataMapper {
     public CommentEntity untransform(Comment comment) {
         CommentEntity commentEntity = null;
 
-        if (comment != null){
+        if (comment != null) {
             commentEntity.setCommentId(comment.getCommentId());
             commentEntity.setDatePosted(comment.getDatePosted());
             commentEntity.setContent(comment.getContent());
@@ -48,10 +49,10 @@ public class CommentEntityDataMapper {
         return commentEntity;
     }
 
-    public Collection<Comment> transform(Collection<CommentEntity> commentEntityCollection){
+    public Collection<Comment> transform(Collection<CommentEntity> commentEntityCollection) {
         List<Comment> commentList = new ArrayList<Comment>();
         Comment comment;
-        for(CommentEntity commentEntity : commentEntityCollection){
+        for (CommentEntity commentEntity : commentEntityCollection) {
             comment = transform(commentEntity);
             if (comment != null) {
                 commentList.add(comment);
@@ -60,10 +61,10 @@ public class CommentEntityDataMapper {
         return commentList;
     }
 
-    public Collection<CommentEntity> untransform(Collection<Comment> commentCollection){
+    public Collection<CommentEntity> untransform(Collection<Comment> commentCollection) {
         List<CommentEntity> commentEntityList = new ArrayList<CommentEntity>();
         CommentEntity commentEntity;
-        for(Comment comment : commentCollection){
+        for (Comment comment : commentCollection) {
             commentEntity = untransform(comment);
             if (commentEntity != null) {
                 commentEntityList.add(commentEntity);

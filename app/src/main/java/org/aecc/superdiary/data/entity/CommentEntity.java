@@ -22,7 +22,7 @@ public class CommentEntity {
     @SerializedName("timesElapsed")
     private String timesElapsed;
 
-    public CommentEntity(){
+    public CommentEntity() {
         //empty
     }
 
@@ -74,7 +74,8 @@ public class CommentEntity {
         this.timesElapsed = timesElapsed;
     }
 
-    @Override public String toString(){
+    @Override
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("***** User Entity Details *****\n");

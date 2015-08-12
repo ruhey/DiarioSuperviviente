@@ -17,7 +17,7 @@ public class CommentDataStoreFactory {
     private final CommentEntityDataMapper commentEntityDataMapper;
 
     @Inject
-    public CommentDataStoreFactory(Context context, CommentCache commentCache, CommentEntityDataMapper commentEntityDataMapper){
+    public CommentDataStoreFactory(Context context, CommentCache commentCache, CommentEntityDataMapper commentEntityDataMapper) {
         this.context = context;
         this.commentCache = commentCache;
         this.commentEntityDataMapper = commentEntityDataMapper;

@@ -13,13 +13,25 @@ import org.aecc.superdiary.presentation.view.PersonajeDetailView;
 
 import javax.inject.Inject;
 
-public class ContactDetailsPresenter implements Presenter{
-    private int contactId;
-
-    private PersonajeDetailView viewDetailsView;
-
+public class ContactDetailsPresenter implements Presenter {
     private final GetContactDetailsUseCase getContactDetailsUseCase;
     private final ContactModelDataMapper contactModelDataMapper;
+    private int contactId;
+    private PersonajeDetailView viewDetailsView;
+    private final GetContactDetailsUseCase.Callback contactDetailsCallback = new GetContactDetailsUseCase.Callback() {
+        @Override
+        public void onContactDataLoaded(Contact contact) {
+            ContactDetailsPresenter.this.showContactDetailsInView(contact);
+            ContactDetailsPresenter.this.hideViewLoading();
+        }
+
+        @Override
+        public void onError(ErrorBundle errorBundle) {
+            ContactDetailsPresenter.this.hideViewLoading();
+            ContactDetailsPresenter.this.showErrorMessage(errorBundle);
+            ContactDetailsPresenter.this.showViewRetry();
+        }
+    };
 
     @Inject
     public ContactDetailsPresenter(GetContactDetailsUseCase getContactDetailsUseCase,
@@ -32,9 +44,13 @@ public class ContactDetailsPresenter implements Presenter{
         this.viewDetailsView = view;
     }
 
-    @Override public void resume() {}
+    @Override
+    public void resume() {
+    }
 
-    @Override public void pause() {}
+    @Override
+    public void pause() {
+    }
 
     private void loadContactDetails() {
         this.hideViewRetry();
@@ -72,17 +88,4 @@ public class ContactDetailsPresenter implements Presenter{
     private void getContactDetails() {
         this.getContactDetailsUseCase.execute(this.contactId, this.contactDetailsCallback);
     }
-
-    private final GetContactDetailsUseCase.Callback contactDetailsCallback = new GetContactDetailsUseCase.Callback() {
-        @Override public void onContactDataLoaded(Contact contact) {
-            ContactDetailsPresenter.this.showContactDetailsInView(contact);
-            ContactDetailsPresenter.this.hideViewLoading();
-        }
-
-        @Override public void onError(ErrorBundle errorBundle) {
-            ContactDetailsPresenter.this.hideViewLoading();
-            ContactDetailsPresenter.this.showErrorMessage(errorBundle);
-            ContactDetailsPresenter.this.showViewRetry();
-        }
-    };
 }
