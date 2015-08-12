@@ -1,6 +1,7 @@
 package org.aecc.superdiary.presentation.view.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,21 +10,23 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.content.Intent;
 
-import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
-import org.aecc.superdiary.presentation.model.ContactModel;
-import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
 
-public class PersonajesActivity extends DiaryBaseActivity implements HasComponent<ContactComponent>{
+public class PersonajesActivity extends DiaryBaseActivity implements HasComponent<ContactComponent> {
     ListView listViewCharacters;
 
     private ContactComponent contactComponent;
+
+    public static Intent getCallingIntent(Context context) {
+        //Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
+        return null;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +37,13 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         //setContentView(R.layout.activity_personajes);
 
         //Array que asociaremos al adaptador
-        String[] array = new String[] {
+        String[] array = new String[]{
                 "Elemento 1"
-                ,"Elemento 2"
-                ,"Elemento 3"
-                ,"Elemento 4"
-                ,"Elemento 5"
-                ,"Elemento 6"
+                , "Elemento 2"
+                , "Elemento 3"
+                , "Elemento 4"
+                , "Elemento 5"
+                , "Elemento 6"
         };
 
         //Creaci�n del adaptador, vamos a escoger el layout
@@ -55,24 +58,22 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         listViewCharacters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-
             // ListView Clicked item index
-                int itemPosition = position;
+            int itemPosition = position;
+            // ListView Clicked item value
+            String itemValue = (String) listViewCharacters.getItemAtPosition(position);
+            Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
 
-                // ListView Clicked item value
-                String itemValue = (String) listViewCharacters.getItemAtPosition(position);
-
-                // Show Alert
+            // Show Alert
                 /*Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
                         .show();*/
 
-                Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
-                //startActivity(intent);
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+            //startActivity(intent);
 
 
         });
@@ -87,13 +88,14 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
                 .build();
     }
 
-    @Override public ContactComponent getComponent() {
-        return contactComponent;
-    }
-
     /*@Override public void onUserClicked(ContactModel contactModel) {
         this.navigator.navigateToContacDetails(this, contactModel.getContactId());
     }*/
+
+    @Override
+    public ContactComponent getComponent() {
+        return contactComponent;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -114,12 +116,6 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-
-    public static Intent getCallingIntent(Context context) {
-        //Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
-        return null;
     }
 }
 

@@ -6,11 +6,12 @@ import org.aecc.superdiary.domain.interactor.Interactor;
 
 
 public interface GetContactDetailsUseCase extends Interactor {
+    public void execute(int contactId, Callback callback);
+
+
     interface Callback {
         void onContactDataLoaded(Contact contact);
+
         void onError(ErrorBundle errorBundle);
     }
-
-
-    public void execute(int contactId, Callback callback);
 }

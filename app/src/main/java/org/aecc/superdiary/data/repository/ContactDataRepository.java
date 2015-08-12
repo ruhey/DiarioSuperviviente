@@ -17,13 +17,13 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class ContactDataRepository implements ContactRepository{
+public class ContactDataRepository implements ContactRepository {
 
     private final ContactDataStoreFactory contactDataStoreFactory;
     private final ContactEntityDataMapper contactEntityDataMapper;
 
     @Inject
-    public ContactDataRepository(ContactDataStoreFactory contactDataStoreFactory, ContactEntityDataMapper contactEntityDataMapper){
+    public ContactDataRepository(ContactDataStoreFactory contactDataStoreFactory, ContactEntityDataMapper contactEntityDataMapper) {
         this.contactDataStoreFactory = contactDataStoreFactory;
         this.contactEntityDataMapper = contactEntityDataMapper;
     }
@@ -70,12 +70,12 @@ public class ContactDataRepository implements ContactRepository{
     @Override
     public void createContact(final Contact contact, final ContactCreationCallback contactCreateCallback) {
         final ContactDataStore contactDataStore = this.contactDataStoreFactory.createDatabaseDataStore();
-        contactDataStore.createContactEntity(contact, new ContactDataStore.ContactCreationCallback(){
+        contactDataStore.createContactEntity(contact, new ContactDataStore.ContactCreationCallback() {
 
             @Override
             public void onContactCreated(ContactEntity contactEntity) {
                 Contact contact = ContactDataRepository.this.contactEntityDataMapper.transform(contactEntity);
-                if(contact != null) {
+                if (contact != null) {
                     contactCreateCallback.onContactCreated(contact);
                 } else {
                     contactCreateCallback.onError(new RepositoryErrorBundle(new CantCreateContactException()));
@@ -92,12 +92,12 @@ public class ContactDataRepository implements ContactRepository{
     @Override
     public void saveContact(final Contact contact, final ContactSaveCallback contactSaveCallback) {
         final ContactDataStore contactDataStore = this.contactDataStoreFactory.createDatabaseDataStore();
-        contactDataStore.saveContactEntity(contact, new ContactDataStore.ContactSaveCallback(){
+        contactDataStore.saveContactEntity(contact, new ContactDataStore.ContactSaveCallback() {
 
             @Override
             public void onContactSaved(ContactEntity contactEntity) {
                 Contact contact = ContactDataRepository.this.contactEntityDataMapper.transform(contactEntity);
-                if(contact != null){
+                if (contact != null) {
                     contactSaveCallback.onContactSaved(contact);
                 } else {
                     contactSaveCallback.onError(new RepositoryErrorBundle(new CantSaveContactException()));
@@ -114,16 +114,16 @@ public class ContactDataRepository implements ContactRepository{
     @Override
     public void deleteContact(final int contactId, final ContactDetionCallback contactDeletionCallback) {
         final ContactDataStore contactDataStore = this.contactDataStoreFactory.createDatabaseDataStore();
-        contactDataStore.deleteContactEntity(contactId, new ContactDataStore.ContactDeletionCallback(){
-           @Override
-            public void onContactDeleted(Collection<ContactEntity> contactsCollection){
-               Collection<Contact> contacts =
-                       ContactDataRepository.this.contactEntityDataMapper.transform(contactsCollection);
-               contactDeletionCallback.onContactDeleted(contacts);
-           }
+        contactDataStore.deleteContactEntity(contactId, new ContactDataStore.ContactDeletionCallback() {
+            @Override
+            public void onContactDeleted(Collection<ContactEntity> contactsCollection) {
+                Collection<Contact> contacts =
+                        ContactDataRepository.this.contactEntityDataMapper.transform(contactsCollection);
+                contactDeletionCallback.onContactDeleted(contacts);
+            }
 
             @Override
-            public void onError(Exception exception){
+            public void onError(Exception exception) {
                 contactDeletionCallback.onError(new RepositoryErrorBundle(exception));
             }
         });

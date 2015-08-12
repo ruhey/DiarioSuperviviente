@@ -17,6 +17,18 @@ public class GetCommentDetailsUseCaseImpl implements GetCommentDetailsUseCase {
 
     private int commentId = -1;
     private GetCommentDetailsUseCase.Callback callback;
+    private final CommentRepository.CommentDetailsCallback repositoryCallback =
+            new CommentRepository.CommentDetailsCallback() {
+                @Override
+                public void onCommentLoaded(Comment comment) {
+                    notifyGetCommentDetailsSuccessfully(comment);
+                }
+
+                @Override
+                public void onError(ErrorBundle errorBundle) {
+                    notifyError(errorBundle);
+                }
+            };
 
     @Inject
     public GetCommentDetailsUseCaseImpl(CommentRepository commentRepository, ThreadExecutor threadExecutor,
@@ -26,7 +38,8 @@ public class GetCommentDetailsUseCaseImpl implements GetCommentDetailsUseCase {
         this.postExecutionThread = postExecutionThread;
     }
 
-    @Override public void execute(int commentId, Callback callback) {
+    @Override
+    public void execute(int commentId, Callback callback) {
         if (commentId < 0 || callback == null) {
             throw new IllegalArgumentException("Invalid parameter!!!");
         }
@@ -35,24 +48,15 @@ public class GetCommentDetailsUseCaseImpl implements GetCommentDetailsUseCase {
         this.threadExecutor.execute(this);
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         this.commentRepository.getCommentById(this.commentId, this.repositoryCallback);
     }
 
-    private final CommentRepository.CommentDetailsCallback repositoryCallback =
-            new CommentRepository.CommentDetailsCallback() {
-                @Override public void onCommentLoaded(Comment comment) {
-                    notifyGetCommentDetailsSuccessfully(comment);
-                }
-
-                @Override public void onError(ErrorBundle errorBundle) {
-                    notifyError(errorBundle);
-                }
-            };
-
     private void notifyGetCommentDetailsSuccessfully(final Comment comment) {
         this.postExecutionThread.post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 callback.onCommentDataLoaded(comment);
             }
         });
@@ -60,7 +64,8 @@ public class GetCommentDetailsUseCaseImpl implements GetCommentDetailsUseCase {
 
     private void notifyError(final ErrorBundle errorBundle) {
         this.postExecutionThread.post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 callback.onError(errorBundle);
             }
         });

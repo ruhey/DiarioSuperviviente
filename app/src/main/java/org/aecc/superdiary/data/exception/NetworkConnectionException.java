@@ -3,7 +3,7 @@ package org.aecc.superdiary.data.exception;
 /**
  * Created by a555148 on 08/08/2015.
  */
-public class NetworkConnectionException extends Exception{
+public class NetworkConnectionException extends Exception {
 
     public NetworkConnectionException() {
         super();

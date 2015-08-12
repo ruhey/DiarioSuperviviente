@@ -23,7 +23,8 @@ public class PersonajesDetailsActivity extends BaseActivity implements HasCompon
         return callingIntent;
     }
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //setContentView(R.layout.activity_user_details);
@@ -32,7 +33,8 @@ public class PersonajesDetailsActivity extends BaseActivity implements HasCompon
         this.initializeActivity(savedInstanceState);
     }
 
-    @Override protected void onSaveInstanceState(Bundle outState) {
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
         if (outState != null) {
             outState.putInt(INSTANCE_STATE_PARAM_CONTACT_ID, this.contactId);
         }
@@ -55,7 +57,8 @@ public class PersonajesDetailsActivity extends BaseActivity implements HasCompon
                 .build();
     }
 
-    @Override public ContactComponent getComponent() {
+    @Override
+    public ContactComponent getComponent() {
         return contactComponent;
     }
 

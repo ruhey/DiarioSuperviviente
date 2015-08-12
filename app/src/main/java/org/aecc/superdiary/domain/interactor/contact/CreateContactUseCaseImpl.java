@@ -17,6 +17,18 @@ public class CreateContactUseCaseImpl implements CreateContactUseCase {
 
     private Contact contact = null;
     private CreateContactUseCase.Callback callback;
+    private final ContactRepository.ContactCreationCallback repositoryCallback =
+            new ContactRepository.ContactCreationCallback() {
+                @Override
+                public void onContactCreated(Contact contact) {
+                    notifyCreateContactSuccessfully(contact);
+                }
+
+                @Override
+                public void onError(ErrorBundle errorBundle) {
+                    notifyError(errorBundle);
+                }
+            };
 
     @Inject
     public CreateContactUseCaseImpl(ContactRepository contactRepository, ThreadExecutor threadExecutor,
@@ -26,7 +38,8 @@ public class CreateContactUseCaseImpl implements CreateContactUseCase {
         this.postExecutionThread = postExecutionThread;
     }
 
-    @Override public void execute(Contact contact, Callback callback) {
+    @Override
+    public void execute(Contact contact, Callback callback) {
         if (contact == null || callback == null) {
             throw new IllegalArgumentException("Invalid parameter!!!");
         }
@@ -35,20 +48,10 @@ public class CreateContactUseCaseImpl implements CreateContactUseCase {
         this.threadExecutor.execute(this);
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         this.contactRepository.createContact(this.contact, this.repositoryCallback);
     }
-
-    private final ContactRepository.ContactCreationCallback repositoryCallback =
-            new ContactRepository.ContactCreationCallback() {
-                @Override public void onContactCreated(Contact contact) {
-                    notifyCreateContactSuccessfully(contact);
-                }
-
-                @Override public void onError(ErrorBundle errorBundle) {
-                    notifyError(errorBundle);
-                }
-            };
 
     private void notifyCreateContactSuccessfully(final Contact contact) {
         this.postExecutionThread.post(new Runnable() {

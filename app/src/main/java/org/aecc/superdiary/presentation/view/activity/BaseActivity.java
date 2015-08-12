@@ -16,7 +16,7 @@ public class BaseActivity extends Activity {
     Navigator navigator;
 
     protected ApplicationComponent getApplicationComponent() {
-        return ((AndroidApplication)getApplication()).getApplicationComponent();
+        return ((AndroidApplication) getApplication()).getApplicationComponent();
     }
 
     protected ActivityModule getActivityModule() {

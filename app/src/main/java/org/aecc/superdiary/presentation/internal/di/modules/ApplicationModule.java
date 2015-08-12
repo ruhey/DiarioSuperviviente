@@ -3,7 +3,7 @@ package org.aecc.superdiary.presentation.internal.di.modules;
 import android.content.Context;
 
 import org.aecc.superdiary.data.cache.ContactCache;
-import  org.aecc.superdiary.data.cache.ContactCacheImpl;
+import org.aecc.superdiary.data.cache.ContactCacheImpl;
 import org.aecc.superdiary.data.executor.JobExecutor;
 import org.aecc.superdiary.data.repository.ContactDataRepository;
 import org.aecc.superdiary.domain.executor.PostExecutionThread;
@@ -32,27 +32,32 @@ public class ApplicationModule {
         return this.application;
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     Navigator provideNavigator() {
         return new Navigator();
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
         return jobExecutor;
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     PostExecutionThread providePostExecutionThread(UIThread uiThread) {
         return uiThread;
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     ContactCache provideContactCache(ContactCacheImpl contactCache) {
         return contactCache;
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     ContactRepository provideContactRepository(ContactDataRepository contactDataRepository) {
         return contactDataRepository;
     }

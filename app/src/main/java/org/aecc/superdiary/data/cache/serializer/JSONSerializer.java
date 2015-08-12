@@ -14,7 +14,8 @@ public class JSONSerializer {
     private final Gson gson = new Gson();
 
     @Inject
-    public JSONSerializer() {}
+    public JSONSerializer() {
+    }
 
     public String serializeContact(ContactEntity contactEntity) {
         String jsonString = gson.toJson(contactEntity, ContactEntity.class);

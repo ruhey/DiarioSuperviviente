@@ -24,23 +24,23 @@ import java.util.ArrayList;
 public class DiaryBaseActivity extends BaseActivity {
 
 
-    protected FrameLayout frameLayout;
-    protected ListView mDrawerList;
     protected static int position;
     private static boolean isLaunch = true;
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
+    protected FrameLayout frameLayout;
+    protected ListView mDrawerList;
     protected String[] titulos;
     //private ArrayList<Item_objct> NavItms;
     //private TypedArray NavIcons;
     NavigationAdapter NavAdapter;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+        frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.lista);
 
@@ -66,7 +66,7 @@ public class DiaryBaseActivity extends BaseActivity {
         //principal
         NavItms.add(new Item_objct(titulos[5], NavIcons.getResourceId(5, -1)));
         //Declaramos y seteamos nuestrp adaptador al cual le pasamos el array con los titulos
-        NavAdapter= new NavigationAdapter(this,NavItms);
+        NavAdapter = new NavigationAdapter(this, NavItms);
         mDrawerList.setAdapter(NavAdapter);
         //mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, listArray));
         mDrawerList.setOnItemClickListener(new OnItemClickListener() {
@@ -85,8 +85,7 @@ public class DiaryBaseActivity extends BaseActivity {
                 mDrawerLayout, 				/* DrawerLayout object */
                 R.drawable.ic_drawer,     /* nav drawer image to replace 'Up' caret */
                 R.string.open_drawer,       /* "open drawer" description for accessibility */
-                R.string.close_drawer)      /* "close drawer" description for accessibility */
-        {
+                R.string.close_drawer)      /* "close drawer" description for accessibility */ {
             @Override
             public void onDrawerClosed(View drawerView) {
                 getActionBar().setTitle(titulos[position]);
@@ -116,15 +115,15 @@ public class DiaryBaseActivity extends BaseActivity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         //getActionBar().setHomeButtonEnabled(true);
 
-        if(isLaunch){
+        if (isLaunch) {
             isLaunch = false;
             openActivity(1);
         }
     }
 
     protected void openActivity(int position) {
-		mDrawerList.setItemChecked(position, true);
-		setTitle(titulos[position - 1]);
+        mDrawerList.setItemChecked(position, true);
+        setTitle(titulos[position - 1]);
         mDrawerLayout.closeDrawer(mDrawerList);
         DiaryBaseActivity.position = position - 1;
         switch (position) {
@@ -193,9 +192,9 @@ public class DiaryBaseActivity extends BaseActivity {
     /* We can override onBackPressed method to toggle navigation drawer*/
     @Override
     public void onBackPressed() {
-        if(mDrawerLayout.isDrawerOpen(mDrawerList)){
+        if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
             mDrawerLayout.closeDrawer(mDrawerList);
-        }else {
+        } else {
             mDrawerLayout.openDrawer(mDrawerList);
         }
     }
@@ -206,6 +205,7 @@ public class DiaryBaseActivity extends BaseActivity {
         // Sync the toggle state after onRestoreInstanceState has occurred.
         actionBarDrawerToggle.syncState();
     }
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

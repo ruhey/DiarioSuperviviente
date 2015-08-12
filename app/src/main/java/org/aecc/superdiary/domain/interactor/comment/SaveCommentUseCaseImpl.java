@@ -17,6 +17,18 @@ public class SaveCommentUseCaseImpl implements SaveCommentUseCase {
 
     private Comment comment = null;
     private SaveCommentUseCase.Callback callback;
+    private final CommentRepository.CommentSaveCallback repositoryCallback =
+            new CommentRepository.CommentSaveCallback() {
+                @Override
+                public void onCommentSaved(Comment comment) {
+                    notifySaveCommentSuccessfully(comment);
+                }
+
+                @Override
+                public void onError(ErrorBundle errorBundle) {
+                    notifyError(errorBundle);
+                }
+            };
 
     @Inject
     public SaveCommentUseCaseImpl(CommentRepository commentRepository, ThreadExecutor threadExecutor,
@@ -26,7 +38,8 @@ public class SaveCommentUseCaseImpl implements SaveCommentUseCase {
         this.postExecutionThread = postExecutionThread;
     }
 
-    @Override public void execute(Comment comment, Callback callback) {
+    @Override
+    public void execute(Comment comment, Callback callback) {
         if (comment == null || callback == null) {
             throw new IllegalArgumentException("Invalid parameter!!!");
         }
@@ -35,20 +48,10 @@ public class SaveCommentUseCaseImpl implements SaveCommentUseCase {
         this.threadExecutor.execute(this);
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         this.commentRepository.saveComment(this.comment, this.repositoryCallback);
     }
-
-    private final CommentRepository.CommentSaveCallback repositoryCallback =
-            new CommentRepository.CommentSaveCallback() {
-                @Override public void onCommentSaved(Comment comment) {
-                    notifySaveCommentSuccessfully(comment);
-                }
-
-                @Override public void onError(ErrorBundle errorBundle) {
-                    notifyError(errorBundle);
-                }
-            };
 
     private void notifySaveCommentSuccessfully(final Comment comment) {
         this.postExecutionThread.post(new Runnable() {

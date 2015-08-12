@@ -7,12 +7,13 @@ import org.aecc.superdiary.domain.interactor.Interactor;
 
 import java.util.Collection;
 
-public interface DeleteContactUseCase extends Interactor{
+public interface DeleteContactUseCase extends Interactor {
+    public void execute(int contactId, Callback callback);
+
+
     interface Callback {
         void onContactDataDeleted(Collection<Contact> contactsCollection);
+
         void onError(ErrorBundle errorBundle);
     }
-
-
-    public void execute(int contactId, Callback callback);
 }

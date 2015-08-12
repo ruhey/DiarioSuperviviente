@@ -18,16 +18,29 @@ public class DeleteContactUseCaseImpl implements DeleteContactUseCase {
 
     private int contactId = -1;
     private DeleteContactUseCase.Callback callback;
+    private final ContactRepository.ContactDetionCallback repositoryCallback =
+            new ContactRepository.ContactDetionCallback() {
+                @Override
+                public void onContactDeleted(Collection<Contact> contactsCollection) {
+                    notifyDeleteContactSuccessfully(contactsCollection);
+                }
+
+                @Override
+                public void onError(ErrorBundle errorBundle) {
+                    notifyError(errorBundle);
+                }
+            };
 
     @Inject
     public DeleteContactUseCaseImpl(ContactRepository contactRepository, ThreadExecutor threadExecutor,
-                                        PostExecutionThread postExecutionThread) {
+                                    PostExecutionThread postExecutionThread) {
         this.contactRepository = contactRepository;
         this.threadExecutor = threadExecutor;
         this.postExecutionThread = postExecutionThread;
     }
 
-    @Override public void execute(int contactId, Callback callback) {
+    @Override
+    public void execute(int contactId, Callback callback) {
         if (contactId < 0 || callback == null) {
             throw new IllegalArgumentException("Invalid parameter!!!");
         }
@@ -36,24 +49,15 @@ public class DeleteContactUseCaseImpl implements DeleteContactUseCase {
         this.threadExecutor.execute(this);
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         this.contactRepository.deleteContact(this.contactId, this.repositoryCallback);
     }
 
-    private final ContactRepository.ContactDetionCallback repositoryCallback =
-            new ContactRepository.ContactDetionCallback() {
-                @Override public void onContactDeleted(Collection<Contact> contactsCollection) {
-                    notifyDeleteContactSuccessfully(contactsCollection);
-                }
-
-                @Override public void onError(ErrorBundle errorBundle) {
-                    notifyError(errorBundle);
-                }
-            };
-
     private void notifyDeleteContactSuccessfully(final Collection<Contact> contactsCollection) {
         this.postExecutionThread.post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 callback.onContactDataDeleted(contactsCollection);
             }
         });

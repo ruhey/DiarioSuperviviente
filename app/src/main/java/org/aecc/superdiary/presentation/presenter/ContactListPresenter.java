@@ -16,11 +16,24 @@ import java.util.Collection;
 import javax.inject.Inject;
 
 @PerActivity
-public class ContactListPresenter implements Presenter{
-    private PersonajesListView viewListView;
-
+public class ContactListPresenter implements Presenter {
     private final GetContactListUseCase getContactListUseCase;
     private final ContactModelDataMapper contactModelDataMapper;
+    private PersonajesListView viewListView;
+    private final GetContactListUseCase.Callback contactListCallback = new GetContactListUseCase.Callback() {
+        @Override
+        public void onContactListLoaded(Collection<Contact> contactsCollection) {
+            ContactListPresenter.this.showContactsCollectionInView(contactsCollection);
+            ContactListPresenter.this.hideViewLoading();
+        }
+
+        @Override
+        public void onError(ErrorBundle errorBundle) {
+            ContactListPresenter.this.hideViewLoading();
+            ContactListPresenter.this.showErrorMessage(errorBundle);
+            ContactListPresenter.this.showViewRetry();
+        }
+    };
 
     @Inject
     public ContactListPresenter(GetContactListUseCase getContactListUserCase,
@@ -33,9 +46,13 @@ public class ContactListPresenter implements Presenter{
         this.viewListView = view;
     }
 
-    @Override public void resume() {}
+    @Override
+    public void resume() {
+    }
 
-    @Override public void pause() {}
+    @Override
+    public void pause() {
+    }
 
     public void initialize() {
         this.loadContactList();
@@ -82,16 +99,4 @@ public class ContactListPresenter implements Presenter{
     private void getContactList() {
         this.getContactListUseCase.execute(contactListCallback);
     }
-
-    private final GetContactListUseCase.Callback contactListCallback = new GetContactListUseCase.Callback() {
-        @Override public void onContactListLoaded(Collection<Contact> contactsCollection) {
-            ContactListPresenter.this.showContactsCollectionInView(contactsCollection);
-            ContactListPresenter.this.hideViewLoading();
-        }
-        @Override public void onError(ErrorBundle errorBundle) {
-            ContactListPresenter.this.hideViewLoading();
-            ContactListPresenter.this.showErrorMessage(errorBundle);
-            ContactListPresenter.this.showViewRetry();
-        }
-    };
 }

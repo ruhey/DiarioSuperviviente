@@ -17,16 +17,29 @@ public class GetContactListUseCaseImpl implements GetContactListUseCase {
     private final PostExecutionThread postExecutionThread;
 
     private Callback callback;
+    private final ContactRepository.ContactListCallback repositoryCallback =
+            new ContactRepository.ContactListCallback() {
+                @Override
+                public void onContactListLoaded(Collection<Contact> contactsCollection) {
+                    notifyGetContactListSuccessfully(contactsCollection);
+                }
+
+                @Override
+                public void onError(ErrorBundle errorBundle) {
+                    notifyError(errorBundle);
+                }
+            };
 
     @Inject
     public GetContactListUseCaseImpl(ContactRepository contactRepository, ThreadExecutor threadExecutor,
-                                  PostExecutionThread postExecutionThread) {
+                                     PostExecutionThread postExecutionThread) {
         this.contactRepository = contactRepository;
         this.threadExecutor = threadExecutor;
         this.postExecutionThread = postExecutionThread;
     }
 
-    @Override public void execute(Callback callback) {
+    @Override
+    public void execute(Callback callback) {
         if (callback == null) {
             throw new IllegalArgumentException("Interactor callback cannot be null!!!");
         }
@@ -34,24 +47,15 @@ public class GetContactListUseCaseImpl implements GetContactListUseCase {
         this.threadExecutor.execute(this);
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         this.contactRepository.getContactList(this.repositoryCallback);
     }
 
-    private final ContactRepository.ContactListCallback repositoryCallback =
-            new ContactRepository.ContactListCallback() {
-                @Override public void onContactListLoaded(Collection<Contact> contactsCollection) {
-                    notifyGetContactListSuccessfully(contactsCollection);
-                }
-
-                @Override public void onError(ErrorBundle errorBundle) {
-                    notifyError(errorBundle);
-                }
-            };
-
     private void notifyGetContactListSuccessfully(final Collection<Contact> contactsCollection) {
         this.postExecutionThread.post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 callback.onContactListLoaded(contactsCollection);
             }
         });
@@ -59,7 +63,8 @@ public class GetContactListUseCaseImpl implements GetContactListUseCase {
 
     private void notifyError(final ErrorBundle errorBundle) {
         this.postExecutionThread.post(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 callback.onError(errorBundle);
             }
         });
