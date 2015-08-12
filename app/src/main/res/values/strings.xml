@@ -15,7 +15,7 @@
     <string name="miactividad">MI ACTIVIDAD</string>
     <string name="enmarcha">EN MARCHA</string>
     <string name="calendario">CALENDARIO</string>
-    
+
     <!-- DESCRIPCIONES DE INICIO DE LAS ACTIVIDADES  -->
     <string name="descripcionEnMarcha">EVENTOS HOY EN MARCHA</string>
     <string name="descripcionCalendario">VISTA GENERAL CALENDARIO MES</string>

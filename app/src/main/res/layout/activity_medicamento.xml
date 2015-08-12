@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/medic_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,8 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:orientation="vertical"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/fotoMedic"
@@ -18,7 +17,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:background="@color/blancoVerdoso"
-            android:src="@drawable/medicamento"/>
+            android:src="@drawable/medicamento" />
 
     </LinearLayout>
 
@@ -29,208 +28,209 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
 
 
             <!-- NOMBRE Y APELLIDOS -->
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_height="wrap_content"
+                    style="@style/textoDatosEntidades"
                     android:layout_width="wrap_content"
-                    android:text="MEDICAMENTO"
-                    style="@style/textoDatosEntidades"/>
+                    android:layout_height="wrap_content"
+                    android:text="MEDICAMENTO" />
 
                 <EditText
                     android:id="@+id/nombreMedic"
+                    style="@style/textoInsercionCampos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/textoInsercionCampos"
                     android:inputType="textPersonName" />
 
             </LinearLayout>
 
             <View
-                android:layout_height="1dp"
                 android:layout_width="match_parent"
-                android:background="#728C93"/>
+                android:layout_height="1dp"
+                android:background="#728C93" />
 
             <!-- FECHA Y HORA INICIO-->
             <LinearLayout
 
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.40"
                     android:gravity="left"
-                    android:layout_weight="0.40">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_height="wrap_content"
+                        style="@style/textoDatosEntidades"
                         android:layout_width="wrap_content"
-                        android:text="DIA INICIO"
-                        style="@style/textoDatosEntidades"/>
+                        android:layout_height="wrap_content"
+                        android:text="DIA INICIO" />
 
                     <EditText
                         android:id="@+id/fechaInicMedic"
+                        style="@style/textoInsercionCampos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        style="@style/textoInsercionCampos"
                         android:inputType="date" />
 
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.40"
                     android:gravity="left"
-                    android:layout_weight="0.40">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_height="wrap_content"
+                        style="@style/textoDatosEntidades"
                         android:layout_width="wrap_content"
-                        android:text="HORA INICIO"
-                        style="@style/textoDatosEntidades"/>
+                        android:layout_height="wrap_content"
+                        android:text="HORA INICIO" />
 
 
                     <EditText
                         android:id="@+id/horaIniMedic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ems="10"
                         android:layout_weight="1"
-                        android:inputType="time"/>
+                        android:ems="10"
+                        android:inputType="time" />
                 </LinearLayout>
             </LinearLayout>
 
             <!-- FECHA Y HORA FIN-->
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.40"
                     android:gravity="left"
-                    android:layout_weight="0.40">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_height="wrap_content"
+                        style="@style/textoDatosEntidades"
                         android:layout_width="wrap_content"
-                        android:text="DIA FIN"
-                        style="@style/textoDatosEntidades"/>
+                        android:layout_height="wrap_content"
+                        android:text="DIA FIN" />
 
                     <EditText
                         android:id="@+id/fechaFinMedic"
+                        style="@style/textoInsercionCampos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        style="@style/textoInsercionCampos"
                         android:inputType="date" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.40"
                     android:gravity="left"
-                    android:layout_weight="0.40">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_height="wrap_content"
+                        style="@style/textoDatosEntidades"
                         android:layout_width="wrap_content"
-                        android:text="HORA FIN"
-                        style="@style/textoDatosEntidades"/>
+                        android:layout_height="wrap_content"
+                        android:text="HORA FIN" />
 
 
                     <EditText
                         android:id="@+id/horaFinMedic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ems="10"
                         android:layout_weight="1"
-                        android:inputType="time"/>
+                        android:ems="10"
+                        android:inputType="time" />
                 </LinearLayout>
             </LinearLayout>
 
             <View
-                android:layout_height="1dp"
                 android:layout_width="match_parent"
-                android:background="#728C93"/>
+                android:layout_height="1dp"
+                android:background="#728C93" />
 
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_height="wrap_content"
+                    style="@style/textoDatosEntidades"
                     android:layout_width="wrap_content"
-                    android:text="TOMAR CADA"
-                    style="@style/textoDatosEntidades"/>
+                    android:layout_height="wrap_content"
+                    android:text="TOMAR CADA" />
 
                 <SeekBar
                     android:id="@+id/seekBarMedic"
                     android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:max="24"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
-                    android:progress="1"
-                    android:max="24"
-                    android:layout_height="wrap_content"/>
+                    android:progress="1" />
 
                 <TextView
-                    android:layout_height="wrap_content"
+                    style="@style/textoDatosEntidades"
                     android:layout_width="wrap_content"
-                    android:text="HORAS"
-                    style="@style/textoDatosEntidades"/>
+                    android:layout_height="wrap_content"
+                    android:text="HORAS" />
             </LinearLayout>
 
             <View
-                android:layout_height="1dp"
                 android:layout_width="match_parent"
-                android:background="#728C93"/>
+                android:layout_height="1dp"
+                android:background="#728C93" />
 
             <!-- DESCRIPCIÓN -->
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_height="wrap_content"
+                        style="@style/textoDatosEntidades"
                         android:layout_width="wrap_content"
-                        android:text="DESCRIPCIÓN"
-                        style="@style/textoDatosEntidades"/>
+                        android:layout_height="wrap_content"
+                        android:text="DESCRIPCIÓN" />
 
                     <EditText
                         android:id="@+id/descripcionPrueba"
+                        style="@style/textoInsercionCampos"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="top|left"
@@ -239,8 +239,7 @@
                         android:minLines="10"
                         android:scrollHorizontally="false"
                         android:scrollbars="vertical"
-                        android:singleLine="false"
-                        style="@style/textoInsercionCampos"/>
+                        android:singleLine="false" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

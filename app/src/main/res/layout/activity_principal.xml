@@ -1,54 +1,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context=".Principal"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context=".Principal">
 
     <ImageView
+        android:id="@+id/imagenEnMarcha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imagenEnMarcha"
-        android:src="@drawable/enmarcha"
-        />
+        android:src="@drawable/enmarcha" />
 
-    <TextView android:text="@string/textoLogeo"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        />
+        android:text="@string/textoLogeo" />
 
     <EditText
         android:id="@+id/insertaTextoLogin"
         android:layout_width="200dp"
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp" />
 
     <Button
         android:id="@+id/botonCreditos"
         android:layout_width="wrap_content"
         android:layout_height="10dp"
-        android:text="@string/aceptar"
-        android:background="@color/verdeAecc"
-        android:layout_weight="0.03"
         android:layout_gravity="center_horizontal"
-         />
+        android:layout_weight="0.03"
+        android:background="@color/verdeAecc"
+        android:text="@string/aceptar" />
 
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/volver"
         android:id="@+id/botonInicio"
         style="@android:style/ButtonBar"
-        android:background="@color/verdeAecc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@color/verdeAecc"
+        android:text="@string/volver" />
 
 
 </LinearLayout>

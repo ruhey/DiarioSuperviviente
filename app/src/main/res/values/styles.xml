@@ -9,7 +9,7 @@
         <item name="android:windowBackground">@color/window_background</item>
     </style>
 
-    <style name="botonInicio" parent="AppTheme"/>
+    <style name="botonInicio" parent="AppTheme" />
 
 
     <style name="textoDatosEntidades">
@@ -19,7 +19,7 @@
         <item name="android:layout_marginTop">2dp</item>
     </style>
 
-    <style name= "textoInsercionCampos">
+    <style name="textoInsercionCampos">
         <item name="android:textSize">16sp</item>
     </style>
 
@@ -39,7 +39,6 @@
         <item name="android:windowBackground">@color/window_background</item>
     </style>
 
-    <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo">
-    </style>
+    <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo"></style>
 
 </resources>
