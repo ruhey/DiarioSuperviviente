@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textoPersonas"
-        android:text="@string/descripcionPersonajes"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/descripcionPersonajes" />
 
 
     <ImageView
+        android:id="@+id/imagenGente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imagenGente"
-        android:src="@drawable/personas"
         android:layout_below="@+id/textoPersonas"
         android:layout_centerHorizontal="true"
-        />
+        android:src="@drawable/personas" />
 
     <ListView
         android:id="@+id/list"
         android:layout_width="wrap_content"
-        android:layout_height="350dp"/>
+        android:layout_height="350dp" />
 
 
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/volver"
         android:id="@+id/botonInicio"
         style="@android:style/ButtonBar"
-        android:background="@color/verdeAecc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@color/verdeAecc"
+        android:text="@string/volver" />
 
 
 </RelativeLayout>
