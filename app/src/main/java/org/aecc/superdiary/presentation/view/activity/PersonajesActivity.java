@@ -16,7 +16,6 @@ import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
 
-
 public class PersonajesActivity extends DiaryBaseActivity implements HasComponent<ContactComponent> {
     ListView listViewCharacters;
 
