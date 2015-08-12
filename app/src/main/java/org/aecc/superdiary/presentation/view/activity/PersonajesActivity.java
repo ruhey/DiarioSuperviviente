@@ -11,12 +11,10 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.content.Intent;
 
-import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
-import org.aecc.superdiary.presentation.model.ContactModel;
 import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
 

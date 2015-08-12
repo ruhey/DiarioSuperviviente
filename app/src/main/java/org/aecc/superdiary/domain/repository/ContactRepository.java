@@ -1,6 +1,5 @@
 package org.aecc.superdiary.domain.repository;
 
-import org.aecc.superdiary.data.entity.ContactEntity;
 import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
 
