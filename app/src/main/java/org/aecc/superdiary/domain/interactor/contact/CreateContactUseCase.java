@@ -5,6 +5,7 @@ import org.aecc.superdiary.domain.exception.ErrorBundle;
 import org.aecc.superdiary.domain.interactor.Interactor;
 
 public interface CreateContactUseCase extends Interactor {
+
     void execute(Contact contact, Callback callback);
 
     interface Callback {
