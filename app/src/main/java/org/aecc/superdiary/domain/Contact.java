@@ -8,6 +8,7 @@ public class Contact {
     private String phone;
     private String image;
     private String category;
+
     public Contact(int contactId) {
         this.contactId = contactId;
     }
