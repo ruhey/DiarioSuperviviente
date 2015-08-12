@@ -16,7 +16,7 @@ public class ContactDataStoreFactory {
     private final ContactCache contactCache;
 
     @Inject
-    public ContactDataStoreFactory(Context context, ContactCache contactCache){
+    public ContactDataStoreFactory(Context context, ContactCache contactCache) {
         this.context = context;
         this.contactCache = contactCache;
     }
@@ -36,7 +36,7 @@ public class ContactDataStoreFactory {
     }
 
     public ContactDataStore createDatabaseDataStore() {
-       //TODO: implementar mejjor esta creacion
+        //TODO: implementar mejjor esta creacion
         ContactDatabaseAPI dataBaseAPI = new ContactDatabaseAPIImpl(this.context);
         return new DatabaseContactDataStore(this.contactCache, dataBaseAPI);
     }

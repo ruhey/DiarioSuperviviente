@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/contact_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,8 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:orientation="vertical"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
         <!--
         <ImageView
@@ -31,188 +30,186 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
 
             <!--relacion por ahora no lo sacamos de la base de datos -->
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_height="wrap_content"
+                    style="@style/textoDatosEntidades"
                     android:layout_width="wrap_content"
-                    android:text="RELACIÓN"
-                    style="@style/textoDatosEntidades"/>
+                    android:layout_height="wrap_content"
+                    android:text="RELACIÓN" />
 
                 <Spinner
                     android:id="@+id/spinerRelaccionContacto"
                     android:layout_width="fill_parent"
-                    android:layout_height="30dp"
-                    >
+                    android:layout_height="30dp">
 
                 </Spinner>
             </LinearLayout>
 
 
-                <!-- NOMBRE Y APELLIDOS -->
+            <!-- NOMBRE Y APELLIDOS -->
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_height="wrap_content"
+                    style="@style/textoDatosEntidades"
                     android:layout_width="wrap_content"
-                    android:text="NOMBRE"
-                    style="@style/textoDatosEntidades"/>
+                    android:layout_height="wrap_content"
+                    android:text="NOMBRE" />
 
                 <EditText
                     android:id="@+id/nombreInsert"
+                    style="@style/textoInsercionCampos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/textoInsercionCampos"
                     android:inputType="textPersonName" />
 
                 <TextView
-                    android:layout_height="wrap_content"
+                    style="@style/textoDatosEntidades"
                     android:layout_width="wrap_content"
-                    android:text="APELLIDOS"
-                    style="@style/textoDatosEntidades"/>
+                    android:layout_height="wrap_content"
+                    android:text="APELLIDOS" />
 
                 <EditText
                     android:id="@+id/apellidosInsert"
+                    style="@style/textoInsercionCampos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/textoInsercionCampos"
                     android:inputType="textPersonName" />
 
                 <TextView
-                    android:layout_height="wrap_content"
+                    style="@style/textoDatosEntidades"
                     android:layout_width="wrap_content"
-                    android:text="DRIRECCIÓN"
-                    style="@style/textoDatosEntidades"/>
+                    android:layout_height="wrap_content"
+                    android:text="DRIRECCIÓN" />
 
                 <EditText
                     android:id="@+id/direccionInsert"
+                    style="@style/textoInsercionCampos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/textoInsercionCampos"
                     android:inputType="textPersonName" />
-
 
 
             </LinearLayout>
 
             <View
-                android:layout_height="1dp"
                 android:layout_width="match_parent"
-                android:background="#728C93"/>
+                android:layout_height="1dp"
+                android:background="#728C93" />
 
             <!-- TELEFONO -->
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.80"
                     android:gravity="left"
-                    android:layout_weight="0.80">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_height="wrap_content"
+                        style="@style/textoDatosEntidades"
                         android:layout_width="wrap_content"
-                        android:text="MOBILE"
-                        style="@style/textoDatosEntidades"/>
+                        android:layout_height="wrap_content"
+                        android:text="MOBILE" />
 
                     <EditText
                         android:id="@+id/telefonoInsert"
+                        style="@style/textoInsercionCampos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        style="@style/textoInsercionCampos"
                         android:inputType="phone" />
 
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.20"
                     android:gravity="right"
-                    android:layout_weight="0.20">
+                    android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/llamadaContacto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_phone"
-                        android:background="@android:color/transparent"/>
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_phone" />
                 </LinearLayout>
             </LinearLayout>
 
             <View
-                android:layout_height="1dp"
                 android:layout_width="match_parent"
-                android:background="#728C93"/>
+                android:layout_height="1dp"
+                android:background="#728C93" />
 
             <!-- Correo -->
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.80"
                     android:gravity="left"
-                    android:layout_weight="0.80">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_height="wrap_content"
+                        style="@style/textoDatosEntidades"
                         android:layout_width="wrap_content"
-                        android:text="EMAIL"
-                        style="@style/textoDatosEntidades"/>
+                        android:layout_height="wrap_content"
+                        android:text="EMAIL" />
 
                     <EditText
                         android:id="@+id/emailInsert"
+                        style="@style/textoInsercionCampos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        style="@style/textoInsercionCampos"
                         android:inputType="textEmailAddress" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.20"
                     android:gravity="right"
-                    android:layout_weight="0.20">
+                    android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/correoEmailContacto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_mail"
-                        android:background="@android:color/transparent"/>
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_mail" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

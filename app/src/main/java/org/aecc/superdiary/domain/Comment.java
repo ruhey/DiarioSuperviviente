@@ -2,18 +2,16 @@ package org.aecc.superdiary.domain;
 
 public class Comment {
     private final int commentId;
-
-    public Comment(int commentId) {
-        this.commentId = commentId;
-    }
-
     private String datePosted;
     private String content;
     private boolean discarded;
     private boolean reminder;
     private String timesElapsed;
+    public Comment(int commentId) {
+        this.commentId = commentId;
+    }
 
-    public int getCommentId(){
+    public int getCommentId() {
         return this.commentId;
     }
 
@@ -58,9 +56,8 @@ public class Comment {
     }
 
 
-
-
-    @Override public String toString() {
+    @Override
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("***** Comment Details *****\n");

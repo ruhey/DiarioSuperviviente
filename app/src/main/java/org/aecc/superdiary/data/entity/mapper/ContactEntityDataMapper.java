@@ -6,6 +6,7 @@ import org.aecc.superdiary.domain.Contact;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -13,12 +14,13 @@ import javax.inject.Singleton;
 public class ContactEntityDataMapper {
 
     @Inject
-    public ContactEntityDataMapper(){}
+    public ContactEntityDataMapper() {
+    }
 
     public Contact transform(ContactEntity contactEntity) {
         Contact contact = null;
 
-        if (contactEntity != null){
+        if (contactEntity != null) {
             contact = new Contact(contactEntity.getContactId());
             contact.setName(contactEntity.getName());
             contact.setSurname(contactEntity.getSurname());
@@ -35,7 +37,7 @@ public class ContactEntityDataMapper {
     public ContactEntity untransform(Contact contact) {
         ContactEntity contactEntity = null;
 
-        if (contact != null){
+        if (contact != null) {
             contactEntity.setContactId(contact.getContactId());
             contactEntity.setName(contact.getName());
             contactEntity.setSurname(contact.getSurname());
@@ -49,10 +51,10 @@ public class ContactEntityDataMapper {
         return contactEntity;
     }
 
-    public Collection<Contact> transform(Collection<ContactEntity> contactEntityCollection){
+    public Collection<Contact> transform(Collection<ContactEntity> contactEntityCollection) {
         List<Contact> contactList = new ArrayList<Contact>();
         Contact contact;
-        for(ContactEntity contactEntity : contactEntityCollection){
+        for (ContactEntity contactEntity : contactEntityCollection) {
             contact = transform(contactEntity);
             if (contact != null) {
                 contactList.add(contact);
@@ -61,10 +63,10 @@ public class ContactEntityDataMapper {
         return contactList;
     }
 
-    public Collection<ContactEntity> untransform(Collection<Contact> contactCollection){
+    public Collection<ContactEntity> untransform(Collection<Contact> contactCollection) {
         List<ContactEntity> contactEntityList = new ArrayList<ContactEntity>();
         ContactEntity contactEntity;
-        for(Contact contact : contactCollection){
+        for (Contact contact : contactCollection) {
             contactEntity = untransform(contact);
             if (contactEntity != null) {
                 contactEntityList.add(contactEntity);

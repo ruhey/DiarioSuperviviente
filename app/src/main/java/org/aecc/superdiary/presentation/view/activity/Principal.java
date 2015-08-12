@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.aecc.superdiary.R;
-import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
 
 public class Principal extends DiaryBaseActivity {
@@ -23,8 +22,8 @@ public class Principal extends DiaryBaseActivity {
         setTitle(titulos[position]);
         //setContentView(R.layout.activity_principal);
 
-        final Button botonCreditos = (Button)findViewById(R.id.botonCreditos);
-        final EditText login = (EditText)findViewById(R.id.insertaTextoLogin);
+        final Button botonCreditos = (Button) findViewById(R.id.botonCreditos);
+        final EditText login = (EditText) findViewById(R.id.insertaTextoLogin);
 
         botonCreditos.setOnClickListener(new View.OnClickListener() {
             @Override

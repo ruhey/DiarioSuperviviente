@@ -8,6 +8,16 @@ import java.util.Collection;
 
 public interface CommentDataStore {
 
+    void getCommentsEntityList(CommentListCallback commentListCallback);
+
+    void getCommentEntityDetails(int id, CommentDetailsCallback commentDetailsCallback);
+
+    void createCommentEntity(Comment comment, CommentCreationCallback commentCallback);
+
+    void saveCommentEntity(Comment comment, CommentSaveCallback commentCallback);
+
+    void deleteCommentEntity(int id, CommentDetionCallback commentDeletionCallback);
+
     interface CommentListCallback {
         void onCommentListLoaded(Collection<CommentEntity> commentsCollection);
 
@@ -37,14 +47,4 @@ public interface CommentDataStore {
 
         void onError(Exception exception);
     }
-
-    void getCommentsEntityList(CommentListCallback commentListCallback);
-
-    void getCommentEntityDetails(int id, CommentDetailsCallback commentDetailsCallback);
-
-    void createCommentEntity(Comment comment, CommentCreationCallback commentCallback);
-
-    void saveCommentEntity(Comment comment, CommentSaveCallback commentCallback);
-
-    void deleteCommentEntity(int id, CommentDetionCallback commentDeletionCallback);
 }

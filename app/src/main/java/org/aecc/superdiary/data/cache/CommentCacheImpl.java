@@ -27,7 +27,7 @@ public class CommentCacheImpl implements CommentCache {
     private final ThreadExecutor threadExecutor;
 
     @Inject
-    public CommentCacheImpl(Context context, JSONSerializer serializer, ThreadExecutor threadExecutor, FileManager filemanager){
+    public CommentCacheImpl(Context context, JSONSerializer serializer, ThreadExecutor threadExecutor, FileManager filemanager) {
         this.context = context;
         this.cacheDir = this.context.getCacheDir();
         this.serializer = serializer;
@@ -122,7 +122,8 @@ public class CommentCacheImpl implements CommentCache {
             this.fileContent = fileContent;
         }
 
-        @Override public void run() {
+        @Override
+        public void run() {
             this.fileManager.writeToFile(fileToWrite, fileContent);
         }
     }
@@ -136,7 +137,8 @@ public class CommentCacheImpl implements CommentCache {
             this.cacheDir = cacheDir;
         }
 
-        @Override public void run() {
+        @Override
+        public void run() {
             this.fileManager.clearDirectory(this.cacheDir);
         }
     }

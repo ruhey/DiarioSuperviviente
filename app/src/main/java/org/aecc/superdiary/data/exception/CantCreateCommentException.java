@@ -1,8 +1,8 @@
 package org.aecc.superdiary.data.exception;
 
 
-public class CantCreateCommentException extends Exception{
-    
+public class CantCreateCommentException extends Exception {
+
     public CantCreateCommentException() {
         super();
     }

@@ -10,7 +10,8 @@ import org.aecc.superdiary.presentation.internal.di.modules.ApplicationModule;
 public class AndroidApplication extends Application {
     private ApplicationComponent applicationComponent;
 
-    @Override public void onCreate() {
+    @Override
+    public void onCreate() {
         super.onCreate();
         this.initializeInjector();
     }

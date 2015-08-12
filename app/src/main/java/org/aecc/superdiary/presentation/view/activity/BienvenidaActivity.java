@@ -20,13 +20,13 @@ public class BienvenidaActivity extends DiaryBaseActivity {
         mDrawerList.setItemChecked(position, true);
         setTitle(titulos[position]);
 
-        Button botonBienvenida = (Button)findViewById(R.id.botonEnMarcha);
-        Button botonEnMarcha = (Button)findViewById(R.id.botonEnMarcha);
-        Button botonCalendario = (Button)findViewById(R.id.botonCalendario);
-        Button botonMisPersonas = (Button)findViewById(R.id.botonMisPersonas);
-        Button botonMisCitas = (Button)findViewById(R.id.botonMisCitas);
-        Button botonOtros = (Button)findViewById(R.id.botonOtros);
-        Button botonInicio = (Button)findViewById(R.id.botonInicio);
+        Button botonBienvenida = (Button) findViewById(R.id.botonEnMarcha);
+        Button botonEnMarcha = (Button) findViewById(R.id.botonEnMarcha);
+        Button botonCalendario = (Button) findViewById(R.id.botonCalendario);
+        Button botonMisPersonas = (Button) findViewById(R.id.botonMisPersonas);
+        Button botonMisCitas = (Button) findViewById(R.id.botonMisCitas);
+        Button botonOtros = (Button) findViewById(R.id.botonOtros);
+        Button botonInicio = (Button) findViewById(R.id.botonInicio);
 
 
         botonBienvenida.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +64,7 @@ public class BienvenidaActivity extends DiaryBaseActivity {
             }
         });
 
-        ImageView imagenLogo = (ImageView)findViewById(R.id.imagenEntrada);
+        ImageView imagenLogo = (ImageView) findViewById(R.id.imagenEntrada);
         imagenLogo.setImageResource(R.drawable.ic_launcher);
 
     }

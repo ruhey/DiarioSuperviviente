@@ -7,6 +7,16 @@ import java.util.Collection;
 
 public interface ContactDataStore {
 
+    void getContactsEntityList(ContactListCallback contactListCallback);
+
+    void getContactEntityDetails(int id, ContactDetailsCallback contactDetailsCallback);
+
+    void createContactEntity(Contact contact, ContactCreationCallback contactCallback);
+
+    void saveContactEntity(Contact contact, ContactSaveCallback contactCallback);
+
+    void deleteContactEntity(int id, ContactDeletionCallback contactDeletionCallback);
+
     interface ContactListCallback {
         void onContactListLoaded(Collection<ContactEntity> contactsCollection);
 
@@ -36,14 +46,4 @@ public interface ContactDataStore {
 
         void onError(Exception exception);
     }
-
-    void getContactsEntityList(ContactListCallback contactListCallback);
-
-    void getContactEntityDetails(int id, ContactDetailsCallback contactDetailsCallback);
-
-    void createContactEntity(Contact contact, ContactCreationCallback contactCallback);
-
-    void saveContactEntity(Contact contact, ContactSaveCallback contactCallback);
-
-    void deleteContactEntity(int id, ContactDeletionCallback contactDeletionCallback);
 }

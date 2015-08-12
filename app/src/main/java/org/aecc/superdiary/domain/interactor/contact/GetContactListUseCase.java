@@ -9,10 +9,11 @@ import java.util.Collection;
 
 public interface GetContactListUseCase extends Interactor {
 
+    void execute(Callback callback);
+
     interface Callback {
         void onContactListLoaded(Collection<Contact> contactsCollection);
+
         void onError(ErrorBundle errorBundle);
     }
-
-    void execute(Callback callback);
 }

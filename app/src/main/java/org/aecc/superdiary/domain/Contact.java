@@ -2,17 +2,15 @@ package org.aecc.superdiary.domain;
 
 public class Contact {
     private final int contactId;
-
-    public Contact(int contactId) {
-        this.contactId = contactId;
-    }
-
     private String name;
     private String surname;
     private String email;
     private String phone;
     private String image;
     private String category;
+    public Contact(int contactId) {
+        this.contactId = contactId;
+    }
 
     public int getContactId() {
         return contactId;
@@ -66,7 +64,8 @@ public class Contact {
         this.category = category;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("***** Contact Details *****\n");

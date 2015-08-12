@@ -22,7 +22,7 @@ public class DatabaseContactDataStore implements ContactDataStore {
 
     @Override
     public void getContactsEntityList(final ContactListCallback contactListCallback) {
-        this.databaseAPI.getContactEntityList(new ContactDatabaseAPI.ContactListCallback(){
+        this.databaseAPI.getContactEntityList(new ContactDatabaseAPI.ContactListCallback() {
 
             @Override
             public void onContactListLoaded(Collection<ContactEntity> contactsCollection) {
@@ -55,7 +55,7 @@ public class DatabaseContactDataStore implements ContactDataStore {
 
     @Override
     public void createContactEntity(final Contact contact, final ContactCreationCallback contactCreationCallback) {
-        this.databaseAPI.createContactEntity(this.contactEntityDataMapper.untransform(contact), new ContactDatabaseAPI.ContactCreationCallback(){
+        this.databaseAPI.createContactEntity(this.contactEntityDataMapper.untransform(contact), new ContactDatabaseAPI.ContactCreationCallback() {
 
             @Override
             public void onContactEntityCreated(ContactEntity contactEntity) {
@@ -71,7 +71,7 @@ public class DatabaseContactDataStore implements ContactDataStore {
 
     @Override
     public void saveContactEntity(final Contact contact, final ContactSaveCallback contactSaveCallback) {
-        this.databaseAPI.saveContactEntity(this.contactEntityDataMapper.untransform(contact), new ContactDatabaseAPI.ContactSaveCallback(){
+        this.databaseAPI.saveContactEntity(this.contactEntityDataMapper.untransform(contact), new ContactDatabaseAPI.ContactSaveCallback() {
             @Override
             public void onContactEntitySaved(ContactEntity contactEntity) {
                 contactSaveCallback.onContactSaved(contactEntity);
@@ -87,7 +87,7 @@ public class DatabaseContactDataStore implements ContactDataStore {
 
     @Override
     public void deleteContactEntity(final int id, final ContactDeletionCallback contactDeletionCallback) {
-        this.databaseAPI.deleteContactEntity(id, new ContactDatabaseAPI.ContactDeletionCallback(){
+        this.databaseAPI.deleteContactEntity(id, new ContactDatabaseAPI.ContactDeletionCallback() {
             @Override
             public void onContactEntityDeleted(Collection<ContactEntity> contactsCollection) {
                 contactDeletionCallback.onContactDeleted(contactsCollection);

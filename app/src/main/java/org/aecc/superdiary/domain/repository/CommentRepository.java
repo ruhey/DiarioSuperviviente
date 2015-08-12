@@ -2,12 +2,21 @@ package org.aecc.superdiary.domain.repository;
 
 
 import org.aecc.superdiary.domain.Comment;
-import org.aecc.superdiary.domain.Comment;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
 
 import java.util.Collection;
 
 public interface CommentRepository {
+
+    void getCommentList(CommentListCallback CommentListCallback);
+
+    void getCommentById(final int commentId, CommentDetailsCallback commentCallback);
+
+    void createComment(final Comment comment, CommentCreationCallback commentCallback);
+
+    void saveComment(final Comment comment, CommentSaveCallback commentCallback);
+
+    void deleteComment(final int commentId, CommentDetionCallback commentDeletionCallback);
 
     interface CommentListCallback {
         void onCommentListLoaded(Collection<Comment> commentsCollection);
@@ -38,14 +47,4 @@ public interface CommentRepository {
 
         void onError(ErrorBundle errorBundle);
     }
-
-    void getCommentList(CommentListCallback CommentListCallback);
-
-    void getCommentById(final int commentId, CommentDetailsCallback commentCallback);
-
-    void createComment(final Comment comment, CommentCreationCallback commentCallback);
-
-    void saveComment(final Comment comment, CommentSaveCallback commentCallback);
-
-    void deleteComment(final int commentId, CommentDetionCallback commentDeletionCallback);
 }

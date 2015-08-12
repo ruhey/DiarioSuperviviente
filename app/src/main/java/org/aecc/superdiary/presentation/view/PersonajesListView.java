@@ -5,7 +5,7 @@ import org.aecc.superdiary.presentation.model.ContactModel;
 
 import java.util.Collection;
 
-public interface PersonajesListView extends LoadDataView{
+public interface PersonajesListView extends LoadDataView {
 
     void renderContactList(Collection<ContactModel> contactModelCollection);
 

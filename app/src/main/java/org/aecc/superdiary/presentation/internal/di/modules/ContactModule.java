@@ -12,16 +12,16 @@ import dagger.Provides;
 @Module
 public class ContactModule {
 
-        @Provides
-        @PerActivity
-        GetContactListUseCase provideGetContactListUseCase(GetContactListUseCaseImpl getContactListUseCase) {
-            return getContactListUseCase;
-        }
+    @Provides
+    @PerActivity
+    GetContactListUseCase provideGetContactListUseCase(GetContactListUseCaseImpl getContactListUseCase) {
+        return getContactListUseCase;
+    }
 
-        @Provides
-        @PerActivity
-        GetContactDetailsUseCase provideGetContactDetailsUseCase(GetContactDetailsUseCaseImpl getContactDetailsUseCase) {
-            return getContactDetailsUseCase;
-        }
+    @Provides
+    @PerActivity
+    GetContactDetailsUseCase provideGetContactDetailsUseCase(GetContactDetailsUseCaseImpl getContactDetailsUseCase) {
+        return getContactDetailsUseCase;
+    }
 }
 

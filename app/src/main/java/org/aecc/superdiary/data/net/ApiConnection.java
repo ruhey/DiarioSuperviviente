@@ -11,11 +11,9 @@ import java.util.concurrent.Callable;
 
 
 public class ApiConnection implements Callable<String> {
+    public static final String REQUEST_METHOD_GET = "GET";
     private static final String CONTENT_TYPE_LABEL = "Content-Type";
     private static final String CONTENT_TYPE_VALUE_JSON = "application/json; charset=utf-8";
-
-    public static final String REQUEST_METHOD_GET = "GET";
-
     private URL url;
     private String requestVerb;
     private int responseCode = 0;
@@ -45,11 +43,15 @@ public class ApiConnection implements Callable<String> {
             responseCode = urlConnection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 response = getStringFromInputStream(urlConnection.getInputStream());
-            } else { response = getStringFromInputStream(urlConnection.getErrorStream()); }
+            } else {
+                response = getStringFromInputStream(urlConnection.getErrorStream());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (urlConnection != null) { urlConnection.disconnect(); }
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
         }
     }
 
@@ -80,7 +82,8 @@ public class ApiConnection implements Callable<String> {
         }
     }
 
-    @Override public String call() throws Exception {
+    @Override
+    public String call() throws Exception {
         return requestSyncCall();
     }
 }

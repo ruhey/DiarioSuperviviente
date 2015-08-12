@@ -5,7 +5,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import org.aecc.superdiary.R;
-import org.aecc.superdiary.presentation.view.activity.DiaryBaseActivity;
 
 
 public class Citas extends DiaryBaseActivity {

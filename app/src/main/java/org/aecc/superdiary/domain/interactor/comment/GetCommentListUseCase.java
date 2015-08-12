@@ -8,10 +8,11 @@ import java.util.Collection;
 
 
 public interface GetCommentListUseCase extends Interactor {
+    void execute(Callback callback);
+
     interface Callback {
         void onCommentListLoaded(Collection<Comment> commentsCollection);
+
         void onError(ErrorBundle errorBundle);
     }
-
-    void execute(Callback callback);
 }
