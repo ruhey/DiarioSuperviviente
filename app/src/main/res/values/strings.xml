@@ -34,7 +34,7 @@
         <item>Citas</item>
         <item>Otros</item>
         <item>Personajes</item>
-        <item>Principal</item>
+        <item>Recursos</item>
     </string-array>
     <!-- Lista de iconos de navegacion-->
     <array name="navigation_iconos">
@@ -57,5 +57,6 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_recursos">RecursosActivity</string>
 
 </resources>

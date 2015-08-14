@@ -4,6 +4,9 @@
     <color name="blancoVerdoso">#F1FFF3</color>
     <color name="window_background">#FFF5F5F5</color>
     <color name="colorPrimary">#27b736</color>
+    <color name="colorSecondaryDark">#e10d7b5a</color>
+    <color name="colorPrimaryDark">#3d6635</color>
+    <color name="tabsScrollColor">#85b75b</color>
     <color name="colorAccent">#FF4081</color>
 
 </resources>
