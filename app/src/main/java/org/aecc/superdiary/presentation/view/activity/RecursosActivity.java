@@ -17,38 +17,7 @@ import org.aecc.superdiary.R;
 public class RecursosActivity extends DiaryBaseActivity {
 
 
-    /*
-            * The page Adapter : Manage the list of views (in fact here, it's fragments)
-            * And send them to the ViewPager
-            */
     private RecursosPageAdapter pagerAdapter;
-    /**
-     * The ViewPager is a ViewGroup that manage the swipe from left to right to left
-     * Like a listView with a gesture listener...
-     */
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_recursos, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     private ViewPager viewPager;
 
     @Override
@@ -64,10 +33,6 @@ public class RecursosActivity extends DiaryBaseActivity {
         viewPager.setAdapter(pagerAdapter);
         viewPager.setClipToPadding(false);
         viewPager.setPageMargin(12);
-        //Add animation when the page are swiped
-        //this instanciation only works with honeyComb and more
-        //if you want it all version use AnimatorProxy of the nineoldAndroid lib
-        //@see:http://stackoverflow.com/questions/15767729/backwards-compatible-pagetransformer
         viewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
             @Override
             public void transformPage(View page, float position) {
@@ -81,4 +46,23 @@ public class RecursosActivity extends DiaryBaseActivity {
         super.onStop();
         pagerAdapter.release();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_recursos, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

@@ -13,11 +13,21 @@
     <style name="botonInicio" parent="AppTheme" />
 
 
+    <!--TEXTOS-->
     <style name="textoDatosEntidades">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">#50A7B3</item>
         <item name="android:layout_marginBottom">2dp</item>
         <item name="android:layout_marginTop">2dp</item>
+    </style>
+
+    <style name="textoTituloVistasRecursos">
+        <item name="android:textColor">#50A7B3</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="textoInsercionCampos">

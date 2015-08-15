@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/screen"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+    <TextView
+        style="@style/textoTituloVistasRecursos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MEDITACIÓN"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/meditacion"
+        android:paddingBottom="20dp"/>
+
+    <TextView
+        style="@style/textoDatosEntidades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Instrucciones"/>
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/meditacion"/>
+
+</LinearLayout>
+

@@ -1,6 +1,7 @@
 package org.aecc.superdiary.presentation.view.activity;
 
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +12,15 @@ import org.aecc.superdiary.R;
 
 import java.util.ArrayList;
 
-public class RecursosPageAdapter extends PagerAdapter {
+public class ViewPagerAdapter extends PagerAdapter {
 
-    private static int NUMVIEWS = 9;
     ArrayList<ViewGroup> views;
     LayoutInflater inflater;
 
-    public RecursosPageAdapter(RecursosActivity ctx){
+    public ViewPagerAdapter(RecursosActivity ctx){
         inflater=LayoutInflater.from(ctx);
-        views=new ArrayList<ViewGroup>(NUMVIEWS);
+        //instantiate your views list
+        views=new ArrayList<ViewGroup>(5);
     }
 
     /**
@@ -36,7 +37,7 @@ public class RecursosPageAdapter extends PagerAdapter {
      */
     @Override
     public int getCount() {
-        return NUMVIEWS;
+        return 5;
     }
     /**
      * Create the page for the given position.  The adapter is responsible
@@ -51,27 +52,18 @@ public class RecursosPageAdapter extends PagerAdapter {
      */
     public Object instantiateItem(ViewGroup container, int position) {
         ViewGroup currentView;
-
-        if(views.size()>position && views.get(position)!=null){
+        Log.e("MyViewPagerAdapter", "instantiateItem for " + position);
+        if(views.size()>position&&views.get(position)!=null){
+            Log.e("MyViewPagerAdapter","instantiateItem views.get(position) "+views.get(position));
             currentView=views.get(position);
         }else{
-            int rootLayout= R.layout.view_screen;
+            Log.e("MyViewPagerAdapter","instantiateItem need to create the View");
+            int rootLayout= R.layout.meditacion_view;
             currentView= (ViewGroup) inflater.inflate(rootLayout,container,false);
 
-            //((TextView)currentView.findViewById(R.id.txvTitle)).setText("My Views " + position);
-            //((TextView)currentView.findViewById(R.id.btnButton)).setText("Button");
-            //((ImageView)currentView.findViewById(R.id.imvPicture)).setBackgroundColor(0xFF00FF00);
-
-
-            if(position==0)currentView= (ViewGroup)  inflater.inflate(R.layout.consejos_view, container, false);
-            if(position==1)currentView= (ViewGroup)  inflater.inflate(R.layout.meditacion_view, container, false);
-            if(position==2)currentView= (ViewGroup)  inflater.inflate(R.layout.telefonos_view, container, false);
-            if(position==3)currentView= (ViewGroup)  inflater.inflate(R.layout.activity_cita, container, false);
-            if(position==4)currentView= (ViewGroup)  inflater.inflate(R.layout.activity_rutina, container, false);
-            if(position==5)currentView= (ViewGroup)  inflater.inflate(R.layout.activity_personaje, container, false);
-            if(position==6)currentView= (ViewGroup) inflater.inflate(R.layout.activity_medicamento, container, false);
-            if(position==7)currentView= (ViewGroup) inflater.inflate(R.layout.activity_prueba, container, false);
-            if(position==8)currentView= (ViewGroup) inflater.inflate(R.layout.activity_sintoma, container, false);
+            ((TextView)currentView.findViewById(R.id.txvTitle)).setText("My Views "+position);
+            ((TextView)currentView.findViewById(R.id.btnButton)).setText("Button");
+            ((ImageView)currentView.findViewById(R.id.fotoMedic)).setBackgroundColor(0xFF00FF00);
         }
         container.addView(currentView);
         return currentView;
