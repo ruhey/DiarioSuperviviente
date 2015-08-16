@@ -19,6 +19,7 @@ public class BienvenidaActivity extends DiaryBaseActivity {
         getLayoutInflater().inflate(R.layout.activity_bienvenida, frameLayout);
         mDrawerList.setItemChecked(position, true);
         setTitle(titulos[position]);
+        getActionBar().show();
 
         Button botonBienvenida = (Button) findViewById(R.id.botonEnMarcha);
         Button botonEnMarcha = (Button) findViewById(R.id.botonEnMarcha);

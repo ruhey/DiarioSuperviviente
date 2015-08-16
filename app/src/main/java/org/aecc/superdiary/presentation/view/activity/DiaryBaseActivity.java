@@ -59,12 +59,20 @@ public class DiaryBaseActivity extends BaseActivity {
         NavItms.add(new Item_objct(titulos[1], NavIcons.getResourceId(1, -1)));
         //citas
         NavItms.add(new Item_objct(titulos[2], NavIcons.getResourceId(2, -1)));
-        //otros
+        //rutinas
         NavItms.add(new Item_objct(titulos[3], NavIcons.getResourceId(3, -1)));
-        //PersonajesActivity
+        //Personajes
         NavItms.add(new Item_objct(titulos[4], NavIcons.getResourceId(4, -1)));
-        //principal
+        //medicamentos
         NavItms.add(new Item_objct(titulos[5], NavIcons.getResourceId(5, -1)));
+        //pruebas
+        NavItms.add(new Item_objct(titulos[6], NavIcons.getResourceId(6, -1)));
+        //sintomas
+        NavItms.add(new Item_objct(titulos[7], NavIcons.getResourceId(7, -1)));
+        //recursos
+        NavItms.add(new Item_objct(titulos[8], NavIcons.getResourceId(8, -1)));
+        //ajustes
+        NavItms.add(new Item_objct(titulos[9], NavIcons.getResourceId(9, -1)));
         //Declaramos y seteamos nuestrp adaptador al cual le pasamos el array con los titulos
         NavAdapter = new NavigationAdapter(this, NavItms);
         mDrawerList.setAdapter(NavAdapter);
@@ -146,7 +154,19 @@ public class DiaryBaseActivity extends BaseActivity {
                 startActivity(new Intent(this, PersonajesActivity.class));
                 break;
             case 6:
-                startActivity(new Intent(this, Principal.class));
+                startActivity(new Intent(this, Otros.class));
+                break;
+            case 7:
+                startActivity(new Intent(this, Otros.class));
+                break;
+            case 8:
+                startActivity(new Intent(this, Otros.class));
+                break;
+            case 9:
+                startActivity(new Intent(this, RecursosActivity.class));
+                break;
+            case 10:
+                startActivity(new Intent(this, Otros.class));
                 break;
             default:
                 break;

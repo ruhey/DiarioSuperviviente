@@ -32,18 +32,26 @@
         <item>Bienvenida</item>
         <item>Calendario</item>
         <item>Citas</item>
-        <item>Otros</item>
+        <item>Rutinas</item>
         <item>Personajes</item>
+        <item>Medicación</item>
+        <item>Síntomas</item>
+        <item>Pruebas</item>
         <item>Recursos</item>
+        <item>Ajustes</item>
     </string-array>
     <!-- Lista de iconos de navegacion-->
     <array name="navigation_iconos">
-        <item>@drawable/ic_action_user</item>
-        <item>@drawable/ic_action_star</item>
-        <item>@drawable/ic_action_event</item>
-        <item>@drawable/ic_action_place</item>
-        <item>@drawable/ic_action_labels</item>
-        <item>@drawable/ic_action_settings</item>
+        <item>@drawable/ic_bienvenida</item>
+        <item>@drawable/ic_horario</item>
+        <item>@drawable/ic_citas</item>
+        <item>@drawable/ic_rutina</item>
+        <item>@drawable/ic_personas</item>
+        <item>@drawable/ic_medic</item>
+        <item>@drawable/ic_sintomas</item>
+        <item>@drawable/ic_pruebas</item>
+        <item>@drawable/ic_recursos</item>
+        <item>@drawable/ic_ajustes</item>
     </array>
 
     <string name="open_drawer">Drawer Open</string>
