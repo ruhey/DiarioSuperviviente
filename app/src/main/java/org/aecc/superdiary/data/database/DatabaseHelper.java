@@ -17,6 +17,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CONTACTS_COLUMN_IMAGE = "image";
     public static final String CONTACTS_COLUMN_CATEGORY = "category";
 
+    public static final String TABLE_MEDICINES = "medicines";
+    public static final String MEDICINES_COLUMN_ID = "_id";
+    public static final String MEDICINES_COLUMN_NAME = "name";
+    public static final String MEDICINES_COLUMN_FIRSTDAY = "firstDay";
+    public static final String MEDICINES_COLUMN_FIRSTHOUR = "firstHour";
+    public static final String MEDICINES_COLUMN_LASTDAY = "lastDay";
+    public static final String MEDICINES_COLUMN_LASTHOUR = "lastHour";
+    public static final String MEDICINES_COLUMN_INTERVAL = "interval";
+    public static final String MEDICINES_COLUMN_DESCRIPTION = "description";
+    public static final String MEDICINES_COLUMN_IMAGE = "image";
+
+    public static final String TABLE_MEETINGS = "meetings";
+    public static final String MEETINGS_COLUMN_ID = "_id";
+    public static final String MEETINGS_COLUMN_NAME = "name";
+    public static final String MEETINGS_COLUMN_PLACE = "place";
+    public static final String MEETINGS_COLUMN_QUESTIONS = "questions";
+    public static final String MEETINGS_COLUMN_DATEMEETING = "dateMeeting";
+    public static final String MEETINGS_COLUMN_HOURMEETING = "hourMeeting";
+    public static final String MEETINGS_COLUMN_DATEALARM = "dateAlarm";
+    public static final String MEETINGS_COLUMN_HOURALARM = "hourAlarm";
+    public static final String MEETINGS_COLUMN_DURATION = "duration";
+    public static final String MEETINGS_COLUMN_IMAGE = "image";
+
+    public static final String TABLE_ROUTINES = "routines";
+    public static final String ROUTINES_COLUMN_ID = "_id";
+    public static final String ROUTINES_COLUMN_NAME = "name";
+    public static final String ROUTINES_COLUMN_PLACE = "place";
+    public static final String ROUTINES_COLUMN_DESCRIPTION = "description";
+    public static final String ROUTINES_COLUMN_DATEROUTINE = "dateRoutine";
+    public static final String ROUTINES_COLUMN_HOURROUTINE = "hourRoutine";
+    public static final String ROUTINES_COLUMN_DATEALARM = "dateAlarm";
+    public static final String ROUTINES_COLUMN_HOURALARM = "hourAlarm";
+    public static final String ROUTINES_COLUMN_DURATION = "duration";
+    public static final String ROUTINES_COLUMN_SATISFACTION = "satisfaction";
+    public static final String ROUTINES_COLUMN_IMAGE = "image";
+
+    public static final String TABLE_SYMPTOMS = "symptoms";
+    public static final String SYMPTOMS_COLUMN_ID = "_id";
+    public static final String SYMPTOMS_COLUMN_NAME = "name";
+    public static final String SYMPTOMS_COLUMN_DATE = "dateSymptom";
+    public static final String SYMPTOMS_COLUMN_HOUR = "hourSymptom";
+    public static final String SYMPTOMS_COLUMN_DESCRIPTION = "description";
+    public static final String SYMPTOMS_COLUMN_IMAGE = "image";
+
+    public static final String TABLE_EXAMS = "examinations";
+    public static final String EXAMS_COLUMN_ID = "_id";
+    public static final String EXAMS_COLUMN_NAME = "name";
+    public static final String EXAMS_COLUMN_DATE = "dateExam";
+    public static final String EXAMS_COLUMN_HOUR = "hourExam";
+    public static final String EXAMS_COLUMN_DESCRIPTION = "description";
+    public static final String EXAMS_COLUMN_IMAGE = "image";
+
     public static final String TABLE_COMMENTS = "comments";
     public static final String COMMENTS_COLUMN_ID = "_id";
     public static final String COMMENTS_COLUMN_DATEPOSTED = "datePosted";
@@ -37,6 +89,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + CONTACTS_COLUMN_IMAGE + " text not null,"
             + CONTACTS_COLUMN_CATEGORY + " text not null);";
 
+    private static final String MEDICINES_CREATE = " create table (" + TABLE_MEDICINES
+            + "(" + MEDICINES_COLUMN_ID + " integer primary key autoincrement, "
+            + MEDICINES_COLUMN_NAME + " text not null,"
+            + MEDICINES_COLUMN_FIRSTDAY + " text not null,"
+            + MEDICINES_COLUMN_FIRSTHOUR + " text not null,"
+            + MEDICINES_COLUMN_LASTDAY + " text not null,"
+            + MEDICINES_COLUMN_LASTHOUR + " text not null,"
+            + MEDICINES_COLUMN_INTERVAL + " text not null,"
+            + MEDICINES_COLUMN_DESCRIPTION + " text not null,"
+            + MEDICINES_COLUMN_IMAGE + " text not null);";
+
+    private static final String MEETINGS_CREATE = " create table (" + TABLE_MEETINGS
+            + "(" + MEETINGS_COLUMN_ID + " integer primary key autoincrement, "
+            + MEETINGS_COLUMN_NAME + " text not null,"
+            + MEETINGS_COLUMN_PLACE + " text not null,"
+            + MEETINGS_COLUMN_QUESTIONS + " text not null,"
+            + MEETINGS_COLUMN_DATEMEETING + " text not null,"
+            + MEETINGS_COLUMN_HOURMEETING + " text not null,"
+            + MEETINGS_COLUMN_DATEALARM + " text not null,"
+            + MEETINGS_COLUMN_HOURALARM + " text not null,"
+            + MEETINGS_COLUMN_DURATION + " text not null,"
+            + MEETINGS_COLUMN_IMAGE + " text not null);";
+
+    private static final String ROUTINES_CREATE = " create table (" + TABLE_ROUTINES
+            + "(" + ROUTINES_COLUMN_ID + " integer primary key autoincrement, "
+            + ROUTINES_COLUMN_NAME + " text not null,"
+            + ROUTINES_COLUMN_PLACE + " text not null,"
+            + ROUTINES_COLUMN_DESCRIPTION + " text not null,"
+            + ROUTINES_COLUMN_DATEROUTINE + " text not null,"
+            + ROUTINES_COLUMN_HOURROUTINE + " text not null,"
+            + ROUTINES_COLUMN_DATEALARM + " text not null,"
+            + ROUTINES_COLUMN_HOURALARM + " text not null,"
+            + ROUTINES_COLUMN_DURATION + " text not null,"
+            + ROUTINES_COLUMN_SATISFACTION + " text not null,"
+            + ROUTINES_COLUMN_IMAGE + " text not null);";
+
+    private static final String EXAMS_CREATE = " create table (" + TABLE_EXAMS
+            + "(" + EXAMS_COLUMN_ID + " integer primary key autoincrement, "
+            + EXAMS_COLUMN_NAME + " text not null,"
+            + EXAMS_COLUMN_DATE + " text not null,"
+            + EXAMS_COLUMN_HOUR + " text not null,"
+            + EXAMS_COLUMN_DESCRIPTION + " text not null,"
+            + EXAMS_COLUMN_IMAGE + " text not null);";
+
+    private static final String SYMPTOMS_CREATE = " create table (" + TABLE_SYMPTOMS
+            + "(" + SYMPTOMS_COLUMN_ID + " integer primary key autoincrement, "
+            + SYMPTOMS_COLUMN_NAME + " text not null,"
+            + SYMPTOMS_COLUMN_DATE + " text not null,"
+            + SYMPTOMS_COLUMN_HOUR + " text not null,"
+            + SYMPTOMS_COLUMN_DESCRIPTION + " text not null,"
+            + SYMPTOMS_COLUMN_IMAGE + " text not null);";
+
     private static final String COMMENTS_CREATE = " create table (" + TABLE_COMMENTS
             + "(" + COMMENTS_COLUMN_ID + " integer primary key autoincrement, "
             + COMMENTS_COLUMN_DATEPOSTED + " text not null,"
@@ -46,7 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COMMENTS_COLUMN_TIMESELAPSED + " text not null);";
 
     private static final String DATABASE_CREATE = COMMENTS_CREATE
-            + CONTACTS_CREATE;
+            + CONTACTS_CREATE + MEETINGS_CREATE + ROUTINES_CREATE + MEDICINES_CREATE + SYMPTOMS_CREATE + EXAMS_CREATE;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -56,7 +160,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase database) {
 
         database.execSQL(CONTACTS_CREATE);
+        database.execSQL(EXAMS_CREATE);
         database.execSQL(COMMENTS_CREATE);
+        database.execSQL(MEDICINES_CREATE);
+        database.execSQL(ROUTINES_CREATE);
+        database.execSQL(MEETINGS_CREATE);
+        database.execSQL(SYMPTOMS_CREATE);
     }
 
     @Override
@@ -65,7 +174,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_CONTACTS);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_EXAMS);
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMENTS);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_MEDICINES);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_ROUTINES);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_MEETINGS);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_SYMPTOMS);
         onCreate(database);
     }
 }
