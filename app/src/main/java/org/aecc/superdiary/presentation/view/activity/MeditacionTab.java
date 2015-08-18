@@ -13,7 +13,7 @@ package org.aecc.superdiary.presentation.view.activity;
 public class MeditacionTab extends DiaryBaseActivity{
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.meditacion_tab,container,false);
+        View v =inflater.inflate(R.layout.meditacion_view,container,false);
         return v;
     }
 }

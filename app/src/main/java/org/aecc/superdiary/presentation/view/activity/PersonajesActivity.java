@@ -3,6 +3,7 @@ package org.aecc.superdiary.presentation.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,10 +16,26 @@ import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
+import org.aecc.superdiary.presentation.model.ContactModel;
+import org.aecc.superdiary.presentation.presenter.ContactListPresenter;
+import org.aecc.superdiary.presentation.view.PersonajesListView;
+
+import java.util.Collection;
+
+import javax.inject.Inject;
+
+import butterknife.InjectView;
 
 
-public class PersonajesActivity extends DiaryBaseActivity implements HasComponent<ContactComponent> {
-    ListView listViewCharacters;
+public class PersonajesActivity extends DiaryBaseActivity implements HasComponent<ContactComponent>, PersonajesListView{
+
+    @Inject
+    ContactListPresenter contactListPresenter;
+
+    @InjectView(R.id.recycler_contacts)
+    RecyclerView recycler_contacts;
+
+    private ContactsAdapter contactsAdapter;
 
     private ContactComponent contactComponent;
 
@@ -116,6 +133,46 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void renderContactList(Collection<ContactModel> contactModelCollection) {
+
+    }
+
+    @Override
+    public void viewContact(ContactModel contactModel) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showRetry() {
+
+    }
+
+    @Override
+    public void hideRetry() {
+
+    }
+
+    @Override
+    public void showError(String message) {
+
+    }
+
+    @Override
+    public Context getContext() {
+        return null;
     }
 }
 
