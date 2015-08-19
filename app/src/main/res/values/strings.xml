@@ -102,6 +102,13 @@
         <li><b>No tengas miedo a la muerte. </b>Si no le tienes miedo a la muerte, no le vas a tener miedo a nada que te depare la vida.</li>\n
     </string>
 
+    <string name="AECC">Como indica su nombre, su objetivo es luchar contra todos los tipos de cáncer: informando, apoyando y acompañando a los enfermos y sus familiares, promoviendo la investigación oncológica, y concienciando a la sociedad de la necesidad de actuar frente a esta enfermedad. Aunque tiene su sede central en Madrid, desarrolla su labor en toda España, y tiene representación en más de 2.000 localidades por todo el país.</string>
+    <string name="GEPC">Su objetivo es velar por los intereses de los pacientes de cáncer, para que todos tengan acceso a un diagnóstico rápido y a los mejores tratamientos posibles, facilitando también su participación en ensayos clínicos y estudios epidemiológicos.</string>
+    <string name="PEQDES">Esta asociación, con sede en Madrid y delegaciones en Cataluña, Navarra y la Comunidad Valenciana, intenta cumplir un deseo de los niños, residentes en España, que padezcan una enfermedad crónica o con mal pronóstico, de forma desinteresada y gratuita.</string>
+    <string name="FEPNC">Constituida por 14 asociaciones distribuidas por diversas comunidades autónomas, pretende mejorar la calidad de vida de los niños enfermos de cáncer y sus familias, ofreciéndoles apoyo emocional y ayuda profesional para afrontar la enfermedad. Además, asesoran a las familias en la tramitación de ayudas económicas y sociales, y les informan de los recursos a su alcance.</string>
+    <string name="CURADOS">Página web que ofrece testimonios y experiencias de personas que han padecido distintos tipos de cáncer. Los tratamientos que recibieron, cómo cambió sus vidas, noticias relacionadas, etc.</string>
+    <string name="CARENA">Se trata de una organización, sin ánimo de lucro, que pretende cubrir un vacío en el tratamiento del cáncer y otras enfermedades graves, atendiendo a los aspectos psicológicos y emocionales que tienen estas patologías, cuyo abordaje forma parte del tratamiento integral que necesitan recibir los pacientes.</string>
+
     <string name="btn_text_retry">Reintentar</string>
 
     <string name="AECC">Como indica su nombre, su objetivo es luchar contra todos los tipos de cáncer: informando, apoyando y acompañando a los enfermos y sus familiares, promoviendo la investigación oncológica, y concienciando a la sociedad de la necesidad de actuar frente a esta enfermedad. Aunque tiene su sede central en Madrid, desarrolla su labor en toda España, y tiene representación en más de 2.000 localidades por todo el país.</string>
