@@ -57,6 +57,8 @@
     <string name="open_drawer">Drawer Open</string>
     <string name="close_drawer">Drawer Close</string>
 
+    <string name="string_content_description">Imagen de Contacto</string>
+
     //Exception messages
     <string name="exception_message_generic">Ocurrió un error en la aplicación</string>
     <string name="exception_message_no_connection">No se ha encontrado conexión a internet</string>
@@ -99,5 +101,7 @@
         <li><strong>No tengas miedo a la muerte. </strong>Si no le tienes miedo a la muerte, no le vas a tener miedo a nada que te depare la vida.</li>
       </ul>
     </string>
+
+    <string name="btn_text_retry">Reintentar</string>
 
 </resources>

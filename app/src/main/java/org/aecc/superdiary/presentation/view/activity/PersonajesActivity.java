@@ -9,8 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
@@ -19,21 +21,32 @@ import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComp
 import org.aecc.superdiary.presentation.model.ContactModel;
 import org.aecc.superdiary.presentation.presenter.ContactListPresenter;
 import org.aecc.superdiary.presentation.view.PersonajesListView;
+import org.aecc.superdiary.presentation.view.adapter.ContactsAdapter;
 
 import java.util.Collection;
 
 import javax.inject.Inject;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 
 public class PersonajesActivity extends DiaryBaseActivity implements HasComponent<ContactComponent>, PersonajesListView{
+
+    public interface ContactListListener {
+        void onContactClicked(final ContactModel contactModel);
+    }
 
     @Inject
     ContactListPresenter contactListPresenter;
 
     @InjectView(R.id.recycler_contacts)
     RecyclerView recycler_contacts;
+    @InjectView(R.id.rl_progress)
+    RelativeLayout rl_progress;
+    @InjectView(R.id.rl_retry) RelativeLayout rl_retry;
+    @InjectView(R.id.bt_retry)
+    Button bt_retry;
 
     private ContactsAdapter contactsAdapter;
 
@@ -52,50 +65,6 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         setTitle(titulos[position]);
         this.initializeInjector();
         //setContentView(R.layout.activity_personajes);
-
-        //Array que asociaremos al adaptador
-        String[] array = new String[]{
-                "Elemento 1"
-                , "Elemento 2"
-                , "Elemento 3"
-                , "Elemento 4"
-                , "Elemento 5"
-                , "Elemento 6"
-        };
-
-        //Creaci�n del adaptador, vamos a escoger el layout
-        //simple_list_item_1, que los mostr
-        ListAdapter adaptador = new ArrayAdapter<>(
-                this, android.R.layout.simple_list_item_1, array);
-
-        //Asociamos el adaptador a la vista.
-        listViewCharacters = (ListView) view.findViewById(R.id.list);
-        listViewCharacters.setAdapter(adaptador);
-
-        listViewCharacters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-
-            // ListView Clicked item index
-            int itemPosition = position;
-            // ListView Clicked item value
-            String itemValue = (String) listViewCharacters.getItemAtPosition(position);
-            Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
-
-            // Show Alert
-                /*Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();*/
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-            //startActivity(intent);
-
-
-        });
-
-
     }
 
     private void initializeInjector() {
@@ -103,9 +72,11 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
                 .applicationComponent(getApplicationComponent())
                 .activityModule(getActivityModule())
                 .build();
+        this.initialize();
+        this.loadContactList();
     }
 
-    /*@Override public void onUserClicked(ContactModel contactModel) {
+    /*@Override public void onContactClicked(ContactModel contactModel) {
         this.navigator.navigateToContacDetails(this, contactModel.getContactId());
     }*/
 
@@ -137,42 +108,86 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
 
     @Override
     public void renderContactList(Collection<ContactModel> contactModelCollection) {
-
+        if (contactModelCollection != null) {
+            if (this.contactsAdapter == null) {
+                this.contactsAdapter = new ContactsAdapter(this, contactModelCollection);
+            } else {
+                this.contactsAdapter.setContactsCollection(contactModelCollection);
+            }
+            this.contactsAdapter.setOnItemClickListener(onItemClickListener);
+            this.recycler_contacts.setAdapter(contactsAdapter);
+        }
     }
 
     @Override
     public void viewContact(ContactModel contactModel) {
 
+        this.onContactClicked(contactModel);
+        
     }
 
-    @Override
-    public void showLoading() {
-
+    private void initialize() {
+        //this.getComponent(ContactComponent.class).inject(this);
+        this.contactListPresenter.setView(this);
     }
 
-    @Override
-    public void hideLoading() {
-
+    @Override public void showLoading() {
+        this.rl_progress.setVisibility(View.VISIBLE);
+        this.setProgressBarIndeterminateVisibility(true);
     }
 
-    @Override
-    public void showRetry() {
-
+    @Override public void hideLoading() {
+        this.rl_progress.setVisibility(View.GONE);
+        this.setProgressBarIndeterminateVisibility(false);
     }
 
-    @Override
-    public void hideRetry() {
+    @Override public void showRetry() {
+        this.rl_retry.setVisibility(View.VISIBLE);
+    }
 
+    @Override public void hideRetry() {
+        this.rl_retry.setVisibility(View.GONE);
     }
 
     @Override
     public void showError(String message) {
-
+        this.showToastMessage(message);
     }
 
     @Override
     public Context getContext() {
-        return null;
+        return getApplicationContext();
     }
+
+    @Override public void onResume() {
+        super.onResume();
+        this.contactListPresenter.resume();
+    }
+
+    @Override public void onPause() {
+        super.onPause();
+        this.contactListPresenter.pause();
+    }
+
+    private void loadContactList() {
+        this.contactListPresenter.initialize();
+    }
+
+    @OnClick(R.id.bt_retry) void onButtonRetryClick() {
+        PersonajesActivity.this.loadContactList();
+    }
+
+    public void onContactClicked(ContactModel contactModel) {
+        this.navigator.navigateToContacDetails(this, contactModel.getContactId());
+    }
+
+    private ContactsAdapter.OnItemClickListener onItemClickListener =
+            new ContactsAdapter.OnItemClickListener() {
+                @Override public void onContactItemClicked(ContactModel contactModel) {
+                    if (PersonajesActivity.this.contactListPresenter != null && contactModel != null) {
+                        PersonajesActivity.this.contactListPresenter.onContactClicked(contactModel);
+                    }
+                }
+            };
 }
 

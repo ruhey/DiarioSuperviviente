@@ -19,7 +19,9 @@ import javax.inject.Inject;
 public class ContactListPresenter implements Presenter {
     private final GetContactListUseCase getContactListUseCase;
     private final ContactModelDataMapper contactModelDataMapper;
+
     private PersonajesListView viewListView;
+
     private final GetContactListUseCase.Callback contactListCallback = new GetContactListUseCase.Callback() {
         @Override
         public void onContactListLoaded(Collection<Contact> contactsCollection) {

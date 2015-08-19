@@ -1,6 +1,7 @@
 package org.aecc.superdiary.presentation.view.activity;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 import org.aecc.superdiary.presentation.AndroidApplication;
 import org.aecc.superdiary.presentation.internal.di.components.ApplicationComponent;
@@ -21,5 +22,9 @@ public class BaseActivity extends Activity {
 
     protected ActivityModule getActivityModule() {
         return new ActivityModule(this);
+    }
+
+    protected void showToastMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
