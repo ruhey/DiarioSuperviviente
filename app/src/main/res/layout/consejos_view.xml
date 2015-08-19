@@ -35,7 +35,7 @@
 
 
             <TextView
-                style="@style/TextAppearance.AppCompat.Body2"
+                style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -63,20 +63,12 @@
             android:text="Vive y se feliz"/>
 
         <TextView
-            style="@style/TextAppearance.AppCompat.Body2"
+            style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/vida"/>
 
-
-
-            <TextView
-            style="@style/TextAppearance.AppCompat.Body2"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:text="@string/alimentacion"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

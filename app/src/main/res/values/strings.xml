@@ -67,37 +67,45 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_recursos">RecursosActivity</string>
 
-    <!--Texto Meditacion -->
-    <string name="meditacion"><p>Quiero que te tumbes en el suelo (o en la cama). Cierra los ojos. Ahora veamos
-    cuánto tiempo eres capaz de estar tumbado tranquilamente. (Esperar.)
-    Magnifico, has estado quieto durante segundos. Ahora intenta superar ese
-    tiempo.</p></string>
+    <!--TEXTOS PANTALLAS DE RECURSOS -->
+
+    <string name="meditacion">Quiero que te tumbes en el suelo (o en la cama).\n\n <b>Cierra los ojos.</b>\n\n Ahora veamos
+    cuánto tiempo eres capaz de estar tumbado tranquilamente.\n\n\n ...(Esperar)...\n\n\n
+    Magnífico, has estado quieto durante segundos. Ahora intenta superar ese
+    tiempo.</string>
+
 
     <string name="alimentacion">
-        1. Cuida el ambiente durante la comida \n
-        2. Realiza 5-6 comidas ligeras diarias
-        3. Bebe alrededor de 6-8 vasos diarios de agua u otros líquidos (infusiones, zumos o batidos), a pequeños sorbos y fuera de las comidas.
-        4. Extrema la higiene de la boca
-        6. Mantén un horario regular y diario para ir al baño
-        7. Elige alimentos de sabor y olor suave, textura homogénea y cremosa, consistencia blanda, cocinado sencillo (cocido, hervido, plancha) y de fácil digestión en momentos de poco apetito o digestiones pesadas:
-        8. Evita los lugares donde se cocina, la comida de olor fuerte, los irritantes, el tabaco y el alcohol que secan la boca y alteran el gusto de los alimentos. Reduce, si tienes dificultad para comer o saciedad precoz, el consumo de:
-        9. Pésate todas las semanas al levantarte por la mañana. Si adelgazas, valora cuál es la causa y coméntalo con tu médico. Posibles causas:
-        10. Si tu médico te prescribe un suplemento nutricional recuerda que habitualmente es un complemento o apoyo a tu comida y no un sustituto:
+        <li> 1. Cuida el ambiente durante la comida.</li>\n\n
+        <li> 2. Realiza 5-6 comidas ligeras diarias.</li>\n\n
+        <li> 3. Bebe alrededor de 6-8 vasos diarios de agua u otros líquidos (infusiones, zumos o batidos), a pequeños sorbos y fuera de las comidas.</li>\n\n
+        <li> 4. Extrema la higiene de la boca.</li>\n\n
+        <li> 6. Mantén un horario regular y diario para ir al baño.</li>\n\n
+        <li> 7. Elige alimentos de sabor y olor suave, textura homogénea y cremosa, consistencia blanda, cocinado sencillo (cocido, hervido, plancha) y de fácil digestión en momentos de poco apetito o digestiones pesadas.</li>\n\n
+        <li> 8. Evita los lugares donde se cocina, la comida de olor fuerte, los irritantes, el tabaco y el alcohol que secan la boca y alteran el gusto de los alimentos.</li>\n\n
+        <li> 9. Pésate todas las semanas al levantarte por la mañana. Si adelgazas, valora cuál es la causa y coméntalo con tu médico.</li>\n\n
+        <li> 10. Si tu médico te prescribe un suplemento nutricional recuerda que habitualmente es un complemento o apoyo a tu comida y no un sustituto.</li>\n\n
         </string>
 
     <string name="vida">
-      <ul>
-        <li><strong>No pierdas tu vida en un trabajo que odias.</strong> La vida es demasiado corta como para vivirla sólo por la noche y los fines de semana.</li>
-        <li>Si en tu vida pasa algo malo que no puedes evitar, <strong>trata de adaptarte</strong>. Darte cabezazos contra la pared no tiene sentido.</li>
-        <li><strong>Si piensas que puedes cambiar algo, trata de hacerlo por todos los medios.</strong> Intenta antes entender la esencia del problema y entonces te vas a dar cuenta de que se puede resolver.</li>
-        <li><strong>No existen "buenas" y "malas" decisiones. </strong>Si hiciste algo que crees que está mal, aprende una lección de ello, la próxima vez lo harás mejor. No puedes saber las vueltas que finalmente van a dar las cosas, por lo que sentarse a llorar es una pérdida del tiempo.</li>
-        <li><strong>Pide perdón a las personas a quien podrías haber hecho daño.</strong> No eres perfecto, ni siquiera intentes aparentarlo, sólo admite la responsabilidad del sufrimiento que causó a otra persona.</li>
-        <li><strong>No te arrepientas del pasado, ya no vas a poder cambiarlo.</strong> Vive del presente. Pero no el de un solo momento, es demasiado corto. "Ahora" es un pedazo de tiempo corto que incluye un poco del pasado, un poco del futuro y el presente mismo.</li>
-        <li><strong>Estate abierto a diferentes ideas.</strong> No descartes otras posibilidades.</li>
-        <li><strong>Trata de no perder nunca el sentido del humor, </strong>aunque no siempre sea posible.</li>
-        <li><strong>Carpe Diem.</strong> En otras palabras, ¡aprovecha el momento!</li>
-        <li><strong>No tengas miedo a la muerte. </strong>Si no le tienes miedo a la muerte, no le vas a tener miedo a nada que te depare la vida.</li>
-      </ul>
+        <li><b>No pierdas tu vida en un trabajo que odias.</b> La vida es demasiado corta como para vivirla sólo por la noche y los fines de semana.</li>\n
+        <li>Si en tu vida pasa algo malo que no puedes evitar, <b>trata de adaptarte</b>. Darte cabezazos contra la pared no tiene sentido.</li>\n
+        <li><b>Si piensas que puedes cambiar algo, trata de hacerlo por todos los medios.</b> Intenta antes entender la esencia del problema y entonces te vas a dar cuenta de que se puede resolver.</li>\n
+        <li><b>No existen "buenas" y "malas" decisiones. </b>Si hiciste algo que crees que está mal, aprende una lección de ello, la próxima vez lo harás mejor. No puedes saber las vueltas que finalmente van a dar las cosas, por lo que sentarse a llorar es una pérdida del tiempo.</li>\n
+        <li><b>Pide perdón a las personas a quien podrías haber hecho daño.</b> No eres perfecto, ni siquiera intentes aparentarlo, sólo admite la responsabilidad del sufrimiento que causó a otra persona.</li>\n
+        <li><b>No te arrepientas del pasado, ya no vas a poder cambiarlo.</b> Vive del presente. Pero no el de un solo momento, es demasiado corto. "Ahora" es un pedazo de tiempo corto que incluye un poco del pasado, un poco del futuro y el presente mismo.</li>\n
+        <li><b>Estate abierto a diferentes ideas.</b> No descartes otras posibilidades.</li>\n
+        <li><b>Trata de no perder nunca el sentido del humor, </b>aunque no siempre sea posible.</li>\n
+        <li><b>Carpe Diem.</b> En otras palabras, ¡aprovecha el momento!</li>\n
+        <li><b>No tengas miedo a la muerte. </b>Si no le tienes miedo a la muerte, no le vas a tener miedo a nada que te depare la vida.</li>\n
     </string>
+
+    <string name="AECC">Como indica su nombre, su objetivo es luchar contra todos los tipos de cáncer: informando, apoyando y acompañando a los enfermos y sus familiares, promoviendo la investigación oncológica, y concienciando a la sociedad de la necesidad de actuar frente a esta enfermedad. Aunque tiene su sede central en Madrid, desarrolla su labor en toda España, y tiene representación en más de 2.000 localidades por todo el país.</string>
+    <string name="GEPC">Su objetivo es velar por los intereses de los pacientes de cáncer, para que todos tengan acceso a un diagnóstico rápido y a los mejores tratamientos posibles, facilitando también su participación en ensayos clínicos y estudios epidemiológicos.</string>
+    <string name="PEQDES">Esta asociación, con sede en Madrid y delegaciones en Cataluña, Navarra y la Comunidad Valenciana, intenta cumplir un deseo de los niños, residentes en España, que padezcan una enfermedad crónica o con mal pronóstico, de forma desinteresada y gratuita.</string>
+    <string name="FEPNC">Constituida por 14 asociaciones distribuidas por diversas comunidades autónomas, pretende mejorar la calidad de vida de los niños enfermos de cáncer y sus familias, ofreciéndoles apoyo emocional y ayuda profesional para afrontar la enfermedad. Además, asesoran a las familias en la tramitación de ayudas económicas y sociales, y les informan de los recursos a su alcance.</string>
+    <string name="CURADOS">Página web que ofrece testimonios y experiencias de personas que han padecido distintos tipos de cáncer. Los tratamientos que recibieron, cómo cambió sus vidas, noticias relacionadas, etc.</string>
+    <string name="CARENA">Se trata de una organización, sin ánimo de lucro, que pretende cubrir un vacío en el tratamiento del cáncer y otras enfermedades graves, atendiendo a los aspectos psicológicos y emocionales que tienen estas patologías, cuyo abordaje forma parte del tratamiento integral que necesitan recibir los pacientes.</string>
+
 
 </resources>

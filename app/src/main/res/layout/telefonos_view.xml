@@ -3,7 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         style="@style/textoTituloVistasRecursos"
         android:layout_width="wrap_content"
@@ -18,50 +17,321 @@
         android:layout_gravity="center"
         android:background="#728C93" />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    <TextView
-        android:text = "ASOCIACION TAL Y CUAL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:layout_gravity="center"
-        />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:text = "983220817"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:layout_gravity="center"
-        android:autoLink="phone"
-        />
+            <!--AECC-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:text="paginaweb.com"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:layout_gravity="center"
-        android:autoLink="web"/>
 
-    <TextView
-        android:text="ruhey@hotmail.com"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autoLink="email"
-        android:paddingTop="5dp"
-        android:layout_gravity="center"/>
+                <TextView
+                    android:text = "ASOCIACIÓN ESPAÑOLA CONTRA EL CANCER"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="@string/AECC"/>
+
+                <TextView
+                    android:text = " 900100036"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="phone"
+                    />
+
+                <TextView
+                    android:text="www.aecc.es"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="web"/>
+
+                <TextView
+                    android:text="sedecentral@aecc.es"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"/>
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#728C93" />
+            </LinearLayout>
+
+            <!--AECC-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text = "GRUPO ESPAÑOL DE PACIENTES CON CÁNCER"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="@string/GEPC"/>
+
+
+                <TextView
+                    android:text = "901220110"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="phone"
+                    />
+
+                <TextView
+                    android:text="www.gepac.es"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="web"/>
+
+                <TextView
+                    android:text="info@aeal.es"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"/>
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="#728C93" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:text = "FUNDACIÓN PEQUEÑO DESEO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="@string/PEQDES"/>
+
+
+                <TextView
+                    android:text = "915741234"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="phone"
+                    />
+
+                <TextView
+                    android:text="www.fpdeseo.org"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="web"/>
+
+                <TextView
+                    android:text="fpdeseo@fpdeseo.org"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"/>
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="#728C93" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:text = "CURADOS DE CÁNCER"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="@string/CURADOS"/>
+
+                <TextView
+                    android:text="www.curadosdecancer.com"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="web"/>
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="#728C93" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:text = "ASOCIACIÓN CARENA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="@string/CARENA"/>
+
+
+                <TextView
+                    android:text = "963923898"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="phone"
+                    />
+
+                <TextView
+                    android:text="www.asociacioncarena.com"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="web"/>
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="#728C93" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:text = "FEDERACIÓN ESPAÑOLA DE PADRES DE NIÑOS CON CÁNCER"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="@string/FEPNC"/>
+
+
+                <TextView
+                    android:text = "915572626"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="phone"
+                    />
+
+                <TextView
+                    android:text="www.cancerinfantil.org"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"
+                    android:autoLink="web"/>
+
+                <TextView
+                    android:text="federacion.madrid@cancerinfantil.org"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"/>
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#728C93" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#728C93" />
-
-
-
-</LinearLayout>
