@@ -13,7 +13,7 @@ import org.aecc.superdiary.R;
 public class ConsejosTab extends DiaryBaseActivity{
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.consejos_tab,container,false);
+        View v =inflater.inflate(R.layout.consejos_view,container,false);
         return v;
     }
 }
