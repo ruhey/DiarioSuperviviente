@@ -16,6 +16,10 @@
     <string name="enmarcha">EN MARCHA</string>
     <string name="calendario">CALENDARIO</string>
 
+    <string name="btn_text_retry">REINTENTAR</string>
+
+
+
     <!-- DESCRIPCIONES DE INICIO DE LAS ACTIVIDADES  -->
     <string name="descripcionEnMarcha">EVENTOS HOY EN MARCHA</string>
     <string name="descripcionCalendario">VISTA GENERAL CALENDARIO MES</string>
@@ -71,10 +75,13 @@
 
     <!--TEXTOS PANTALLAS DE RECURSOS -->
 
-    <string name="meditacion">Quiero que te tumbes en el suelo (o en la cama).\n\n <b>Cierra los ojos.</b>\n\n Ahora veamos
-    cuánto tiempo eres capaz de estar tumbado tranquilamente.\n\n\n ...(Esperar)...\n\n\n
-    Magnífico, has estado quieto durante segundos. Ahora intenta superar ese
-    tiempo.</string>
+    <string name="relajate">Relájate.....Respirando</string>
+    <string name="meditacion">Muchas personas que están a la espera de una revisión médica han descubierto que el practicar relajación con ejercicios muy sencillos les ayuda a reducir el estrés. Te ofrecemos una serie de pautas de respiración que puedes practicar en casa y que pueden ayudarte en tu dia a día:\n\n
+     l. Busca un sitio tranquilo donde puedas relajarte durante al menos 20 minutos.\n\n
+     2. Asegúrate de que el ambiente sea relajante. Si lo deseas, puedes bajar la intensidad de la luz y elegir una silla o un sofá cómodo en el que puedas relajar los músculos.\n\n
+     3. A continuación, coloca una mano sobre el vientre y la otra en el estómago para poder percibir claramente la respiración, coge aire por la nariz, llévalo hasta el fondo de los pulmones [para ello, infla voluntariamente el abdomen-la tripa], retén unos segundos la respiración y después expulsa el aire lentamente por la boca con los labios ligeramente fruncidos [como si estuvieras soplando una vela].\n\n
+     4. En el transcurso del ejercicio, puedes ir variando la velocidad de la respiración, hasta conseguir un ritmo lento pero constante.\n\n
+     5. Práctica este ejercicio durante unos cinco minutos cada día.\n\n</string>
 
 
     <string name="alimentacion">
@@ -107,16 +114,7 @@
     <string name="PEQDES">Esta asociación, con sede en Madrid y delegaciones en Cataluña, Navarra y la Comunidad Valenciana, intenta cumplir un deseo de los niños, residentes en España, que padezcan una enfermedad crónica o con mal pronóstico, de forma desinteresada y gratuita.</string>
     <string name="FEPNC">Constituida por 14 asociaciones distribuidas por diversas comunidades autónomas, pretende mejorar la calidad de vida de los niños enfermos de cáncer y sus familias, ofreciéndoles apoyo emocional y ayuda profesional para afrontar la enfermedad. Además, asesoran a las familias en la tramitación de ayudas económicas y sociales, y les informan de los recursos a su alcance.</string>
     <string name="CURADOS">Página web que ofrece testimonios y experiencias de personas que han padecido distintos tipos de cáncer. Los tratamientos que recibieron, cómo cambió sus vidas, noticias relacionadas, etc.</string>
-    <string name="CARENA">Se trata de una organización, sin ánimo de lucro, que pretende cubrir un vacío en el tratamiento del cáncer y otras enfermedades graves, atendiendo a los aspectos psicológicos y emocionales que tienen estas patologías, cuyo abordaje forma parte del tratamiento integral que necesitan recibir los pacientes.</string>
-
-    <string name="btn_text_retry">Reintentar</string>
-
-    <string name="AECC">Como indica su nombre, su objetivo es luchar contra todos los tipos de cáncer: informando, apoyando y acompañando a los enfermos y sus familiares, promoviendo la investigación oncológica, y concienciando a la sociedad de la necesidad de actuar frente a esta enfermedad. Aunque tiene su sede central en Madrid, desarrolla su labor en toda España, y tiene representación en más de 2.000 localidades por todo el país.</string>
-    <string name="GEPC">Su objetivo es velar por los intereses de los pacientes de cáncer, para que todos tengan acceso a un diagnóstico rápido y a los mejores tratamientos posibles, facilitando también su participación en ensayos clínicos y estudios epidemiológicos.</string>
-    <string name="PEQDES">Esta asociación, con sede en Madrid y delegaciones en Cataluña, Navarra y la Comunidad Valenciana, intenta cumplir un deseo de los niños, residentes en España, que padezcan una enfermedad crónica o con mal pronóstico, de forma desinteresada y gratuita.</string>
-    <string name="FEPNC">Constituida por 14 asociaciones distribuidas por diversas comunidades autónomas, pretende mejorar la calidad de vida de los niños enfermos de cáncer y sus familias, ofreciéndoles apoyo emocional y ayuda profesional para afrontar la enfermedad. Además, asesoran a las familias en la tramitación de ayudas económicas y sociales, y les informan de los recursos a su alcance.</string>
-    <string name="CURADOS">Página web que ofrece testimonios y experiencias de personas que han padecido distintos tipos de cáncer. Los tratamientos que recibieron, cómo cambió sus vidas, noticias relacionadas, etc.</string>
-    <string name="CARENA">Se trata de una organización, sin ánimo de lucro, que pretende cubrir un vacío en el tratamiento del cáncer y otras enfermedades graves, atendiendo a los aspectos psicológicos y emocionales que tienen estas patologías, cuyo abordaje forma parte del tratamiento integral que necesitan recibir los pacientes.</string>
+    <string name="TODOSSUPER">En España somos 1,5 millones de supervivientes de cáncer y muchos de nosotros, tras finalizar los tratamientos, afrontamos dificultades y se generan toda una serie de necesidades que no son tenidas en cuenta y que queremos dar a conocer a toda la sociedad.</string>
 
 
 </resources>

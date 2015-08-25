@@ -8,5 +8,10 @@
     <color name="colorPrimaryDark">#3d6635</color>
     <color name="tabsScrollColor">#85b75b</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="verdeFolleto">#7b9242</color>
+    <color name="campoARellenarFolleto">#f5dab9</color>
+    <color name="campoARellenarNombreFolleto">#d4d7b5</color>
+    <color name="naranjaFolleto">#e07017</color>
+    <color name="naranjaBoton">#f39c12</color>
 
 </resources>
