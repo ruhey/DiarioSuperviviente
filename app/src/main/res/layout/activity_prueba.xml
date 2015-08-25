@@ -81,7 +81,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="2"
                     android:gravity="left"
                     android:orientation="vertical">
 
@@ -105,7 +105,7 @@
                         style="@style/textoInsercionCampos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:inputType="date" />
 
                 </LinearLayout>
@@ -114,7 +114,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="1"
                     android:gravity="left"
                     android:orientation="vertical">
 
@@ -139,7 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="10"
+                        android:ems="5"
                         android:inputType="time" />
                 </LinearLayout>
             </LinearLayout>
@@ -185,7 +185,7 @@
                         android:gravity="top|left"
                         android:inputType="textPersonName|textMultiLine"
                         android:lines="15"
-                        android:minLines="5"
+                        android:minLines="10"
                         android:scrollHorizontally="false"
                         android:scrollbars="vertical"
                         android:singleLine="false" />
@@ -193,6 +193,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/guardarPrueba"
                 style="?android:attr/buttonStyleSmall"
                 android:background="@color/naranjaBoton"
                 android:textColor="@color/blancoVerdoso"

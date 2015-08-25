@@ -292,13 +292,25 @@
                         android:layout_height="wrap_content"
                         android:gravity="top|left"
                         android:inputType="textPersonName|textMultiLine"
-                        android:lines="15"
-                        android:minLines="10"
+                        android:lines="10"
+                        android:minLines="5"
                         android:scrollHorizontally="false"
                         android:scrollbars="vertical"
                         android:singleLine="false" />
                 </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/guardarMedicamento"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/naranjaBoton"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="GUARDAR"
+                />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

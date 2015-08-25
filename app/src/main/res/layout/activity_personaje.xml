@@ -265,6 +265,17 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <Button
+                android:id="@+id/guardarPersonaje"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/naranjaBoton"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="GUARDAR"
+                />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

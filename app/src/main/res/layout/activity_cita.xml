@@ -327,6 +327,8 @@
                     android:text="HORAS" />
             </LinearLayout>
 
+            <include layout="@layout/cita_buttons"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

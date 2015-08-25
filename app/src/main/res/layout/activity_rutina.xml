@@ -363,7 +363,28 @@
 
             </LinearLayout>
 
-            <!-- DESCRIPCIÓN -->
+            <Button
+                android:id="@+id/anadirPersonaje"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/naranjaBoton"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_marginBottom="1dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="AÑADIR PERSONAJE"
+                />
+
+            <Button
+                android:id="@+id/guardarRutina"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/naranjaBoton"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="GUARDAR"
+                />
 
         </LinearLayout>
     </ScrollView>
