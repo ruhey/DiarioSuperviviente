@@ -32,4 +32,9 @@
         <item name="android:background">@drawable/abc_dialog_material_background_light</item>
     </style>
 
+    <style name="DiaryTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:colorAccent">@color/naranjaBoton</item>
+    </style>
+
 </resources>

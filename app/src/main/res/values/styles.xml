@@ -12,6 +12,16 @@
 
     <style name="botonInicio" parent="AppTheme" />
 
+    <style name="DiaryTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/verdeFolleto</item>
+    </style>
+
+
+
     <style name="AppTheme.ProgressBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
