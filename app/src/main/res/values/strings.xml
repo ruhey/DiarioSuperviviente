@@ -71,10 +71,13 @@
 
     <!--TEXTOS PANTALLAS DE RECURSOS -->
 
-    <string name="meditacion">Quiero que te tumbes en el suelo (o en la cama).\n\n <b>Cierra los ojos.</b>\n\n Ahora veamos
-    cuánto tiempo eres capaz de estar tumbado tranquilamente.\n\n\n ...(Esperar)...\n\n\n
-    Magnífico, has estado quieto durante segundos. Ahora intenta superar ese
-    tiempo.</string>
+    <string name="relajate">Relájate.....Respirando</string>
+    <string name="meditacion">Muchas personas que están a la espera de una revisión médica han descubierto que el practicar relajación con ejercicios muy sencillos les ayuda a reducir el estrés. Te ofrecemos una serie de pautas de respiración que puedes practicar en casa y que pueden ayudarte en tu dia a día:\n\n
+     l. Busca un sitio tranquilo donde puedas relajarte durante al menos 20 minutos.\n\n
+     2. Asegúrate de que el ambiente sea relajante. Si lo deseas, puedes bajar la intensidad de la luz y elegir una silla o un sofá cómodo en el que puedas relajar los músculos.\n\n
+     3. A continuación, coloca una mano sobre el vientre y la otra en el estómago para poder percibir claramente la respiración, coge aire por la nariz, llévalo hasta el fondo de los pulmones [para ello, infla voluntariamente el abdomen-la tripa], retén unos segundos la respiración y después expulsa el aire lentamente por la boca con los labios ligeramente fruncidos [como si estuvieras soplando una vela].\n\n
+     4. En el transcurso del ejercicio, puedes ir variando la velocidad de la respiración, hasta conseguir un ritmo lento pero constante.\n\n
+     5. Práctica este ejercicio durante unos cinco minutos cada día.\n\n</string>
 
 
     <string name="alimentacion">
@@ -110,5 +113,8 @@
     <string name="CARENA">Se trata de una organización, sin ánimo de lucro, que pretende cubrir un vacío en el tratamiento del cáncer y otras enfermedades graves, atendiendo a los aspectos psicológicos y emocionales que tienen estas patologías, cuyo abordaje forma parte del tratamiento integral que necesitan recibir los pacientes.</string>
 
     <string name="btn_text_retry">Reintentar</string>
+
+    <string name="TODOSSUPER">En España somos 1,5 millones de supervivientes de cáncer y muchos de nosotros, tras finalizar los tratamientos, afrontamos dificultades y se generan toda una serie de necesidades que no son tenidas en cuenta y que queremos dar a conocer a toda la sociedad.</string>
+
 
 </resources>

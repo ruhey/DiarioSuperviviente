@@ -91,7 +91,7 @@ public class DiaryBaseActivity extends BaseActivity {
         actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,						/* host Activity */
                 mDrawerLayout, 				/* DrawerLayout object */
-                R.drawable.ic_drawer,     /* nav drawer image to replace 'Up' caret */
+                R.drawable.ic_menu_b,     /* nav drawer image to replace 'Up' caret */
                 R.string.open_drawer,       /* "open drawer" description for accessibility */
                 R.string.close_drawer)      /* "close drawer" description for accessibility */ {
             @Override

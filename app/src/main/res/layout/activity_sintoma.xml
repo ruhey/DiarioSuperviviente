@@ -7,14 +7,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/fotoSintoma"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:background="@color/blancoVerdoso"
             android:src="@drawable/sintoma" />
@@ -41,11 +41,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/textoDatosEntidades"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SÍNTOMA" />
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_hora"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SÍNTOMA" />
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/nombreSintoma"
@@ -76,11 +85,20 @@
                     android:gravity="left"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="FECHA" />
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_fecha"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FECHA" />
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/fechaSintoma"
@@ -100,11 +118,20 @@
                     android:gravity="left"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="HORA" />
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_hora"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HORA" />
+                    </LinearLayout>
 
 
                     <EditText
@@ -136,11 +163,20 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="DESCRIPCIÓN" />
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_preguntas"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DESCRIPCIÓN" />
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/descripcionSintoma"
@@ -150,12 +186,24 @@
                         android:gravity="top|left"
                         android:inputType="textPersonName|textMultiLine"
                         android:lines="15"
-                        android:minLines="10"
+                        android:minLines="5"
                         android:scrollHorizontally="false"
                         android:scrollbars="vertical"
                         android:singleLine="false" />
                 </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/guardarSintoma"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/naranjaBoton"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="GUARDAR"
+                />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

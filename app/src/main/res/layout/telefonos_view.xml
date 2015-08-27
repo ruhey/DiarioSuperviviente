@@ -235,7 +235,7 @@
 
 
                 <TextView
-                    android:text = "ASOCIACIÓN CARENA"
+                    android:text = "TODOS SOMOS SUPERVIVIENTES"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"
@@ -248,11 +248,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingTop="5dp"
-                    android:text="@string/CARENA"/>
+                    android:text="@string/TODOSSUPER"/>
 
 
                 <TextView
-                    android:text = "963923898"
+                    android:text = "901220110"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
@@ -261,12 +261,20 @@
                     />
 
                 <TextView
-                    android:text="www.asociacioncarena.com"
+                    android:text="http://todosomosupervivientes.com/"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
                     android:layout_gravity="center"
                     android:autoLink="web"/>
+
+                <TextView
+                    android:text="info@gepac.es"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center"/>
 
                 <View
                     android:layout_width="100dp"

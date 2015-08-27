@@ -7,14 +7,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/fotoPrueba"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:background="@color/blancoVerdoso"
             android:src="@drawable/prueba" />
@@ -41,11 +41,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/textoDatosEntidades"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PRUEBA" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_descripcion"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PRUEBA" />
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/nombrePueba"
@@ -72,22 +81,31 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="2"
                     android:gravity="left"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="FECHA" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_fecha"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FECHA" />
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/fechaPrueba"
                         style="@style/textoInsercionCampos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:inputType="date" />
 
                 </LinearLayout>
@@ -96,15 +114,24 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="1"
                     android:gravity="left"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="HORA" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_hora"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HORA" />
+                    </LinearLayout>
 
 
                     <EditText
@@ -112,7 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="10"
+                        android:ems="5"
                         android:inputType="time" />
                 </LinearLayout>
             </LinearLayout>
@@ -135,11 +162,20 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DESCRIPCIÓN" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_preguntas"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DESCRIPCIÓN" />
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/descripcionPrueba"
@@ -155,6 +191,17 @@
                         android:singleLine="false" />
                 </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/guardarPrueba"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/naranjaBoton"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="GUARDAR"
+                />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

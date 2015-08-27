@@ -12,6 +12,16 @@
 
     <style name="botonInicio" parent="AppTheme" />
 
+    <style name="DiaryTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/verdeFolleto</item>
+    </style>
+
+
+
     <style name="AppTheme.ProgressBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -32,13 +42,20 @@
     <!--TEXTOS-->
     <style name="textoDatosEntidades">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">#50A7B3</item>
+        <item name="android:textColor">@color/verdeFolleto</item>
         <item name="android:layout_marginBottom">2dp</item>
         <item name="android:layout_marginTop">2dp</item>
     </style>
 
+    <!-- ICONOS CAMPOS DESCRIPCION -->
+    <style name="iconosCamposDescrp">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
     <style name="textoTituloVistasRecursos">
-        <item name="android:textColor">#50A7B3</item>
+        <item name="android:textColor">@color/verdeFolleto</item>
         <item name="android:layout_marginBottom">2dp</item>
         <item name="android:layout_marginTop">2dp</item>
         <item name="android:textStyle">bold</item>

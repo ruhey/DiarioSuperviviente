@@ -41,11 +41,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/textoDatosEntidades"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="¿QUE ES?" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_corazonb"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿QUÉ ES?" />
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/nombreRutina"
@@ -53,13 +62,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    />
 
-                <TextView
-                    style="@style/textoDatosEntidades"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="¿DONDE ES?" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_lugar"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿DÓNDE ES?" />
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/lugarRutina"
@@ -88,11 +107,20 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DESCRIPCIÓN" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_preguntas"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DESCRIPCIÓN" />
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/descripcionRutina"
@@ -127,11 +155,20 @@
                     android:gravity="left"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DIA" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_fecha"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DÍA" />
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/fechaRutina"
@@ -150,11 +187,20 @@
                     android:gravity="left"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="HORA" />
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_hora"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HORA" />
+                    </LinearLayout>
 
 
                     <EditText
@@ -180,11 +226,20 @@
                     android:gravity="left"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DIA AVISO" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_fecha_alarma"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DÍA AVISO" />
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/fechaAvisoRutina"
@@ -203,11 +258,20 @@
                     android:gravity="left"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/textoDatosEntidades"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="HORA AVISO" />
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_hora_alarma"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HORA AVISO" />
+                    </LinearLayout>
 
 
                     <EditText
@@ -228,16 +292,25 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    style="@style/textoDatosEntidades"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="DURACIÓN" />
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_duracion"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DURACIÓN" />
+                </LinearLayout>
 
                 <SeekBar
                     android:id="@+id/seekBarDuracRutina"
@@ -258,16 +331,25 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    style="@style/textoDatosEntidades"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SATISFACCIÓN" />
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_satisfaccion"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SATISFACCIÓN" />
+                </LinearLayout>
 
                 <SeekBar
                     android:id="@+id/seekBarSatisRutina"
@@ -281,7 +363,28 @@
 
             </LinearLayout>
 
-            <!-- DESCRIPCIÓN -->
+            <Button
+                android:id="@+id/anadirPersonaje"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/naranjaBoton"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_marginBottom="1dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="AÑADIR PERSONAJE"
+                />
+
+            <Button
+                android:id="@+id/guardarRutina"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/naranjaBoton"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="GUARDAR"
+                />
 
         </LinearLayout>
     </ScrollView>

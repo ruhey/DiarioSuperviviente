@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View android:id="@+id/strut"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/anadirPersonaje"
+            style="?android:attr/buttonStyleSmall"
+            android:background="@color/verdeFolleto"
+            android:textColor="@color/blancoVerdoso"
+            android:textAllCaps="true"
+            android:layout_margin="1dp"
+            android:layout_toLeftOf="@id/strut"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="AÑADIR PERSONAJE"
+            />
+        <Button
+            android:id="@+id/anadirMedicacion"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_toRightOf="@+id/anadirPersonaje"
+            android:background="@color/verdeFolleto"
+            android:textColor="@color/blancoVerdoso"
+            android:textAllCaps="true"
+            android:layout_margin="1dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="AÑADIR MEDICACIÓN"
+            />
+        <Button
+            android:id="@+id/anadirSintoma"
+            android:layout_below="@+id/anadirPersonaje"
+            style="?android:attr/buttonStyleSmall"
+            android:background="@color/verdeFolleto"
+            android:textColor="@color/blancoVerdoso"
+            android:textAllCaps="true"
+            android:layout_toLeftOf="@id/strut"
+            android:layout_margin="1dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="AÑADIR SÍNTOMA"
+            />
+        <Button
+            android:id="@+id/anadirPrueba"
+            android:layout_toRightOf="@+id/anadirSintoma"
+            style="?android:attr/buttonStyleSmall"
+            android:background="@color/verdeFolleto"
+            android:textColor="@color/blancoVerdoso"
+            android:layout_below="@id/anadirMedicacion"
+            android:textAllCaps="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:text="AÑADIR PRUEBA"
+            />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/guardarcita"
+        style="?android:attr/buttonStyleSmall"
+        android:background="@color/naranjaBoton"
+        android:textColor="@color/blancoVerdoso"
+        android:textAllCaps="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="GUARDAR"
+        />
+
+</LinearLayout>
