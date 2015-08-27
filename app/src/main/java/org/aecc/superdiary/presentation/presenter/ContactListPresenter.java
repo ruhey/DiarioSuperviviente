@@ -38,9 +38,9 @@ public class ContactListPresenter implements Presenter {
     };
 
     @Inject
-    public ContactListPresenter(GetContactListUseCase getContactListUserCase,
+    public ContactListPresenter(GetContactListUseCase getContactListUseCase,
                                 ContactModelDataMapper contactModelDataMapper) {
-        this.getContactListUseCase = getContactListUserCase;
+        this.getContactListUseCase = getContactListUseCase;
         this.contactModelDataMapper = contactModelDataMapper;
     }
 
