@@ -138,33 +138,43 @@ public class DiaryBaseActivity extends BaseActivity {
             case 0:
                 Log.d("DEV", "Debuggin");
                 break;
+            //Bienvenida
             case 1:
                 startActivity(new Intent(this, BienvenidaActivity.class));
                 break;
+            //Horarios
             case 2:
                 startActivity(new Intent(this, Calendario.class));
                 break;
+            //Citas
             case 3:
-                startActivity(new Intent(this, Citas.class));
+                startActivity(new Intent(this, Cita.class));
                 break;
+            //Rutinas
             case 4:
-                startActivity(new Intent(this, Otros.class));
+                startActivity(new Intent(this, Rutina.class));
                 break;
+            //Personajes
             case 5:
                 startActivity(new Intent(this, PersonajesActivity.class));
                 break;
+            //Medicacmentos
             case 6:
-                startActivity(new Intent(this, Otros.class));
+                startActivity(new Intent(this, Medicamento.class));
                 break;
+            //sintomas
             case 7:
-                startActivity(new Intent(this, Otros.class));
+                startActivity(new Intent(this, Sintoma.class));
                 break;
+            //pruebas
             case 8:
-                startActivity(new Intent(this, Otros.class));
+                startActivity(new Intent(this, Prueba.class));
                 break;
+            //Recursos
             case 9:
                 startActivity(new Intent(this, RecursosActivity.class));
                 break;
+            //Ajustes
             case 10:
                 startActivity(new Intent(this, Otros.class));
                 break;

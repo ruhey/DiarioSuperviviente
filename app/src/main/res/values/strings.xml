@@ -112,12 +112,18 @@
     <string name="CURADOS">Página web que ofrece testimonios y experiencias de personas que han padecido distintos tipos de cáncer. Los tratamientos que recibieron, cómo cambió sus vidas, noticias relacionadas, etc.</string>
     <string name="TODOSSUPER">En España somos 1,5 millones de supervivientes de cáncer y muchos de nosotros, tras finalizar los tratamientos, afrontamos dificultades y se generan toda una serie de necesidades que no son tenidas en cuenta y que queremos dar a conocer a toda la sociedad.</string>
 
-
-    <string name="CARENA">Se trata de una organización, sin ánimo de lucro, que pretende cubrir un vacío en el tratamiento del cáncer y otras enfermedades graves, atendiendo a los aspectos psicológicos y emocionales que tienen estas patologías, cuyo abordaje forma parte del tratamiento integral que necesitan recibir los pacientes.</string>
-
     <string name="btn_text_retry">Reintentar</string>
+    <string name="title_activity_cita">Cita</string>
+    <string name="title_activity_rutina">Rutina</string>
+    <string name="title_activity_medicamento">Medicamento</string>
+    <string name="title_activity_sintoma">Sintoma</string>
+    <string name="title_activity_prueba">Prueba</string>
 
-    <string name="TODOSSUPER">En España somos 1,5 millones de supervivientes de cáncer y muchos de nosotros, tras finalizar los tratamientos, afrontamos dificultades y se generan toda una serie de necesidades que no son tenidas en cuenta y que queremos dar a conocer a toda la sociedad.</string>
+    <!--MEDICAMENTOS -->
+    <string name="d_ini_med">día inicio</string>
+    <string name="d_fin_med">día fin</string>
+    <string name="h_ini_med">hora inicio</string>
+    <string name="h_fin_med">hora fin</string>
 
 
 </resources>

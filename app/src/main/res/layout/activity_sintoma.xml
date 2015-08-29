@@ -17,7 +17,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:background="@color/blancoVerdoso"
-            android:src="@drawable/sintoma" />
+            android:src="@drawable/sintoma_v" />
 
     </LinearLayout>
 
