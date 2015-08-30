@@ -175,7 +175,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:inputType="date" />
+                        android:hint="@string/d_ini_cita"/>
 
                 </LinearLayout>
 
@@ -208,7 +208,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="5"
-                        android:inputType="time" />
+                        android:hint="@string/h_ini_cita" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -246,7 +246,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:inputType="date" />
+                        android:hint="@string/d_aviso_cita" />
 
                 </LinearLayout>
 
@@ -279,7 +279,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="5"
-                        android:inputType="time" />
+                        android:hint="@string/h_aviso_cita" />
                 </LinearLayout>
             </LinearLayout>
 

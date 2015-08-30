@@ -2,7 +2,6 @@ package org.aecc.superdiary.presentation.view.activity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -14,34 +13,12 @@ import android.widget.TimePicker;
 
 import org.aecc.superdiary.R;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class Medicamento extends DiaryBaseActivity implements View.OnClickListener{
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getLayoutInflater().inflate(R.layout.activity_medicamento, frameLayout);
-        mDrawerList.setItemChecked(position, true);
-        setTitle(titulos[position]);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     //UI References
     private EditText fechaIniMed;
@@ -55,15 +32,27 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
     private TimePickerDialog hFinTimePickerDialog;
 
     private SimpleDateFormat dateFormatter;
-    private SimpleDateFormat timeFormatter;
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getLayoutInflater().inflate(R.layout.activity_medicamento, frameLayout);
+        mDrawerList.setItemChecked(position, true);
+        setTitle(titulos[position]);
+
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE);
+
+        findViewsById();
+        setDateTimeField();
+    }
 
     private void findViewsById() {
         fechaIniMed = (EditText) findViewById(R.id.fechaInicMedic);
         fechaIniMed.setInputType(InputType.TYPE_NULL);
         fechaIniMed.requestFocus();
 
-        horaIniMed = (EditText) findViewById(R.id.horaFinMedic);
+        horaIniMed = (EditText) findViewById(R.id.horaIniMedic);
         horaIniMed.setInputType(InputType.TYPE_NULL);
         
         fechaFinMed = (EditText) findViewById(R.id.fechaFinMedic);
@@ -81,7 +70,8 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
 
 
         Calendar newCalendar = Calendar.getInstance();
-
+        int hour = newCalendar.get(Calendar.HOUR_OF_DAY);
+        int minute = newCalendar.get(Calendar.MINUTE);
 
         fIniDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -99,26 +89,48 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
             }
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-        /*hIniTimePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+        hIniTimePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
                 Calendar newTime = Calendar.getInstance();
-                newTime.set(hourOfDay, minute);
-                horaIniMed.setText(dateFormatter.format(newTime.getTime()));
-            }*/
+                horaIniMed.setText(selectedHour + ":" + selectedMinute);
+            } },hour , minute, true);
+
+        hFinTimePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
+                Calendar newTime = Calendar.getInstance();
+                horaFinMed.setText(selectedHour + ":" + selectedMinute);
+            } },hour, minute, true);
     }
-
-
 
     @Override
     public void onClick(View view) {
-        if(view == fechaIniMed) {
+        if (view == fechaIniMed) {
             fIniDatePickerDialog.show();
-        } else if(view == fechaFinMed) {
+        } else if (view == fechaFinMed) {
             fFinDatePickerDialog.show();
+        } else if (view == horaIniMed) {
+            hIniTimePickerDialog.show();
+        } else if (view == horaFinMed) {
+            hFinTimePickerDialog.show();
         }
     }
-    
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

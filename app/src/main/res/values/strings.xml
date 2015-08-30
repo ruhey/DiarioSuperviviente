@@ -120,10 +120,27 @@
     <string name="title_activity_prueba">Prueba</string>
 
     <!--MEDICAMENTOS -->
-    <string name="d_ini_med">día inicio</string>
-    <string name="d_fin_med">día fin</string>
-    <string name="h_ini_med">hora inicio</string>
-    <string name="h_fin_med">hora fin</string>
+    <string name="d_ini_med">Día inicio</string>
+    <string name="d_fin_med">Día fin</string>
+    <string name="h_ini_med">Hora inicio</string>
+    <string name="h_fin_med">Hora fin</string>
+
+    <!--CITA -->
+    <string name="d_ini_cita">Día cita</string>
+    <string name="d_aviso_cita">Día aviso</string>
+    <string name="h_ini_cita">Hora inicio</string>
+    <string name="h_aviso_cita">Hora aviso</string>
+
+    <!--RUTINA -->
+    <string name="d_ini_rutina">Día rutina</string>
+    <string name="d_aviso_rutina">Día aviso</string>
+    <string name="h_ini_rutina">Hora rutina</string>
+    <string name="h_aviso_rutina">Hora aviso</string>
+
+    <!--PRUEBA Y SINTOMA -->
+    <string name="d_ini">Día inicio</string>
+    <string name="h_ini">Hora inicio</string>
+
 
 
 </resources>
