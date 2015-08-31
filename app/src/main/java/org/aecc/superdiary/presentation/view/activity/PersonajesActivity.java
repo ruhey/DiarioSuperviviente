@@ -3,6 +3,7 @@ package org.aecc.superdiary.presentation.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,8 +18,12 @@ import android.widget.RelativeLayout;
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
+import org.aecc.superdiary.presentation.internal.di.components.DaggerApplicationComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
+import org.aecc.superdiary.presentation.internal.di.modules.ApplicationModule;
+import org.aecc.superdiary.presentation.internal.di.modules.ContactModule;
 import org.aecc.superdiary.presentation.model.ContactModel;
+import org.aecc.superdiary.presentation.navigator.Navigator;
 import org.aecc.superdiary.presentation.presenter.ContactListPresenter;
 import org.aecc.superdiary.presentation.view.PersonajesListView;
 import org.aecc.superdiary.presentation.view.adapter.ContactsAdapter;
@@ -127,7 +132,8 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
     }
 
     private void initialize() {
-        //this.getComponent(ContactComponent.class).inject(this);
+        this.getApplicationComponent().inject(this);
+        this.getComponent().inject(this);
         this.contactListPresenter.setView(this);
     }
 

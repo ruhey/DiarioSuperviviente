@@ -9,11 +9,12 @@ import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsActivity;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton
+
 public class Navigator {
 
     @Inject
-    public void Navigator() {
+    @Singleton
+    public Navigator() {
         //empty
     }
 
