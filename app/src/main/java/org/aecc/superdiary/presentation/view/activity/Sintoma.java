@@ -70,8 +70,7 @@ public class Sintoma extends DiaryBaseActivity  implements View.OnClickListener{
         hTimePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
-                Calendar newTime = Calendar.getInstance();
-                hora.setText(selectedHour + ":" + selectedMinute);
+                hora.setText(String.format("%02d", selectedHour) + ":" + String.format("%02d", selectedMinute));
             } },hour , minute, true);
 
     }

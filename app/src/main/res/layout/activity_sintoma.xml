@@ -47,7 +47,7 @@
                     android:orientation="horizontal">
                     <ImageView
                         style="@style/iconosCamposDescrp"
-                        android:src="@drawable/aecc_hora"/>
+                        android:src="@drawable/aecc_descripcion"/>
 
                     <TextView
                         style="@style/textoDatosEntidades"

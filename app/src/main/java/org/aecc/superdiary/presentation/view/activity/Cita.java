@@ -2,7 +2,6 @@ package org.aecc.superdiary.presentation.view.activity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -90,15 +89,13 @@ public class Cita extends DiaryBaseActivity  implements View.OnClickListener {
         hIniTimePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
-                Calendar newTime = Calendar.getInstance();
-                horaIniCita.setText(selectedHour + ":" + selectedMinute);
+                horaIniCita.setText(String.format("%02d", selectedHour) + ":" + String.format("%02d", selectedMinute));
             } },hour , minute, true);
 
         hFinTimePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
-                Calendar newTime = Calendar.getInstance();
-                horaAviso.setText(selectedHour + ":" + selectedMinute);
+                horaAviso.setText(String.format("%02d", selectedHour) + ":" + String.format("%02d", selectedMinute));
             } },hour, minute, true);
     }
 

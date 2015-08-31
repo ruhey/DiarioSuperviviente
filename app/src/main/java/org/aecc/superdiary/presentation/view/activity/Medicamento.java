@@ -2,17 +2,23 @@ package org.aecc.superdiary.presentation.view.activity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.aecc.superdiary.R;
+import org.aecc.superdiary.presentation.view.activity.service.ScheduleClient;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -26,10 +32,14 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
     private EditText horaIniMed;
     private EditText horaFinMed;
 
+    private Button botonGuardarMedicamento;
+
     private DatePickerDialog fIniDatePickerDialog;
     private DatePickerDialog fFinDatePickerDialog;
     private TimePickerDialog hIniTimePickerDialog;
     private TimePickerDialog hFinTimePickerDialog;
+
+    private ScheduleClient scheduleClient;
 
     private SimpleDateFormat dateFormatter;
 
@@ -45,6 +55,12 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
 
         findViewsById();
         setDateTimeField();
+        
+        guardar();
+
+        // Create a new service client and bind our activity to this service
+        scheduleClient = new ScheduleClient(this);
+        scheduleClient.doBindService();
     }
 
     private void findViewsById() {
@@ -54,12 +70,14 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
 
         horaIniMed = (EditText) findViewById(R.id.horaIniMedic);
         horaIniMed.setInputType(InputType.TYPE_NULL);
-        
+
         fechaFinMed = (EditText) findViewById(R.id.fechaFinMedic);
         fechaFinMed.setInputType(InputType.TYPE_NULL);
 
         horaFinMed = (EditText) findViewById(R.id.horaFinMedic);
         horaFinMed.setInputType(InputType.TYPE_NULL);
+
+        botonGuardarMedicamento = (Button)findViewById(R.id.guardarMedicamento);
     }
 
     private void setDateTimeField() {
@@ -67,6 +85,7 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
         horaIniMed.setOnClickListener(this);
         fechaFinMed.setOnClickListener(this);
         horaFinMed.setOnClickListener(this);
+        botonGuardarMedicamento.setOnClickListener(this);
 
 
         Calendar newCalendar = Calendar.getInstance();
@@ -92,15 +111,13 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
         hIniTimePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
-                Calendar newTime = Calendar.getInstance();
-                horaIniMed.setText(selectedHour + ":" + selectedMinute);
+                horaIniMed.setText(String.format("%02d", selectedHour) + ":" + String.format("%02d", selectedMinute));
             } },hour , minute, true);
 
         hFinTimePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
-                Calendar newTime = Calendar.getInstance();
-                horaFinMed.setText(selectedHour + ":" + selectedMinute);
+                horaFinMed.setText(String.format("%02d", selectedHour) + ":" + String.format("%02d", selectedMinute));
             } },hour, minute, true);
     }
 
@@ -114,7 +131,47 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
             hIniTimePickerDialog.show();
         } else if (view == horaFinMed) {
             hFinTimePickerDialog.show();
+        } else if (view == botonGuardarMedicamento) {
+            anadirNotificacion();
+            guardar();
         }
+    }
+
+    private void anadirNotificacion() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Calendar newCal = Calendar.getInstance();
+
+        if(TextUtils.isEmpty(fechaFinMed.getText()) || TextUtils.isEmpty(horaFinMed.getText())){
+            Toast.makeText(this, "No se le notificará la hora de la toma de su medicamento, debe completar la fecha y la hora del aviso", Toast.LENGTH_LONG).show();
+
+        }else{
+            try {
+                newCal.setTime(dateFormat.parse(String.valueOf(fechaFinMed.getText()) + " " + String.valueOf(horaFinMed.getText())));
+                newCal.set(Calendar.SECOND,0);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            // Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
+            scheduleClient.setAlarmForNotification(newCal);
+            // Notify the user what they just did
+            Toast.makeText(this, "Notificacion guardada para el "+ fechaFinMed.getText() + " a las "+ horaFinMed.getText(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void guardar(){
+
+
+        }
+
+    @Override
+    protected void onStop() {
+        // When our activity is stopped ensure we also stop the connection to the service
+        // this stops us leaking our activity into the system *bad*
+        if(scheduleClient != null)
+            scheduleClient.doUnbindService();
+        super.onStop();
     }
 
     @Override
