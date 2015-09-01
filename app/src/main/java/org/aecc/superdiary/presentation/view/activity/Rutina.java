@@ -4,15 +4,20 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.aecc.superdiary.R;
+import org.aecc.superdiary.presentation.view.activity.service.ScheduleClient;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -30,6 +35,10 @@ public class Rutina extends DiaryBaseActivity  implements View.OnClickListener{
     private TimePickerDialog hIniTimePickerDialog;
     private TimePickerDialog hFinTimePickerDialog;
 
+    private Button botonGuardarRutina;
+
+    private ScheduleClient scheduleClient;
+
     private SimpleDateFormat dateFormatter;
 
     @Override
@@ -42,6 +51,12 @@ public class Rutina extends DiaryBaseActivity  implements View.OnClickListener{
 
         findViewsById();
         setDateTimeField();
+
+        guardar();
+
+        // Create a new service client and bind our activity to this service
+        scheduleClient = new ScheduleClient(this);
+        scheduleClient.doBindService();
     }
 
     private void findViewsById() {
@@ -57,6 +72,9 @@ public class Rutina extends DiaryBaseActivity  implements View.OnClickListener{
 
         horaAviso = (EditText) findViewById(R.id.horaAvisoRutina);
         horaAviso.setInputType(InputType.TYPE_NULL);
+
+        botonGuardarRutina = (Button) findViewById(R.id.guardarRutina);
+
     }
 
     private void setDateTimeField() {
@@ -64,6 +82,7 @@ public class Rutina extends DiaryBaseActivity  implements View.OnClickListener{
         horaIniRutina.setOnClickListener(this);
         fechaAviso.setOnClickListener(this);
         horaAviso.setOnClickListener(this);
+        botonGuardarRutina.setOnClickListener(this);
 
 
         Calendar newCalendar = Calendar.getInstance();
@@ -109,9 +128,48 @@ public class Rutina extends DiaryBaseActivity  implements View.OnClickListener{
             hIniTimePickerDialog.show();
         } else if (view == horaAviso) {
             hFinTimePickerDialog.show();
+        } else if (view == botonGuardarRutina) {
+            anadirNotificacion();
+            guardar();
         }
     }
 
+    private void guardar() {
+        //TODO: METER LA LÓGICA QUE FALTA
+    }
+
+
+    private void anadirNotificacion() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Calendar newCal = Calendar.getInstance();
+
+        if(TextUtils.isEmpty(fechaAviso.getText()) || TextUtils.isEmpty(horaAviso.getText())){
+            Toast.makeText(this, "No se le notificará la hora de la toma de su medicamento, debe completar la fecha y la hora del aviso", Toast.LENGTH_LONG).show();
+
+        }else{
+            try {
+                newCal.setTime(dateFormat.parse(String.valueOf(fechaAviso.getText()) + " " + String.valueOf(horaAviso.getText())));
+                newCal.set(Calendar.SECOND,0);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            // Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
+            scheduleClient.setAlarmForNotification(newCal);
+            // Notify the user what they just did
+            Toast.makeText(this, "Notificacion guardada para el "+ fechaAviso.getText() + " a las "+ horaAviso.getText(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        // When our activity is stopped ensure we also stop the connection to the service
+        // this stops us leaking our activity into the system *bad*
+        if(scheduleClient != null)
+            scheduleClient.doUnbindService();
+        super.onStop();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

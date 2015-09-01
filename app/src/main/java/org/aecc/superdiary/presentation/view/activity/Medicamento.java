@@ -2,7 +2,9 @@ package org.aecc.superdiary.presentation.view.activity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -16,6 +18,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.aecc.superdiary.R;
+import org.aecc.superdiary.data.database.DatabaseHelper;
 import org.aecc.superdiary.presentation.view.activity.service.ScheduleClient;
 
 import java.text.ParseException;
@@ -31,6 +34,7 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
     private EditText fechaFinMed;
     private EditText horaIniMed;
     private EditText horaFinMed;
+    private Context context;
 
     private Button botonGuardarMedicamento;
 

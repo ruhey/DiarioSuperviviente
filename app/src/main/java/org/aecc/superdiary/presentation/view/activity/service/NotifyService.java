@@ -85,13 +85,14 @@ public class NotifyService extends Service {
 
 		// Set the info for the views that show in the notification panel.
 		notification.setLatestEventInfo(this, title, text, contentIntent);
+		notification.defaults |= Notification.DEFAULT_SOUND;
 
 		// Clear the notification when it is pressed
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
 		
 		// Send the notification to the system.
 		mNM.notify(NOTIFICATION, notification);
-		
+
 		// Stop the service when we are finished
 		stopSelf();
 	}

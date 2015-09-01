@@ -79,9 +79,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "superdiary";
     private static final int DATABASE_VERSION = 1;
+    private static SQLiteDatabase.CursorFactory factory = null;
 
-    private static final String CONTACTS_CREATE = " create table (" + TABLE_CONTACTS
-            + "(" + CONTACTS_COLUMN_ID + " integer primary key autoincrement, "
+
+    private static final String CONTACTS_CREATE = " create table " + TABLE_CONTACTS
+            + " (" + CONTACTS_COLUMN_ID + " integer primary key autoincrement, "
             + CONTACTS_COLUMN_NAME + " text not null,"
             + CONTACTS_COLUMN_SURNAME + " text not null,"
             + CONTACTS_COLUMN_PHONE + " text not null,"
@@ -89,8 +91,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + CONTACTS_COLUMN_IMAGE + " text not null,"
             + CONTACTS_COLUMN_CATEGORY + " text not null);";
 
-    private static final String MEDICINES_CREATE = " create table (" + TABLE_MEDICINES
-            + "(" + MEDICINES_COLUMN_ID + " integer primary key autoincrement, "
+    private static final String MEDICINES_CREATE = " create table " + TABLE_MEDICINES
+            + " (" + MEDICINES_COLUMN_ID + " integer primary key autoincrement, "
             + MEDICINES_COLUMN_NAME + " text not null,"
             + MEDICINES_COLUMN_FIRSTDAY + " text not null,"
             + MEDICINES_COLUMN_FIRSTHOUR + " text not null,"
@@ -100,8 +102,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MEDICINES_COLUMN_DESCRIPTION + " text not null,"
             + MEDICINES_COLUMN_IMAGE + " text not null);";
 
-    private static final String MEETINGS_CREATE = " create table (" + TABLE_MEETINGS
-            + "(" + MEETINGS_COLUMN_ID + " integer primary key autoincrement, "
+    private static final String MEETINGS_CREATE = " create table " + TABLE_MEETINGS
+            + " (" + MEETINGS_COLUMN_ID + " integer primary key autoincrement, "
             + MEETINGS_COLUMN_NAME + " text not null,"
             + MEETINGS_COLUMN_PLACE + " text not null,"
             + MEETINGS_COLUMN_QUESTIONS + " text not null,"
@@ -112,8 +114,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MEETINGS_COLUMN_DURATION + " text not null,"
             + MEETINGS_COLUMN_IMAGE + " text not null);";
 
-    private static final String ROUTINES_CREATE = " create table (" + TABLE_ROUTINES
-            + "(" + ROUTINES_COLUMN_ID + " integer primary key autoincrement, "
+    private static final String ROUTINES_CREATE = " create table " + TABLE_ROUTINES
+            + " (" + ROUTINES_COLUMN_ID + " integer primary key autoincrement, "
             + ROUTINES_COLUMN_NAME + " text not null,"
             + ROUTINES_COLUMN_PLACE + " text not null,"
             + ROUTINES_COLUMN_DESCRIPTION + " text not null,"
@@ -125,24 +127,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ROUTINES_COLUMN_SATISFACTION + " text not null,"
             + ROUTINES_COLUMN_IMAGE + " text not null);";
 
-    private static final String EXAMS_CREATE = " create table (" + TABLE_EXAMS
-            + "(" + EXAMS_COLUMN_ID + " integer primary key autoincrement, "
+    private static final String EXAMS_CREATE = " create table " + TABLE_EXAMS
+            + " (" + EXAMS_COLUMN_ID + " integer primary key autoincrement, "
             + EXAMS_COLUMN_NAME + " text not null,"
             + EXAMS_COLUMN_DATE + " text not null,"
             + EXAMS_COLUMN_HOUR + " text not null,"
             + EXAMS_COLUMN_DESCRIPTION + " text not null,"
             + EXAMS_COLUMN_IMAGE + " text not null);";
 
-    private static final String SYMPTOMS_CREATE = " create table (" + TABLE_SYMPTOMS
-            + "(" + SYMPTOMS_COLUMN_ID + " integer primary key autoincrement, "
+    private static final String SYMPTOMS_CREATE = " create table " + TABLE_SYMPTOMS
+            + " (" + SYMPTOMS_COLUMN_ID + " integer primary key autoincrement, "
             + SYMPTOMS_COLUMN_NAME + " text not null,"
             + SYMPTOMS_COLUMN_DATE + " text not null,"
             + SYMPTOMS_COLUMN_HOUR + " text not null,"
             + SYMPTOMS_COLUMN_DESCRIPTION + " text not null,"
             + SYMPTOMS_COLUMN_IMAGE + " text not null);";
 
-    private static final String COMMENTS_CREATE = " create table (" + TABLE_COMMENTS
-            + "(" + COMMENTS_COLUMN_ID + " integer primary key autoincrement, "
+    private static final String COMMENTS_CREATE = " create table " + TABLE_COMMENTS
+            + " (" + COMMENTS_COLUMN_ID + " integer primary key autoincrement, "
             + COMMENTS_COLUMN_DATEPOSTED + " text not null,"
             + COMMENTS_COLUMN_CONTENT + " text not null,"
             + COMMENTS_COLUMN_DISCARDED + " text not null,"
@@ -153,11 +155,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + CONTACTS_CREATE + MEETINGS_CREATE + ROUTINES_CREATE + MEDICINES_CREATE + SYMPTOMS_CREATE + EXAMS_CREATE;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
+        Log.i(this.getClass().toString(), "Creacion Base de datos " + DATABASE_CREATE);
 
         database.execSQL(CONTACTS_CREATE);
         database.execSQL(EXAMS_CREATE);
@@ -166,6 +169,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.execSQL(ROUTINES_CREATE);
         database.execSQL(MEETINGS_CREATE);
         database.execSQL(SYMPTOMS_CREATE);
+
+        database.execSQL("INSERT INTO " + TABLE_CONTACTS + "( " + CONTACTS_COLUMN_ID + ", " + CONTACTS_COLUMN_NAME + ") "+   "VALUES(1, 'Santander')");
+
+                Log.i(this.getClass().toString(), "Tablas creadas");
     }
 
     @Override
