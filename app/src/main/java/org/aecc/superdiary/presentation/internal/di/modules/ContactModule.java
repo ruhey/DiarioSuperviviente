@@ -5,6 +5,8 @@ import org.aecc.superdiary.domain.interactor.contact.GetContactDetailsUseCaseImp
 import org.aecc.superdiary.domain.interactor.contact.GetContactListUseCase;
 import org.aecc.superdiary.domain.interactor.contact.GetContactListUseCaseImpl;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
+import org.aecc.superdiary.presentation.presenter.ContactListPresenter;
+import org.aecc.superdiary.presentation.presenter.Presenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -23,5 +25,12 @@ public class ContactModule {
     GetContactDetailsUseCase provideGetContactDetailsUseCase(GetContactDetailsUseCaseImpl getContactDetailsUseCase) {
         return getContactDetailsUseCase;
     }
+
+    @Provides
+    @PerActivity
+    Presenter provideContactListPresenter(ContactListPresenter contactListPresenter) {
+        return contactListPresenter;
+    }
+
 }
 
