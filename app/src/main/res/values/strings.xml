@@ -140,7 +140,8 @@
     <!--PRUEBA Y SINTOMA -->
     <string name="d_ini">Día inicio</string>
     <string name="h_ini">Hora inicio</string>
-
+    <string name="title_activity_rutinas">Rutinas</string>
+    <string name="lista_vacia" >Sin datos</string>
 
 
 </resources>

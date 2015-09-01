@@ -14,6 +14,8 @@ import junit.framework.Test;
 
 import org.aecc.superdiary.R;
 
+import java.util.Random;
+
 /**
  * Created by Ruhey on 25/08/2015.
  */
@@ -28,7 +30,9 @@ public class Receiver extends Service {
     public void onCreate() {
         Intent intent = new Intent(this, Test.class);
         long[] pattern = {0, 300, 0};
-        PendingIntent pi = PendingIntent.getActivity(this, 01234, intent, 0);
+        Random r = new Random();
+        int notid_id = r.nextInt(Integer.MAX_VALUE - 1) + 1;
+        PendingIntent pi = PendingIntent.getActivity(this, notid_id, intent, 0);
         NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.aecc_corazonb)
                 .setContentTitle("Diario de un Superviviente")
@@ -40,6 +44,6 @@ public class Receiver extends Service {
         mBuilder.setDefaults(Notification.DEFAULT_SOUND);
         mBuilder.setAutoCancel(true);
         NotificationManager mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(01234, mBuilder.build());
+        mNotificationManager.notify(notid_id, mBuilder.build());
     }
 }
