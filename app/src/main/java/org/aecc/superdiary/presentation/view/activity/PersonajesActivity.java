@@ -32,6 +32,7 @@ import java.util.Collection;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -67,6 +68,7 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         super.onCreate(savedInstanceState);
         View view = getLayoutInflater().inflate(R.layout.activity_personajes, frameLayout);
         mDrawerList.setItemChecked(position, true);
+        ButterKnife.inject(this, view);
         setTitle(titulos[position]);
         this.initializeInjector();
         //setContentView(R.layout.activity_personajes);
@@ -148,11 +150,11 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
     }
 
     @Override public void showRetry() {
-        this.rl_retry.setVisibility(View.VISIBLE);
+        //this.rl_retry.setVisibility(View.VISIBLE);
     }
 
     @Override public void hideRetry() {
-        this.rl_retry.setVisibility(View.GONE);
+        //this.rl_retry.setVisibility(View.GONE);
     }
 
     @Override
