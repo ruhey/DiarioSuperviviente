@@ -78,7 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COMMENTS_COLUMN_TIMESELAPSED = "timesElapsed";
 
     private static final String DATABASE_NAME = "superdiary";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     private static SQLiteDatabase.CursorFactory factory = null;
 
 
@@ -170,7 +170,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.execSQL(MEETINGS_CREATE);
         database.execSQL(SYMPTOMS_CREATE);
 
-        database.execSQL("INSERT INTO " + TABLE_CONTACTS + "( " + CONTACTS_COLUMN_ID + ", " + CONTACTS_COLUMN_NAME + ") "+   "VALUES(1, 'Santander')");
+        database.execSQL("INSERT INTO " + TABLE_CONTACTS +  " VALUES(null, 'Fernando1', 'Santa Olaya', '686252397', 'a@b.c', 'image', 'pater');");
+        database.execSQL("INSERT INTO " + TABLE_CONTACTS +  " VALUES(null, 'Fernando2', 'Santa Olaya', '686252397', 'a@b.c', 'image', 'pater');");
+        database.execSQL("INSERT INTO " + TABLE_CONTACTS +  " VALUES(null, 'Fernando3', 'Santa Olaya', '686252397', 'a@b.c', 'image', 'pater');");
+        database.execSQL("INSERT INTO " + TABLE_CONTACTS +  " VALUES(null, 'Fernando4', 'Santa Olaya', '686252397', 'a@b.c', 'image', 'pater');");
 
                 Log.i(this.getClass().toString(), "Tablas creadas");
     }

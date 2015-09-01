@@ -26,6 +26,7 @@ import org.aecc.superdiary.presentation.model.ContactModel;
 import org.aecc.superdiary.presentation.navigator.Navigator;
 import org.aecc.superdiary.presentation.presenter.ContactListPresenter;
 import org.aecc.superdiary.presentation.view.PersonajesListView;
+import org.aecc.superdiary.presentation.view.adapter.ContactLayoutManager;
 import org.aecc.superdiary.presentation.view.adapter.ContactsAdapter;
 
 import java.util.Collection;
@@ -58,6 +59,8 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
 
     private ContactComponent contactComponent;
 
+    private ContactLayoutManager contactLayoutManager;
+
     public static Intent getCallingIntent(Context context) {
         //Intent intent = new Intent(PersonajesActivity.this, Personaje.class);
         return null;
@@ -71,7 +74,13 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         ButterKnife.inject(this, view);
         setTitle(titulos[position]);
         this.initializeInjector();
+        setupUI();
         //setContentView(R.layout.activity_personajes);
+    }
+
+    private void setupUI() {
+        this.contactLayoutManager = new ContactLayoutManager(this);
+        this.recycler_contacts.setLayoutManager(contactLayoutManager);
     }
 
     private void initializeInjector() {
@@ -150,11 +159,11 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
     }
 
     @Override public void showRetry() {
-        //this.rl_retry.setVisibility(View.VISIBLE);
+        this.rl_retry.setVisibility(View.VISIBLE);
     }
 
     @Override public void hideRetry() {
-        //this.rl_retry.setVisibility(View.GONE);
+        this.rl_retry.setVisibility(View.GONE);
     }
 
     @Override
