@@ -46,6 +46,7 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
     private ScheduleClient scheduleClient;
 
     private SimpleDateFormat dateFormatter;
+    private final String TIPO_NOTIFICACION = "M";
 
 
     @Override
@@ -63,7 +64,7 @@ public class Medicamento extends DiaryBaseActivity implements View.OnClickListen
         guardar();
 
         // Create a new service client and bind our activity to this service
-        scheduleClient = new ScheduleClient(this);
+        scheduleClient = new ScheduleClient(this,TIPO_NOTIFICACION);
         scheduleClient.doBindService();
     }
 

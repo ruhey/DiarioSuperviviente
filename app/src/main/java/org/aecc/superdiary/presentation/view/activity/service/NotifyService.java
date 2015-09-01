@@ -23,6 +23,8 @@ import org.aecc.superdiary.presentation.view.activity.BienvenidaActivity;
  */
 public class NotifyService extends Service {
 
+	public static String TYPE = "D" ;
+
 	/**
 	 * Class for clients to access
 	 */
@@ -35,7 +37,7 @@ public class NotifyService extends Service {
 	// Unique id to identify the notification.
 	private static final int NOTIFICATION = 123;
 	// Name of an intent extra we can use to identify if this service was started to create a notification	
-	public static final String INTENT_NOTIFY = "com.blundell.tut.service.INTENT_NOTIFY";
+	public static final String INTENT_NOTIFY = ".service.INTENT_NOTIFY";
 	// The system notification manager
 	private NotificationManager mNM;
 
@@ -50,8 +52,9 @@ public class NotifyService extends Service {
 		Log.i("LocalService", "Received start id " + startId + ": " + intent);
 		
 		// If this service was started by out AlarmTask intent then we want to show our notification
-		if(intent.getBooleanExtra(INTENT_NOTIFY, false))
-			showNotification();
+		if(intent.getBooleanExtra(INTENT_NOTIFY, false)) {
+			showNotification(intent.getStringExtra(TYPE));
+		}
 		
 		// We don't care if this service is stopped as we have already delivered our notification
 		return START_NOT_STICKY;
@@ -68,13 +71,30 @@ public class NotifyService extends Service {
 	/**
 	 * Creates a notification and shows it in the OS drag-down status bar
 	 */
-	private void showNotification() {
-		// This is the 'title' of the notification
-		CharSequence title = "Hora de tomar su medicación";
-		// This is the icon to use on the notification
+	private void showNotification(String type) {
+		CharSequence title = "Hora de consultar su diario de salud";
 		int icon = R.drawable.aecc_corazonb;
-		// This is the scrolling text of the notification
-		CharSequence text = "Your notification time is upon us.";		
+		CharSequence text = "Acceda a la aplicación para más información";
+
+		switch (type) {
+			case "C":
+				title = "Cita médica";
+				icon = R.drawable.aecc_lugar;
+				text = "La hora de su cita médica está próxima";
+				break;
+			case "R":
+				title = "Rutina";
+				icon = R.drawable.aecc_persona;
+				text = "La hora de sus actividades está próxima";
+				break;
+			case "M":
+				title = "Medicación";
+				icon = R.drawable.aecc_medicamento;
+				text = "Es la hora de tomar sus medicinas";
+				break;
+		}
+
+
 		// What time to show on the notification
 		long time = System.currentTimeMillis();
 		

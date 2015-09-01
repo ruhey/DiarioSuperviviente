@@ -40,6 +40,7 @@ public class Rutina extends DiaryBaseActivity  implements View.OnClickListener{
     private ScheduleClient scheduleClient;
 
     private SimpleDateFormat dateFormatter;
+    private final String TIPO_NOTIFICACION = "R";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class Rutina extends DiaryBaseActivity  implements View.OnClickListener{
         guardar();
 
         // Create a new service client and bind our activity to this service
-        scheduleClient = new ScheduleClient(this);
+        scheduleClient = new ScheduleClient(this,"R");
         scheduleClient.doBindService();
     }
 
