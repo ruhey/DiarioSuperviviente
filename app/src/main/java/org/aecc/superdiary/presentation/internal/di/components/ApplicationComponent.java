@@ -5,6 +5,11 @@ import android.content.Context;
 import org.aecc.superdiary.domain.executor.PostExecutionThread;
 import org.aecc.superdiary.domain.executor.ThreadExecutor;
 import org.aecc.superdiary.domain.repository.ContactRepository;
+import org.aecc.superdiary.domain.repository.ExamRepository;
+import org.aecc.superdiary.domain.repository.MedicineRepository;
+import org.aecc.superdiary.domain.repository.MeetingRepository;
+import org.aecc.superdiary.domain.repository.RoutineRepository;
+import org.aecc.superdiary.domain.repository.SymptomRepository;
 import org.aecc.superdiary.presentation.internal.di.modules.ApplicationModule;
 import org.aecc.superdiary.presentation.view.activity.BaseActivity;
 
@@ -25,4 +30,14 @@ public interface ApplicationComponent {
     PostExecutionThread postExecutionThread();
 
     ContactRepository contactRepository();
+
+    MeetingRepository meetingRepository();
+
+    MedicineRepository medicineRepository();
+
+    RoutineRepository routineRepository();
+
+    ExamRepository examRepository();
+
+    SymptomRepository symptomRepository();
 }

@@ -63,7 +63,13 @@
     <string name="exception_message_generic">Ocurrió un error en la aplicación</string>
     <string name="exception_message_no_connection">No se ha encontrado conexión a internet</string>
     <string name="exception_message_contact_not_found">No se ha podido recuperar los contactos o contacto no encontrado</string>
+    <string name="exception_message_meeting_not_found">No se ha podido recuperar las citas o cita no encontrada</string>
+    <string name="exception_message_medicine_not_found">No se ha podido recuperar los medicamentos o medicamento no encontrado</string>
+    <string name="exception_message_routine_not_found">No se ha podido recuperar las rutinas o rutina no encontrada</string>
+    <string name="exception_message_exam_not_found">No se ha podido recuperar las pruebas o prueba no encontrada</string>
+    <string name="exception_message_symptom_not_found">No se ha podido recuperar los síntomas o síntoma no encontrado</string>
     <string name="title_activity_personaje">Personaje</string>
+
     <string name="title_activity_splash_screen">SplashScreen</string>
 
     <string name="hello_world">Hello world!</string>

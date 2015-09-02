@@ -75,9 +75,17 @@
             android:label="@string/title_activity_prueba" >
         </activity>
 
-        <service android:name="org.aecc.superdiary.presentation.view.activity.service.ScheduleService" />
-        <service android:name="org.aecc.superdiary.presentation.view.activity.service.NotifyService" />
+        <service android:name=".presentation.view.activity.service.ScheduleService" />
+        <service android:name=".presentation.view.activity.service.NotifyService" />
 
+        <activity
+            android:name=".presentation.view.activity.Rutinas"
+            android:label="@string/title_activity_rutinas" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.PersonajesDetailsActivity"
+            android:label="PersonajesDetailsActivity" >
+        </activity>
     </application>
 
 </manifest>
