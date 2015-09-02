@@ -182,7 +182,6 @@ public class DiaryBaseActivity extends BaseActivity {
                 break;
         }
 
-        Toast.makeText(this, "Selected Item Position::" + (position), Toast.LENGTH_LONG).show();
     }
 
     @Override
