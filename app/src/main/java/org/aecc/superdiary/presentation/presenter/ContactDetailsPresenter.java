@@ -52,6 +52,12 @@ public class ContactDetailsPresenter implements Presenter {
     public void pause() {
     }
 
+    public void initialize(int userId) {
+        this.contactId = userId;
+        this.loadContactDetails();
+    }
+
+
     private void loadContactDetails() {
         this.hideViewRetry();
         this.showViewLoading();
