@@ -5,6 +5,7 @@ import org.aecc.superdiary.presentation.internal.di.PerActivity;
 import org.aecc.superdiary.presentation.internal.di.modules.ActivityModule;
 import org.aecc.superdiary.presentation.internal.di.modules.ContactModule;
 import org.aecc.superdiary.presentation.view.activity.PersonajesActivity;
+import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsActivity;
 
 import dagger.Component;
 
@@ -13,4 +14,6 @@ import dagger.Component;
 public interface ContactComponent extends ActivityComponent {
 
     void inject(PersonajesActivity personajesActivity);
+
+    void inject(PersonajesDetailsActivity personajesDetailsActivity);
 }

@@ -70,9 +70,12 @@ public class ContactDatabaseAPIImpl implements ContactDatabaseAPI {
         if (contactDetailsCallback == null) {
             throw new IllegalArgumentException("Callback cannot be null!!!");
         }
+        String[] whereArgs = new String[] {
+                String.valueOf(contactId)
+        };
         openHelper();
         Cursor cursor = database.query(DatabaseHelper.TABLE_CONTACTS,
-                contactAllColumns, null, null, null, null, null);
+                contactAllColumns, "_id = ?", whereArgs, null, null, null);
 
         cursor.moveToFirst();
         ContactEntity contactEntity = null;

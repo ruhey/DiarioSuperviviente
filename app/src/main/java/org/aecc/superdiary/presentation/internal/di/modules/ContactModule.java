@@ -5,6 +5,7 @@ import org.aecc.superdiary.domain.interactor.contact.GetContactDetailsUseCaseImp
 import org.aecc.superdiary.domain.interactor.contact.GetContactListUseCase;
 import org.aecc.superdiary.domain.interactor.contact.GetContactListUseCaseImpl;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
+import org.aecc.superdiary.presentation.presenter.ContactDetailsPresenter;
 import org.aecc.superdiary.presentation.presenter.ContactListPresenter;
 import org.aecc.superdiary.presentation.presenter.Presenter;
 
@@ -30,6 +31,12 @@ public class ContactModule {
     @PerActivity
     Presenter provideContactListPresenter(ContactListPresenter contactListPresenter) {
         return contactListPresenter;
+    }
+
+    @Provides
+    @PerActivity
+    Presenter provideContactDetailsPresenter(ContactDetailsPresenter contactDetailsPresenter){
+        return contactDetailsPresenter;
     }
 
 }
