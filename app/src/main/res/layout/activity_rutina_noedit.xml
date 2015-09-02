@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rutina_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/fotoMedic"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@color/blancoVerdoso"
+            android:src="@drawable/rutina_v" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+
+            <!-- NOMBRE Y APELLIDOS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_corazonb"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿QUÉ ES?" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/nombreRutina"
+                    style="@style/textoInsercionCampos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="textPersonName"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_lugar"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¿DÓNDE ES?" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/lugarRutina"
+                    style="@style/textoInsercionCampos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#728C93" />
+
+            <!-- PREGUNTAS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_preguntas"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DESCRIPCIÓN" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/descripcionRutina"
+                        style="@style/textoInsercionCampos"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left"
+                        android:inputType="textPersonName|textMultiLine"
+                        android:lines="5"
+                        android:minLines="1"
+                        android:scrollHorizontally="false"
+                        android:scrollbars="vertical"
+                        android:singleLine="false" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#728C93" />
+
+            <!-- FECHA Y HORA INICIO-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.40"
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_fecha"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DÍA" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/fechaRutina"
+                        style="@style/textoInsercionCampos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/d_ini_rutina" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.40"
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_hora"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HORA" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/horaRutina"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="@string/h_ini_rutina" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- FECHA Y HORA FIN-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.40"
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_fecha_alarma"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DÍA AVISO" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/fechaAvisoRutina"
+                        style="@style/textoInsercionCampos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/d_aviso_rutina" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.40"
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            style="@style/iconosCamposDescrp"
+                            android:src="@drawable/aecc_hora_alarma"/>
+
+                        <TextView
+                            style="@style/textoDatosEntidades"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HORA AVISO" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/horaAvisoRutina"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="@string/h_aviso_rutina" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#728C93" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_duracion"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DURACIÓN" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekBarDuracRutina"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:max="24"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:progress="1" />
+
+                <TextView
+                    style="@style/textoDatosEntidades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HORAS" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        style="@style/iconosCamposDescrp"
+                        android:src="@drawable/aecc_satisfaccion"/>
+
+                    <TextView
+                        style="@style/textoDatosEntidades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SATISFACCIÓN" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekBarSatisRutina"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:max="10"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:progress="1" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/editarRutina"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/naranjaBoton"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="EDITAR"
+                />
+
+            <Button
+                android:id="@+id/borrarRutina"
+                style="?android:attr/buttonStyleSmall"
+                android:background="@color/rojoBorrado"
+                android:textColor="@color/blancoVerdoso"
+                android:textAllCaps="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="BORRAR"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
