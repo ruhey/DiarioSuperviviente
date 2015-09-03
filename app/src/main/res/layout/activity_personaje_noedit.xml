@@ -87,7 +87,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/nombreInsert"
+                    android:id="@+id/nombre_no_edit"
                     style="@style/textoInsercionCampos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/apellidosInsert"
+                    android:id="@+id/apellidos_no_edit"
                     style="@style/textoInsercionCampos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/direccionInsert"
+                    android:id="@+id/direccion_no_edit"
                     style="@style/textoInsercionCampos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -178,7 +178,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/telefonoInsert"
+                        android:id="@+id/telefono_no_edit"
                         style="@style/textoInsercionCampos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -240,7 +240,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/emailInsert"
+                        android:id="@+id/email_no_edit"
                         style="@style/textoInsercionCampos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

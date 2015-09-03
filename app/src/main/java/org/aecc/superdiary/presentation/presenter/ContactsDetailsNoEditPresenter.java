@@ -1,70 +1,47 @@
 package org.aecc.superdiary.presentation.presenter;
 
-
 import android.support.annotation.NonNull;
 
 import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
 import org.aecc.superdiary.domain.interactor.contact.GetContactDetailsUseCase;
-import org.aecc.superdiary.domain.interactor.contact.SaveContactUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.ContactModelDataMapper;
 import org.aecc.superdiary.presentation.model.ContactModel;
+import org.aecc.superdiary.presentation.view.PersonajeDetailNoEditView;
 import org.aecc.superdiary.presentation.view.PersonajeDetailView;
 
 import javax.inject.Inject;
 
-public class ContactDetailsPresenter implements Presenter {
+public class ContactsDetailsNoEditPresenter implements Presenter {
+
     private final GetContactDetailsUseCase getContactDetailsUseCase;
-    private final SaveContactUseCase saveContactUseCase;
     private final ContactModelDataMapper contactModelDataMapper;
     private int contactId;
-    private PersonajeDetailView viewDetailsView;
+    private PersonajeDetailNoEditView viewDetailsView;
     private final GetContactDetailsUseCase.Callback contactDetailsCallback = new GetContactDetailsUseCase.Callback() {
         @Override
         public void onContactDataLoaded(Contact contact) {
-            ContactDetailsPresenter.this.showContactDetailsInView(contact);
-            ContactDetailsPresenter.this.hideViewLoading();
+            ContactsDetailsNoEditPresenter.this.showContactDetailsInView(contact);
+            ContactsDetailsNoEditPresenter.this.hideViewLoading();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            ContactDetailsPresenter.this.hideViewLoading();
-            ContactDetailsPresenter.this.showErrorMessage(errorBundle);
-            ContactDetailsPresenter.this.showViewRetry();
+            ContactsDetailsNoEditPresenter.this.hideViewLoading();
+            ContactsDetailsNoEditPresenter.this.showErrorMessage(errorBundle);
+            ContactsDetailsNoEditPresenter.this.showViewRetry();
         }
     };
-
-    private final SaveContactUseCase.Callback saveDetailsCallback = new SaveContactUseCase.Callback(){
-        @Override
-        public void onContactDataSaved(Contact contact){
-            ContactDetailsPresenter.this.hideViewLoading();
-            ContactDetailsPresenter.this.showOkMessage();
-            ContactDetailsPresenter.this.showViewRetry();
-        }
-
-        @Override
-        public void onError(ErrorBundle errorBundle) {
-            ContactDetailsPresenter.this.hideViewLoading();
-            ContactDetailsPresenter.this.showErrorMessage(errorBundle);
-            ContactDetailsPresenter.this.showViewRetry();
-        }
-    };
-
-    private void showOkMessage() {
-        this.viewDetailsView.showOKMessage();
-    }
 
     @Inject
-    public ContactDetailsPresenter(GetContactDetailsUseCase getContactDetailsUseCase,
-                                   SaveContactUseCase saveContactUseCase,
+    public ContactsDetailsNoEditPresenter(GetContactDetailsUseCase getContactDetailsUseCase,
                                    ContactModelDataMapper contactModelDataMapper) {
         this.getContactDetailsUseCase = getContactDetailsUseCase;
-        this.saveContactUseCase = saveContactUseCase;
         this.contactModelDataMapper = contactModelDataMapper;
     }
 
-    public void setView(@NonNull PersonajeDetailView view) {
+    public void setView(@NonNull PersonajeDetailNoEditView view) {
         this.viewDetailsView = view;
     }
 
@@ -81,10 +58,13 @@ public class ContactDetailsPresenter implements Presenter {
         this.loadContactDetails();
     }
 
-    public void saveContact(ContactModel contactModel){
-
+    public void editContact(int contactId){
+        this.viewDetailsView.editContact(contactId);
     }
 
+    public  void deleteContact(int contactId){
+        this.viewDetailsView.deleteContact(contactId);
+    }
 
     private void loadContactDetails() {
         this.hideViewRetry();
@@ -122,4 +102,6 @@ public class ContactDetailsPresenter implements Presenter {
     private void getContactDetails() {
         this.getContactDetailsUseCase.execute(this.contactId, this.contactDetailsCallback);
     }
+
+
 }
