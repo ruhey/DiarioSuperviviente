@@ -10,5 +10,5 @@
         android:layout_height="150dp"
         android:clickable="false"
         android:scaleType="centerCrop"
-        android:src="@drawable/back" />
+        android:src="@drawable/fondo_drawer" />
 </FrameLayout>

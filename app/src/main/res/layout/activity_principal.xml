@@ -14,6 +14,7 @@
         android:id="@+id/imagenEnMarcha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:src="@drawable/enmarcha" />
 
     <TextView
@@ -39,15 +40,7 @@
         android:background="@color/verdeAecc"
         android:text="@string/aceptar" />
 
-    <Button
-        android:id="@+id/botonInicio"
-        style="@android:style/ButtonBar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/verdeAecc"
-        android:text="@string/volver" />
+
 
 
 </LinearLayout>

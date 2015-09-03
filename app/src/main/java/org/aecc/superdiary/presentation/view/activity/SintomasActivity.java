@@ -93,7 +93,7 @@ public class SintomasActivity extends DiaryBaseActivity implements HasComponent<
     }
 
     /*@Override public void onSymptomClicked(SymptomModel symptomModel) {
-        this.navigator.navigateToContacDetails(this, symptomModel.getSymptomId());
+        this.navigator.navigateToSymptomDetails(this, symptomModel.getSymptomId());
     }*/
 
     @Override
@@ -195,7 +195,7 @@ public class SintomasActivity extends DiaryBaseActivity implements HasComponent<
     }
 
     public void onSymptomClicked(SymptomModel symptomModel) {
-        this.navigator.navigateToContacDetails(this, symptomModel.getSymptomId());
+        this.navigator.navigateToSymptomDetails(this, symptomModel.getSymptomId());
     }
 
     private SymptomsAdapter.OnItemClickListener onItemClickListener =

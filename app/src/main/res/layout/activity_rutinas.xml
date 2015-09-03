@@ -4,38 +4,23 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textoPersonas"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/descripcionPersonajes" />
-
-
     <ImageView
         android:id="@+id/imagenGente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textoPersonas"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/personas" />
+        android:src="@drawable/rutina_n" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_routines"
         android:layout_below="@id/imagenGente"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="350dp" />
+        android:layout_height="fill_parent" />
 
-
-    <Button
-        android:id="@+id/botonInicio"
-        style="@android:style/ButtonBar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/verdeAecc"
-        android:text="@string/volver" />
+    <include
+        layout="@layout/boton_anadir_lists"
+        />
 
     <include
         layout="@layout/view_progress"

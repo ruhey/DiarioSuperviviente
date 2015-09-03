@@ -8,29 +8,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="org.aecc.superdiary.presentation.view.activity.Otros">
 
-    <TextView
-        android:id="@+id/textoOtros"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/descripcionOtros" />
-
     <ImageView
         android:id="@+id/imagenEntrada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textoOtros"
         android:layout_centerHorizontal="true"
         android:src="@drawable/otros" />
-
-    <Button
-        android:id="@+id/botonInicio"
-        style="@android:style/ButtonBar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/verdeAecc"
-        android:text="@string/volver" />
-
 
 </RelativeLayout>

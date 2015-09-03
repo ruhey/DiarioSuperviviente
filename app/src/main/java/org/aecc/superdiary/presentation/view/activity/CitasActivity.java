@@ -93,7 +93,7 @@ public class CitasActivity extends DiaryBaseActivity implements HasComponent<Mee
     }
 
     /*@Override public void onMeetingClicked(MeetingModel meetingModel) {
-        this.navigator.navigateToContacDetails(this, meetingModel.getMeetingId());
+        this.navigator.navigateToMeetingDetails(this, meetingModel.getMeetingId());
     }*/
 
     @Override
@@ -195,7 +195,7 @@ public class CitasActivity extends DiaryBaseActivity implements HasComponent<Mee
     }
 
     public void onMeetingClicked(MeetingModel meetingModel) {
-        this.navigator.navigateToContacDetails(this, meetingModel.getMeetingId());
+        this.navigator.navigateToMeetingDetails(this, meetingModel.getMeetingId());
     }
 
     private MeetingsAdapter.OnItemClickListener onItemClickListener =

@@ -152,7 +152,7 @@ public class DiaryBaseActivity extends BaseActivity {
                 break;
             //Rutinas
             case 4:
-                startActivity(new Intent(this, Rutina.class));
+                startActivity(new Intent(this, RutinasActivity.class));
                 break;
             //Personajes
             case 5:

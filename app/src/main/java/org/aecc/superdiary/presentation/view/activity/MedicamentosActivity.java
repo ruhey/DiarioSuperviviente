@@ -93,7 +93,7 @@ public class MedicamentosActivity extends DiaryBaseActivity implements HasCompon
     }
 
     /*@Override public void onMedicineClicked(MedicineModel medicineModel) {
-        this.navigator.navigateToContacDetails(this, medicineModel.getMedicineId());
+        this.navigator.navigateToMedicineDetails(this, medicineModel.getMedicineId());
     }*/
 
     @Override
@@ -195,7 +195,7 @@ public class MedicamentosActivity extends DiaryBaseActivity implements HasCompon
     }
 
     public void onMedicineClicked(MedicineModel medicineModel) {
-        this.navigator.navigateToContacDetails(this, medicineModel.getMedicineId());
+        this.navigator.navigateToMedicineDetails(this, medicineModel.getMedicineId());
     }
 
     private MedicinesAdapter.OnItemClickListener onItemClickListener =
