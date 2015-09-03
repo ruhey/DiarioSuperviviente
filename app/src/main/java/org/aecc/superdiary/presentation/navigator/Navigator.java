@@ -37,7 +37,21 @@ public class Navigator {
 
     public void navigateToContacDetails(Context context, int contactId) {
         if (context != null) {
+            Intent intentToLaunch = PersonajesDetailsNoEditActivity.getCallingIntent(context, contactId);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToContacDetailsEdit(Context context, int contactId) {
+        if (context != null) {
             Intent intentToLaunch = PersonajesDetailsActivity.getCallingIntent(context, contactId);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToContacDetailsDelete(Context context, int contactId) {
+        if (context != null) {
+            Intent intentToLaunch = PersonajesDetailsDeleteActivity.getCallingIntent(context, contactId);
             context.startActivity(intentToLaunch);
         }
     }

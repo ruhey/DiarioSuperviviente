@@ -32,6 +32,10 @@ public class ContactModelDataMapper {
         return contactModel;
     }
 
+    public Contact untransform(ContactModel contactModel){
+
+    }
+
     public Collection<ContactModel> transform(Collection<Contact> contactsCollection) {
         Collection<ContactModel> contactModelsCollection;
 

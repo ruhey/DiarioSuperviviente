@@ -7,6 +7,7 @@ import org.aecc.superdiary.domain.interactor.contact.GetContactListUseCaseImpl;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
 import org.aecc.superdiary.presentation.presenter.ContactDetailsPresenter;
 import org.aecc.superdiary.presentation.presenter.ContactListPresenter;
+import org.aecc.superdiary.presentation.presenter.ContactsDetailsNoEditPresenter;
 import org.aecc.superdiary.presentation.presenter.Presenter;
 
 import dagger.Module;
@@ -37,6 +38,12 @@ public class ContactModule {
     @PerActivity
     Presenter provideContactDetailsPresenter(ContactDetailsPresenter contactDetailsPresenter){
         return contactDetailsPresenter;
+    }
+
+    @Provides
+    @PerActivity
+    Presenter provideContactDetailsNoEditPresenter(ContactsDetailsNoEditPresenter contactsDetailsNoEditPresenter){
+        return contactsDetailsNoEditPresenter;
     }
 
 }

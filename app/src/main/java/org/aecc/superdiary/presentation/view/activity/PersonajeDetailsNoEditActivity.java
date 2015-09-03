@@ -5,15 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
 import org.aecc.superdiary.presentation.model.ContactModel;
-import org.aecc.superdiary.presentation.presenter.ContactDetailsPresenter;
-import org.aecc.superdiary.presentation.view.PersonajeDetailView;
+import org.aecc.superdiary.presentation.presenter.ContactsDetailsNoEditPresenter;
+import org.aecc.superdiary.presentation.view.PersonajeDetailNoEditView;
 
 import javax.inject.Inject;
 
@@ -21,28 +21,28 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class PersonajesDetailsActivity extends BaseActivity implements HasComponent<ContactComponent>, PersonajeDetailView {
-
+public class PersonajeDetailsNoEditActivity extends BaseActivity implements HasComponent<ContactComponent>, PersonajeDetailNoEditView {
     private static final String INTENT_EXTRA_PARAM_CONTACT_ID = "org.aecc.INTENT_PARAM_CONTACT_ID";
     private static final String INSTANCE_STATE_PARAM_CONTACT_ID = "org.aecc.STATE_PARAM_CONTACT_ID";
 
     private int contactId;
-    private ContactModel actualContact;
     private ContactComponent contactComponent;
-    @InjectView(R.id.nombreInsert)
-    EditText nombreInsert;
-    @InjectView(R.id.apellidosInsert)
-    EditText apellidosInsert;
-    @InjectView(R.id.direccionInsert)
-    EditText direccionInsert;
-    @InjectView(R.id.telefonoInsert)
-    EditText telefonoInsert;
-    @InjectView(R.id.emailInsert)
-    EditText emailInsert;
-    @InjectView(R.id.guardarPersonaje)
-    Button saveContactButton;
+    @InjectView(R.id.nombre_no_edit)
+    TextView nombreInsert;
+    @InjectView(R.id.apellidos_no_edit)
+    TextView apellidosInsert;
+    @InjectView(R.id.direccion_no_edit)
+    TextView direccionInsert;
+    @InjectView(R.id.telefono_no_edit)
+    TextView telefonoInsert;
+    @InjectView(R.id.email_no_edit)
+    TextView emailInsert;
+    @InjectView(R.id.editarPersonaje)
+    Button editContact;
+    @InjectView(R.id.borrarPersonaje)
+    Button deleteContact;
     @Inject
-    ContactDetailsPresenter contactDetailsPresenter;
+    ContactsDetailsNoEditPresenter contactsDetailsNoEditPresenter;
 
     public static Intent getCallingIntent(Context context, int contactId) {
         Intent callingIntent = new Intent(context, PersonajesDetailsActivity.class);
@@ -80,7 +80,7 @@ public class PersonajesDetailsActivity extends BaseActivity implements HasCompon
         } else {
             this.contactId = savedInstanceState.getInt(INSTANCE_STATE_PARAM_CONTACT_ID);
         }
-        Log.e("EEEOOO","El contactId es: " + this.contactId);
+        Log.e("EEEOOO", "El contactId es: " + this.contactId);
     }
 
     private void initializeInjector() {
@@ -115,8 +115,6 @@ public class PersonajesDetailsActivity extends BaseActivity implements HasCompon
 
     }
 
-
-
     @Override
     public void showError(String message) {
         this.showToastMessage(message);
@@ -129,29 +127,23 @@ public class PersonajesDetailsActivity extends BaseActivity implements HasCompon
 
     @Override public void onResume() {
         super.onResume();
-        this.contactDetailsPresenter.resume();
+        this.contactsDetailsNoEditPresenter.resume();
     }
 
     @Override public void onPause() {
         super.onPause();
-        this.contactDetailsPresenter.pause();
-    }
-
-    @OnClick(R.id.guardarPersonaje)
-    public void saveContact(){
-        this.contactDetailsPresenter.saveContact(actualContact);
+        this.contactsDetailsNoEditPresenter.pause();
     }
 
     private void initialize() {
         this.getApplicationComponent().inject(this);
         this.getComponent().inject(this);
-        this.contactDetailsPresenter.setView(this);
-        this.contactDetailsPresenter.initialize(this.contactId);
+        this.contactsDetailsNoEditPresenter.setView(this);
+        this.contactsDetailsNoEditPresenter.initialize(this.contactId);
     }
 
     @Override public void renderContact(ContactModel contact) {
         if (contact != null) {
-            actualContact = contact;
             this.nombreInsert.setText(contact.getName());
             this.apellidosInsert.setText(contact.getSurname());
             this.direccionInsert.setText(contact.getCategory());
@@ -160,8 +152,21 @@ public class PersonajesDetailsActivity extends BaseActivity implements HasCompon
         }
     }
 
+    @OnClick(R.id.editarPersonaje) void onButtonEditClick() {
+        this.contactsDetailsNoEditPresenter.editContact(this.contactId);
+    }
+
+    @OnClick(R.id.borrarPersonaje) void onButtonDeleteClick() {
+        this.contactsDetailsNoEditPresenter.deleteContact(this.contactId);
+    }
+
     @Override
-    public void showOKMessage() {
-        this.showToastMessage("El contacto se ha guardado correctamente");
+    public void editContact(int contactId) {
+        this.navigator.navigateToContacDetailsEdit(this, contactId);
+    }
+
+    @Override
+    public void deleteContact(int contactId) {
+        this.navigator.navigateToContacDetailsDelete(this, contactId);
     }
 }
