@@ -93,7 +93,7 @@ public class RutinasActivity extends DiaryBaseActivity implements HasComponent<R
     }
 
     /*@Override public void onRoutineClicked(RoutineModel routineModel) {
-        this.navigator.navigateToContacDetails(this, routineModel.getRoutineId());
+        this.navigator.navigateToRoutineDetails(this, routineModel.getRoutineId());
     }*/
 
     @Override
@@ -195,7 +195,7 @@ public class RutinasActivity extends DiaryBaseActivity implements HasComponent<R
     }
 
     public void onRoutineClicked(RoutineModel routineModel) {
-        this.navigator.navigateToContacDetails(this, routineModel.getRoutineId());
+        this.navigator.navigateToRoutineDetails(this, routineModel.getRoutineId());
     }
 
     private RoutinesAdapter.OnItemClickListener onItemClickListener =

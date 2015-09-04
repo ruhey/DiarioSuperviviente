@@ -21,13 +21,13 @@ public class BienvenidaActivity extends DiaryBaseActivity {
         setTitle(titulos[position]);
         getActionBar().show();
 
+        /*
         Button botonBienvenida = (Button) findViewById(R.id.botonEnMarcha);
         Button botonEnMarcha = (Button) findViewById(R.id.botonEnMarcha);
         Button botonCalendario = (Button) findViewById(R.id.botonCalendario);
         Button botonMisPersonas = (Button) findViewById(R.id.botonMisPersonas);
         Button botonMisCitas = (Button) findViewById(R.id.botonMisCitas);
         Button botonOtros = (Button) findViewById(R.id.botonOtros);
-        Button botonInicio = (Button) findViewById(R.id.botonInicio);
 
 
         botonBienvenida.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +63,7 @@ public class BienvenidaActivity extends DiaryBaseActivity {
                 Intent intent = new Intent(BienvenidaActivity.this, Otros.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         ImageView imagenLogo = (ImageView) findViewById(R.id.imagenEntrada);
         imagenLogo.setImageResource(R.drawable.ic_launcher);

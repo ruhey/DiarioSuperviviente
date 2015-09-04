@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SuperDiary</string>
+    <string name="app_name">Diario de un Superviviente</string>
     <string name="action_settings">Settings</string>
     <string name="saludo">Buenasssss</string>
     <string name="despedida">Adiosssssssss</string>
@@ -148,6 +148,7 @@
     <string name="h_ini">Hora inicio</string>
     <string name="title_activity_rutinas">Rutinas</string>
     <string name="lista_vacia" >Sin datos</string>
+    <string name="anadir">añadir</string>
 
 
 </resources>

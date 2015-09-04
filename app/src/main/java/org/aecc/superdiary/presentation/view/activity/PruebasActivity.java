@@ -93,7 +93,7 @@ public class PruebasActivity extends DiaryBaseActivity implements HasComponent<E
     }
 
     /*@Override public void onExamClicked(ExamModel examModel) {
-        this.navigator.navigateToContacDetails(this, examModel.getExamId());
+        this.navigator.navigateToExamDetails(this, examModel.getExamId());
     }*/
 
     @Override
@@ -195,7 +195,7 @@ public class PruebasActivity extends DiaryBaseActivity implements HasComponent<E
     }
 
     public void onExamClicked(ExamModel examModel) {
-        this.navigator.navigateToContacDetails(this, examModel.getExamId());
+        this.navigator.navigateToExamDetails(this, examModel.getExamId());
     }
 
     private ExamsAdapter.OnItemClickListener onItemClickListener =

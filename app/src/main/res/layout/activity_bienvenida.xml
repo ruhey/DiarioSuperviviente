@@ -13,11 +13,12 @@
         android:id="@+id/imagenEntrada"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
+        android:layout_centerInParent="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:src="@drawable/aecc_logo" />
 
-    <Button
+    <!--<Button
         android:id="@+id/botonEnMarcha"
         style="@android:style/ButtonBar"
         android:layout_width="fill_parent"
@@ -65,7 +66,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/verdeAecc"
-        android:text="@string/otros" />
+        android:text="@string/otros" /> -->
+
+
 
 
 </RelativeLayout>
