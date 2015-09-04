@@ -86,10 +86,7 @@
             android:name=".presentation.view.activity.Rutinas"
             android:label="@string/title_activity_rutinas" >
         </activity>
-        <activity
-            android:name=".presentation.view.activity.PersonajesDetailsActivity"
-            android:label="PersonajesDetailsActivity" >
-        </activity>
+
     </application>
 
 </manifest>

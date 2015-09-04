@@ -7,6 +7,7 @@ import org.aecc.superdiary.presentation.internal.di.modules.ContactModule;
 import org.aecc.superdiary.presentation.view.activity.PersonajeDetailsNoEditActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsActivity;
+import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsDeleteActivity;
 
 import dagger.Component;
 
@@ -19,4 +20,6 @@ public interface ContactComponent extends ActivityComponent {
     void inject(PersonajesDetailsActivity personajesDetailsActivity);
 
     void inject(PersonajeDetailsNoEditActivity personajeDetailsNoEditActivity);
+
+    void inject(PersonajesDetailsDeleteActivity personajesDetailsDeleteActivity);
 }
