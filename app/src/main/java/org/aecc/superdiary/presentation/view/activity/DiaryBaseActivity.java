@@ -148,7 +148,7 @@ public class DiaryBaseActivity extends BaseActivity {
                 break;
             //Citas
             case 3:
-                startActivity(new Intent(this, Cita.class));
+                startActivity(new Intent(this, CitasActivity.class));
                 break;
             //Rutinas
             case 4:
@@ -160,15 +160,15 @@ public class DiaryBaseActivity extends BaseActivity {
                 break;
             //Medicacmentos
             case 6:
-                startActivity(new Intent(this, Medicamento.class));
+                startActivity(new Intent(this, MedicamentosActivity.class));
                 break;
             //sintomas
             case 7:
-                startActivity(new Intent(this, Sintoma.class));
+                startActivity(new Intent(this, SintomasActivity.class));
                 break;
             //pruebas
             case 8:
-                startActivity(new Intent(this, Prueba.class));
+                startActivity(new Intent(this, PruebasActivity.class));
                 break;
             //Recursos
             case 9:

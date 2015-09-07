@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/lv_row_icon_hoy_width"
+        android:layout_height="@dimen/lv_row_icon_hoy_width"
+        android:src="@drawable/ic_launcher"
+        android:paddingLeft="@dimen/lv_row_icon_padding"
+        android:paddingRight="@dimen/lv_row_icon_padding"
+        android:contentDescription="@string/string_content_description"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="Clase del evento"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/lv_row_line_hoy_width"
+            android:paddingLeft="@dimen/lv_row_padding"
+            android:textSize="@dimen/lv_row_text_size"
+            android:gravity="left"
+            android:singleLine="true"
+            android:ellipsize="end"
+            />
+
+        <TextView
+            android:text="Nombre del evento"
+            android:id="@+id/tipoEvento"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/lv_row_line_hoy_width"
+            android:paddingLeft="@dimen/lv_row_padding"
+            android:textSize="@dimen/lv_row_text_size"
+            android:gravity="left"
+            android:singleLine="true"
+            android:ellipsize="end"
+            />
+        <TextView
+            android:text="Hora del evento"
+            android:id="@+id/horaEvento"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/lv_row_padding"
+            android:layout_height="@dimen/lv_row_line_hoy_width"
+            android:textSize="@dimen/lv_row_text_size"
+            android:gravity="left"
+            android:singleLine="true"
+            android:ellipsize="end"
+            />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
