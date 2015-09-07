@@ -33,7 +33,18 @@ public class ContactModelDataMapper {
     }
 
     public Contact untransform(ContactModel contactModel){
+        if (contactModel == null){
+            throw new IllegalArgumentException("Cannot transform a null value");
+        }
+        Contact contact = new Contact(contactModel.getContactId());
+        contact.setName(contactModel.getName());
+        contact.setSurname(contactModel.getSurname());
+        contact.setEmail(contactModel.getEmail());
+        contact.setPhone(contactModel.getPhone());
+        contact.setImage(contactModel.getImage());
+        contact.setCategory(contactModel.getCategory());
 
+        return contact;
     }
 
     public Collection<ContactModel> transform(Collection<Contact> contactsCollection) {

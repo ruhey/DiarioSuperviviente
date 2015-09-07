@@ -5,76 +5,68 @@ import android.support.annotation.NonNull;
 
 import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
+import org.aecc.superdiary.domain.interactor.contact.DeleteContactUseCase;
 import org.aecc.superdiary.domain.interactor.contact.GetContactDetailsUseCase;
-import org.aecc.superdiary.domain.interactor.contact.SaveContactUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.ContactModelDataMapper;
 import org.aecc.superdiary.presentation.model.ContactModel;
 import org.aecc.superdiary.presentation.view.PersonajeDetailView;
+import org.aecc.superdiary.presentation.view.PersonajesDeleteView;
+
+import java.util.Collection;
 
 import javax.inject.Inject;
 
-public class ContactDetailsPresenter implements Presenter {
+public class ContactDeletePresenter implements Presenter {
+
     private final GetContactDetailsUseCase getContactDetailsUseCase;
-    private final SaveContactUseCase saveContactUseCase;
+    private final DeleteContactUseCase deleteContactUseCase;
     private final ContactModelDataMapper contactModelDataMapper;
     private int contactId;
     private Contact contact;
-    private PersonajeDetailView viewDetailsView;
+    private PersonajesDeleteView viewDetailsView;
     private final GetContactDetailsUseCase.Callback contactDetailsCallback = new GetContactDetailsUseCase.Callback() {
         @Override
         public void onContactDataLoaded(Contact contact) {
-            ContactDetailsPresenter.this.showContactDetailsInView(contact);
-            ContactDetailsPresenter.this.hideViewLoading();
+            ContactDeletePresenter.this.showContactDetailsInView(contact);
+            ContactDeletePresenter.this.hideViewLoading();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            ContactDetailsPresenter.this.hideViewLoading();
-            ContactDetailsPresenter.this.showErrorMessage(errorBundle);
-            ContactDetailsPresenter.this.showViewRetry();
+            ContactDeletePresenter.this.hideViewLoading();
+            ContactDeletePresenter.this.showErrorMessage(errorBundle);
+            ContactDeletePresenter.this.showViewRetry();
         }
     };
-
-    private final SaveContactUseCase.Callback saveDetailsCallback = new SaveContactUseCase.Callback(){
+    private final DeleteContactUseCase.Callback deleteContactCallback = new DeleteContactUseCase.Callback(){
         @Override
-        public void onContactDataSaved(Contact contact){
-            ContactDetailsPresenter.this.hideViewLoading();
-            ContactDetailsPresenter.this.showOkMessage();
-            ContactDetailsPresenter.this.showViewRetry();
+        public void onContactDataDeleted(Collection<Contact> contactsCollection){
+            ContactDeletePresenter.this.hideViewLoading();
+            ContactDeletePresenter.this.showOkMessage();
+            ContactDeletePresenter.this.goBack();
+            ContactDeletePresenter.this.showViewRetry();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            ContactDetailsPresenter.this.hideViewLoading();
-            ContactDetailsPresenter.this.showErrorMessage(errorBundle);
-            ContactDetailsPresenter.this.showViewRetry();
+            ContactDeletePresenter.this.hideViewLoading();
+            ContactDeletePresenter.this.showErrorMessage(errorBundle);
+            ContactDeletePresenter.this.showViewRetry();
         }
     };
-
-    private void showOkMessage() {
-        this.viewDetailsView.showOKMessage();
-    }
 
     @Inject
-    public ContactDetailsPresenter(GetContactDetailsUseCase getContactDetailsUseCase,
-                                   SaveContactUseCase saveContactUseCase,
-                                   ContactModelDataMapper contactModelDataMapper) {
+    public ContactDeletePresenter(GetContactDetailsUseCase getContactDetailsUseCase,
+                                  DeleteContactUseCase deleteContactUseCase,
+                                  ContactModelDataMapper contactModelDataMapper){
         this.getContactDetailsUseCase = getContactDetailsUseCase;
-        this.saveContactUseCase = saveContactUseCase;
+        this.deleteContactUseCase = deleteContactUseCase;
         this.contactModelDataMapper = contactModelDataMapper;
     }
 
-    public void setView(@NonNull PersonajeDetailView view) {
+    public void setView(@NonNull PersonajesDeleteView view) {
         this.viewDetailsView = view;
-    }
-
-    @Override
-    public void resume() {
-    }
-
-    @Override
-    public void pause() {
     }
 
     public void initialize(int userId) {
@@ -82,10 +74,13 @@ public class ContactDetailsPresenter implements Presenter {
         this.loadContactDetails();
     }
 
-    public void saveContact(ContactModel contactModel){
-        this.saveContactUseCase.execute(this.contact, this.saveDetailsCallback);
+    public void deleteContact(ContactModel contactModel){
+        this.deleteContactUseCase.execute(this.contact.getContactId(), this.deleteContactCallback);
     }
 
+    private void goBack(){
+        this.viewDetailsView.goBack();
+    }
 
     private void loadContactDetails() {
         this.hideViewRetry();
@@ -109,6 +104,10 @@ public class ContactDetailsPresenter implements Presenter {
         this.viewDetailsView.hideRetry();
     }
 
+    private void showOkMessage() {
+        this.viewDetailsView.showOKMessage();
+    }
+
     private void showErrorMessage(ErrorBundle errorBundle) {
         String errorMessage = ErrorMessageFactory.create(this.viewDetailsView.getContext(),
                 errorBundle.getException());
@@ -123,5 +122,15 @@ public class ContactDetailsPresenter implements Presenter {
 
     private void getContactDetails() {
         this.getContactDetailsUseCase.execute(this.contactId, this.contactDetailsCallback);
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void pause() {
+
     }
 }

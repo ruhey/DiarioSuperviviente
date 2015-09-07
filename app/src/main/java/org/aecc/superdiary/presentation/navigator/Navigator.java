@@ -3,12 +3,14 @@ package org.aecc.superdiary.presentation.navigator;
 import android.content.Context;
 import android.content.Intent;
 
+import org.aecc.superdiary.presentation.view.activity.PersonajeDetailsNoEditActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.CitasActivity;
 import org.aecc.superdiary.presentation.view.activity.CitasDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentosActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentosDetailsActivity;
+import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinasActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinasDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebasActivity;
@@ -37,7 +39,7 @@ public class Navigator {
 
     public void navigateToContacDetails(Context context, int contactId) {
         if (context != null) {
-            Intent intentToLaunch = PersonajesDetailsNoEditActivity.getCallingIntent(context, contactId);
+            Intent intentToLaunch = PersonajeDetailsNoEditActivity.getCallingIntent(context, contactId);
             context.startActivity(intentToLaunch);
         }
     }
