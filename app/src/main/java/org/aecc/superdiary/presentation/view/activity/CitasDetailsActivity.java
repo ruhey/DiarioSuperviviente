@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.MeetingComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerMeetingComponent;
@@ -28,7 +29,7 @@ public class CitasDetailsActivity extends BaseActivity implements HasComponent<M
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //setContentView(R.layout.activity_user_details);
-
+        setContentView(R.layout.activity_cita_noedit);
         this.initializeInjector();
         this.initializeActivity(savedInstanceState);
     }

@@ -139,7 +139,13 @@ public class PersonajesDetailsActivity extends BaseActivity implements HasCompon
 
     @OnClick(R.id.guardarPersonaje)
     public void saveContact(){
-        this.contactDetailsPresenter.saveContact(actualContact);
+        //TODO: esto no deberia seer model, deberia ser de view pero bueno
+        ContactModel contactToSave = new ContactModel(actualContact.getContactId());
+        contactToSave.setEmail(emailInsert.getText().toString());
+        contactToSave.setName(nombreInsert.getText().toString());
+        contactToSave.setPhone(telefonoInsert.getText().toString());
+        contactToSave.setSurname(apellidosInsert.getText().toString());
+        this.contactDetailsPresenter.saveContact(contactToSave);
     }
 
     private void initialize() {

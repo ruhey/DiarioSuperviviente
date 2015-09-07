@@ -56,7 +56,7 @@ public class PersonajeDetailsNoEditActivity extends BaseActivity implements HasC
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //setContentView(R.layout.activity_user_details);
-        setContentView(R.layout.activity_personaje);
+        setContentView(R.layout.activity_personaje_noedit);
         ButterKnife.inject(this);
         this.initializeInjector();
         this.initializeActivity(savedInstanceState);

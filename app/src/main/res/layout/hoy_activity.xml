@@ -17,23 +17,22 @@
         android:text="Actividades próximas"
         android:layout_centerHorizontal="true"/>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_hoy"
+        android:layout_below="@id/tituloHoy"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ImageView
         android:id="@+id/imagenEntrada"
+        android:layout_below="@id/recycler_hoy"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:layout_centerInParent="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:src="@drawable/aecc_logo" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_hoy"
-        android:layout_below="@id/tituloHoy"
-        android:scrollbars="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent" />
-
 
 
     <include

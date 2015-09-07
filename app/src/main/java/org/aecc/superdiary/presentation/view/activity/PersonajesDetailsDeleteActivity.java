@@ -3,9 +3,13 @@ package org.aecc.superdiary.presentation.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
+import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
+import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
 import org.aecc.superdiary.presentation.model.ContactModel;
 import org.aecc.superdiary.presentation.presenter.ContactDeletePresenter;
 import org.aecc.superdiary.presentation.view.PersonajeDetailView;
@@ -14,6 +18,8 @@ import org.aecc.superdiary.presentation.view.PersonajesDeleteView;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class PersonajesDetailsDeleteActivity extends BaseActivity implements HasComponent<ContactComponent>, PersonajesDeleteView {
 
@@ -23,8 +29,18 @@ public class PersonajesDetailsDeleteActivity extends BaseActivity implements Has
     private int contactId;
     private ContactModel actualContact;
     private ContactComponent contactComponent;
+    @InjectView(R.id.nombre_delete)
+    TextView nombreDelete;
+    @InjectView(R.id.apellidos_delete)
+    TextView apellidosDelete;
+    @InjectView(R.id.direccion_delete)
+    TextView direccionDelete;
+    @InjectView(R.id.borrarPersonaje_delete)
+    Button deleteContactButton;
+
+
     @Inject
-    private ContactDeletePresenter contactDeletePresenter;
+    ContactDeletePresenter contactDeletePresenter;
 
 
     public static Intent getCallingIntent(Context context, int contactId) {
@@ -39,7 +55,7 @@ public class PersonajesDetailsDeleteActivity extends BaseActivity implements Has
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //setContentView(R.layout.activity_user_details);
-        setContentView(R.layout.activity_personaje);
+        setContentView(R.layout.activity_personajes_delete);
         ButterKnife.inject(this);
         this.initializeInjector();
         this.initializeActivity(savedInstanceState);
@@ -73,7 +89,7 @@ public class PersonajesDetailsDeleteActivity extends BaseActivity implements Has
         }
     }
 
-    private void initializeInjector() {
+    public void initializeInjector() {
         this.contactComponent = DaggerContactComponent.builder()
                 .applicationComponent(getApplicationComponent())
                 .activityModule(getActivityModule())
@@ -89,11 +105,9 @@ public class PersonajesDetailsDeleteActivity extends BaseActivity implements Has
     public void renderContact(ContactModel contact) {
         if (contact != null) {
             actualContact = contact;
-            this.nombreInsert.setText(contact.getName());
-            this.apellidosInsert.setText(contact.getSurname());
-            this.direccionInsert.setText(contact.getCategory());
-            this.telefonoInsert.setText(contact.getPhone());
-            this.emailInsert.setText(contact.getEmail());
+            this.nombreDelete.setText(contact.getName());
+            this.apellidosDelete.setText(contact.getSurname());
+            this.direccionDelete.setText(contact.getCategory());
         }
     }
 
@@ -135,11 +149,21 @@ public class PersonajesDetailsDeleteActivity extends BaseActivity implements Has
 
     @Override public void onResume() {
         super.onResume();
-        this.contactDetailsPresenter.resume();
+        this.contactDeletePresenter.resume();
     }
 
     @Override public void onPause() {
         super.onPause();
-        this.contactDetailsPresenter.pause();
+        this.contactDeletePresenter.pause();
+    }
+
+    @Override
+    public void goBack(){
+        onBackPressed();
+    }
+
+    @OnClick(R.id.borrarPersonaje_delete)
+    public void deleteContact(){
+        this.contactDeletePresenter.deleteContact(actualContact);
     }
 }

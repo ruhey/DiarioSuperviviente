@@ -2,6 +2,7 @@ package org.aecc.superdiary.presentation.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,8 +11,12 @@ import android.widget.ImageView;
 
 import org.aecc.superdiary.R;
 
+import butterknife.InjectView;
+
 
 public class BienvenidaActivity extends DiaryBaseActivity {
+    @InjectView(R.id.recycler_hoy)
+    RecyclerView recycler_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

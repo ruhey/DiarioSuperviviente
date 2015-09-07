@@ -41,6 +41,17 @@
             android:name=".presentation.view.activity.Citas"
             android:label="@string/title_activity_citas"
             android:theme="@style/DiaryTheme" />
+
+        <activity
+            android:name=".presentation.view.activity.CitasActivity"
+            android:label="@string/title_activity_citas"
+            android:theme="@style/DiaryTheme" />
+
+        <activity
+            android:name=".presentation.view.activity.CitasDetailsActivity"
+            android:label="@string/title_activity_citas"
+            android:theme="@style/DiaryTheme" />
+
         <activity
             android:name=".presentation.view.activity.Otros"
             android:label="@string/title_activity_otros"

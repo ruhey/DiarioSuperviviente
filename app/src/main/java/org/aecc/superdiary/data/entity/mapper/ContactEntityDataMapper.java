@@ -35,7 +35,7 @@ public class ContactEntityDataMapper {
     }
 
     public ContactEntity untransform(Contact contact) {
-        ContactEntity contactEntity = null;
+        ContactEntity contactEntity = new ContactEntity();
 
         if (contact != null) {
             contactEntity.setContactId(contact.getContactId());

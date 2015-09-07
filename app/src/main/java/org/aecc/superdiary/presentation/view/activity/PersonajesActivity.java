@@ -18,7 +18,6 @@ import android.widget.RelativeLayout;
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.ContactComponent;
-import org.aecc.superdiary.presentation.internal.di.components.DaggerApplicationComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerContactComponent;
 import org.aecc.superdiary.presentation.internal.di.modules.ApplicationModule;
 import org.aecc.superdiary.presentation.internal.di.modules.ContactModule;
