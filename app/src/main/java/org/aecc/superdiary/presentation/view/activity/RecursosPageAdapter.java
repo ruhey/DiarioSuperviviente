@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class RecursosPageAdapter extends PagerAdapter {
 
-    private static int NUMVIEWS = 9;
+    private static int NUMVIEWS = 3;
     ArrayList<ViewGroup> views;
     LayoutInflater inflater;
 
@@ -66,12 +66,7 @@ public class RecursosPageAdapter extends PagerAdapter {
             if(position==0)currentView= (ViewGroup)  inflater.inflate(R.layout.consejos_view, container, false);
             if(position==1)currentView= (ViewGroup)  inflater.inflate(R.layout.meditacion_view, container, false);
             if(position==2)currentView= (ViewGroup)  inflater.inflate(R.layout.telefonos_view, container, false);
-            if(position==3)currentView= (ViewGroup)  inflater.inflate(R.layout.activity_cita, container, false);
-            if(position==4)currentView= (ViewGroup)  inflater.inflate(R.layout.activity_rutina, container, false);
-            if(position==5)currentView= (ViewGroup)  inflater.inflate(R.layout.activity_personaje, container, false);
-            if(position==6)currentView= (ViewGroup) inflater.inflate(R.layout.activity_medicamento, container, false);
-            if(position==7)currentView= (ViewGroup) inflater.inflate(R.layout.activity_prueba, container, false);
-            if(position==8)currentView= (ViewGroup) inflater.inflate(R.layout.activity_sintoma, container, false);
+
         }
         container.addView(currentView);
         return currentView;
