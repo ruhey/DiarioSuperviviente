@@ -3,11 +3,9 @@ package org.aecc.superdiary.presentation.view;
 
 import org.aecc.superdiary.presentation.model.MeetingModel;
 
-public interface CitaDetailView extends LoadDataView {
+public interface CitaDeleteView extends LoadDataView {
 
     void renderMeeting(MeetingModel meeting);
-
-    void editMeeting(int meetingId);
 
     void deleteMeeting(int meetingId);
 }

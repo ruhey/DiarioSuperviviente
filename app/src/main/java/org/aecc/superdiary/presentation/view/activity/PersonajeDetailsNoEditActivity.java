@@ -45,7 +45,7 @@ public class PersonajeDetailsNoEditActivity extends BaseActivity implements HasC
     ContactsDetailsNoEditPresenter contactsDetailsNoEditPresenter;
 
     public static Intent getCallingIntent(Context context, int contactId) {
-        Intent callingIntent = new Intent(context, PersonajesDetailsActivity.class);
+        Intent callingIntent = new Intent(context, PersonajeDetailsNoEditActivity.class);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_CONTACT_ID, contactId);
 
         return callingIntent;

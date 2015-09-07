@@ -3,6 +3,8 @@ package org.aecc.superdiary.presentation.navigator;
 import android.content.Context;
 import android.content.Intent;
 
+import org.aecc.superdiary.presentation.view.activity.CitaDeleteActivity;
+import org.aecc.superdiary.presentation.view.activity.CitaNoEditActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajeDetailsNoEditActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsActivity;
@@ -68,6 +70,21 @@ public class Navigator {
     public void navigateToMeetingDetails(Context context, int meetingId) {
         if (context != null) {
             Intent intentToLaunch = CitasDetailsActivity.getCallingIntent(context, meetingId);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToMeetingEdit(Context context, int meetingId) {
+        if (context != null) {
+            Intent intentToLaunch = CitaNoEditActivity.getCallingIntent(context, meetingId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToMeetingDelete(Context context, int meetingId){
+        if (context != null) {
+            Intent intentToLaunch = CitaDeleteActivity.getCallingIntent(context, meetingId);
             context.startActivity(intentToLaunch);
         }
     }

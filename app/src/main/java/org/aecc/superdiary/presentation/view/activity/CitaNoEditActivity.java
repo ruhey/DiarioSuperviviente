@@ -1,12 +1,12 @@
 package org.aecc.superdiary.presentation.view.activity;
 
+
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -15,6 +15,13 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.aecc.superdiary.R;
+import org.aecc.superdiary.domain.Meeting;
+import org.aecc.superdiary.presentation.internal.di.HasComponent;
+import org.aecc.superdiary.presentation.internal.di.components.DaggerMeetingComponent;
+import org.aecc.superdiary.presentation.internal.di.components.MeetingComponent;
+import org.aecc.superdiary.presentation.model.MeetingModel;
+import org.aecc.superdiary.presentation.presenter.MeetingDetailsNoEditPresenter;
+import org.aecc.superdiary.presentation.view.CitaNoEditView;
 import org.aecc.superdiary.presentation.view.activity.service.ScheduleClient;
 
 import java.text.ParseException;
@@ -22,12 +29,28 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class Cita extends DiaryBaseActivity  implements View.OnClickListener {
+public class CitaNoEditActivity extends BaseActivity implements CitaNoEditView, View.OnClickListener, HasComponent<MeetingComponent>{
 
-    //UI References
+    private static final String INTENT_EXTRA_PARAM_MEETING_ID = "org.aecc.INTENT_PARAM_MEETING_ID";
+    private static final String INSTANCE_STATE_PARAM_MEETING_ID = "org.aecc.STATE_PARAM_MEETING_ID";
+
+    private int meetingId;
+    private MeetingComponent meetingComponent;
+
+    @Inject
+    public MeetingDetailsNoEditPresenter meetingDetailsNoEditPresenter;
+
+    @InjectView(R.id.nombreCita)
+    public EditText nombreCita;
+    @InjectView(R.id.lugarCita)
+    public EditText lugarCita;
+    @InjectView(R.id.descripcionCita)
+    public EditText descripcionCita;
     @InjectView(R.id.fechaCita)
     public EditText fechaIniCita;
     @InjectView(R.id.fechaAvisoCita)
@@ -48,22 +71,50 @@ public class Cita extends DiaryBaseActivity  implements View.OnClickListener {
     private final String TIPO_NOTIFICACION = "C";
 
     private SimpleDateFormat dateFormatter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLayoutInflater().inflate(R.layout.activity_cita, frameLayout);
-        mDrawerList.setItemChecked(position, true);
-        setTitle(titulos[position]);
+        setContentView(R.layout.activity_cita);
         ButterKnife.inject(this);
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE);
-
         setDateTimeField();
-
-        guardar();
-
         // Create a new service client and bind our activity to this service
         scheduleClient = new ScheduleClient(this,TIPO_NOTIFICACION);
         scheduleClient.doBindService();
+        this.initializeInjector();
+        this.initializeActivity(savedInstanceState);
+        this.initialize();
+    }
+
+    public static Intent getCallingIntent(Context context, int meetingId) {
+        Intent callingIntent = new Intent(context, CitaNoEditActivity.class);
+        callingIntent.putExtra(INTENT_EXTRA_PARAM_MEETING_ID, meetingId);
+        return callingIntent;
+    }
+
+    private void initializeInjector() {
+        this.meetingComponent = DaggerMeetingComponent.builder()
+                .applicationComponent(getApplicationComponent())
+                .activityModule(getActivityModule())
+                .build();
+    }
+
+    private void initializeActivity(Bundle savedInstanceState) {
+        if (savedInstanceState == null) {
+            this.meetingId = getIntent().getIntExtra(INTENT_EXTRA_PARAM_MEETING_ID, -1);
+            //addFragment(R.id.fl_fragment, UserDetailsFragment.newInstance(this.userId));
+        } else {
+            this.meetingId = savedInstanceState.getInt(INSTANCE_STATE_PARAM_MEETING_ID);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (outState != null) {
+            outState.putInt(INSTANCE_STATE_PARAM_MEETING_ID, this.meetingId);
+        }
+        super.onSaveInstanceState(outState);
     }
 
     private void setDateTimeField() {
@@ -124,7 +175,12 @@ public class Cita extends DiaryBaseActivity  implements View.OnClickListener {
     }
 
     private void guardar() {
-        //TODO: METER LA LÓGICA QUE FALTA
+        Meeting meeting = new Meeting(this.meetingId);
+        meeting.setName(this.nombreCita.getText().toString());
+        meeting.setPlace(this.lugarCita.getText().toString());
+        meeting.setQuestions(this.descripcionCita.getText().toString());
+
+        this.meetingDetailsNoEditPresenter.saveMeeting(meeting);
     }
 
 
@@ -151,6 +207,8 @@ public class Cita extends DiaryBaseActivity  implements View.OnClickListener {
         }
     }
 
+
+
     @Override
     protected void onStop() {
         // When our activity is stopped ensure we also stop the connection to the service
@@ -160,25 +218,73 @@ public class Cita extends DiaryBaseActivity  implements View.OnClickListener {
         super.onStop();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_cita, menu);
-        return true;
+    @Override public void onResume() {
+        super.onResume();
+        this.meetingDetailsNoEditPresenter.resume();
+    }
+
+    @Override public void onPause() {
+        super.onPause();
+        this.meetingDetailsNoEditPresenter.pause();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void renderMeeting(MeetingModel meeting) {
+        this.meetingId = meeting.getMeetingId();
+        this.nombreCita.setText(meeting.getName());
+        this.lugarCita.setText(meeting.getPlace());
+        this.descripcionCita.setText(meeting.getQuestions());
+        this.fechaIniCita.setText(meeting.getDateMeeting());
+        this.horaIniCita.setText(meeting.getHourMeeting());
+        this.fechaAviso.setText(meeting.getDateAlarm());
+        this.horaAviso.setText(meeting.getHourAlarm());
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+    }
 
-        return super.onOptionsItemSelected(item);
+    @Override
+    public void saveMeeting(MeetingModel meeting) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showRetry() {
+
+    }
+
+    @Override
+    public void hideRetry() {
+
+    }
+
+    @Override
+    public void showError(String message) {
+        this.showToastMessage(message);
+    }
+
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
+    }
+
+    @Override
+    public MeetingComponent getComponent() {
+        return meetingComponent;
+    }
+
+    private void initialize() {
+        this.getApplicationComponent().inject(this);
+        this.getComponent().inject(this);
+        this.meetingDetailsNoEditPresenter.setView(this);
+        this.meetingDetailsNoEditPresenter.initialize(this.meetingId);
     }
 }
