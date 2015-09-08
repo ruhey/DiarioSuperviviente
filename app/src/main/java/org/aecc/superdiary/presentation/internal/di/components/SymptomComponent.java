@@ -20,7 +20,7 @@ public interface SymptomComponent extends ActivityComponent {
 
     void inject(SintomasActivity sintomasActivity);
 
-    void inject(SintomasDetailsActivity sintomasActivity);
+    void inject(SintomasDetailsActivity sintomasDetailsActivity);
 
     void inject(SintomaEditActivity sintomaEditActivity);
 

@@ -18,7 +18,7 @@ public interface ExamComponent extends ActivityComponent {
 
     void inject(PruebasActivity pruebasActivity);
 
-    void inject(PruebasDetailsActivity pruebasActivity);
+    void inject(PruebasDetailsActivity pruebasDetailsActivity);
 
     void inject(PruebaEditActivity pruebaEditActivity);
 

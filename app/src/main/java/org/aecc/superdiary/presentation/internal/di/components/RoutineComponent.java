@@ -18,7 +18,7 @@ public interface RoutineComponent extends ActivityComponent {
 
     void inject(RutinasActivity rutinasActivity);
 
-    void inject(RutinasDetailsActivity rutinasActivity);
+    void inject(RutinasDetailsActivity rutinasDetailsActivity);
 
     void inject(RutinaEditActivity rutinaEditActivity);
 

@@ -19,7 +19,7 @@ public interface MedicineComponent extends ActivityComponent {
 
     void inject(MedicamentosActivity medicamentosActivity);
 
-    void inject(MedicamentosDetailsActivity medicamentosActivity);
+    void inject(MedicamentosDetailsActivity medicamentosDetailsActivity);
 
     void inject(MedicamentoEditActivity medicamentoEditActivity);
 
