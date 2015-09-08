@@ -5,52 +5,61 @@ import android.support.annotation.NonNull;
 
 import org.aecc.superdiary.domain.Medicine;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
+import org.aecc.superdiary.domain.interactor.medicine.CreateMedicineUseCase;
 import org.aecc.superdiary.domain.interactor.medicine.GetMedicineDetailsUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.MedicineModelDataMapper;
 import org.aecc.superdiary.presentation.model.MedicineModel;
-import org.aecc.superdiary.presentation.view.MedicamentoDetailView;
+import org.aecc.superdiary.presentation.view.MedicamentoDetailCreateView;
+import org.aecc.superdiary.presentation.view.MedicamentoDetailEditView;
 
 import javax.inject.Inject;
 
-public class MedicineDetailsPresenter implements Presenter {
+public class MedicineDetailCreatePresenter implements Presenter{
 
-    private final GetMedicineDetailsUseCase getMedicineDetailsUseCase;
+
+    private final CreateMedicineUseCase createMedicineUseCase;
     private final MedicineModelDataMapper medicineModelDataMapper;
     private int medicineId;
-    private MedicamentoDetailView viewDetailsView;
-    private final GetMedicineDetailsUseCase.Callback medicineDetailsCallback = new GetMedicineDetailsUseCase.Callback() {
+    private MedicamentoDetailCreateView viewDetailsView;
+
+    private final CreateMedicineUseCase.Callback createMedicineCallback = new CreateMedicineUseCase.Callback(){
+
         @Override
-        public void onMedicineDataLoaded(Medicine medicine) {
-            MedicineDetailsPresenter.this.showMedicineDetailsInView(medicine);
-            MedicineDetailsPresenter.this.hideViewLoading();
+        public void onMedicineDataCreated(Medicine medicine) {
+            MedicineDetailCreatePresenter.this.hideViewLoading();
+            MedicineDetailCreatePresenter.this.showOKMessage();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            MedicineDetailsPresenter.this.hideViewLoading();
-            MedicineDetailsPresenter.this.showErrorMessage(errorBundle);
-            MedicineDetailsPresenter.this.showViewRetry();
+            MedicineDetailCreatePresenter.this.hideViewLoading();
+            MedicineDetailCreatePresenter.this.showErrorMessage(errorBundle);
+            MedicineDetailCreatePresenter.this.showViewRetry();
         }
     };
 
     @Inject
-    public MedicineDetailsPresenter(GetMedicineDetailsUseCase getMedicineDetailsUseCase,
-                                MedicineModelDataMapper medicineModelDataMapper) {
-        this.getMedicineDetailsUseCase = getMedicineDetailsUseCase;
-        this.medicineModelDataMapper = medicineModelDataMapper;
+    public MedicineDetailCreatePresenter(
+                                        CreateMedicineUseCase createMedicineUseCase,
+                                        MedicineModelDataMapper medicineModelDataMapper){
+
+        this.createMedicineUseCase = createMedicineUseCase;
+        this.medicineModelDataMapper =medicineModelDataMapper;
     }
 
-    public void setView(@NonNull MedicamentoDetailView view) {
+    public void setView(@NonNull MedicamentoDetailCreateView view) {
         this.viewDetailsView = view;
     }
 
     @Override
     public void resume() {
+
     }
 
     @Override
     public void pause() {
+
     }
 
     public void initialize(int medicineId){
@@ -58,16 +67,14 @@ public class MedicineDetailsPresenter implements Presenter {
         this.loadMedicineDetails();
     }
 
-    public void editMedicine(int medicineId){this.viewDetailsView.editMedicine(medicineId);}
-
-    public void deleteMedicine(int medicineId){this.viewDetailsView.deleteMedicine(medicineId);}
-
-
+    public void createMedicine(Medicine medicine){
+        this.persistCreation(medicine);
+    }
 
     private void loadMedicineDetails() {
         this.hideViewRetry();
         this.showViewLoading();
-        this.getMedicineDetails();
+
     }
 
     private void showViewLoading() {
@@ -92,12 +99,11 @@ public class MedicineDetailsPresenter implements Presenter {
         this.viewDetailsView.showError(errorMessage);
     }
 
-    private void showMedicineDetailsInView(Medicine medicine) {
-        final MedicineModel medicineModel = this.medicineModelDataMapper.transform(medicine);
-        this.viewDetailsView.renderMedicine(medicineModel);
+    private void showOKMessage(){
+        this.viewDetailsView.showMessage("El medicamento se ha creado correctamente");
     }
 
-    private void getMedicineDetails() {
-        this.getMedicineDetailsUseCase.execute(this.medicineId, this.medicineDetailsCallback);
+    private void persistCreation(Medicine medicine){
+        this.createMedicineUseCase.execute(medicine, this.createMedicineCallback);
     }
 }

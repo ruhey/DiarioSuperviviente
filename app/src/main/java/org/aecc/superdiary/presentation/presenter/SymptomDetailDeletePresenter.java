@@ -5,51 +5,75 @@ import android.support.annotation.NonNull;
 
 import org.aecc.superdiary.domain.Symptom;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
+import org.aecc.superdiary.domain.interactor.symptom.DeleteSymptomUseCase;
 import org.aecc.superdiary.domain.interactor.symptom.GetSymptomDetailsUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.SymptomModelDataMapper;
 import org.aecc.superdiary.presentation.model.SymptomModel;
-import org.aecc.superdiary.presentation.view.SintomaDetailView;
+import org.aecc.superdiary.presentation.view.SintomaDetailDeleteView;
+
+import java.util.Collection;
 
 import javax.inject.Inject;
 
-public class SymptomDetailsPresenter implements Presenter {
+public class SymptomDetailDeletePresenter implements Presenter {
+
     private final GetSymptomDetailsUseCase getSymptomDetailsUseCase;
+    private final DeleteSymptomUseCase deleteSymptomUseCase;
     private final SymptomModelDataMapper symptomModelDataMapper;
     private int symptomId;
-    private SintomaDetailView viewDetailsView;
+    private SintomaDetailDeleteView viewDetailsView;
     private final GetSymptomDetailsUseCase.Callback symptomDetailsCallback = new GetSymptomDetailsUseCase.Callback() {
         @Override
         public void onSymptomDataLoaded(Symptom symptom) {
-            SymptomDetailsPresenter.this.showSymptomDetailsInView(symptom);
-            SymptomDetailsPresenter.this.hideViewLoading();
+            SymptomDetailDeletePresenter.this.showSymptomDetailsInView(symptom);
+            SymptomDetailDeletePresenter.this.hideViewLoading();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            SymptomDetailsPresenter.this.hideViewLoading();
-            SymptomDetailsPresenter.this.showErrorMessage(errorBundle);
-            SymptomDetailsPresenter.this.showViewRetry();
+            SymptomDetailDeletePresenter.this.hideViewLoading();
+            SymptomDetailDeletePresenter.this.showErrorMessage(errorBundle);
+            SymptomDetailDeletePresenter.this.showViewRetry();
+        }
+    };
+    private final DeleteSymptomUseCase.Callback deleteSymptomCallback = new DeleteSymptomUseCase.Callback(){
+
+        @Override
+        public void onSymptomDataDeleted(Collection<Symptom> symptomsCollection) {
+            SymptomDetailDeletePresenter.this.hideViewLoading();
+            SymptomDetailDeletePresenter.this.showOKMessage();
+        }
+
+        @Override
+        public void onError(ErrorBundle errorBundle) {
+            SymptomDetailDeletePresenter.this.hideViewLoading();
+            SymptomDetailDeletePresenter.this.showErrorMessage(errorBundle);
+            SymptomDetailDeletePresenter.this.showViewRetry();
         }
     };
 
     @Inject
-    public SymptomDetailsPresenter(GetSymptomDetailsUseCase getSymptomDetailsUseCase,
-                                   SymptomModelDataMapper symptomModelDataMapper) {
+    public SymptomDetailDeletePresenter(GetSymptomDetailsUseCase getSymptomDetailsUseCase,
+                                        DeleteSymptomUseCase deleteSymptomUseCase,
+                                        SymptomModelDataMapper symptomModelDataMapper){
         this.getSymptomDetailsUseCase = getSymptomDetailsUseCase;
-        this.symptomModelDataMapper = symptomModelDataMapper;
+        this.deleteSymptomUseCase = deleteSymptomUseCase;
+        this.symptomModelDataMapper =symptomModelDataMapper;
     }
 
-    public void setView(@NonNull SintomaDetailView view) {
+    public void setView(@NonNull SintomaDetailDeleteView view) {
         this.viewDetailsView = view;
     }
 
     @Override
     public void resume() {
+
     }
 
     @Override
     public void pause() {
+
     }
 
     public void initialize(int symptomId){
@@ -57,16 +81,14 @@ public class SymptomDetailsPresenter implements Presenter {
         this.loadSymptomDetails();
     }
 
-    public void editSymptom(int symptomId){this.viewDetailsView.editSymptom(symptomId);}
-
-    public void deleteSymptom(int symptomId){this.viewDetailsView.deleteSymptom(symptomId);}
-
-
-
     private void loadSymptomDetails() {
         this.hideViewRetry();
         this.showViewLoading();
         this.getSymptomDetails();
+    }
+
+    public void deleteSymptom(int symptomId){
+        this.persistDeletion(symptomId);
     }
 
     private void showViewLoading() {
@@ -90,6 +112,9 @@ public class SymptomDetailsPresenter implements Presenter {
                 errorBundle.getException());
         this.viewDetailsView.showError(errorMessage);
     }
+    private void showOKMessage(){
+        this.viewDetailsView.showMessage("El síntoma se ha borrado correctamente");
+    }
 
     private void showSymptomDetailsInView(Symptom symptom) {
         final SymptomModel symptomModel = this.symptomModelDataMapper.transform(symptom);
@@ -97,6 +122,10 @@ public class SymptomDetailsPresenter implements Presenter {
     }
 
     private void getSymptomDetails() {
-        this.getSymptomDetailsUseCase.execute(this.symptomId, this.symptomDetailsCallback);
+
+    }
+
+    private void persistDeletion(int symptomId) {
+        this.deleteSymptomUseCase.execute(this.symptomId, this.deleteSymptomCallback);
     }
 }

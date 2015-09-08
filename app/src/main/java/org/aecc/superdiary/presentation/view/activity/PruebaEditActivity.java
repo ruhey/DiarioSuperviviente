@@ -1,26 +1,23 @@
 package org.aecc.superdiary.presentation.view.activity;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
 
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
-import org.aecc.superdiary.presentation.internal.di.components.ExamComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerExamComponent;
+import org.aecc.superdiary.presentation.internal.di.components.ExamComponent;
 import org.aecc.superdiary.presentation.model.ExamModel;
-import org.aecc.superdiary.presentation.presenter.ExamDetailsPresenter;
-import org.aecc.superdiary.presentation.view.PruebaDetailView;
+import org.aecc.superdiary.presentation.presenter.ExamDetailEditPresenter;
+import org.aecc.superdiary.presentation.view.PruebaDetailEditView;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
 
-public class PruebasDetailsActivity extends BaseActivity implements HasComponent<ExamComponent>, PruebaDetailView {
+public class PruebaEditActivity extends BaseActivity implements PruebaDetailEditView,HasComponent<ExamComponent>{
 
     private static final String INTENT_EXTRA_PARAM_EXAM_ID = "org.aecc.INTENT_PARAM_EXAM_ID";
     private static final String INSTANCE_STATE_PARAM_EXAM_ID = "org.aecc.STATE_PARAM_EXAM_ID";
@@ -28,39 +25,28 @@ public class PruebasDetailsActivity extends BaseActivity implements HasComponent
     private int examId;
     private ExamComponent examComponent;
 
-    @InjectView(R.id.nombrePrueba)
-    TextView nombrePrueba;
-    @InjectView(R.id.descripcionPrueba)
-    TextView descripcionPrueba;
-    @InjectView(R.id.fechaPrueba)
-    TextView fechaPrueba;
-    @InjectView(R.id.horaPrueba)
-    TextView horaPrueba;
-    @InjectView(R.id.editarPrueba)
-    Button editarPrueba;
-    @InjectView(R.id.borrarPrueba)
-    Button borrarPrueba;
+    //views
 
     @Inject
-    public ExamDetailsPresenter examDetailsPresenter;
-
-    public static Intent getCallingIntent(Context context, int examId) {
-        Intent callingIntent = new Intent(context, PruebasDetailsActivity.class);
-        callingIntent.putExtra(INTENT_EXTRA_PARAM_EXAM_ID, examId);
-
-        return callingIntent;
-    }
+    ExamDetailEditPresenter examDetailEditPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //setContentView(R.layout.activity_user_details);
-        setContentView(R.layout.activity_prueba_noedit);
+        setContentView(R.layout.activity_rutina_noedit);
         ButterKnife.inject(this);
         this.initializeInjector();
         this.initializeActivity(savedInstanceState);
         this.initialize();
+    }
+
+    public static Intent getCallingIntent(Context context, int examId) {
+        Intent callingIntent = new Intent(context, PruebaEditActivity.class);
+        callingIntent.putExtra(INTENT_EXTRA_PARAM_EXAM_ID, examId);
+
+        return callingIntent;
     }
 
     @Override
@@ -95,30 +81,16 @@ public class PruebasDetailsActivity extends BaseActivity implements HasComponent
     @Override
     public void renderExam(ExamModel exam) {
 
-        this.nombrePrueba.setText(exam.getName());
-        this.descripcionPrueba.setText(exam.getDescription());
-        this.fechaPrueba.setText(exam.getDateExam());
-        this.horaPrueba.setText(exam.getHourExam());
-    }
-
-    @OnClick(R.id.editarPrueba)
-    public void editMeeting(){
-        this.examDetailsPresenter.editExam(this.examId);
     }
 
     @Override
     public void editExam(int examId) {
-        this.navigator.navigateToExamEdit(getApplicationContext(), examId);
-    }
 
-    @OnClick(R.id.borrarPrueba)
-    public void deleteMeeting(){
-        this.examDetailsPresenter.deleteExam(this.examId);
     }
 
     @Override
-    public void deleteExam(int examId) {
-        this.navigator.navigateToExamDelete(getApplicationContext(), examId);
+    public void showMessage(String message) {
+
     }
 
     @Override
@@ -154,7 +126,7 @@ public class PruebasDetailsActivity extends BaseActivity implements HasComponent
     private void initialize() {
         this.getApplicationComponent().inject(this);
         this.getComponent().inject(this);
-        this.examDetailsPresenter.setView(this);
-        this.examDetailsPresenter.initialize(this.examId);
+        this.examDetailEditPresenter.setView(this);
+        this.examDetailEditPresenter.initialize(this.examId);
     }
 }

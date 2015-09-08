@@ -6,6 +6,8 @@ import android.content.Intent;
 import org.aecc.superdiary.presentation.view.activity.CitaAddActivity;
 import org.aecc.superdiary.presentation.view.activity.CitaDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.CitaNoEditActivity;
+import org.aecc.superdiary.presentation.view.activity.MedicamentoDeleteActivity;
+import org.aecc.superdiary.presentation.view.activity.MedicamentoEditActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajeDetailsNoEditActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsActivity;
@@ -113,6 +115,21 @@ public class Navigator {
             context.startActivity(intentToLaunch);
         }
     }
+    public void navigateToMedicineEdit(Context context, int medicineId) {
+        if (context != null) {
+            Intent intentToLaunch = MedicamentoEditActivity.getCallingIntent(context, medicineId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToMedicineDelete(Context context, int medicineId) {
+        if (context != null) {
+            Intent intentToLaunch = MedicamentoDeleteActivity.getCallingIntent(context, medicineId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
 
     public void navigateToRoutineList(Context context) {
         if (context != null) {
@@ -148,12 +165,29 @@ public class Navigator {
         if (context != null) {
             Intent intentToLaunch = PruebasActivity.getCallingIntent(context);
             context.startActivity(intentToLaunch);
+
         }
     }
 
     public void navigateToExamDetails(Context context, int routineId) {
         if (context != null) {
             Intent intentToLaunch = PruebasDetailsActivity.getCallingIntent(context, routineId);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToExamEdit(Context context, int examId) {
+        if (context != null) {
+            Intent intentToLaunch = RutinaEditActivity.getCallingIntent(context, examId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToExamDelete(Context context, int examId) {
+        if (context != null) {
+            Intent intentToLaunch = RutinaDeleteActivity.getCallingIntent(context, examId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }
     }
@@ -167,6 +201,22 @@ public class Navigator {
     public void navigateToSymptomDetails(Context context, int symptomId) {
         if (context != null) {
             Intent intentToLaunch = SintomasDetailsActivity.getCallingIntent(context, symptomId);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToSymptomEdit(Context context, int symptomId) {
+        if (context != null) {
+            Intent intentToLaunch = RutinaEditActivity.getCallingIntent(context, symptomId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToSymptomDelete(Context context, int symptomId) {
+        if (context != null) {
+            Intent intentToLaunch = RutinaDeleteActivity.getCallingIntent(context, symptomId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }
     }

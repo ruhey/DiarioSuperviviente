@@ -1,26 +1,23 @@
 package org.aecc.superdiary.presentation.view.activity;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
 
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
-import org.aecc.superdiary.presentation.internal.di.components.MedicineComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerMedicineComponent;
+import org.aecc.superdiary.presentation.internal.di.components.MedicineComponent;
 import org.aecc.superdiary.presentation.model.MedicineModel;
-import org.aecc.superdiary.presentation.presenter.MedicineDetailsPresenter;
-import org.aecc.superdiary.presentation.view.MedicamentoDetailView;
+import org.aecc.superdiary.presentation.presenter.MedicineDetailEditPresenter;
+import org.aecc.superdiary.presentation.view.MedicamentoDetailEditView;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
 
-public class MedicamentosDetailsActivity extends BaseActivity implements HasComponent<MedicineComponent>, MedicamentoDetailView {
+public class MedicamentoEditActivity extends BaseActivity implements MedicamentoDetailEditView,HasComponent<MedicineComponent>{
 
     private static final String INTENT_EXTRA_PARAM_MEDICINE_ID = "org.aecc.INTENT_PARAM_MEDICINE_ID";
     private static final String INSTANCE_STATE_PARAM_MEDICINE_ID = "org.aecc.STATE_PARAM_MEDICINE_ID";
@@ -28,45 +25,28 @@ public class MedicamentosDetailsActivity extends BaseActivity implements HasComp
     private int medicineId;
     private MedicineComponent medicineComponent;
 
-    @InjectView(R.id.nombreMedic)
-    TextView nombreMedic;
-    @InjectView(R.id.descripcionMedic)
-    TextView descripcionMedic;
-    @InjectView(R.id.fechaInicMedic)
-    TextView fechaInicMedic;
-    @InjectView(R.id.fechaFinMedic)
-    TextView fechaFinMedic;
-    @InjectView(R.id.horaIniMedic)
-    TextView horaIniMedic;
-    @InjectView(R.id.horaFinMedic)
-    TextView horaFinMedic;
-    @InjectView(R.id.intervaloMedic)
-    TextView intervaloMedic;
-    @InjectView(R.id.editarMedicamento)
-    Button editarMedicamento;
-    @InjectView(R.id.borrarMedicamento)
-    Button borrarMedicamento;
+    //views
 
     @Inject
-    public MedicineDetailsPresenter medicineDetailsPresenter;
-
-    public static Intent getCallingIntent(Context context, int medicineId) {
-        Intent callingIntent = new Intent(context, MedicamentosDetailsActivity.class);
-        callingIntent.putExtra(INTENT_EXTRA_PARAM_MEDICINE_ID, medicineId);
-
-        return callingIntent;
-    }
+    MedicineDetailEditPresenter medicineDetailEditPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //setContentView(R.layout.activity_user_details);
-        setContentView(R.layout.activity_medicamento_noedit);
+        setContentView(R.layout.activity_rutina_noedit);
         ButterKnife.inject(this);
         this.initializeInjector();
         this.initializeActivity(savedInstanceState);
         this.initialize();
+    }
+
+    public static Intent getCallingIntent(Context context, int medicineId) {
+        Intent callingIntent = new Intent(context, MedicamentoEditActivity.class);
+        callingIntent.putExtra(INTENT_EXTRA_PARAM_MEDICINE_ID, medicineId);
+
+        return callingIntent;
     }
 
     @Override
@@ -101,33 +81,16 @@ public class MedicamentosDetailsActivity extends BaseActivity implements HasComp
     @Override
     public void renderMedicine(MedicineModel medicine) {
 
-        this.nombreMedic.setText(medicine.getName());
-        this.descripcionMedic.setText(medicine.getDescription());
-        this.fechaInicMedic.setText(medicine.getFirstDay());
-        this.horaIniMedic.setText(medicine.getFirstHour());
-        this.fechaFinMedic.setText(medicine.getLastDay());
-        this.horaFinMedic.setText(medicine.getLastHour());
-        this.intervaloMedic.setText(medicine.getInterval());
-    }
-
-    @OnClick(R.id.editarMedicamento)
-    public void editMeeting(){
-        this.medicineDetailsPresenter.editMedicine(this.medicineId);
     }
 
     @Override
     public void editMedicine(int medicineId) {
-        this.navigator.navigateToMedicineEdit(getApplicationContext(), medicineId);
-    }
 
-    @OnClick(R.id.borrarMedicamento)
-    public void deleteMeeting(){
-        this.medicineDetailsPresenter.deleteMedicine(this.medicineId);
     }
 
     @Override
-    public void deleteMedicine(int medicineId) {
-        this.navigator.navigateToMedicineDelete(getApplicationContext(), medicineId);
+    public void showMessage(String message) {
+
     }
 
     @Override
@@ -163,7 +126,7 @@ public class MedicamentosDetailsActivity extends BaseActivity implements HasComp
     private void initialize() {
         this.getApplicationComponent().inject(this);
         this.getComponent().inject(this);
-        this.medicineDetailsPresenter.setView(this);
-        this.medicineDetailsPresenter.initialize(this.medicineId);
+        this.medicineDetailEditPresenter.setView(this);
+        this.medicineDetailEditPresenter.initialize(this.medicineId);
     }
 }

@@ -43,9 +43,9 @@ public class RutinasDetailsActivity extends BaseActivity implements HasComponent
     @InjectView(R.id.horaAvisoRutina)
     TextView horaAvisoRutina;
     @InjectView(R.id.editarRutina)
-    Button editarCita;
+    Button editarRutina;
     @InjectView(R.id.borrarRutina)
-    Button borrarCita;
+    Button borrarRutina;
 
     @Inject
     public RoutineDetailsPresenter routineDetailsPresenter;

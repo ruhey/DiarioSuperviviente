@@ -5,51 +5,75 @@ import android.support.annotation.NonNull;
 
 import org.aecc.superdiary.domain.Exam;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
+import org.aecc.superdiary.domain.interactor.exam.DeleteExamUseCase;
 import org.aecc.superdiary.domain.interactor.exam.GetExamDetailsUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.ExamModelDataMapper;
 import org.aecc.superdiary.presentation.model.ExamModel;
-import org.aecc.superdiary.presentation.view.PruebaDetailView;
+import org.aecc.superdiary.presentation.view.PruebaDetailDeleteView;
+
+import java.util.Collection;
 
 import javax.inject.Inject;
 
-public class ExamDetailsPresenter implements Presenter {
+public class ExamDetailDeletePresenter implements Presenter {
+
     private final GetExamDetailsUseCase getExamDetailsUseCase;
+    private final DeleteExamUseCase deleteExamUseCase;
     private final ExamModelDataMapper examModelDataMapper;
     private int examId;
-    private PruebaDetailView viewDetailsView;
+    private PruebaDetailDeleteView viewDetailsView;
     private final GetExamDetailsUseCase.Callback examDetailsCallback = new GetExamDetailsUseCase.Callback() {
         @Override
         public void onExamDataLoaded(Exam exam) {
-            ExamDetailsPresenter.this.showExamDetailsInView(exam);
-            ExamDetailsPresenter.this.hideViewLoading();
+            ExamDetailDeletePresenter.this.showExamDetailsInView(exam);
+            ExamDetailDeletePresenter.this.hideViewLoading();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            ExamDetailsPresenter.this.hideViewLoading();
-            ExamDetailsPresenter.this.showErrorMessage(errorBundle);
-            ExamDetailsPresenter.this.showViewRetry();
+            ExamDetailDeletePresenter.this.hideViewLoading();
+            ExamDetailDeletePresenter.this.showErrorMessage(errorBundle);
+            ExamDetailDeletePresenter.this.showViewRetry();
+        }
+    };
+    private final DeleteExamUseCase.Callback deleteExamCallback = new DeleteExamUseCase.Callback(){
+
+        @Override
+        public void onExamDataDeleted(Collection<Exam> examsCollection) {
+            ExamDetailDeletePresenter.this.hideViewLoading();
+            ExamDetailDeletePresenter.this.showOKMessage();
+        }
+
+        @Override
+        public void onError(ErrorBundle errorBundle) {
+            ExamDetailDeletePresenter.this.hideViewLoading();
+            ExamDetailDeletePresenter.this.showErrorMessage(errorBundle);
+            ExamDetailDeletePresenter.this.showViewRetry();
         }
     };
 
     @Inject
-    public ExamDetailsPresenter(GetExamDetailsUseCase getExamDetailsUseCase,
-                                   ExamModelDataMapper examModelDataMapper) {
+    public ExamDetailDeletePresenter(GetExamDetailsUseCase getExamDetailsUseCase,
+                                        DeleteExamUseCase deleteExamUseCase,
+                                        ExamModelDataMapper examModelDataMapper){
         this.getExamDetailsUseCase = getExamDetailsUseCase;
-        this.examModelDataMapper = examModelDataMapper;
+        this.deleteExamUseCase = deleteExamUseCase;
+        this.examModelDataMapper =examModelDataMapper;
     }
 
-    public void setView(@NonNull PruebaDetailView view) {
+    public void setView(@NonNull PruebaDetailDeleteView view) {
         this.viewDetailsView = view;
     }
 
     @Override
     public void resume() {
+
     }
 
     @Override
     public void pause() {
+
     }
 
     public void initialize(int examId){
@@ -57,15 +81,14 @@ public class ExamDetailsPresenter implements Presenter {
         this.loadExamDetails();
     }
 
-    public void editExam(int examId){this.viewDetailsView.editExam(examId);}
-
-    public void deleteExam(int examId){this.viewDetailsView.deleteExam(examId);}
-
-
     private void loadExamDetails() {
         this.hideViewRetry();
         this.showViewLoading();
         this.getExamDetails();
+    }
+
+    public void deleteExam(int examId){
+        this.persistDeletion(examId);
     }
 
     private void showViewLoading() {
@@ -89,6 +112,9 @@ public class ExamDetailsPresenter implements Presenter {
                 errorBundle.getException());
         this.viewDetailsView.showError(errorMessage);
     }
+    private void showOKMessage(){
+        this.viewDetailsView.showMessage("La prueba se ha borrado correctamente");
+    }
 
     private void showExamDetailsInView(Exam exam) {
         final ExamModel examModel = this.examModelDataMapper.transform(exam);
@@ -96,6 +122,10 @@ public class ExamDetailsPresenter implements Presenter {
     }
 
     private void getExamDetails() {
-        this.getExamDetailsUseCase.execute(this.examId, this.examDetailsCallback);
+
+    }
+
+    private void persistDeletion(int examId) {
+        this.deleteExamUseCase.execute(this.examId, this.deleteExamCallback);
     }
 }

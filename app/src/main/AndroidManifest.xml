@@ -104,6 +104,54 @@
             android:label="@string/title_activity_rutina" >
         </activity>
         <activity
+            android:name=".presentation.view.activity.MedicamentosActivity"
+            android:label="@string/title_activity_medicamento" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.MedicamentosDetailsActivity"
+            android:label="@string/title_activity_medicamento" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.MedicamentoDeleteActivity"
+            android:label="@string/title_activity_medicamento" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.MedicamentoEditActivity"
+            android:label="@string/title_activity_medicamento" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.PruebasActivity"
+            android:label="@string/title_activity_prueba" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.PruebasDetailsActivity"
+            android:label="@string/title_activity_prueba" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.PruebaDeleteActivity"
+            android:label="@string/title_activity_prueba" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.PruebaEditActivity"
+            android:label="@string/title_activity_prueba" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.SintomasActivity"
+            android:label="@string/title_activity_sintoma" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.SintomasDetailsActivity"
+            android:label="@string/title_activity_sintoma" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.SintomaDeleteActivity"
+            android:label="@string/title_activity_sintoma" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.SintomaEditActivity"
+            android:label="@string/title_activity_sintoma" >
+        </activity>
+        <activity
             android:name=".presentation.view.activity.Medicamento"
             android:label="@string/title_activity_medicamento" >
         </activity>

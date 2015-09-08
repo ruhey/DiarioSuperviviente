@@ -5,52 +5,75 @@ import android.support.annotation.NonNull;
 
 import org.aecc.superdiary.domain.Medicine;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
+import org.aecc.superdiary.domain.interactor.medicine.DeleteMedicineUseCase;
 import org.aecc.superdiary.domain.interactor.medicine.GetMedicineDetailsUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.MedicineModelDataMapper;
 import org.aecc.superdiary.presentation.model.MedicineModel;
-import org.aecc.superdiary.presentation.view.MedicamentoDetailView;
+import org.aecc.superdiary.presentation.view.MedicamentoDetailDeleteView;
+
+import java.util.Collection;
 
 import javax.inject.Inject;
 
-public class MedicineDetailsPresenter implements Presenter {
+public class MedicineDetailDeletePresenter implements Presenter {
 
     private final GetMedicineDetailsUseCase getMedicineDetailsUseCase;
+    private final DeleteMedicineUseCase deleteMedicineUseCase;
     private final MedicineModelDataMapper medicineModelDataMapper;
     private int medicineId;
-    private MedicamentoDetailView viewDetailsView;
+    private MedicamentoDetailDeleteView viewDetailsView;
     private final GetMedicineDetailsUseCase.Callback medicineDetailsCallback = new GetMedicineDetailsUseCase.Callback() {
         @Override
         public void onMedicineDataLoaded(Medicine medicine) {
-            MedicineDetailsPresenter.this.showMedicineDetailsInView(medicine);
-            MedicineDetailsPresenter.this.hideViewLoading();
+            MedicineDetailDeletePresenter.this.showMedicineDetailsInView(medicine);
+            MedicineDetailDeletePresenter.this.hideViewLoading();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            MedicineDetailsPresenter.this.hideViewLoading();
-            MedicineDetailsPresenter.this.showErrorMessage(errorBundle);
-            MedicineDetailsPresenter.this.showViewRetry();
+            MedicineDetailDeletePresenter.this.hideViewLoading();
+            MedicineDetailDeletePresenter.this.showErrorMessage(errorBundle);
+            MedicineDetailDeletePresenter.this.showViewRetry();
+        }
+    };
+    private final DeleteMedicineUseCase.Callback deleteMedicineCallback = new DeleteMedicineUseCase.Callback(){
+
+        @Override
+        public void onMedicineDataDeleted(Collection<Medicine> medicinesCollection) {
+            MedicineDetailDeletePresenter.this.hideViewLoading();
+            MedicineDetailDeletePresenter.this.showOKMessage();
+        }
+
+        @Override
+        public void onError(ErrorBundle errorBundle) {
+            MedicineDetailDeletePresenter.this.hideViewLoading();
+            MedicineDetailDeletePresenter.this.showErrorMessage(errorBundle);
+            MedicineDetailDeletePresenter.this.showViewRetry();
         }
     };
 
     @Inject
-    public MedicineDetailsPresenter(GetMedicineDetailsUseCase getMedicineDetailsUseCase,
-                                MedicineModelDataMapper medicineModelDataMapper) {
+    public MedicineDetailDeletePresenter(GetMedicineDetailsUseCase getMedicineDetailsUseCase,
+                                        DeleteMedicineUseCase deleteMedicineUseCase,
+                                        MedicineModelDataMapper medicineModelDataMapper){
         this.getMedicineDetailsUseCase = getMedicineDetailsUseCase;
-        this.medicineModelDataMapper = medicineModelDataMapper;
+        this.deleteMedicineUseCase = deleteMedicineUseCase;
+        this.medicineModelDataMapper =medicineModelDataMapper;
     }
 
-    public void setView(@NonNull MedicamentoDetailView view) {
+    public void setView(@NonNull MedicamentoDetailDeleteView view) {
         this.viewDetailsView = view;
     }
 
     @Override
     public void resume() {
+
     }
 
     @Override
     public void pause() {
+
     }
 
     public void initialize(int medicineId){
@@ -58,16 +81,14 @@ public class MedicineDetailsPresenter implements Presenter {
         this.loadMedicineDetails();
     }
 
-    public void editMedicine(int medicineId){this.viewDetailsView.editMedicine(medicineId);}
-
-    public void deleteMedicine(int medicineId){this.viewDetailsView.deleteMedicine(medicineId);}
-
-
-
     private void loadMedicineDetails() {
         this.hideViewRetry();
         this.showViewLoading();
         this.getMedicineDetails();
+    }
+
+    public void deleteMedicine(int medicineId){
+        this.persistDeletion(medicineId);
     }
 
     private void showViewLoading() {
@@ -91,6 +112,9 @@ public class MedicineDetailsPresenter implements Presenter {
                 errorBundle.getException());
         this.viewDetailsView.showError(errorMessage);
     }
+    private void showOKMessage(){
+        this.viewDetailsView.showMessage("El medicamento se ha borrado correctamente");
+    }
 
     private void showMedicineDetailsInView(Medicine medicine) {
         final MedicineModel medicineModel = this.medicineModelDataMapper.transform(medicine);
@@ -98,6 +122,10 @@ public class MedicineDetailsPresenter implements Presenter {
     }
 
     private void getMedicineDetails() {
-        this.getMedicineDetailsUseCase.execute(this.medicineId, this.medicineDetailsCallback);
+
+    }
+
+    private void persistDeletion(int medicineId) {
+        this.deleteMedicineUseCase.execute(this.medicineId, this.deleteMedicineCallback);
     }
 }

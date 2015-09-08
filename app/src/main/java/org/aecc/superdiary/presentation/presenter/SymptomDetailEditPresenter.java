@@ -6,50 +6,72 @@ import android.support.annotation.NonNull;
 import org.aecc.superdiary.domain.Symptom;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
 import org.aecc.superdiary.domain.interactor.symptom.GetSymptomDetailsUseCase;
+import org.aecc.superdiary.domain.interactor.symptom.SaveSymptomUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.SymptomModelDataMapper;
 import org.aecc.superdiary.presentation.model.SymptomModel;
-import org.aecc.superdiary.presentation.view.SintomaDetailView;
+import org.aecc.superdiary.presentation.view.SintomaDetailEditView;
 
 import javax.inject.Inject;
 
-public class SymptomDetailsPresenter implements Presenter {
+public class SymptomDetailEditPresenter implements Presenter{
+
     private final GetSymptomDetailsUseCase getSymptomDetailsUseCase;
+    private final SaveSymptomUseCase saveSymptomUseCase;
     private final SymptomModelDataMapper symptomModelDataMapper;
     private int symptomId;
-    private SintomaDetailView viewDetailsView;
+    private SintomaDetailEditView viewDetailsView;
     private final GetSymptomDetailsUseCase.Callback symptomDetailsCallback = new GetSymptomDetailsUseCase.Callback() {
         @Override
         public void onSymptomDataLoaded(Symptom symptom) {
-            SymptomDetailsPresenter.this.showSymptomDetailsInView(symptom);
-            SymptomDetailsPresenter.this.hideViewLoading();
+            SymptomDetailEditPresenter.this.showSymptomDetailsInView(symptom);
+            SymptomDetailEditPresenter.this.hideViewLoading();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            SymptomDetailsPresenter.this.hideViewLoading();
-            SymptomDetailsPresenter.this.showErrorMessage(errorBundle);
-            SymptomDetailsPresenter.this.showViewRetry();
+            SymptomDetailEditPresenter.this.hideViewLoading();
+            SymptomDetailEditPresenter.this.showErrorMessage(errorBundle);
+            SymptomDetailEditPresenter.this.showViewRetry();
+        }
+    };
+    private final SaveSymptomUseCase.Callback symptomSaveCallback = new SaveSymptomUseCase.Callback(){
+
+        @Override
+        public void onSymptomDataSaved(Symptom symptom) {
+            SymptomDetailEditPresenter.this.hideViewLoading();
+            SymptomDetailEditPresenter.this.showOKMessage();
+        }
+
+        @Override
+        public void onError(ErrorBundle errorBundle) {
+            SymptomDetailEditPresenter.this.hideViewLoading();
+            SymptomDetailEditPresenter.this.showErrorMessage(errorBundle);
+            SymptomDetailEditPresenter.this.showViewRetry();
         }
     };
 
     @Inject
-    public SymptomDetailsPresenter(GetSymptomDetailsUseCase getSymptomDetailsUseCase,
-                                   SymptomModelDataMapper symptomModelDataMapper) {
+    public SymptomDetailEditPresenter(GetSymptomDetailsUseCase getSymptomDetailsUseCase,
+                                      SaveSymptomUseCase saveSymptomUseCase,
+                                        SymptomModelDataMapper symptomModelDataMapper){
         this.getSymptomDetailsUseCase = getSymptomDetailsUseCase;
-        this.symptomModelDataMapper = symptomModelDataMapper;
+        this.saveSymptomUseCase = saveSymptomUseCase;
+        this.symptomModelDataMapper =symptomModelDataMapper;
     }
 
-    public void setView(@NonNull SintomaDetailView view) {
+    public void setView(@NonNull SintomaDetailEditView view) {
         this.viewDetailsView = view;
     }
 
     @Override
     public void resume() {
+
     }
 
     @Override
     public void pause() {
+
     }
 
     public void initialize(int symptomId){
@@ -57,11 +79,9 @@ public class SymptomDetailsPresenter implements Presenter {
         this.loadSymptomDetails();
     }
 
-    public void editSymptom(int symptomId){this.viewDetailsView.editSymptom(symptomId);}
-
-    public void deleteSymptom(int symptomId){this.viewDetailsView.deleteSymptom(symptomId);}
-
-
+    public void saveSymptom(Symptom symptom){
+        this.persistSymptom(symptom);
+    }
 
     private void loadSymptomDetails() {
         this.hideViewRetry();
@@ -91,6 +111,10 @@ public class SymptomDetailsPresenter implements Presenter {
         this.viewDetailsView.showError(errorMessage);
     }
 
+    private void showOKMessage(){
+        this.viewDetailsView.showMessage("El síntoma se ha guardado correctamente");
+    }
+
     private void showSymptomDetailsInView(Symptom symptom) {
         final SymptomModel symptomModel = this.symptomModelDataMapper.transform(symptom);
         this.viewDetailsView.renderSymptom(symptomModel);
@@ -98,5 +122,9 @@ public class SymptomDetailsPresenter implements Presenter {
 
     private void getSymptomDetails() {
         this.getSymptomDetailsUseCase.execute(this.symptomId, this.symptomDetailsCallback);
+    }
+
+    private void persistSymptom(Symptom symptom) {
+        this.saveSymptomUseCase.execute(symptom, this.symptomSaveCallback);
     }
 }

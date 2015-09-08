@@ -5,51 +5,61 @@ import android.support.annotation.NonNull;
 
 import org.aecc.superdiary.domain.Exam;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
+import org.aecc.superdiary.domain.interactor.exam.CreateExamUseCase;
 import org.aecc.superdiary.domain.interactor.exam.GetExamDetailsUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.ExamModelDataMapper;
 import org.aecc.superdiary.presentation.model.ExamModel;
-import org.aecc.superdiary.presentation.view.PruebaDetailView;
+import org.aecc.superdiary.presentation.view.PruebaDetailCreateView;
+import org.aecc.superdiary.presentation.view.PruebaDetailEditView;
 
 import javax.inject.Inject;
 
-public class ExamDetailsPresenter implements Presenter {
-    private final GetExamDetailsUseCase getExamDetailsUseCase;
+public class ExamDetailCreatePresenter implements Presenter{
+
+
+    private final CreateExamUseCase createExamUseCase;
     private final ExamModelDataMapper examModelDataMapper;
     private int examId;
-    private PruebaDetailView viewDetailsView;
-    private final GetExamDetailsUseCase.Callback examDetailsCallback = new GetExamDetailsUseCase.Callback() {
+    private PruebaDetailCreateView viewDetailsView;
+
+    private final CreateExamUseCase.Callback createExamCallback = new CreateExamUseCase.Callback(){
+
         @Override
-        public void onExamDataLoaded(Exam exam) {
-            ExamDetailsPresenter.this.showExamDetailsInView(exam);
-            ExamDetailsPresenter.this.hideViewLoading();
+        public void onExamDataCreated(Exam exam) {
+            ExamDetailCreatePresenter.this.hideViewLoading();
+            ExamDetailCreatePresenter.this.showOKMessage();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            ExamDetailsPresenter.this.hideViewLoading();
-            ExamDetailsPresenter.this.showErrorMessage(errorBundle);
-            ExamDetailsPresenter.this.showViewRetry();
+            ExamDetailCreatePresenter.this.hideViewLoading();
+            ExamDetailCreatePresenter.this.showErrorMessage(errorBundle);
+            ExamDetailCreatePresenter.this.showViewRetry();
         }
     };
 
     @Inject
-    public ExamDetailsPresenter(GetExamDetailsUseCase getExamDetailsUseCase,
-                                   ExamModelDataMapper examModelDataMapper) {
-        this.getExamDetailsUseCase = getExamDetailsUseCase;
-        this.examModelDataMapper = examModelDataMapper;
+    public ExamDetailCreatePresenter(
+                                        CreateExamUseCase createExamUseCase,
+                                        ExamModelDataMapper examModelDataMapper){
+
+        this.createExamUseCase = createExamUseCase;
+        this.examModelDataMapper =examModelDataMapper;
     }
 
-    public void setView(@NonNull PruebaDetailView view) {
+    public void setView(@NonNull PruebaDetailCreateView view) {
         this.viewDetailsView = view;
     }
 
     @Override
     public void resume() {
+
     }
 
     @Override
     public void pause() {
+
     }
 
     public void initialize(int examId){
@@ -57,15 +67,14 @@ public class ExamDetailsPresenter implements Presenter {
         this.loadExamDetails();
     }
 
-    public void editExam(int examId){this.viewDetailsView.editExam(examId);}
-
-    public void deleteExam(int examId){this.viewDetailsView.deleteExam(examId);}
-
+    public void createExam(Exam exam){
+        this.persistCreation(exam);
+    }
 
     private void loadExamDetails() {
         this.hideViewRetry();
         this.showViewLoading();
-        this.getExamDetails();
+
     }
 
     private void showViewLoading() {
@@ -90,12 +99,11 @@ public class ExamDetailsPresenter implements Presenter {
         this.viewDetailsView.showError(errorMessage);
     }
 
-    private void showExamDetailsInView(Exam exam) {
-        final ExamModel examModel = this.examModelDataMapper.transform(exam);
-        this.viewDetailsView.renderExam(examModel);
+    private void showOKMessage(){
+        this.viewDetailsView.showMessage("La prueba se ha creado correctamente");
     }
 
-    private void getExamDetails() {
-        this.getExamDetailsUseCase.execute(this.examId, this.examDetailsCallback);
+    private void persistCreation(Exam exam){
+        this.createExamUseCase.execute(exam, this.createExamCallback);
     }
 }
