@@ -1,12 +1,15 @@
 package org.aecc.superdiary.presentation.internal.di.modules;
 
 import org.aecc.superdiary.domain.interactor.routine.CreateRoutineUseCase;
+import org.aecc.superdiary.domain.interactor.routine.CreateRoutineUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.routine.DeleteRoutineUseCase;
+import org.aecc.superdiary.domain.interactor.routine.DeleteRoutineUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineDetailsUseCase;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineDetailsUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineListUseCase;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineListUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.routine.SaveRoutineUseCase;
+import org.aecc.superdiary.domain.interactor.routine.SaveRoutineUseCaseImpl;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
 import org.aecc.superdiary.presentation.presenter.RoutineDetailCreatePresenter;
 import org.aecc.superdiary.presentation.presenter.RoutineDetailDeletePresenter;
@@ -34,19 +37,19 @@ public class RoutineModule {
 
     @Provides
     @PerActivity
-    CreateRoutineUseCase provideCreateRoutineUseCase(CreateRoutineUseCase createRoutineUseCase) {
+    CreateRoutineUseCase provideCreateRoutineUseCase(CreateRoutineUseCaseImpl createRoutineUseCase) {
         return createRoutineUseCase;
     }
 
     @Provides
     @PerActivity
-    DeleteRoutineUseCase provideDeleteRoutineUseCase(DeleteRoutineUseCase deleteRoutineUseCase) {
+    DeleteRoutineUseCase provideDeleteRoutineUseCase(DeleteRoutineUseCaseImpl deleteRoutineUseCase) {
         return deleteRoutineUseCase;
     }
 
     @Provides
     @PerActivity
-    SaveRoutineUseCase provideSaveRoutineUseCase(SaveRoutineUseCase saveRoutineUseCase) {
+    SaveRoutineUseCase provideSaveRoutineUseCase(SaveRoutineUseCaseImpl saveRoutineUseCase) {
         return saveRoutineUseCase;
     }
 

@@ -1,5 +1,7 @@
 package org.aecc.superdiary.presentation.internal.di.modules;
 
+import org.aecc.superdiary.domain.interactor.exam.CreateExamUseCaseImpl;
+import org.aecc.superdiary.domain.interactor.exam.DeleteExamUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.exam.GetExamDetailsUseCase;
 import org.aecc.superdiary.domain.interactor.exam.GetExamDetailsUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.exam.GetExamListUseCase;
@@ -11,6 +13,7 @@ import org.aecc.superdiary.domain.interactor.exam.GetExamDetailsUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.exam.GetExamListUseCase;
 import org.aecc.superdiary.domain.interactor.exam.GetExamListUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.exam.SaveExamUseCase;
+import org.aecc.superdiary.domain.interactor.exam.SaveExamUseCaseImpl;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
 import org.aecc.superdiary.presentation.presenter.ExamListPresenter;
 import org.aecc.superdiary.presentation.presenter.Presenter;
@@ -39,19 +42,19 @@ public class ExamModule {
 
     @Provides
     @PerActivity
-    CreateExamUseCase provideCreateExamUseCase(CreateExamUseCase createExamUseCase) {
+    CreateExamUseCase provideCreateExamUseCase(CreateExamUseCaseImpl createExamUseCase) {
         return createExamUseCase;
     }
 
     @Provides
     @PerActivity
-    DeleteExamUseCase provideDeleteExamUseCase(DeleteExamUseCase deleteExamUseCase) {
+    DeleteExamUseCase provideDeleteExamUseCase(DeleteExamUseCaseImpl deleteExamUseCase) {
         return deleteExamUseCase;
     }
 
     @Provides
     @PerActivity
-    SaveExamUseCase provideSaveExamUseCase(SaveExamUseCase saveExamUseCase) {
+    SaveExamUseCase provideSaveExamUseCase(SaveExamUseCaseImpl saveExamUseCase) {
         return saveExamUseCase;
     }
 

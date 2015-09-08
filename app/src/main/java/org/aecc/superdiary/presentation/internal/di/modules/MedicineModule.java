@@ -1,5 +1,7 @@
 package org.aecc.superdiary.presentation.internal.di.modules;
 
+import org.aecc.superdiary.domain.interactor.medicine.CreateMedicineUseCaseImpl;
+import org.aecc.superdiary.domain.interactor.medicine.DeleteMedicineUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.medicine.GetMedicineDetailsUseCase;
 import org.aecc.superdiary.domain.interactor.medicine.GetMedicineDetailsUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.medicine.GetMedicineListUseCase;
@@ -11,6 +13,7 @@ import org.aecc.superdiary.domain.interactor.medicine.GetMedicineDetailsUseCaseI
 import org.aecc.superdiary.domain.interactor.medicine.GetMedicineListUseCase;
 import org.aecc.superdiary.domain.interactor.medicine.GetMedicineListUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.medicine.SaveMedicineUseCase;
+import org.aecc.superdiary.domain.interactor.medicine.SaveMedicineUseCaseImpl;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
 import org.aecc.superdiary.presentation.presenter.MedicineListPresenter;
 import org.aecc.superdiary.presentation.presenter.Presenter;
@@ -39,19 +42,19 @@ public class MedicineModule {
 
     @Provides
     @PerActivity
-    CreateMedicineUseCase provideCreateMedicineUseCase(CreateMedicineUseCase createMedicineUseCase) {
+    CreateMedicineUseCase provideCreateMedicineUseCase(CreateMedicineUseCaseImpl createMedicineUseCase) {
         return createMedicineUseCase;
     }
 
     @Provides
     @PerActivity
-    DeleteMedicineUseCase provideDeleteMedicineUseCase(DeleteMedicineUseCase deleteMedicineUseCase) {
+    DeleteMedicineUseCase provideDeleteMedicineUseCase(DeleteMedicineUseCaseImpl deleteMedicineUseCase) {
         return deleteMedicineUseCase;
     }
 
     @Provides
     @PerActivity
-    SaveMedicineUseCase provideSaveMedicineUseCase(SaveMedicineUseCase saveMedicineUseCase) {
+    SaveMedicineUseCase provideSaveMedicineUseCase(SaveMedicineUseCaseImpl saveMedicineUseCase) {
         return saveMedicineUseCase;
     }
 

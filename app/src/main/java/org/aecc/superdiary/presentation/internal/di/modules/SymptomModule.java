@@ -1,7 +1,9 @@
 package org.aecc.superdiary.presentation.internal.di.modules;
 
 import org.aecc.superdiary.domain.interactor.symptom.CreateSymptomUseCase;
+import org.aecc.superdiary.domain.interactor.symptom.CreateSymptomUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.symptom.DeleteSymptomUseCase;
+import org.aecc.superdiary.domain.interactor.symptom.DeleteSymptomUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.symptom.GetSymptomDetailsUseCase;
 import org.aecc.superdiary.domain.interactor.symptom.GetSymptomDetailsUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.symptom.GetSymptomListUseCase;
@@ -11,6 +13,7 @@ import org.aecc.superdiary.domain.interactor.symptom.GetSymptomDetailsUseCase;
 import org.aecc.superdiary.domain.interactor.symptom.GetSymptomDetailsUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.symptom.GetSymptomListUseCase;
 import org.aecc.superdiary.domain.interactor.symptom.GetSymptomListUseCaseImpl;
+import org.aecc.superdiary.domain.interactor.symptom.SaveSymptomUseCaseImpl;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
 import org.aecc.superdiary.presentation.presenter.SymptomDetailCreatePresenter;
 import org.aecc.superdiary.presentation.presenter.SymptomDetailDeletePresenter;
@@ -39,19 +42,19 @@ public class SymptomModule {
 
     @Provides
     @PerActivity
-    CreateSymptomUseCase provideCreateSymptomUseCase(CreateSymptomUseCase createSymptomUseCase) {
+    CreateSymptomUseCase provideCreateSymptomUseCase(CreateSymptomUseCaseImpl createSymptomUseCase) {
         return createSymptomUseCase;
     }
 
     @Provides
     @PerActivity
-    DeleteSymptomUseCase provideDeleteSymptomUseCase(DeleteSymptomUseCase deleteSymptomUseCase) {
+    DeleteSymptomUseCase provideDeleteSymptomUseCase(DeleteSymptomUseCaseImpl deleteSymptomUseCase) {
         return deleteSymptomUseCase;
     }
 
     @Provides
     @PerActivity
-    SaveSymptomUseCase provideSaveSymptomUseCase(SaveSymptomUseCase saveSymptomUseCase) {
+    SaveSymptomUseCase provideSaveSymptomUseCase(SaveSymptomUseCaseImpl saveSymptomUseCase) {
         return saveSymptomUseCase;
     }
 
