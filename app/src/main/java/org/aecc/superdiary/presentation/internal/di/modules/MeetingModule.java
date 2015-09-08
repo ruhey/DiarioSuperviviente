@@ -1,5 +1,7 @@
 package org.aecc.superdiary.presentation.internal.di.modules;
 
+import org.aecc.superdiary.domain.interactor.meeting.CreateMeetingUseCase;
+import org.aecc.superdiary.domain.interactor.meeting.CreateMeetingUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.meeting.GetMeetingDetailsUseCase;
 import org.aecc.superdiary.domain.interactor.meeting.GetMeetingDetailsUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.meeting.GetMeetingListUseCase;
@@ -7,6 +9,7 @@ import org.aecc.superdiary.domain.interactor.meeting.GetMeetingListUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.meeting.SaveMeetingUseCase;
 import org.aecc.superdiary.domain.interactor.meeting.SaveMeetingUseCaseImpl;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
+import org.aecc.superdiary.presentation.presenter.MeetingAddPresenter;
 import org.aecc.superdiary.presentation.presenter.MeetingDetailsNoEditPresenter;
 import org.aecc.superdiary.presentation.presenter.MeetingDetailsPresenter;
 import org.aecc.superdiary.presentation.presenter.MeetingListPresenter;
@@ -38,6 +41,12 @@ public class MeetingModule {
 
     @Provides
     @PerActivity
+    CreateMeetingUseCase provideCreateMeetingUseCase(CreateMeetingUseCaseImpl createMeetingUseCase){
+        return createMeetingUseCase;
+    }
+
+    @Provides
+    @PerActivity
     Presenter provideMeetingListPresenter(MeetingListPresenter meetingListPresenter) {
         return meetingListPresenter;
     }
@@ -54,5 +63,10 @@ public class MeetingModule {
         return meetingDetailsPresenter;
     }
 
+    @Provides
+    @PerActivity
+    Presenter provideMeetingAddPresenter(MeetingAddPresenter meetingAddPresenter){
+        return meetingAddPresenter;
+    }
 }
 

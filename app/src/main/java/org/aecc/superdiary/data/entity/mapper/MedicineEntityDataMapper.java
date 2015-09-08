@@ -36,7 +36,7 @@ public class MedicineEntityDataMapper {
     }
 
     public MedicineEntity untransform(Medicine medicine) {
-        MedicineEntity medicineEntity = null;
+        MedicineEntity medicineEntity = new MedicineEntity();
 
         if (medicine != null) {
             medicineEntity.setMedicineId(medicine.getMedicineId());

@@ -56,6 +56,10 @@ public class MeetingListPresenter implements Presenter {
     public void pause() {
     }
 
+    public void addMeeting(){
+        this.viewListView.addMeetingElement();
+    }
+
     public void initialize() {
         this.loadMeetingList();
     }

@@ -58,6 +58,11 @@
             android:theme="@style/DiaryTheme" />
 
         <activity
+            android:name=".presentation.view.activity.CitaAddActivity"
+            android:label="@string/title_activity_citas"
+            android:theme="@style/DiaryTheme" />
+
+        <activity
             android:name=".presentation.view.activity.Otros"
             android:label="@string/title_activity_otros"
             android:theme="@style/DiaryTheme" />

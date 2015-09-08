@@ -33,7 +33,7 @@ public class SymptomEntityDataMapper {
     }
 
     public SymptomEntity untransform(Symptom symptom) {
-        SymptomEntity symptomEntity = null;
+        SymptomEntity symptomEntity = new SymptomEntity();
 
         if (symptom != null) {
             symptomEntity.setSymptomId(symptom.getSymptomId());

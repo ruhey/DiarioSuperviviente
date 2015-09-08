@@ -33,7 +33,7 @@ public class ExamEntityDataMapper {
     }
 
     public ExamEntity untransform(Exam exam) {
-        ExamEntity examEntity = null;
+        ExamEntity examEntity = new ExamEntity();
 
         if (exam != null) {
             examEntity.setExamId(exam.getExamId());

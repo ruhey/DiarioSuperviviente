@@ -10,4 +10,6 @@ public interface CitasListView extends LoadDataView {
     void renderMeetingList(Collection<MeetingModel> meetingModelCollection);
 
     void viewMeeting(MeetingModel meetingModel);
+
+    void addMeetingElement();
 }

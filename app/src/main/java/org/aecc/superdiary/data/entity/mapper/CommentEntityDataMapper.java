@@ -33,7 +33,7 @@ public class CommentEntityDataMapper {
     }
 
     public CommentEntity untransform(Comment comment) {
-        CommentEntity commentEntity = null;
+        CommentEntity commentEntity = new CommentEntity();
 
         if (comment != null) {
             commentEntity.setCommentId(comment.getCommentId());

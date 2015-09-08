@@ -37,7 +37,7 @@ public class MeetingEntityDataMapper {
     }
 
     public MeetingEntity untransform(Meeting meeting) {
-        MeetingEntity meetingEntity = null;
+        MeetingEntity meetingEntity = new MeetingEntity();
 
         if (meeting != null) {
             meetingEntity.setMeetingId(meeting.getMeetingId());

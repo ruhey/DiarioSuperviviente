@@ -38,7 +38,7 @@ public class RoutineEntityDataMapper {
     }
 
     public RoutineEntity untransform(Routine routine) {
-        RoutineEntity routineEntity = null;
+        RoutineEntity routineEntity = new RoutineEntity();
 
         if (routine != null) {
             routineEntity.setRoutineId(routine.getRoutineId());

@@ -54,6 +54,8 @@ public class CitasActivity extends DiaryBaseActivity implements HasComponent<Mee
     @InjectView(R.id.rl_retry) RelativeLayout rl_retry;
     @InjectView(R.id.bt_retry)
     Button bt_retry;
+    @InjectView(R.id.botonAnadir)
+    Button anadir;
 
     private MeetingsAdapter meetingsAdapter;
 
@@ -142,6 +144,11 @@ public class CitasActivity extends DiaryBaseActivity implements HasComponent<Mee
         
     }
 
+    @Override
+    public void addMeetingElement() {
+        this.navigator.navigateToMeetingAdd(getContext());
+    }
+
     private void initialize() {
         this.getApplicationComponent().inject(this);
         this.getComponent().inject(this);
@@ -206,5 +213,10 @@ public class CitasActivity extends DiaryBaseActivity implements HasComponent<Mee
                     }
                 }
             };
+
+    @OnClick(R.id.botonAnadir)
+    public void anadirButtonClicked(){
+        this.meetingListPresenter.addMeeting();
+    }
 }
 
