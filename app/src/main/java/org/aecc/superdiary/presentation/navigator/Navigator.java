@@ -14,6 +14,8 @@ import org.aecc.superdiary.presentation.view.activity.CitasDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentosActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentosDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsDeleteActivity;
+import org.aecc.superdiary.presentation.view.activity.RutinaDeleteActivity;
+import org.aecc.superdiary.presentation.view.activity.RutinaEditActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinasActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinasDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebasActivity;
@@ -125,6 +127,23 @@ public class Navigator {
             context.startActivity(intentToLaunch);
         }
     }
+
+    public void navigateToRoutineEdit(Context context, int routineId) {
+        if (context != null) {
+            Intent intentToLaunch = RutinaEditActivity.getCallingIntent(context, routineId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToRoutineDelete(Context context, int routineId) {
+        if (context != null) {
+            Intent intentToLaunch = RutinaDeleteActivity.getCallingIntent(context, routineId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
     public void navigateToExamList(Context context) {
         if (context != null) {
             Intent intentToLaunch = PruebasActivity.getCallingIntent(context);

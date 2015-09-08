@@ -6,50 +6,72 @@ import android.support.annotation.NonNull;
 import org.aecc.superdiary.domain.Routine;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineDetailsUseCase;
+import org.aecc.superdiary.domain.interactor.routine.SaveRoutineUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.RoutineModelDataMapper;
 import org.aecc.superdiary.presentation.model.RoutineModel;
-import org.aecc.superdiary.presentation.view.RutinaDetailView;
+import org.aecc.superdiary.presentation.view.RutinaDetailEditView;
 
 import javax.inject.Inject;
 
-public class RoutineDetailsPresenter implements Presenter {
+public class RoutineDetailEditPresenter implements Presenter{
+
     private final GetRoutineDetailsUseCase getRoutineDetailsUseCase;
+    private final SaveRoutineUseCase saveRoutineUseCase;
     private final RoutineModelDataMapper routineModelDataMapper;
     private int routineId;
-    private RutinaDetailView viewDetailsView;
+    private RutinaDetailEditView viewDetailsView;
     private final GetRoutineDetailsUseCase.Callback routineDetailsCallback = new GetRoutineDetailsUseCase.Callback() {
         @Override
         public void onRoutineDataLoaded(Routine routine) {
-            RoutineDetailsPresenter.this.showRoutineDetailsInView(routine);
-            RoutineDetailsPresenter.this.hideViewLoading();
+            RoutineDetailEditPresenter.this.showRoutineDetailsInView(routine);
+            RoutineDetailEditPresenter.this.hideViewLoading();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            RoutineDetailsPresenter.this.hideViewLoading();
-            RoutineDetailsPresenter.this.showErrorMessage(errorBundle);
-            RoutineDetailsPresenter.this.showViewRetry();
+            RoutineDetailEditPresenter.this.hideViewLoading();
+            RoutineDetailEditPresenter.this.showErrorMessage(errorBundle);
+            RoutineDetailEditPresenter.this.showViewRetry();
+        }
+    };
+    private final SaveRoutineUseCase.Callback routineSaveCallback = new SaveRoutineUseCase.Callback(){
+
+        @Override
+        public void onRoutineDataSaved(Routine routine) {
+            RoutineDetailEditPresenter.this.hideViewLoading();
+            RoutineDetailEditPresenter.this.showOKMessage();
+        }
+
+        @Override
+        public void onError(ErrorBundle errorBundle) {
+            RoutineDetailEditPresenter.this.hideViewLoading();
+            RoutineDetailEditPresenter.this.showErrorMessage(errorBundle);
+            RoutineDetailEditPresenter.this.showViewRetry();
         }
     };
 
     @Inject
-    public RoutineDetailsPresenter(GetRoutineDetailsUseCase getRoutineDetailsUseCase,
-                                   RoutineModelDataMapper routineModelDataMapper) {
+    public RoutineDetailEditPresenter(GetRoutineDetailsUseCase getRoutineDetailsUseCase,
+                                      SaveRoutineUseCase saveRoutineUseCase,
+                                        RoutineModelDataMapper routineModelDataMapper){
         this.getRoutineDetailsUseCase = getRoutineDetailsUseCase;
-        this.routineModelDataMapper = routineModelDataMapper;
+        this.saveRoutineUseCase = saveRoutineUseCase;
+        this.routineModelDataMapper =routineModelDataMapper;
     }
 
-    public void setView(@NonNull RutinaDetailView view) {
+    public void setView(@NonNull RutinaDetailEditView view) {
         this.viewDetailsView = view;
     }
 
     @Override
     public void resume() {
+
     }
 
     @Override
     public void pause() {
+
     }
 
     public void initialize(int routineId){
@@ -57,9 +79,9 @@ public class RoutineDetailsPresenter implements Presenter {
         this.loadRoutineDetails();
     }
 
-    public void editRountine(int routineId){this.viewDetailsView.editRoutine(routineId);}
-
-    public void deleteRoutine(int routineId){this.viewDetailsView.deleteRoutine(routineId);}
+    public void saveRoutine(Routine routine){
+        this.persistRoutine(routine);
+    }
 
     private void loadRoutineDetails() {
         this.hideViewRetry();
@@ -89,6 +111,10 @@ public class RoutineDetailsPresenter implements Presenter {
         this.viewDetailsView.showError(errorMessage);
     }
 
+    private void showOKMessage(){
+        this.viewDetailsView.showMessage("El contacto se ha guardado correctamente");
+    }
+
     private void showRoutineDetailsInView(Routine routine) {
         final RoutineModel routineModel = this.routineModelDataMapper.transform(routine);
         this.viewDetailsView.renderRoutine(routineModel);
@@ -96,5 +122,9 @@ public class RoutineDetailsPresenter implements Presenter {
 
     private void getRoutineDetails() {
         this.getRoutineDetailsUseCase.execute(this.routineId, this.routineDetailsCallback);
+    }
+
+    private void persistRoutine(Routine routine) {
+        this.saveRoutineUseCase.execute(routine, this.routineSaveCallback);
     }
 }

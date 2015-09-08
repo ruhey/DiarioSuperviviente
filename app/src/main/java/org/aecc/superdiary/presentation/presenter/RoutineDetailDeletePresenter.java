@@ -5,51 +5,75 @@ import android.support.annotation.NonNull;
 
 import org.aecc.superdiary.domain.Routine;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
+import org.aecc.superdiary.domain.interactor.routine.DeleteRoutineUseCase;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineDetailsUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
 import org.aecc.superdiary.presentation.mapper.RoutineModelDataMapper;
 import org.aecc.superdiary.presentation.model.RoutineModel;
-import org.aecc.superdiary.presentation.view.RutinaDetailView;
+import org.aecc.superdiary.presentation.view.RutinaDetailDeleteView;
+
+import java.util.Collection;
 
 import javax.inject.Inject;
 
-public class RoutineDetailsPresenter implements Presenter {
+public class RoutineDetailDeletePresenter implements Presenter {
+
     private final GetRoutineDetailsUseCase getRoutineDetailsUseCase;
+    private final DeleteRoutineUseCase deleteRoutineUseCase;
     private final RoutineModelDataMapper routineModelDataMapper;
     private int routineId;
-    private RutinaDetailView viewDetailsView;
+    private RutinaDetailDeleteView viewDetailsView;
     private final GetRoutineDetailsUseCase.Callback routineDetailsCallback = new GetRoutineDetailsUseCase.Callback() {
         @Override
         public void onRoutineDataLoaded(Routine routine) {
-            RoutineDetailsPresenter.this.showRoutineDetailsInView(routine);
-            RoutineDetailsPresenter.this.hideViewLoading();
+            RoutineDetailDeletePresenter.this.showRoutineDetailsInView(routine);
+            RoutineDetailDeletePresenter.this.hideViewLoading();
         }
 
         @Override
         public void onError(ErrorBundle errorBundle) {
-            RoutineDetailsPresenter.this.hideViewLoading();
-            RoutineDetailsPresenter.this.showErrorMessage(errorBundle);
-            RoutineDetailsPresenter.this.showViewRetry();
+            RoutineDetailDeletePresenter.this.hideViewLoading();
+            RoutineDetailDeletePresenter.this.showErrorMessage(errorBundle);
+            RoutineDetailDeletePresenter.this.showViewRetry();
+        }
+    };
+    private final DeleteRoutineUseCase.Callback deleteRoutineCallback = new DeleteRoutineUseCase.Callback(){
+
+        @Override
+        public void onRoutineDataDeleted(Collection<Routine> routinesCollection) {
+            RoutineDetailDeletePresenter.this.hideViewLoading();
+            RoutineDetailDeletePresenter.this.showOKMessage();
+        }
+
+        @Override
+        public void onError(ErrorBundle errorBundle) {
+            RoutineDetailDeletePresenter.this.hideViewLoading();
+            RoutineDetailDeletePresenter.this.showErrorMessage(errorBundle);
+            RoutineDetailDeletePresenter.this.showViewRetry();
         }
     };
 
     @Inject
-    public RoutineDetailsPresenter(GetRoutineDetailsUseCase getRoutineDetailsUseCase,
-                                   RoutineModelDataMapper routineModelDataMapper) {
+    public RoutineDetailDeletePresenter(GetRoutineDetailsUseCase getRoutineDetailsUseCase,
+                                        DeleteRoutineUseCase deleteRoutineUseCase,
+                                        RoutineModelDataMapper routineModelDataMapper){
         this.getRoutineDetailsUseCase = getRoutineDetailsUseCase;
-        this.routineModelDataMapper = routineModelDataMapper;
+        this.deleteRoutineUseCase = deleteRoutineUseCase;
+        this.routineModelDataMapper =routineModelDataMapper;
     }
 
-    public void setView(@NonNull RutinaDetailView view) {
+    public void setView(@NonNull RutinaDetailDeleteView view) {
         this.viewDetailsView = view;
     }
 
     @Override
     public void resume() {
+
     }
 
     @Override
     public void pause() {
+
     }
 
     public void initialize(int routineId){
@@ -57,14 +81,14 @@ public class RoutineDetailsPresenter implements Presenter {
         this.loadRoutineDetails();
     }
 
-    public void editRountine(int routineId){this.viewDetailsView.editRoutine(routineId);}
-
-    public void deleteRoutine(int routineId){this.viewDetailsView.deleteRoutine(routineId);}
-
     private void loadRoutineDetails() {
         this.hideViewRetry();
         this.showViewLoading();
         this.getRoutineDetails();
+    }
+
+    public void deleteRoutine(int routineId){
+        this.persistDeletion(routineId);
     }
 
     private void showViewLoading() {
@@ -88,6 +112,9 @@ public class RoutineDetailsPresenter implements Presenter {
                 errorBundle.getException());
         this.viewDetailsView.showError(errorMessage);
     }
+    private void showOKMessage(){
+        this.viewDetailsView.showMessage("El contacto se ha borrado correctamente");
+    }
 
     private void showRoutineDetailsInView(Routine routine) {
         final RoutineModel routineModel = this.routineModelDataMapper.transform(routine);
@@ -95,6 +122,10 @@ public class RoutineDetailsPresenter implements Presenter {
     }
 
     private void getRoutineDetails() {
-        this.getRoutineDetailsUseCase.execute(this.routineId, this.routineDetailsCallback);
+
+    }
+
+    private void persistDeletion(int routineId) {
+        this.deleteRoutineUseCase.execute(this.routineId, this.deleteRoutineCallback);
     }
 }

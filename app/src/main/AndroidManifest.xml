@@ -88,6 +88,22 @@
             android:label="@string/title_activity_rutina" >
         </activity>
         <activity
+            android:name=".presentation.view.activity.RutinasActivity"
+            android:label="@string/title_activity_rutina" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.RutinasDetailsActivity"
+            android:label="@string/title_activity_rutina" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.RutinaDeleteActivity"
+            android:label="@string/title_activity_rutina" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.RutinaEditActivity"
+            android:label="@string/title_activity_rutina" >
+        </activity>
+        <activity
             android:name=".presentation.view.activity.Medicamento"
             android:label="@string/title_activity_medicamento" >
         </activity>

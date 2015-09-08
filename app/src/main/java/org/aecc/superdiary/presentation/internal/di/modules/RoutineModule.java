@@ -1,10 +1,16 @@
 package org.aecc.superdiary.presentation.internal.di.modules;
 
+import org.aecc.superdiary.domain.interactor.routine.CreateRoutineUseCase;
+import org.aecc.superdiary.domain.interactor.routine.DeleteRoutineUseCase;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineDetailsUseCase;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineDetailsUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineListUseCase;
 import org.aecc.superdiary.domain.interactor.routine.GetRoutineListUseCaseImpl;
+import org.aecc.superdiary.domain.interactor.routine.SaveRoutineUseCase;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
+import org.aecc.superdiary.presentation.presenter.RoutineDetailCreatePresenter;
+import org.aecc.superdiary.presentation.presenter.RoutineDetailDeletePresenter;
+import org.aecc.superdiary.presentation.presenter.RoutineDetailEditPresenter;
 import org.aecc.superdiary.presentation.presenter.RoutineListPresenter;
 import org.aecc.superdiary.presentation.presenter.Presenter;
 
@@ -28,8 +34,44 @@ public class RoutineModule {
 
     @Provides
     @PerActivity
+    CreateRoutineUseCase provideCreateRoutineUseCase(CreateRoutineUseCase createRoutineUseCase) {
+        return createRoutineUseCase;
+    }
+
+    @Provides
+    @PerActivity
+    DeleteRoutineUseCase provideDeleteRoutineUseCase(DeleteRoutineUseCase deleteRoutineUseCase) {
+        return deleteRoutineUseCase;
+    }
+
+    @Provides
+    @PerActivity
+    SaveRoutineUseCase provideSaveRoutineUseCase(SaveRoutineUseCase saveRoutineUseCase) {
+        return saveRoutineUseCase;
+    }
+
+    @Provides
+    @PerActivity
     Presenter provideRoutineListPresenter(RoutineListPresenter routineListPresenter) {
         return routineListPresenter;
+    }
+
+    @Provides
+    @PerActivity
+    Presenter providesRoutineDetailEditPresenter(RoutineDetailEditPresenter routineDetailEditPresenter){
+        return routineDetailEditPresenter;
+    }
+
+    @Provides
+    @PerActivity
+    Presenter providesRoutineDetailDeletePresenter(RoutineDetailDeletePresenter routineDetailDeletePresenter){
+        return routineDetailDeletePresenter;
+    }
+
+    @Provides
+    @PerActivity
+    Presenter providesRoutineDetailCreatePresenter(RoutineDetailCreatePresenter routineDetailCreatePresenter){
+        return routineDetailCreatePresenter;
     }
 
 }
