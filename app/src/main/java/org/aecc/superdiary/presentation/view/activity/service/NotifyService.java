@@ -11,6 +11,9 @@ import android.util.Log;
 
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.presentation.view.activity.BienvenidaActivity;
+import org.aecc.superdiary.presentation.view.activity.CitasActivity;
+import org.aecc.superdiary.presentation.view.activity.MedicamentosActivity;
+import org.aecc.superdiary.presentation.view.activity.RutinasActivity;
 
 
 /**
@@ -75,21 +78,26 @@ public class NotifyService extends Service {
 		int icon = R.drawable.aecc_corazonb;
 		CharSequence text = "Acceda a la aplicación para más información";
 
+
+
 		switch (type) {
 			case "C":
 				title = "Cita médica";
 				icon = R.drawable.aecc_lugar;
 				text = "La hora de su cita médica está próxima";
+		//		contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, CitasActivity.class), 0);
 				break;
 			case "R":
 				title = "Rutina";
 				icon = R.drawable.aecc_persona;
 				text = "La hora de sus actividades está próxima";
+		//		contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, RutinasActivity.class), 0);
 				break;
 			case "M":
 				title = "Medicación";
 				icon = R.drawable.aecc_medicamento;
 				text = "Es la hora de tomar sus medicinas";
+		//		contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MedicamentosActivity.class), 0);
 				break;
 		}
 
