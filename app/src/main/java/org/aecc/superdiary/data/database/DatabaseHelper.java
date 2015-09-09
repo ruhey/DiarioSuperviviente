@@ -100,7 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MEDICINES_COLUMN_FIRSTHOUR + " text not null,"
             + MEDICINES_COLUMN_LASTDAY + " text not null,"
             + MEDICINES_COLUMN_LASTHOUR + " text not null,"
-            + MEDICINES_COLUMN_INTERVAL + " text not null,"
+            + MEDICINES_COLUMN_INTERVAL + " text not null default '0',"
             + MEDICINES_COLUMN_DESCRIPTION + " text not null,"
             + MEDICINES_COLUMN_IMAGE + " text not null);";
 

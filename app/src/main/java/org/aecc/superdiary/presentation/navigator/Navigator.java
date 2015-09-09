@@ -16,12 +16,16 @@ import org.aecc.superdiary.presentation.view.activity.CitasDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentosActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentosDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsDeleteActivity;
+import org.aecc.superdiary.presentation.view.activity.PruebaDeleteActivity;
+import org.aecc.superdiary.presentation.view.activity.PruebaEditActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinaDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinaEditActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinasActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinasDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebasActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebasDetailsActivity;
+import org.aecc.superdiary.presentation.view.activity.SintomaDeleteActivity;
+import org.aecc.superdiary.presentation.view.activity.SintomaEditActivity;
 import org.aecc.superdiary.presentation.view.activity.SintomasActivity;
 import org.aecc.superdiary.presentation.view.activity.SintomasDetailsActivity;
 
@@ -169,16 +173,16 @@ public class Navigator {
         }
     }
 
-    public void navigateToExamDetails(Context context, int routineId) {
+    public void navigateToExamDetails(Context context, int examId) {
         if (context != null) {
-            Intent intentToLaunch = PruebasDetailsActivity.getCallingIntent(context, routineId);
+            Intent intentToLaunch = PruebasDetailsActivity.getCallingIntent(context, examId);
             context.startActivity(intentToLaunch);
         }
     }
 
     public void navigateToExamEdit(Context context, int examId) {
         if (context != null) {
-            Intent intentToLaunch = RutinaEditActivity.getCallingIntent(context, examId);
+            Intent intentToLaunch = PruebaEditActivity.getCallingIntent(context, examId);
             intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }
@@ -186,7 +190,7 @@ public class Navigator {
 
     public void navigateToExamDelete(Context context, int examId) {
         if (context != null) {
-            Intent intentToLaunch = RutinaDeleteActivity.getCallingIntent(context, examId);
+            Intent intentToLaunch = PruebaDeleteActivity.getCallingIntent(context, examId);
             intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }
@@ -207,7 +211,7 @@ public class Navigator {
 
     public void navigateToSymptomEdit(Context context, int symptomId) {
         if (context != null) {
-            Intent intentToLaunch = RutinaEditActivity.getCallingIntent(context, symptomId);
+            Intent intentToLaunch = SintomaEditActivity.getCallingIntent(context, symptomId);
             intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }
@@ -215,7 +219,7 @@ public class Navigator {
 
     public void navigateToSymptomDelete(Context context, int symptomId) {
         if (context != null) {
-            Intent intentToLaunch = RutinaDeleteActivity.getCallingIntent(context, symptomId);
+            Intent intentToLaunch = SintomaDeleteActivity.getCallingIntent(context, symptomId);
             intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }

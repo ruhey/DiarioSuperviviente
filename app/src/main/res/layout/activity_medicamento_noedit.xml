@@ -238,7 +238,7 @@
                 </LinearLayout>
 
                 <SeekBar
-                    android:id="@+id/seekBarMedic"
+                    android:id="@+id/intervaloMedic"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:max="24"
@@ -286,7 +286,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/descripcionPrueba"
+                        android:id="@+id/descripcionMedic"
                         style="@style/textoInsercionCampos"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"

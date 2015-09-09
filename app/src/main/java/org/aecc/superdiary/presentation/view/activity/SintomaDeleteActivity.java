@@ -34,7 +34,7 @@ public class SintomaDeleteActivity extends BaseActivity implements SintomaDetail
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //setContentView(R.layout.activity_user_details);
-        setContentView(R.layout.activity_rutina_noedit);
+        setContentView(R.layout.activity_sintoma_noedit);
         ButterKnife.inject(this);
         this.initializeInjector();
         this.initializeActivity(savedInstanceState);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import org.aecc.superdiary.R;
@@ -41,7 +42,7 @@ public class MedicamentosDetailsActivity extends BaseActivity implements HasComp
     @InjectView(R.id.horaFinMedic)
     TextView horaFinMedic;
     @InjectView(R.id.intervaloMedic)
-    TextView intervaloMedic;
+    SeekBar intervaloMedic;
     @InjectView(R.id.editarMedicamento)
     Button editarMedicamento;
     @InjectView(R.id.borrarMedicamento)
@@ -107,7 +108,7 @@ public class MedicamentosDetailsActivity extends BaseActivity implements HasComp
         this.horaIniMedic.setText(medicine.getFirstHour());
         this.fechaFinMedic.setText(medicine.getLastDay());
         this.horaFinMedic.setText(medicine.getLastHour());
-        this.intervaloMedic.setText(medicine.getInterval());
+        this.intervaloMedic.setProgress(Integer.parseInt(medicine.getInterval()));
     }
 
     @OnClick(R.id.editarMedicamento)

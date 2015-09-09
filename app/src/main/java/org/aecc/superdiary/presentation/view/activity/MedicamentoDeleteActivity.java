@@ -34,7 +34,7 @@ public class MedicamentoDeleteActivity extends BaseActivity implements Medicamen
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //setContentView(R.layout.activity_user_details);
-        setContentView(R.layout.activity_rutina_noedit);
+        setContentView(R.layout.activity_medicamento_noedit);
         ButterKnife.inject(this);
         this.initializeInjector();
         this.initializeActivity(savedInstanceState);
