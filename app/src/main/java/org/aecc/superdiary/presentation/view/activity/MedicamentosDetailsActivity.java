@@ -108,7 +108,7 @@ public class MedicamentosDetailsActivity extends BaseActivity implements HasComp
         this.horaIniMedic.setText(medicine.getFirstHour());
         this.fechaFinMedic.setText(medicine.getLastDay());
         this.horaFinMedic.setText(medicine.getLastHour());
-        this.intervaloMedic.setProgress(Integer.parseInt(medicine.getInterval()));
+        //this.intervaloMedic.setProgress(Integer.parseInt(medicine.getInterval()));
     }
 
     @OnClick(R.id.editarMedicamento)
