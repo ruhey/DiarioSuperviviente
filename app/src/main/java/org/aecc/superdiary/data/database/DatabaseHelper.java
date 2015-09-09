@@ -90,8 +90,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + CONTACTS_COLUMN_SURNAME + " text not null,"
             + CONTACTS_COLUMN_PHONE + " text not null,"
             + CONTACTS_COLUMN_EMAIL + " text not null,"
-            + CONTACTS_COLUMN_IMAGE + " text not null,"
-            + CONTACTS_COLUMN_CATEGORY + " text not null);";
+            + CONTACTS_COLUMN_IMAGE + " text,"
+            + CONTACTS_COLUMN_CATEGORY + " text );";
 
     private static final String MEDICINES_CREATE = " create table " + TABLE_MEDICINES
             + " (" + MEDICINES_COLUMN_ID + " integer primary key autoincrement, "
@@ -102,7 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MEDICINES_COLUMN_LASTHOUR + " text not null,"
             + MEDICINES_COLUMN_INTERVAL + " text not null default '0',"
             + MEDICINES_COLUMN_DESCRIPTION + " text not null,"
-            + MEDICINES_COLUMN_IMAGE + " text not null);";
+            + MEDICINES_COLUMN_IMAGE + " text);";
 
     private static final String MEETINGS_CREATE = " create table " + TABLE_MEETINGS
             + " (" + MEETINGS_COLUMN_ID + " integer primary key autoincrement, "
@@ -113,8 +113,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MEETINGS_COLUMN_HOURMEETING + " text not null,"
             + MEETINGS_COLUMN_DATEALARM + " text not null,"
             + MEETINGS_COLUMN_HOURALARM + " text not null,"
-            + MEETINGS_COLUMN_DURATION + " text not null,"
-            + MEETINGS_COLUMN_IMAGE + " text not null);";
+            + MEETINGS_COLUMN_DURATION + " text,"
+            + MEETINGS_COLUMN_IMAGE + " text);";
 
     private static final String ROUTINES_CREATE = " create table " + TABLE_ROUTINES
             + " (" + ROUTINES_COLUMN_ID + " integer primary key autoincrement, "
@@ -127,7 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ROUTINES_COLUMN_HOURALARM + " text not null,"
             + ROUTINES_COLUMN_DURATION + " text not null,"
             + ROUTINES_COLUMN_SATISFACTION + " text not null,"
-            + ROUTINES_COLUMN_IMAGE + " text not null);";
+            + ROUTINES_COLUMN_IMAGE + " text);";
 
     private static final String EXAMS_CREATE = " create table " + TABLE_EXAMS
             + " (" + EXAMS_COLUMN_ID + " integer primary key autoincrement, "
@@ -135,7 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + EXAMS_COLUMN_DATE + " text not null,"
             + EXAMS_COLUMN_HOUR + " text not null,"
             + EXAMS_COLUMN_DESCRIPTION + " text not null,"
-            + EXAMS_COLUMN_IMAGE + " text not null);";
+            + EXAMS_COLUMN_IMAGE + " text);";
 
     private static final String SYMPTOMS_CREATE = " create table " + TABLE_SYMPTOMS
             + " (" + SYMPTOMS_COLUMN_ID + " integer primary key autoincrement, "
@@ -143,7 +143,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + SYMPTOMS_COLUMN_DATE + " text not null,"
             + SYMPTOMS_COLUMN_HOUR + " text not null,"
             + SYMPTOMS_COLUMN_DESCRIPTION + " text not null,"
-            + SYMPTOMS_COLUMN_IMAGE + " text not null);";
+            + SYMPTOMS_COLUMN_IMAGE + " text);";
 
     private static final String COMMENTS_CREATE = " create table " + TABLE_COMMENTS
             + " (" + COMMENTS_COLUMN_ID + " integer primary key autoincrement, "
@@ -151,7 +151,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COMMENTS_COLUMN_CONTENT + " text not null,"
             + COMMENTS_COLUMN_DISCARDED + " text not null,"
             + COMMENTS_COLUMN_REMINDER + " text not null,"
-            + COMMENTS_COLUMN_TIMESELAPSED + " text not null);";
+            + COMMENTS_COLUMN_TIMESELAPSED + " text);";
 
     private static final String DATABASE_CREATE = COMMENTS_CREATE
             + CONTACTS_CREATE + MEETINGS_CREATE + ROUTINES_CREATE + MEDICINES_CREATE + SYMPTOMS_CREATE + EXAMS_CREATE;

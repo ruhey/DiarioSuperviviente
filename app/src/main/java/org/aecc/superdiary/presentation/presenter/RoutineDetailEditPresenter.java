@@ -79,8 +79,24 @@ public class RoutineDetailEditPresenter implements Presenter{
         this.loadRoutineDetails();
     }
 
+    public void editRoutine(int routineId){
+        this.viewDetailsView.editRoutine(routineId);
+    }
+
     public void saveRoutine(Routine routine){
-        this.persistRoutine(routine);
+        if(routine.getName() == null ||
+                routine.getDateRoutine()== null ||
+                routine.getPlace() == null ||
+                routine.getDateAlarm() == null ||
+                routine.getHourAlarm() == null ||
+                routine.getDuration() == null ||
+                routine.getSatisfaction() == null ||
+                routine.getHourRoutine()== null ||
+                routine.getDescription()== null ) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.persistRoutine(routine);
+        }
     }
 
     private void loadRoutineDetails() {
@@ -112,7 +128,7 @@ public class RoutineDetailEditPresenter implements Presenter{
     }
 
     private void showOKMessage(){
-        this.viewDetailsView.showMessage("El contacto se ha guardado correctamente");
+        this.viewDetailsView.showMessage("La rutina se ha guardado correctamente");
     }
 
     private void showRoutineDetailsInView(Routine routine) {

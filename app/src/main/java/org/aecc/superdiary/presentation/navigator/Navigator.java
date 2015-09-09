@@ -18,6 +18,7 @@ import org.aecc.superdiary.presentation.view.activity.MedicamentosDetailsActivit
 import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebaDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebaEditActivity;
+import org.aecc.superdiary.presentation.view.activity.RutinaCreateActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinaDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinaEditActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinasActivity;
@@ -160,6 +161,14 @@ public class Navigator {
     public void navigateToRoutineDelete(Context context, int routineId) {
         if (context != null) {
             Intent intentToLaunch = RutinaDeleteActivity.getCallingIntent(context, routineId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToRoutineAdd(Context context) {
+        if (context != null) {
+            Intent intentToLaunch = RutinaCreateActivity.getCallingIntent(context);
             intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }

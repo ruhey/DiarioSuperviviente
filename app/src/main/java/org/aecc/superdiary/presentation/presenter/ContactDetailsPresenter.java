@@ -83,7 +83,15 @@ public class ContactDetailsPresenter implements Presenter {
     }
 
     public void saveContact(ContactModel contactModel){
-        this.saveContactUseCase.execute(this.contact, this.saveDetailsCallback);
+        if(contactModel.getName() == null ||
+                contactModel.getSurname()== null ||
+                contactModel.getEmail()== null ||
+                contactModel.getPhone()== null ) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.contact = this.contactModelDataMapper.untransform(contactModel);
+            this.saveContactUseCase.execute(this.contact, this.saveDetailsCallback);
+        }
     }
 
 

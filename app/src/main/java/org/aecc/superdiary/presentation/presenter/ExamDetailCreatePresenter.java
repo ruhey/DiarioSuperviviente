@@ -68,7 +68,14 @@ public class ExamDetailCreatePresenter implements Presenter{
     }
 
     public void createExam(Exam exam){
-        this.persistCreation(exam);
+        if(exam.getName() == null ||
+                exam.getDateExam()== null ||
+                exam.getHourExam()== null ||
+                exam.getDescription()== null ) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.persistCreation(exam);
+        }
     }
 
     private void loadExamDetails() {

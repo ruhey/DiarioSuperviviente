@@ -179,6 +179,10 @@ public class CitaNoEditActivity extends BaseActivity implements CitaNoEditView, 
         meeting.setName(this.nombreCita.getText().toString());
         meeting.setPlace(this.lugarCita.getText().toString());
         meeting.setQuestions(this.descripcionCita.getText().toString());
+        meeting.setDateAlarm(this.fechaAviso.getText().toString());
+        meeting.setHourAlarm(this.horaAviso.getText().toString());
+        meeting.setDateMeeting(this.fechaIniCita.getText().toString());
+        meeting.setHourMeeting(this.horaIniCita.getText().toString());
 
         this.meetingDetailsNoEditPresenter.saveMeeting(meeting);
     }

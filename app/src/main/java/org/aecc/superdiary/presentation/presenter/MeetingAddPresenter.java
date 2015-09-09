@@ -37,7 +37,7 @@ public class MeetingAddPresenter implements Presenter {
     }
 
     private void showStoredDataOK() {
-        this.viewDetailsView.showError("Contacto creado correctamente");
+        this.viewDetailsView.showError("Cita creada correctamente");
     }
 
     public void setView(@NonNull CitaAddView view) {
@@ -49,7 +49,18 @@ public class MeetingAddPresenter implements Presenter {
     }
 
     public void add(Meeting meeting){
-        this.perssistMeeting(meeting);
+        if(meeting.getName() == null ||
+                meeting.getDateMeeting()== null ||
+                meeting.getQuestions() == null ||
+                meeting.getPlace() == null ||
+                meeting.getDateAlarm() == null ||
+                meeting.getHourAlarm() == null ||
+                //meeting.getDuration() == null ||
+                meeting.getHourMeeting()== null) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.perssistMeeting(meeting);
+        }
     }
 
     @Override

@@ -68,7 +68,17 @@ public class MedicineDetailCreatePresenter implements Presenter{
     }
 
     public void createMedicine(Medicine medicine){
-        this.persistCreation(medicine);
+        if(medicine.getName() == null ||
+                medicine.getFirstDay() == null ||
+                medicine.getFirstHour() == null ||
+                medicine.getLastDay() == null ||
+                medicine.getLastHour() == null ||
+                medicine.getInterval() == null ||
+                medicine.getDescription() == null) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.persistCreation(medicine);
+        }
     }
 
     private void loadMedicineDetails() {

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -58,6 +59,8 @@ public class CitaAddActivity extends BaseActivity implements View.OnClickListene
     public EditText horaAviso;
     @InjectView(R.id.guardarcita)
     public Button botonGuardarCita;
+    @InjectView(R.id.seekBarDuracCitas)
+    public SeekBar duration;
 
     private DatePickerDialog fIniDatePickerDialog;
     private DatePickerDialog fFinDatePickerDialog;
@@ -219,7 +222,11 @@ public class CitaAddActivity extends BaseActivity implements View.OnClickListene
         meeting.setName(this.nombreCita.getText().toString());
         meeting.setPlace(this.lugarCita.getText().toString());
         meeting.setQuestions(this.descripcionCita.getText().toString());
-
+        meeting.setDateAlarm(this.fechaAviso.getText().toString());
+        meeting.setHourAlarm(this.horaAviso.getText().toString());
+        meeting.setDateMeeting(this.fechaIniCita.getText().toString());
+        meeting.setHourMeeting(this.horaIniCita.getText().toString());
+        //meeting.setDuration(this.duration.toString());
         this.meetingAddPresenter.add(meeting);;
     }
 

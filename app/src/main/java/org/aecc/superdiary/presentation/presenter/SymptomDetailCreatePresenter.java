@@ -68,7 +68,14 @@ public class SymptomDetailCreatePresenter implements Presenter{
     }
 
     public void createSymptom(Symptom symptom){
-        this.persistCreation(symptom);
+        if(symptom.getName() == null ||
+                symptom.getDateSymptom()== null ||
+                symptom.getHourSymptom()== null ||
+                symptom.getDescription()== null ) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.persistCreation(symptom);
+        }
     }
 
     private void loadSymptomDetails() {

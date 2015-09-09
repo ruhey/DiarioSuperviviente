@@ -364,7 +364,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/anadirPersonaje"
+                android:id="@+id/editarRutina"
                 style="?android:attr/buttonStyleSmall"
                 android:background="@color/naranjaBoton"
                 android:textColor="@color/blancoVerdoso"

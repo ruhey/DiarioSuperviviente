@@ -54,6 +54,9 @@ public class RutinasActivity extends DiaryBaseActivity implements HasComponent<R
     @InjectView(R.id.rl_retry) RelativeLayout rl_retry;
     @InjectView(R.id.bt_retry)
     Button bt_retry;
+    @InjectView(R.id.botonAnadir)
+    Button add;
+
 
     private RoutinesAdapter routinesAdapter;
 
@@ -142,6 +145,11 @@ public class RutinasActivity extends DiaryBaseActivity implements HasComponent<R
         
     }
 
+    @Override
+    public void addRoutine() {
+        this.navigator.navigateToRoutineAdd(getContext());
+    }
+
     private void initialize() {
         this.getApplicationComponent().inject(this);
         this.getComponent().inject(this);
@@ -194,6 +202,10 @@ public class RutinasActivity extends DiaryBaseActivity implements HasComponent<R
         RutinasActivity.this.loadRoutineList();
     }
 
+    @OnClick(R.id.botonAnadir) void add() {
+        RutinasActivity.this.loadRoutineList();
+    }
+
     public void onRoutineClicked(RoutineModel routineModel) {
         this.navigator.navigateToRoutineDetails(this, routineModel.getRoutineId());
     }
@@ -206,5 +218,10 @@ public class RutinasActivity extends DiaryBaseActivity implements HasComponent<R
                     }
                 }
             };
+
+    @OnClick(R.id.botonAnadir)
+    public void anadirButtonClicked(){
+        this.routineListPresenter.add();
+    }
 }
 
