@@ -15,6 +15,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.aecc.superdiary.R;
+import org.aecc.superdiary.domain.Meeting;
 import org.aecc.superdiary.presentation.view.activity.service.ScheduleClient;
 
 import java.text.ParseException;
@@ -136,7 +137,7 @@ public class Rutina extends DiaryBaseActivity  implements View.OnClickListener{
     }
 
     private void guardar() {
-        //TODO: METER LA LÓGICA QUE FALTA
+
     }
 
 

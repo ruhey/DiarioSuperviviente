@@ -74,7 +74,18 @@ public class MeetingDetailsNoEditPresenter implements Presenter {
     }
 
     public void saveMeeting(Meeting meeting){
-        this.perssistMeeting(meeting);
+        if(meeting.getName() == null ||
+                meeting.getDateMeeting()== null ||
+                meeting.getQuestions() == null ||
+                meeting.getPlace() == null ||
+                meeting.getDateAlarm() == null ||
+                meeting.getHourAlarm() == null ||
+                //meeting.getDuration() == null ||
+                meeting.getHourMeeting()== null) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.perssistMeeting(meeting);
+        }
     }
 
     @Override

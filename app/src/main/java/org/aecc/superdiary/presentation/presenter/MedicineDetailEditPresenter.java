@@ -80,7 +80,17 @@ public class MedicineDetailEditPresenter implements Presenter{
     }
 
     public void saveMedicine(Medicine medicine){
-        this.persistMedicine(medicine);
+        if(medicine.getName() == null ||
+                medicine.getFirstDay() == null ||
+                medicine.getFirstHour() == null ||
+                medicine.getLastDay() == null ||
+                medicine.getLastHour() == null ||
+                medicine.getInterval() == null ||
+                medicine.getDescription() == null) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.persistMedicine(medicine);
+        }
     }
 
     private void loadMedicineDetails() {

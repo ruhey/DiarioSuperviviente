@@ -104,6 +104,10 @@
             android:label="@string/title_activity_rutina" >
         </activity>
         <activity
+            android:name=".presentation.view.activity.RutinaCreateActivity"
+            android:label="@string/title_activity_rutina" >
+        </activity>
+        <activity
             android:name=".presentation.view.activity.MedicamentosActivity"
             android:label="@string/title_activity_medicamento" >
         </activity>

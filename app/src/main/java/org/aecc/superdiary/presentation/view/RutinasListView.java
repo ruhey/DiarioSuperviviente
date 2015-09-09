@@ -10,4 +10,6 @@ public interface RutinasListView extends LoadDataView {
     void renderRoutineList(Collection<RoutineModel> routineModelCollection);
 
     void viewRoutine(RoutineModel routineModel);
+
+    void addRoutine();
 }

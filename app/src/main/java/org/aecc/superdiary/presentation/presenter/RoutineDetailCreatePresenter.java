@@ -68,7 +68,19 @@ public class RoutineDetailCreatePresenter implements Presenter{
     }
 
     public void createRoutine(Routine routine){
-        this.persistCreation(routine);
+        if(routine.getName() == null ||
+                routine.getDateRoutine()== null ||
+                routine.getPlace() == null ||
+                routine.getDateAlarm() == null ||
+                routine.getHourAlarm() == null ||
+                routine.getDuration() == null ||
+                routine.getSatisfaction() == null ||
+                routine.getHourRoutine()== null ||
+                routine.getDescription()== null ) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.persistCreation(routine);
+        }
     }
 
     private void loadRoutineDetails() {

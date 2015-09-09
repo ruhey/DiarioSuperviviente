@@ -92,6 +92,10 @@ public class RoutineListPresenter implements Presenter {
         this.viewListView.showError(errorMessage);
     }
 
+    public void add(){
+        this.viewListView.addRoutine();
+    }
+
     private void showRoutinesCollectionInView(Collection<Routine> routinesCollection) {
         final Collection<RoutineModel> routineModelsCollection =
                 this.routineModelDataMapper.transform(routinesCollection);

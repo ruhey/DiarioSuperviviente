@@ -1,5 +1,6 @@
 package org.aecc.superdiary.presentation.view;
 
+import org.aecc.superdiary.domain.Routine;
 import org.aecc.superdiary.presentation.model.RoutineModel;
 import org.aecc.superdiary.presentation.view.LoadDataView;
 

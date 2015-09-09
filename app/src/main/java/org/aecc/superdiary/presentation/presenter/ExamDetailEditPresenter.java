@@ -80,7 +80,14 @@ public class ExamDetailEditPresenter implements Presenter{
     }
 
     public void saveExam(Exam exam){
-        this.persistExam(exam);
+        if(exam.getName() == null ||
+                exam.getDateExam()== null ||
+                exam.getHourExam()== null ||
+                exam.getDescription()== null ) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.persistExam(exam);
+        }
     }
 
     private void loadExamDetails() {

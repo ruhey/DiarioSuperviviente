@@ -80,7 +80,14 @@ public class SymptomDetailEditPresenter implements Presenter{
     }
 
     public void saveSymptom(Symptom symptom){
-        this.persistSymptom(symptom);
+        if(symptom.getName() == null ||
+            symptom.getDateSymptom()== null ||
+            symptom.getHourSymptom()== null ||
+            symptom.getDescription()== null ) {
+            this.viewDetailsView.showError("Los campos no pueden estar vacios.");
+        }else {
+            this.persistSymptom(symptom);
+        }
     }
 
     private void loadSymptomDetails() {

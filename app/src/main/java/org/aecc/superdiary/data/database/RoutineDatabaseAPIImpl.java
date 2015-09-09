@@ -107,7 +107,7 @@ public class RoutineDatabaseAPIImpl implements RoutineDatabaseAPI {
         values.put(DatabaseHelper.ROUTINES_COLUMN_DATEALARM, routine.getDateAlarm());
         values.put(DatabaseHelper.ROUTINES_COLUMN_HOURALARM, routine.getHourAlarm());
         values.put(DatabaseHelper.ROUTINES_COLUMN_DURATION, routine.getDuration());
-        values.put(DatabaseHelper.ROUTINES_COLUMN_DURATION, routine.getSatisfaction());
+        values.put(DatabaseHelper.ROUTINES_COLUMN_SATISFACTION, routine.getSatisfaction());
         values.put(DatabaseHelper.ROUTINES_COLUMN_IMAGE, routine.getImage());
 
         long insertId = database.insert(DatabaseHelper.TABLE_ROUTINES, null,
@@ -138,7 +138,7 @@ public class RoutineDatabaseAPIImpl implements RoutineDatabaseAPI {
         values.put(DatabaseHelper.ROUTINES_COLUMN_DATEALARM, routine.getDateAlarm());
         values.put(DatabaseHelper.ROUTINES_COLUMN_HOURALARM, routine.getHourAlarm());
         values.put(DatabaseHelper.ROUTINES_COLUMN_DURATION, routine.getDuration());
-        values.put(DatabaseHelper.ROUTINES_COLUMN_DURATION, routine.getSatisfaction());
+        values.put(DatabaseHelper.ROUTINES_COLUMN_SATISFACTION, routine.getSatisfaction());
         values.put(DatabaseHelper.ROUTINES_COLUMN_IMAGE, routine.getImage());
         openHelper();
 
