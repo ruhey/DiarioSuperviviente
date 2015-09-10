@@ -10,4 +10,6 @@ public interface SintomasListView extends LoadDataView {
     void renderSymptomList(Collection<SymptomModel> symptomModelCollection);
 
     void viewSymptom(SymptomModel symptomModel);
+
+    void addSymptom();
 }

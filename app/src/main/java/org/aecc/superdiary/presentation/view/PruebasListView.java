@@ -10,4 +10,6 @@ public interface PruebasListView extends LoadDataView {
     void renderExamList(Collection<ExamModel> examModelCollection);
 
     void viewExam(ExamModel examModel);
+
+    void addExam();
 }

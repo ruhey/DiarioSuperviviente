@@ -101,4 +101,8 @@ public class ExamListPresenter implements Presenter {
     private void getExamList() {
         this.getExamListUseCase.execute(examListCallback);
     }
+
+    public void add(){
+        this.viewListView.addExam();
+    }
 }

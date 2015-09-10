@@ -101,4 +101,8 @@ public class SymptomListPresenter implements Presenter {
     private void getSymptomList() {
         this.getSymptomListUseCase.execute(symptomListCallback);
     }
+
+    public void add(){
+        this.viewListView.addSymptom();
+    }
 }

@@ -10,4 +10,6 @@ public interface MedicamentosListView extends LoadDataView {
     void renderMedicineList(Collection<MedicineModel> medicineModelCollection);
 
     void viewMedicine(MedicineModel medicineModel);
+
+    void addMedicine();
 }

@@ -16,6 +16,7 @@ import org.aecc.superdiary.presentation.view.activity.CitasDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentosActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentosDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajesDetailsDeleteActivity;
+import org.aecc.superdiary.presentation.view.activity.PruebaCreateActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebaDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebaEditActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinaCreateActivity;
@@ -204,6 +205,16 @@ public class Navigator {
             context.startActivity(intentToLaunch);
         }
     }
+
+    public void navigateToExamAdd(Context context){
+        if (context != null) {
+            Intent intentToLaunch = PruebaCreateActivity.getCallingIntent(context);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+
     public void navigateToSymptomList(Context context) {
         if (context != null) {
             Intent intentToLaunch = SintomasActivity.getCallingIntent(context);
