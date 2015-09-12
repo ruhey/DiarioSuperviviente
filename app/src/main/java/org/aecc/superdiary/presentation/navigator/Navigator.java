@@ -95,6 +95,7 @@ public class Navigator {
     public void navigateToMeetingDelete(Context context, int meetingId){
         if (context != null) {
             Intent intentToLaunch = CitaDeleteActivity.getCallingIntent(context, meetingId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }
     }

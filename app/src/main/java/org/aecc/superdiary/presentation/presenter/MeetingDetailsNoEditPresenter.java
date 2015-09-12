@@ -120,6 +120,7 @@ public class MeetingDetailsNoEditPresenter implements Presenter {
         this.viewDetailsView.hideRetry();
     }
 
+
     private void showErrorMessage(ErrorBundle errorBundle) {
         String errorMessage = ErrorMessageFactory.create(this.viewDetailsView.getContext(),
                 errorBundle.getException());
