@@ -101,4 +101,8 @@ public class MedicineListPresenter implements Presenter {
     private void getMedicineList() {
         this.getMedicineListUseCase.execute(medicineListCallback);
     }
+
+    public void add(){
+        this.viewListView.addMedicine();
+    }
 }

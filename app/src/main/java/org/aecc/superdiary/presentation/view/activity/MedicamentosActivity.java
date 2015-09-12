@@ -142,6 +142,11 @@ public class MedicamentosActivity extends DiaryBaseActivity implements HasCompon
         
     }
 
+    @Override
+    public void addMedicine() {
+
+    }
+
     private void initialize() {
         this.getApplicationComponent().inject(this);
         this.getComponent().inject(this);

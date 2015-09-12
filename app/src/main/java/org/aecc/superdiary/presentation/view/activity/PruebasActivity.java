@@ -54,6 +54,8 @@ public class PruebasActivity extends DiaryBaseActivity implements HasComponent<E
     @InjectView(R.id.rl_retry) RelativeLayout rl_retry;
     @InjectView(R.id.bt_retry)
     Button bt_retry;
+    @InjectView(R.id.botonAnadir)
+    Button add;
 
     private ExamsAdapter examsAdapter;
 
@@ -82,6 +84,7 @@ public class PruebasActivity extends DiaryBaseActivity implements HasComponent<E
         this.examLayoutManager = new ExamLayoutManager(this);
         this.recycler_exams.setLayoutManager(examLayoutManager);
     }
+
 
     private void initializeInjector() {
         this.examComponent = DaggerExamComponent.builder()
@@ -142,6 +145,11 @@ public class PruebasActivity extends DiaryBaseActivity implements HasComponent<E
         
     }
 
+    @Override
+    public void addExam() {
+        this.navigator.navigateToExamAdd(getContext());
+    }
+
     private void initialize() {
         this.getApplicationComponent().inject(this);
         this.getComponent().inject(this);
@@ -194,6 +202,10 @@ public class PruebasActivity extends DiaryBaseActivity implements HasComponent<E
         PruebasActivity.this.loadExamList();
     }
 
+    @OnClick(R.id.botonAnadir) void add() {
+        PruebasActivity.this.loadExamList();
+    }
+
     public void onExamClicked(ExamModel examModel) {
         this.navigator.navigateToExamDetails(this, examModel.getExamId());
     }
@@ -206,5 +218,10 @@ public class PruebasActivity extends DiaryBaseActivity implements HasComponent<E
                     }
                 }
             };
+
+    @OnClick(R.id.botonAnadir)
+    public void anadirButtonClicked(){
+        this.examListPresenter.add();
+    }
 }
 

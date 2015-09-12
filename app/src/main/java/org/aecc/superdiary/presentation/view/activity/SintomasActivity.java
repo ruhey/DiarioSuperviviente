@@ -142,6 +142,11 @@ public class SintomasActivity extends DiaryBaseActivity implements HasComponent<
         
     }
 
+    @Override
+    public void addSymptom() {
+
+    }
+
     private void initialize() {
         this.getApplicationComponent().inject(this);
         this.getComponent().inject(this);
