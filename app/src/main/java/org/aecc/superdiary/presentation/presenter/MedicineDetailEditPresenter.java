@@ -74,6 +74,10 @@ public class MedicineDetailEditPresenter implements Presenter{
 
     }
 
+    public void editMedicine(int medicineId){
+         this.viewDetailsView.editMedicine(medicineId);
+    }
+
     public void initialize(int medicineId){
         this.medicineId = medicineId;
         this.loadMedicineDetails();

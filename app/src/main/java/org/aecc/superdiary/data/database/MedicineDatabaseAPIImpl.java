@@ -187,13 +187,14 @@ public class MedicineDatabaseAPIImpl implements MedicineDatabaseAPI {
     private MedicineEntity cursorToDetailMedicine(Cursor cursor) {
         MedicineEntity medicine = new MedicineEntity();
         medicine.setMedicineId(cursor.getInt(0));
-        medicine.setFirstDay(cursor.getString(1));
-        medicine.setFirstHour(cursor.getString(2));
-        medicine.setLastDay(cursor.getString(3));
-        medicine.setLastHour(cursor.getString(4));
-        medicine.setInterval(cursor.getString(5));
-        medicine.setDescription(cursor.getString(6));
-        medicine.setImage(cursor.getString(7));
+        medicine.setName(cursor.getString(1));
+        medicine.setFirstDay(cursor.getString(2));
+        medicine.setFirstHour(cursor.getString(3));
+        medicine.setLastDay(cursor.getString(4));
+        medicine.setLastHour(cursor.getString(5));
+        medicine.setInterval(cursor.getString(6));
+        medicine.setDescription(cursor.getString(7));
+        medicine.setImage(cursor.getString(8));
         return medicine;
     }
 }
