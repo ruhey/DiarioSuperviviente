@@ -79,6 +79,10 @@ public class ExamDetailEditPresenter implements Presenter{
         this.loadExamDetails();
     }
 
+    public void editExam(int examId){
+        this.viewDetailsView.editExam(examId);
+    }
+
     public void saveExam(Exam exam){
         if(exam.getName() == null ||
                 exam.getDateExam()== null ||

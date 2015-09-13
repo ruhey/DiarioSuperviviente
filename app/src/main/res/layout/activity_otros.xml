@@ -28,9 +28,12 @@
 
         <ImageView
             android:id="@+id/viewImage"
-            android:layout_width="300px"
+            android:layout_width="fill_parent"
             android:layout_height="300px"
+            android:drawingCacheQuality="high"
             android:src="@drawable/aecc_logo" />
+
+
 
     </LinearLayout>
 

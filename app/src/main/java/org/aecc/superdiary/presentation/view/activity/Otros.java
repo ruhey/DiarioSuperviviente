@@ -38,6 +38,7 @@ public class Otros extends DiaryBaseActivity  {
         getLayoutInflater().inflate(R.layout.activity_otros, frameLayout);
         mDrawerList.setItemChecked(position, true);
         setTitle(titulos[position]);
+
         b=(Button)findViewById(R.id.btnSelectPhoto);
         viewImage=(ImageView)findViewById(R.id.viewImage);
         b.setOnClickListener(new View.OnClickListener() {
@@ -140,6 +141,29 @@ public class Otros extends DiaryBaseActivity  {
         return BitmapFactory.decodeResource(res, resId, options);
     }
 
+    public Bitmap resizeImageForImageView(Bitmap bitmap) {
+        Bitmap resizedBitmap = null;
+        int originalWidth = bitmap.getWidth();
+        int originalHeight = bitmap.getHeight();
+        int newWidth = -1;
+        int newHeight = -1;
+        float multFactor = -1.0F;
+        if(originalHeight > originalWidth) {
+            newHeight = 300;
+            multFactor = (float) originalWidth/(float) originalHeight;
+            newWidth = (int) (newHeight*multFactor);
+        } else if(originalWidth > originalHeight) {
+            newWidth = 300;
+            multFactor = (float) originalHeight/ (float)originalWidth;
+            newHeight = (int) (newWidth*multFactor);
+        } else if(originalHeight == originalWidth) {
+            newHeight = 300;
+            newWidth = 300;
+        }
+        resizedBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false);
+        return resizedBitmap;
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -154,8 +178,6 @@ public class Otros extends DiaryBaseActivity  {
                 }
                 try {
                     Bitmap bitmap;
-                    //BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-
                     BitmapFactory.Options options = new BitmapFactory.Options();
                     options.inJustDecodeBounds = true;
 
@@ -170,10 +192,13 @@ public class Otros extends DiaryBaseActivity  {
 
                     bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), options);
 
-                    viewImage.setImageBitmap( decodeSampledBitmapFromResource(getResources(), R.id.viewImage, 100, 100));
 
 
-                    //viewImage.setImageBitmap(bitmap);
+                    //viewImage.setImageBitmap(resizeImageForImageView(bitmap));
+                    //viewImage.setImageBitmap( decodeSampledBitmapFromResource(getResources(), R.id.viewImage, 100, 100));
+
+
+                    viewImage.setImageBitmap(bitmap);
 
                     File imagesFolder = new File(
                             Environment.getExternalStorageDirectory(), "Diario");
