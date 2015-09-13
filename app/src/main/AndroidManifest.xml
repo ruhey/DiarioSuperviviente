@@ -158,6 +158,10 @@
             android:label="@string/title_activity_sintoma" >
         </activity>
         <activity
+            android:name=".presentation.view.activity.SintomaCreateActivity"
+            android:label="@string/title_activity_sintoma" >
+        </activity>
+        <activity
             android:name=".presentation.view.activity.SintomaDeleteActivity"
             android:label="@string/title_activity_sintoma" >
         </activity>

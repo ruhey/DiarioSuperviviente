@@ -54,6 +54,8 @@ public class SintomasActivity extends DiaryBaseActivity implements HasComponent<
     @InjectView(R.id.rl_retry) RelativeLayout rl_retry;
     @InjectView(R.id.bt_retry)
     Button bt_retry;
+    @InjectView(R.id.botonAnadir)
+    Button add;
 
     private SymptomsAdapter symptomsAdapter;
 
@@ -144,6 +146,7 @@ public class SintomasActivity extends DiaryBaseActivity implements HasComponent<
 
     @Override
     public void addSymptom() {
+        this.navigator.navigateToSymptomAdd(getContext());
 
     }
 
@@ -199,6 +202,10 @@ public class SintomasActivity extends DiaryBaseActivity implements HasComponent<
         SintomasActivity.this.loadSymptomList();
     }
 
+    @OnClick(R.id.botonAnadir) void add() {
+        SintomasActivity.this.loadSymptomList();
+    }
+
     public void onSymptomClicked(SymptomModel symptomModel) {
         this.navigator.navigateToSymptomDetails(this, symptomModel.getSymptomId());
     }
@@ -211,5 +218,10 @@ public class SintomasActivity extends DiaryBaseActivity implements HasComponent<
                     }
                 }
             };
+
+    @OnClick(R.id.botonAnadir)
+    public void anadirButtonClicked(){
+        this.symptomListPresenter.add();
+    }
 }
 
