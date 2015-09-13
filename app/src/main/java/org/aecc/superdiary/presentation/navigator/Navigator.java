@@ -6,6 +6,7 @@ import android.content.Intent;
 import org.aecc.superdiary.presentation.view.activity.CitaAddActivity;
 import org.aecc.superdiary.presentation.view.activity.CitaDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.CitaNoEditActivity;
+import org.aecc.superdiary.presentation.view.activity.MedicamentoCreateActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentoDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentoEditActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajeDetailsNoEditActivity;
@@ -122,6 +123,15 @@ public class Navigator {
             context.startActivity(intentToLaunch);
         }
     }
+
+    public void navigateToMedicineAdd(Context context){
+        if (context != null) {
+            Intent intentToLaunch = MedicamentoCreateActivity.getCallingIntent(context);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
     public void navigateToMedicineEdit(Context context, int medicineId) {
         if (context != null) {
             Intent intentToLaunch = MedicamentoEditActivity.getCallingIntent(context, medicineId);

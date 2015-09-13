@@ -49,7 +49,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class PruebaCreateActivity extends BaseActivity implements PruebaDetailCreateView, HasComponent<ExamComponent> {
-    
+
     private static final String INTENT_EXTRA_PARAM_EXAM_ID = "org.aecc.INTENT_PARAM_EXAM_ID";
     private static final String INSTANCE_STATE_PARAM_EXAM_ID = "org.aecc.STATE_PARAM_EXAM_ID";
 
@@ -329,4 +329,3 @@ public class PruebaCreateActivity extends BaseActivity implements PruebaDetailCr
 }
 
 
-    

@@ -52,10 +52,10 @@ public class MedicamentoEditActivity extends BaseActivity implements Medicamento
     EditText fechaFinMedic;
     @InjectView(R.id.horaFinMedic)
     EditText horaFinMedic;
-    @InjectView(R.id.intervaloMedic)
-    EditText intervaloMedic;
-    @InjectView(R.id.fotoMedic)
-    EditText fotoMedic;
+    //@InjectView(R.id.intervaloMedic)
+    //EditText intervaloMedic;
+    //@InjectView(R.id.fotoMedic)
+    //EditText fotoMedic;
     @InjectView(R.id.guardarMedicamento)
     Button guardarMedicamento;
 
@@ -151,7 +151,7 @@ public class MedicamentoEditActivity extends BaseActivity implements Medicamento
         hFinTimePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
-                horaIniMedic.setText(String.format("%02d", selectedHour) + ":" + String.format("%02d", selectedMinute));
+                horaFinMedic.setText(String.format("%02d", selectedHour) + ":" + String.format("%02d", selectedMinute));
             } },hour, minute, true);
     }
 
@@ -168,8 +168,8 @@ public class MedicamentoEditActivity extends BaseActivity implements Medicamento
         this.horaIniMedic.setText(medicine.getFirstHour());
         this.fechaFinMedic.setText(medicine.getLastDay());
         this.horaFinMedic.setText(medicine.getLastHour());
-        this.intervaloMedic.setText(medicine.getInterval());
-        this.fotoMedic.setText(medicine.getImage());
+        //this.intervaloMedic.setText(medicine.getInterval());
+        //this.fotoMedic.setText(medicine.getImage());
     }
 
     @OnClick(R.id.fechaInicMedic)

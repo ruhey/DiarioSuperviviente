@@ -54,6 +54,8 @@ public class MedicamentosActivity extends DiaryBaseActivity implements HasCompon
     @InjectView(R.id.rl_retry) RelativeLayout rl_retry;
     @InjectView(R.id.bt_retry)
     Button bt_retry;
+    @InjectView(R.id.anadirMedicacion)
+    Button add;
 
     private MedicinesAdapter medicinesAdapter;
 
@@ -144,7 +146,7 @@ public class MedicamentosActivity extends DiaryBaseActivity implements HasCompon
 
     @Override
     public void addMedicine() {
-
+        this.navigator.navigateToMedicineAdd(getContext());
     }
 
     private void initialize() {
@@ -199,6 +201,10 @@ public class MedicamentosActivity extends DiaryBaseActivity implements HasCompon
         MedicamentosActivity.this.loadMedicineList();
     }
 
+    @OnClick(R.id.botonAnadir) void add() {
+        MedicamentosActivity.this.loadMedicineList();
+    }
+
     public void onMedicineClicked(MedicineModel medicineModel) {
         this.navigator.navigateToMedicineDetails(this, medicineModel.getMedicineId());
     }
@@ -211,5 +217,10 @@ public class MedicamentosActivity extends DiaryBaseActivity implements HasCompon
                     }
                 }
             };
+
+    @OnClick(R.id.botonAnadir)
+    public void anadirButtonClicked(){
+        this.medicineListPresenter.add();
+    }
 }
 
