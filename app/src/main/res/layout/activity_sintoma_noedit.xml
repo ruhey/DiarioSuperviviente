@@ -5,22 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/colorPrimary"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/fotoSintoma"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:background="@color/blancoVerdoso"
-            android:src="@drawable/sintoma_v" />
-
-    </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -34,6 +18,21 @@
             android:layout_marginTop="5dp"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/fotoSintoma"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:background="@color/blancoVerdoso"
+                    android:src="@drawable/sintoma_v" />
+
+            </LinearLayout>
 
             <!-- NOMBRE Y APELLIDOS -->
             <LinearLayout
