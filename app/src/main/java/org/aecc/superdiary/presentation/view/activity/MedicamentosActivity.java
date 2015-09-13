@@ -54,7 +54,7 @@ public class MedicamentosActivity extends DiaryBaseActivity implements HasCompon
     @InjectView(R.id.rl_retry) RelativeLayout rl_retry;
     @InjectView(R.id.bt_retry)
     Button bt_retry;
-    @InjectView(R.id.anadirMedicacion)
+    @InjectView(R.id.botonAnadir)
     Button add;
 
     private MedicinesAdapter medicinesAdapter;

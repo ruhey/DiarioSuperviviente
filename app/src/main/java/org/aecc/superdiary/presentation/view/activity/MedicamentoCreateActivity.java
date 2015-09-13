@@ -180,7 +180,7 @@ public class MedicamentoCreateActivity extends BaseActivity implements Medicamen
     }
 
     @OnClick(R.id.guardarMedicamento)
-    public void editMedicine(int medicineId) {
+    public void editMedicine() {
         Medicine medicine = new Medicine(55);
         medicine.setName(this.nombreMedic.getText().toString());
         medicine.setDescription(this.descripcionMedic.getText().toString());
