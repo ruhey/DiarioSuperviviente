@@ -179,8 +179,8 @@ public class SymptomDatabaseAPIImpl implements SymptomDatabaseAPI {
         SymptomEntity symptom = new SymptomEntity();
         symptom.setSymptomId(cursor.getInt(0));
         symptom.setName(cursor.getString(1));
-        symptom.setHourSymptom(cursor.getString(2));
-        symptom.setDateSymptom(cursor.getString(3));
+        symptom.setDateSymptom(cursor.getString(2));
+        symptom.setHourSymptom(cursor.getString(3));
         symptom.setDescription(cursor.getString(4));
         symptom.setImage(cursor.getString(5));
         return symptom;

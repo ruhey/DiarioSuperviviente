@@ -74,6 +74,11 @@ public class SymptomDetailEditPresenter implements Presenter{
 
     }
 
+    public void editSymptom(int symptomId){
+        this.viewDetailsView.editSymptom(symptomId);
+    }
+
+
     public void initialize(int symptomId){
         this.symptomId = symptomId;
         this.loadSymptomDetails();

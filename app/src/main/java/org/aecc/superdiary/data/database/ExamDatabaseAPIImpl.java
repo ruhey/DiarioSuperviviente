@@ -179,8 +179,8 @@ public class ExamDatabaseAPIImpl implements ExamDatabaseAPI {
         ExamEntity exam = new ExamEntity();
         exam.setExamId(cursor.getInt(0));
         exam.setName(cursor.getString(1));
-        exam.setHourExam(cursor.getString(2));
-        exam.setDateExam(cursor.getString(3));
+        exam.setDateExam(cursor.getString(2));
+        exam.setHourExam(cursor.getString(3));
         exam.setDescription(cursor.getString(4));
         exam.setImage(cursor.getString(5));
         return exam;
