@@ -43,6 +43,7 @@ public class MedicineDetailDeletePresenter implements Presenter {
         public void onMedicineDataDeleted(Collection<Medicine> medicinesCollection) {
             MedicineDetailDeletePresenter.this.hideViewLoading();
             MedicineDetailDeletePresenter.this.showOKMessage();
+            MedicineDetailDeletePresenter.this.goBack();
         }
 
         @Override
@@ -127,5 +128,9 @@ public class MedicineDetailDeletePresenter implements Presenter {
 
     private void persistDeletion(int medicineId) {
         this.deleteMedicineUseCase.execute(this.medicineId, this.deleteMedicineCallback);
+    }
+
+    private void goBack() {
+        this.viewDetailsView.goToList();
     }
 }

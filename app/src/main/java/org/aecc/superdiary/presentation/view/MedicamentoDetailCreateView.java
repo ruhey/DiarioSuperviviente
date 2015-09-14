@@ -7,7 +7,6 @@ public interface MedicamentoDetailCreateView extends LoadDataView {
 
     void goToList();
 
-
     void createMedicine(int medicineId);
 
     void showMessage(String message);

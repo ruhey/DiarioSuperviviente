@@ -296,6 +296,11 @@ public class SintomaEditActivity extends BaseActivity implements SintomaDetailEd
     }
 
     @Override
+    public void goBack() {
+        onBackPressed();
+    }
+
+    @Override
     public void showLoading() {
     }
 

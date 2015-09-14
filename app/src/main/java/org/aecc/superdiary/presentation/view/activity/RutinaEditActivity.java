@@ -258,6 +258,11 @@ public class RutinaEditActivity extends BaseActivity implements RutinaDetailEdit
     }
 
     @Override
+    public void goBack() {
+        onBackPressed();
+    }
+
+    @Override
     public void showLoading() {
 
     }

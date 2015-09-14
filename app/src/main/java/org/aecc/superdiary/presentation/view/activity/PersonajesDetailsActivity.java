@@ -170,4 +170,9 @@ public class PersonajesDetailsActivity extends BaseActivity implements HasCompon
     public void showOKMessage() {
         this.showToastMessage("El contacto se ha guardado correctamente");
     }
+
+    @Override
+    public void goBack() {
+        onBackPressed();
+    }
 }

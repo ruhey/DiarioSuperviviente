@@ -10,4 +10,6 @@ public interface PruebaDetailEditView extends LoadDataView {
     void editExam(int examId);
 
     void showMessage(String message);
+
+    void goBack();
 }

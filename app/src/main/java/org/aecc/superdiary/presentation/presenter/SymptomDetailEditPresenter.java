@@ -41,6 +41,7 @@ public class SymptomDetailEditPresenter implements Presenter{
         public void onSymptomDataSaved(Symptom symptom) {
             SymptomDetailEditPresenter.this.hideViewLoading();
             SymptomDetailEditPresenter.this.showOKMessage();
+            SymptomDetailEditPresenter.this.goBack();
         }
 
         @Override
@@ -138,5 +139,9 @@ public class SymptomDetailEditPresenter implements Presenter{
 
     private void persistSymptom(Symptom symptom) {
         this.saveSymptomUseCase.execute(symptom, this.symptomSaveCallback);
+    }
+
+    private void goBack() {
+        this.viewDetailsView.goBack();
     }
 }

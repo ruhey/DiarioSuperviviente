@@ -10,4 +10,6 @@ public interface MedicamentoDetailEditView extends LoadDataView {
     void editMedicine(int medicineId);
 
     void showMessage(String message);
+
+    void goBack();
 }

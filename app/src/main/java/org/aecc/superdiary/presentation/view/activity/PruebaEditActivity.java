@@ -371,6 +371,11 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
     }
 
     @Override
+    public void goBack() {
+        onBackPressed();
+    }
+
+    @Override
     public void showLoading() {
     }
 

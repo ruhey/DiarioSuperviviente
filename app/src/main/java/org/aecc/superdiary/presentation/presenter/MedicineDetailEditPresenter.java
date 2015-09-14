@@ -41,6 +41,7 @@ public class MedicineDetailEditPresenter implements Presenter{
         public void onMedicineDataSaved(Medicine medicine) {
             MedicineDetailEditPresenter.this.hideViewLoading();
             MedicineDetailEditPresenter.this.showOKMessage();
+            MedicineDetailEditPresenter.this.goBack();
         }
 
         @Override
@@ -140,5 +141,9 @@ public class MedicineDetailEditPresenter implements Presenter{
 
     private void persistMedicine(Medicine medicine) {
         this.saveMedicineUseCase.execute(medicine, this.medicineSaveCallback);
+    }
+
+    private void goBack() {
+        this.viewDetailsView.goBack();
     }
 }

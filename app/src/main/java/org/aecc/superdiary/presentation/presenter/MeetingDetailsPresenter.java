@@ -51,6 +51,7 @@ public class MeetingDetailsPresenter implements Presenter {
 
     @Override
     public void resume() {
+        this.getMeetingDetails();
     }
 
     @Override

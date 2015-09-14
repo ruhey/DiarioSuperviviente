@@ -251,6 +251,11 @@ public class CitaNoEditActivity extends BaseActivity implements CitaNoEditView, 
     }
 
     @Override
+    public void goBack() {
+        onBackPressed();
+    }
+
+    @Override
     public void showLoading() {
 
     }

@@ -44,8 +44,8 @@ public class ContactDeletePresenter implements Presenter {
         public void onContactDataDeleted(Collection<Contact> contactsCollection){
             ContactDeletePresenter.this.hideViewLoading();
             ContactDeletePresenter.this.showOkMessage();
-            ContactDeletePresenter.this.goBack();
             ContactDeletePresenter.this.showViewRetry();
+            ContactDeletePresenter.this.goBack();
         }
 
         @Override

@@ -10,4 +10,6 @@ public interface SintomaDetailEditView extends LoadDataView {
     void editSymptom(int symptomId);
 
     void showMessage(String message);
+
+    void goBack();
 }

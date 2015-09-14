@@ -258,6 +258,11 @@ public class MedicamentoEditActivity extends BaseActivity implements Medicamento
         this.showToastMessage(message);
     }
 
+    @Override
+    public void goBack() {
+        onBackPressed();
+    }
+
 
     @Override
     public void showLoading() {

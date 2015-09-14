@@ -83,6 +83,7 @@ public class Navigator {
     public void navigateToMeetingDetails(Context context, int meetingId) {
         if (context != null) {
             Intent intentToLaunch = CitasDetailsActivity.getCallingIntent(context, meetingId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             context.startActivity(intentToLaunch);
         }
     }
