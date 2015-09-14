@@ -83,6 +83,9 @@ public class RoutineDatabaseAPIImpl implements RoutineDatabaseAPI {
         RoutineEntity routineEntity = null;
         while (!cursor.isAfterLast()) {
             routineEntity = cursorToDetailRoutine(cursor);
+            if(routineEntity.getRoutineId()==routineId) {
+                break;
+            }
             cursor.moveToNext();
         }
         cursor.close();

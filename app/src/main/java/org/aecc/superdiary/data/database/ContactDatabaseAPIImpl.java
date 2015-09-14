@@ -81,6 +81,9 @@ public class ContactDatabaseAPIImpl implements ContactDatabaseAPI {
         ContactEntity contactEntity = null;
         while (!cursor.isAfterLast()) {
             contactEntity = cursorToDetailContact(cursor);
+            if(contactEntity.getContactId()==contactId) {
+                break;
+            }
             cursor.moveToNext();
         }
         cursor.close();

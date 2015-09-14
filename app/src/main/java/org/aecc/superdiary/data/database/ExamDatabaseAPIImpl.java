@@ -77,6 +77,9 @@ public class ExamDatabaseAPIImpl implements ExamDatabaseAPI {
         ExamEntity examEntity = null;
         while (!cursor.isAfterLast()) {
             examEntity = cursorToDetailExam(cursor);
+            if(examEntity.getExamId()==examId) {
+                break;
+            }
             cursor.moveToNext();
         }
         cursor.close();

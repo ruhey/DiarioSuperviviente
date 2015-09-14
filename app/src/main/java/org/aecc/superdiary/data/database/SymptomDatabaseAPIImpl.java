@@ -77,6 +77,9 @@ public class SymptomDatabaseAPIImpl implements SymptomDatabaseAPI {
         SymptomEntity symptomEntity = null;
         while (!cursor.isAfterLast()) {
             symptomEntity = cursorToDetailSymptom(cursor);
+            if(symptomEntity.getSymptomId()==symptomId) {
+                break;
+            }
             cursor.moveToNext();
         }
         cursor.close();
@@ -134,6 +137,7 @@ public class SymptomDatabaseAPIImpl implements SymptomDatabaseAPI {
         SymptomEntity symptomEntity = null;
         while (!cursor.isAfterLast()) {
             symptomEntity = cursorToDetailSymptom(cursor);
+
             cursor.moveToNext();
         }
         cursor.close();
