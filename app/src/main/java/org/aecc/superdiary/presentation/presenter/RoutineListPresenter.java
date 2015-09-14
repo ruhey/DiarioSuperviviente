@@ -50,6 +50,7 @@ public class RoutineListPresenter implements Presenter {
 
     @Override
     public void resume() {
+        this.loadRoutineList();
     }
 
     @Override

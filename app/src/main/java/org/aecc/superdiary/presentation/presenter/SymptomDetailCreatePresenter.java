@@ -29,6 +29,7 @@ public class SymptomDetailCreatePresenter implements Presenter{
         public void onSymptomDataCreated(Symptom symptom) {
             SymptomDetailCreatePresenter.this.hideViewLoading();
             SymptomDetailCreatePresenter.this.showOKMessage();
+            SymptomDetailCreatePresenter.this.goBack();
         }
 
         @Override
@@ -112,5 +113,9 @@ public class SymptomDetailCreatePresenter implements Presenter{
 
     private void persistCreation(Symptom symptom){
         this.createSymptomUseCase.execute(symptom, this.createSymptomCallback);
+    }
+
+    private void goBack(){
+        this.viewDetailsView.goToList();
     }
 }

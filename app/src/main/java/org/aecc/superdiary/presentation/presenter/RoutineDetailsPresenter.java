@@ -46,10 +46,12 @@ public class RoutineDetailsPresenter implements Presenter {
 
     @Override
     public void resume() {
+        this.loadRoutineDetails();
     }
 
     @Override
     public void pause() {
+        this.loadRoutineDetails();
     }
 
     public void initialize(int routineId){

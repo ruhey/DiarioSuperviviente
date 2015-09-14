@@ -29,6 +29,7 @@ public class MedicineDetailCreatePresenter implements Presenter{
         public void onMedicineDataCreated(Medicine medicine) {
             MedicineDetailCreatePresenter.this.hideViewLoading();
             MedicineDetailCreatePresenter.this.showOKMessage();
+            MedicineDetailCreatePresenter.this.goBack();
         }
 
         @Override
@@ -115,5 +116,9 @@ public class MedicineDetailCreatePresenter implements Presenter{
 
     private void persistCreation(Medicine medicine){
         this.createMedicineUseCase.execute(medicine, this.createMedicineCallback);
+    }
+
+    private void goBack(){
+        this.viewDetailsView.goToList();
     }
 }

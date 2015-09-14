@@ -29,6 +29,7 @@ public class RoutineDetailCreatePresenter implements Presenter{
         public void onRoutineDataCreated(Routine routine) {
             RoutineDetailCreatePresenter.this.hideViewLoading();
             RoutineDetailCreatePresenter.this.showOKMessage();
+            RoutineDetailCreatePresenter.this.goBack();
         }
 
         @Override
@@ -117,5 +118,9 @@ public class RoutineDetailCreatePresenter implements Presenter{
 
     private void persistCreation(Routine routine){
         this.createRoutineUseCase.execute(routine, this.createRoutineCallback);
+    }
+
+    private void goBack(){
+        this.viewDetailsView.goToList();
     }
 }

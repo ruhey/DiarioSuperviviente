@@ -20,6 +20,7 @@ public class MeetingAddPresenter implements Presenter {
         @Override
         public void onMeetingDataCreated(Meeting meeting){
             MeetingAddPresenter.this.showStoredDataOK();
+            MeetingAddPresenter.this.goBack();
         }
 
         @Override
@@ -99,4 +100,7 @@ public class MeetingAddPresenter implements Presenter {
         this.createMeetingUseCase.execute(meeting, this.createMeetingCallback);
     }
 
+    private void goBack(){
+        this.viewDetailsView.goToList();
+    }
 }
