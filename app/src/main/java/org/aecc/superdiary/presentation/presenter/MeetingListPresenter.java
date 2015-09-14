@@ -50,6 +50,7 @@ public class MeetingListPresenter implements Presenter {
 
     @Override
     public void resume() {
+        this.loadMeetingList();
     }
 
     @Override

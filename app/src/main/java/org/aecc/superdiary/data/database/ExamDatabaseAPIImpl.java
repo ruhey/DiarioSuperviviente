@@ -101,6 +101,10 @@ public class ExamDatabaseAPIImpl implements ExamDatabaseAPI {
 
         long insertId = database.insert(DatabaseHelper.TABLE_EXAMS, null,
                 values);
+        Long lonObj = Long.valueOf(insertId);
+       // Integer i = insertId != null ? insertId.intValue() : null;
+        //closeHelper();
+        //examCreationCallback.onExamEntityCreated(this.getExamEntityById(lonObj.intValue()));
         Cursor cursor = database.query(DatabaseHelper.TABLE_EXAMS,
                 examAllColumns, DatabaseHelper.EXAMS_COLUMN_ID + " = " + insertId, null,
                 null, null, null);
@@ -184,5 +188,18 @@ public class ExamDatabaseAPIImpl implements ExamDatabaseAPI {
         exam.setDescription(cursor.getString(4));
         exam.setImage(cursor.getString(5));
         return exam;
+    }
+
+    public ExamEntity getExamEntityById(int examId) {
+        openHelper();
+        Cursor cursor = database.query(DatabaseHelper.TABLE_EXAMS,
+                examAllColumns, DatabaseHelper.EXAMS_COLUMN_ID + " = " + examId, null,
+                null, null, null);
+        cursor.moveToFirst();
+        ExamEntity newExamEntity = cursorToDetailExam(cursor);
+        cursor.close();
+
+        closeHelper();
+         return newExamEntity;
     }
 }

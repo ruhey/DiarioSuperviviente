@@ -2,8 +2,13 @@ package org.aecc.superdiary.presentation.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Base64;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.aecc.superdiary.R;
@@ -13,6 +18,9 @@ import org.aecc.superdiary.presentation.internal.di.components.DaggerExamCompone
 import org.aecc.superdiary.presentation.model.ExamModel;
 import org.aecc.superdiary.presentation.presenter.ExamDetailsPresenter;
 import org.aecc.superdiary.presentation.view.PruebaDetailView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 import javax.inject.Inject;
 
@@ -40,6 +48,10 @@ public class PruebasDetailsActivity extends BaseActivity implements HasComponent
     Button editarPrueba;
     @InjectView(R.id.borrarPrueba)
     Button borrarPrueba;
+    @InjectView(R.id.fotoPrueba)
+    ImageView foto;
+
+    private String namePhoto;
 
     @Inject
     public ExamDetailsPresenter examDetailsPresenter;
@@ -47,7 +59,6 @@ public class PruebasDetailsActivity extends BaseActivity implements HasComponent
     public static Intent getCallingIntent(Context context, int examId) {
         Intent callingIntent = new Intent(context, PruebasDetailsActivity.class);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_EXAM_ID, examId);
-
         return callingIntent;
     }
 
@@ -99,6 +110,42 @@ public class PruebasDetailsActivity extends BaseActivity implements HasComponent
         this.descripcionPrueba.setText(exam.getDescription());
         this.fechaPrueba.setText(exam.getDateExam());
         this.horaPrueba.setText(exam.getHourExam());
+        if (exam.getImage() != null){
+            namePhoto = exam.getImage();
+            File f = new File(Environment.getExternalStorageDirectory().toString());
+            for (File temp : f.listFiles()) {
+                if (temp.getName().equals(exam.getImage())) {
+                    f = temp;
+                    break;
+                }
+            }
+            try {
+                Bitmap bitmap;
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+
+
+                // Calculate inSampleSize
+                options.inSampleSize = calculateInSampleSize(options, 300, 300);
+
+                // Decode bitmap with inSampleSize set
+                options.inJustDecodeBounds = false;
+                options.inPreferredConfig = Bitmap.Config.RGB_565;
+                options.inDither = true;
+
+                bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), options);
+
+
+
+                //viewImage.setImageBitmap(resizeImageForImageView(bitmap));
+                //viewImage.setImageBitmap( decodeSampledBitmapFromResource(getResources(), R.id.viewImage, 100, 100));
+
+
+                foto.setImageBitmap(bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @OnClick(R.id.editarPrueba)
@@ -156,5 +203,40 @@ public class PruebasDetailsActivity extends BaseActivity implements HasComponent
         this.getComponent().inject(this);
         this.examDetailsPresenter.setView(this);
         this.examDetailsPresenter.initialize(this.examId);
+    }
+
+    public static String convertToBase64(Bitmap bitmap) {
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+        byte[] byteArray = os.toByteArray();
+        return Base64.encodeToString(byteArray, 0);
+    }
+
+    public Bitmap convertToBitmap(String base64String) {
+        byte[] decodedString = Base64.decode(base64String, Base64.DEFAULT);
+        Bitmap bitmapResult = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return bitmapResult;
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+// Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 3;
+            final int halfWidth = width / 3;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 }

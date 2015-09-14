@@ -40,6 +40,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String MEETINGS_COLUMN_DATEALARM = "dateAlarm";
     public static final String MEETINGS_COLUMN_HOURALARM = "hourAlarm";
     public static final String MEETINGS_COLUMN_DURATION = "duration";
+    public static final String MEETINGS_COLUMN_CONTACT_ID = "contact_id";
+    public static final String MEETINGS_COLUMN_MEDICATION_ID = "medication_id";
+    public static final String MEETINGS_COLUMN_TEST_ID = "test_id";
+    public static final String MEETINGS_COLUMN_SYMPTHOM_ID = "sympthom_id";
     public static final String MEETINGS_COLUMN_IMAGE = "image";
 
     public static final String TABLE_ROUTINES = "routines";
@@ -80,7 +84,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COMMENTS_COLUMN_TIMESELAPSED = "timesElapsed";
 
     private static final String DATABASE_NAME = "superdiary";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     private static SQLiteDatabase.CursorFactory factory = null;
 
 
@@ -114,6 +118,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + MEETINGS_COLUMN_DATEALARM + " text not null,"
             + MEETINGS_COLUMN_HOURALARM + " text not null,"
             + MEETINGS_COLUMN_DURATION + " text,"
+            + MEETINGS_COLUMN_CONTACT_ID + " text,"
+            + MEETINGS_COLUMN_MEDICATION_ID + " text,"
+            + MEETINGS_COLUMN_TEST_ID + " text,"
+            + MEETINGS_COLUMN_SYMPTHOM_ID + " text,"
             + MEETINGS_COLUMN_IMAGE + " text);";
 
     private static final String ROUTINES_CREATE = " create table " + TABLE_ROUTINES
@@ -177,11 +185,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.execSQL("INSERT INTO " + TABLE_CONTACTS +  " VALUES(null, 'Fernando3', 'Santa Olaya', '686252397', 'a@b.c', 'image', 'pater');");
         database.execSQL("INSERT INTO " + TABLE_CONTACTS +  " VALUES(null, 'Fernando4', 'Santa Olaya', '686252397', 'a@b.c', 'image', 'pater');");
 
-        database.execSQL("INSERT INTO " + TABLE_MEETINGS +  " VALUES(null, 'Consulta general', 'Centro médico delicias', 'pedir algo para el dolor de huesos, preguntar por la resonancia, pedir cita para la enfermera', '01-03-2015', '09:00', '27-02-2015', '16:00', '1', 'image');");
-        database.execSQL("INSERT INTO " + TABLE_ROUTINES +  " VALUES(null, 'Partida de Mus', 'Casa de Pedro', 'Una buena partida de cartas siempre viene bien', '01-03-2015', '17:00', '01-03-2015', '16:00', '4','7', 'image');");
-        database.execSQL("INSERT INTO " + TABLE_MEDICINES + " VALUES(null, 'Paracetamol', '01-03-2015', '08:00', '03-03-2015', '16:00','8', 'para los dolores en general', 'image');");
-        database.execSQL("INSERT INTO " + TABLE_EXAMS +     " VALUES(null, 'Radiografia torax', '01-03-2015', '17:00', 'Realizada por unos dolores en el pecho', 'image');");
-        database.execSQL("INSERT INTO " + TABLE_SYMPTOMS +     " VALUES(null, 'Dolor pecho', '10-02-2015', '09:00', 'Dolores en el pecho al toser', 'image');");
+        //database.execSQL("INSERT INTO " + TABLE_MEETINGS +  " VALUES(null, 'Consulta general', 'Centro médico delicias', 'pedir algo para el dolor de huesos, preguntar por la resonancia, pedir cita para la enfermera', '01-03-2015', '09:00', '27-02-2015', '16:00', '1', 'image');");
+        //database.execSQL("INSERT INTO " + TABLE_ROUTINES +  " VALUES(null, 'Partida de Mus', 'Casa de Pedro', 'Una buena partida de cartas siempre viene bien', '01-03-2015', '17:00', '01-03-2015', '16:00', '4','7', 'image');");
+        //database.execSQL("INSERT INTO " + TABLE_MEDICINES + " VALUES(null, 'Paracetamol', '01-03-2015', '08:00', '03-03-2015', '16:00','8', 'para los dolores en general', 'image');");
+        //database.execSQL("INSERT INTO " + TABLE_EXAMS +     " VALUES(null, 'Radiografia torax', '01-03-2015', '17:00', 'Realizada por unos dolores en el pecho', 'image');");
+        //database.execSQL("INSERT INTO " + TABLE_SYMPTOMS +     " VALUES(null, 'Dolor pecho', '10-02-2015', '09:00', 'Dolores en el pecho al toser', 'image');");
 
 
         Log.i(this.getClass().toString(), "Tablas creadas");

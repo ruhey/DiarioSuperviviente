@@ -49,7 +49,7 @@ public class ContactListPresenter implements Presenter {
     }
 
     @Override
-    public void resume() {
+    public void resume() {this.loadContactList();
     }
 
     @Override

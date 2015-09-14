@@ -40,9 +40,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -73,6 +75,7 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
     ImageButton btnSelect;
     ImageView ivImage;
 
+    private String namePhoto;
 
     private DatePickerDialog fIniDatePickerDialog;
     private TimePickerDialog hIniTimePickerDialog;
@@ -170,6 +173,11 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
             public void onClick(DialogInterface dialog, int item) {
                 if (items[item].equals("Hacer Foto")) {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    Random randGenerator = new Random();
+                    int name = randGenerator.nextInt(1000);
+                    namePhoto = "exam-image-" + name + ".jpg";
+                    File f = new File(Environment.getExternalStorageDirectory(), namePhoto);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intent, REQUEST_CAMERA);
                 } else if (items[item].equals("Galeria")) {
                     Intent intent = new Intent(
@@ -200,29 +208,60 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
     }
 
     private void onCaptureImageResult(Intent data) {
-        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        thumbnail.compress(Bitmap.CompressFormat.JPEG, 30, bytes);
-
-        File destination = new File(Environment.getExternalStorageDirectory(),
-                System.currentTimeMillis() + ".jpg");
-
-        FileOutputStream fo;
+        File f = new File(Environment.getExternalStorageDirectory().toString());
+        for (File temp : f.listFiles()) {
+            if (temp.getName().equals(namePhoto)) {
+                f = temp;
+                break;
+            }
+        }
         try {
-            destination.createNewFile();
-            fo = new FileOutputStream(destination);
-            fo.write(bytes.toByteArray());
-            fo.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            Bitmap bitmap;
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+
+
+            // Calculate inSampleSize
+            options.inSampleSize = calculateInSampleSize(options, 300, 300);
+
+            // Decode bitmap with inSampleSize set
+            options.inJustDecodeBounds = false;
+            options.inPreferredConfig = Bitmap.Config.RGB_565;
+            options.inDither = true;
+
+            bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), options);
+
+
+
+            //viewImage.setImageBitmap(resizeImageForImageView(bitmap));
+            //viewImage.setImageBitmap( decodeSampledBitmapFromResource(getResources(), R.id.viewImage, 100, 100));
+
+
+            ivImage.setImageBitmap(bitmap);
+
+            File imagesFolder = new File(
+                    Environment.getExternalStorageDirectory(), "Diario");
+            imagesFolder.mkdirs();
+
+            String path = android.os.Environment.getExternalStorageDirectory()+ File.separator+ "Diario";
+            //f.delete();
+            OutputStream outFile = null;
+            File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
+            try {
+                outFile = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
+                outFile.flush();
+                outFile.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-        Log.e("antes de nada", "");
-        ivImage.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, 256, 256, false));
-        Log.e("despues de nada", "");
     }
 
     @SuppressWarnings("deprecation")
@@ -263,6 +302,41 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
         this.descripcionPrueba.setText(exam.getDescription());
         this.fechaPrueba.setText(exam.getDateExam());
         this.horaPrueba.setText(exam.getHourExam());
+        if (exam.getImage() != null) {
+            namePhoto = exam.getImage();
+            File f = new File(Environment.getExternalStorageDirectory().toString());
+            for (File temp : f.listFiles()) {
+                if (temp.getName().equals(exam.getImage())) {
+                    f = temp;
+                    break;
+                }
+            }
+            try {
+                Bitmap bitmap;
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+
+
+                // Calculate inSampleSize
+                options.inSampleSize = calculateInSampleSize(options, 300, 300);
+
+                // Decode bitmap with inSampleSize set
+                options.inJustDecodeBounds = false;
+                options.inPreferredConfig = Bitmap.Config.RGB_565;
+                options.inDither = true;
+
+                bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), options);
+
+
+                //viewImage.setImageBitmap(resizeImageForImageView(bitmap));
+                //viewImage.setImageBitmap( decodeSampledBitmapFromResource(getResources(), R.id.viewImage, 100, 100));
+
+
+                ivImage.setImageBitmap(bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @OnClick(R.id.fechaPrueba)
@@ -287,6 +361,7 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
         exam.setDescription(this.descripcionPrueba.getText().toString());
         exam.setDateExam(this.fechaPrueba.getText().toString());
         exam.setHourExam(this.horaPrueba.getText().toString());
+        exam.setImage(namePhoto);
         this.examDetailEditPresenter.saveExam(exam);
     }
 
@@ -327,4 +402,27 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
         this.examDetailEditPresenter.setView(this);
         this.examDetailEditPresenter.initialize(this.examId);
     }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+// Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 3;
+            final int halfWidth = width / 3;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
+
 }

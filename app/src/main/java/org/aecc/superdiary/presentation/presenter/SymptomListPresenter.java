@@ -50,6 +50,7 @@ public class SymptomListPresenter implements Presenter {
 
     @Override
     public void resume() {
+        this.loadSymptomList();
     }
 
     @Override

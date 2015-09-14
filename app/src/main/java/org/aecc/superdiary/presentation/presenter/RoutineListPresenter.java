@@ -54,6 +54,7 @@ public class RoutineListPresenter implements Presenter {
 
     @Override
     public void pause() {
+        this.loadRoutineList();
     }
 
     public void initialize() {

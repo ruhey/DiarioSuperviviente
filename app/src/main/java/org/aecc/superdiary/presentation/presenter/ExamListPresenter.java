@@ -50,6 +50,7 @@ public class ExamListPresenter implements Presenter {
 
     @Override
     public void resume() {
+        this.loadExamList();
     }
 
     @Override
