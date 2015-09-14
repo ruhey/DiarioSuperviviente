@@ -84,6 +84,9 @@ public class MeetingDatabaseAPIImpl implements MeetingDatabaseAPI {
         MeetingEntity meetingEntity = null;
         while (!cursor.isAfterLast()) {
             meetingEntity = cursorToDetailMeeting(cursor);
+            if(meetingEntity.getMeetingId()==meetingId) {
+                break;
+            }
             cursor.moveToNext();
         }
         cursor.close();

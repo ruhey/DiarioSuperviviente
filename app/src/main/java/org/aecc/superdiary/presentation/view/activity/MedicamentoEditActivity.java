@@ -6,13 +6,16 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.domain.Medicine;
+import org.aecc.superdiary.domain.Routine;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerMedicineComponent;
 import org.aecc.superdiary.presentation.internal.di.components.MedicineComponent;
@@ -22,6 +25,7 @@ import org.aecc.superdiary.presentation.presenter.MedicineDetailEditPresenter;
 import org.aecc.superdiary.presentation.view.MedicamentoDetailEditView;
 import org.aecc.superdiary.presentation.view.activity.service.ScheduleClient;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -78,12 +82,12 @@ public class MedicamentoEditActivity extends BaseActivity implements Medicamento
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //setContentView(R.layout.activity_user_details);
         setContentView(R.layout.activity_medicamento);
+        ButterKnife.inject(this);
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE);
         setDateTimeField();
         // Create a new service client and bind our activity to this service
         scheduleClient = new ScheduleClient(this,TIPO_NOTIFICACION);
         scheduleClient.doBindService();
-        ButterKnife.inject(this);
         this.initializeInjector();
         this.initializeActivity(savedInstanceState);
         this.initialize();
@@ -195,11 +199,34 @@ public class MedicamentoEditActivity extends BaseActivity implements Medicamento
     @OnClick(R.id.guardarMedicamento)
     void editClicked(){
         this.medicineDetailEditPresenter.editMedicine(this.medicineId);
+        anadirNotificacion();
+    }
+
+    private void anadirNotificacion() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Calendar newCal = Calendar.getInstance();
+
+        if(TextUtils.isEmpty(fechaFinMedic.getText()) || TextUtils.isEmpty(horaFinMedic.getText())){
+            Toast.makeText(this, "No se le notificará la hora de la toma de su medicamento, debe completar la fecha y la hora del aviso", Toast.LENGTH_LONG).show();
+
+        }else{
+            try {
+                newCal.setTime(dateFormat.parse(String.valueOf(fechaFinMedic.getText()) + " " + String.valueOf(horaFinMedic.getText())));
+                newCal.set(Calendar.SECOND,0);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            // Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
+            scheduleClient.setAlarmForNotification(newCal);
+            // Notify the user what they just did
+            Toast.makeText(this, "Notificacion guardada para el "+ fechaFinMedic.getText() + " a las "+ horaFinMedic.getText(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public void editMedicine(int medicineId) {
-
         Medicine medicine = new Medicine(this.medicineId);
         medicine.setName(this.nombreMedic.getText().toString());
         medicine.setDescription(this.descripcionMedic.getText().toString());

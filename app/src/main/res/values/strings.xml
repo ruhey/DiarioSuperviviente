@@ -98,17 +98,43 @@
         <li> 10. Si tu médico te prescribe un suplemento nutricional recuerda que habitualmente es un complemento o apoyo a tu comida y no un sustituto.</li>\n\n
         </string>
 
+    <string name="revisiones">
+        Las revisiones médicas se viven con frecuencia como un recordatorio de todo lo pasado. -Volvemos al hospital, volvemos a ver a nuestros médicos- y es inevitable que reaparezca el malestar, las dudas, los miedos, etc.\nPara afrontar este momento, puedes poner en marcha algunas estrategias que te ayuden a disminuir el malestar que las revisiones pueden generar.\n\n
+        <b>Dos semanas antes de la cita con el médico</b>\n
+        <li>Descansa e intenta mantener tus hábitos de sueño.</li>\n
+        <li>Cuida tu alimentación y realiza comidas regulares y equilibradas.</li>\n
+        <li>Haz ejercicio moderado para disminuir la tensión y mejorar el ánimo y el sueño.</li>\n
+        <li>Evita el consumo de alcohol y de bebidas excitantes, como café, té y refrescos de cola.</li>\n
+        <li>No tomes ningún fármaco que no tengas pautado sin consultarlo previamente con tu médico.</li>\n
+        <li>Práctica a diario los ejercicios de respiración.</li>\n\n
+        <b>Dos semanas antes de la cita con el médico</b>\n
+        <li>Pide algún familiar o amigo que te acompañe. Te ayudará a pasar este momento y además ellos sentirán que pueden hacer algo por ti.</li>\n
+        <li>Comienza a anotar en el diario todo aquello que quieras comentar con tu médico: cualquier síntoma que hayas notado y te preocupe (pérdida de apetito o peso, vómitos, diarreas, aparición de dolor, cansancio, la medicación que estás tomando, etc.</li>\n
+        <li>Cuenta a los demás como te sientes. Comparte con ellos tus emociones y las cosas que te preocupan.</li>\n
+        <li>Finaliza el día con pensamientos positivos como: -"hasta ahora todo ha ido bien, por ahora no tengo ninguna prueba de que haya cambiado", -estoy en buenas manos-.</li>\n\n
+        <b>El día de la cita médica y las pruebas</b>\n
+        <li>Comienza el día con pensamientos positivos. Repítelos ante el espejo: -es normal estar nervioso en esta situación-, -la ansiedad es molesta pero puedo tolerarla-.</li>\n
+        <li>Piensa qué puedes hacer para distraerle y que los tiempos de espera en la consulta sean más fáciles [escoge alguna lectura para llevarte, etc.</li>\n
+        <li>Si notas que te sientes muy nervioso, puedes poner en práctica los ejercicios de respiración.</li>\n
+        <li>Durante la consulta o realización de las pruebas no interpretes, mejor pregunta. Una mirada, un gesto por parte del médico o profesional que está realizado la prueba puede ser interpretada como un signo de que algo va mal cuando no necesariamente tiene por qué ser así.</li>\n\n
+        <b>Ya en la consulta ¿Cómo hablo con el médico?</b>\n
+        Recuerda que la consulta con tu médico tiene una duración limitada por lo que preparar previamente qué le quieres preguntar al médico te ayudará a aprovechar al máximo la consulta con él.\n\n
+        <li>Procura hacer preguntas cortas y directas. Una cada vez, y espera a que el médico te responda. Escucha las respuestas.</li>\n
+        <li>Realiza preguntas generales cuando quieras ampliar información. Si necesitas comprender algo más sobre el proceso de la enfermedad, puedes hacer preguntas como: ¿Qué objetivo tiene este tratamiento? ¿Para qué he de realizarme esta prueba?</li>\n
+        <li>Si buscas información para tomar una decisión, puedes hacer preguntas del tipo ¿Cuáles son las ventajas e inconvenientes?, ¿Qué sugiere que se haga en este caso?</li>\n\n
+    </string>
+
     <string name="vida">
-        <li><b>No pierdas tu vida en un trabajo que odias.</b> La vida es demasiado corta como para vivirla sólo por la noche y los fines de semana.</li>\n
-        <li>Si en tu vida pasa algo malo que no puedes evitar, <b>trata de adaptarte</b>. Darte cabezazos contra la pared no tiene sentido.</li>\n
-        <li><b>Si piensas que puedes cambiar algo, trata de hacerlo por todos los medios.</b> Intenta antes entender la esencia del problema y entonces te vas a dar cuenta de que se puede resolver.</li>\n
-        <li><b>No existen "buenas" y "malas" decisiones. </b>Si hiciste algo que crees que está mal, aprende una lección de ello, la próxima vez lo harás mejor. No puedes saber las vueltas que finalmente van a dar las cosas, por lo que sentarse a llorar es una pérdida del tiempo.</li>\n
-        <li><b>Pide perdón a las personas a quien podrías haber hecho daño.</b> No eres perfecto, ni siquiera intentes aparentarlo, sólo admite la responsabilidad del sufrimiento que causó a otra persona.</li>\n
-        <li><b>No te arrepientas del pasado, ya no vas a poder cambiarlo.</b> Vive del presente. Pero no el de un solo momento, es demasiado corto. "Ahora" es un pedazo de tiempo corto que incluye un poco del pasado, un poco del futuro y el presente mismo.</li>\n
-        <li><b>Estate abierto a diferentes ideas.</b> No descartes otras posibilidades.</li>\n
-        <li><b>Trata de no perder nunca el sentido del humor, </b>aunque no siempre sea posible.</li>\n
-        <li><b>Carpe Diem.</b> En otras palabras, ¡aprovecha el momento!</li>\n
-        <li><b>No tengas miedo a la muerte. </b>Si no le tienes miedo a la muerte, no le vas a tener miedo a nada que te depare la vida.</li>\n
+        <li><b>No pierdas tu vida en un trabajo que odias.</b> La vida es demasiado corta como para vivirla sólo por la noche y los fines de semana.</li>\n\n
+        <li>Si en tu vida pasa algo malo que no puedes evitar, <b>trata de adaptarte</b>. Darte cabezazos contra la pared no tiene sentido.</li>\n\n
+        <li><b>Si piensas que puedes cambiar algo, trata de hacerlo por todos los medios.</b> Intenta antes entender la esencia del problema y entonces te vas a dar cuenta de que se puede resolver.</li>\n\n
+        <li><b>No existen "buenas" y "malas" decisiones. </b>Si hiciste algo que crees que está mal, aprende una lección de ello, la próxima vez lo harás mejor. No puedes saber las vueltas que finalmente van a dar las cosas, por lo que sentarse a llorar es una pérdida del tiempo.</li>\n\n
+        <li><b>Pide perdón a las personas a quien podrías haber hecho daño.</b> No eres perfecto, ni siquiera intentes aparentarlo, sólo admite la responsabilidad del sufrimiento que causó a otra persona.</li>\n\n
+        <li><b>No te arrepientas del pasado, ya no vas a poder cambiarlo.</b> Vive del presente. Pero no el de un solo momento, es demasiado corto. "Ahora" es un pedazo de tiempo corto que incluye un poco del pasado, un poco del futuro y el presente mismo.</li>\n\n
+        <li><b>Estate abierto a diferentes ideas.</b> No descartes otras posibilidades.</li>\n\n
+        <li><b>Trata de no perder nunca el sentido del humor, </b>aunque no siempre sea posible.</li>\n\n
+        <li><b>Carpe Diem.</b> En otras palabras, ¡aprovecha el momento!</li>\n\n
+        <li><b>No tengas miedo a la muerte. </b>Si no le tienes miedo a la muerte, no le vas a tener miedo a nada que te depare la vida.</li>\n\n
     </string>
 
     <string name="AECC">Como indica su nombre, su objetivo es luchar contra todos los tipos de cáncer: informando, apoyando y acompañando a los enfermos y sus familiares, promoviendo la investigación oncológica, y concienciando a la sociedad de la necesidad de actuar frente a esta enfermedad. Aunque tiene su sede central en Madrid, desarrolla su labor en toda España, y tiene representación en más de 2.000 localidades por todo el país.</string>

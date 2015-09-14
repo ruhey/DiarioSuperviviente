@@ -179,7 +179,7 @@ public class CitaAddActivity extends BaseActivity implements View.OnClickListene
         Calendar newCal = Calendar.getInstance();
 
         if(TextUtils.isEmpty(fechaAviso.getText()) || TextUtils.isEmpty(horaAviso.getText())){
-            Toast.makeText(this, "No se le notificará la hora de la toma de su medicamento, debe completar la fecha y la hora del aviso", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No se le notificará la hora de su cita, debe completar la fecha y la hora del aviso", Toast.LENGTH_LONG).show();
 
         }else{
             try {

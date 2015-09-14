@@ -81,6 +81,9 @@ public class MedicineDatabaseAPIImpl implements MedicineDatabaseAPI {
         MedicineEntity medicineEntity = null;
         while (!cursor.isAfterLast()) {
             medicineEntity = cursorToDetailMedicine(cursor);
+            if(medicineEntity.getMedicineId()==medicineId) {
+                break;
+            }
             cursor.moveToNext();
         }
         cursor.close();

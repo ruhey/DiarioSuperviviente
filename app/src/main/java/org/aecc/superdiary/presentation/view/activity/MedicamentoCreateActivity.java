@@ -6,10 +6,12 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.domain.Medicine;
@@ -20,6 +22,7 @@ import org.aecc.superdiary.presentation.presenter.MedicineDetailCreatePresenter;
 import org.aecc.superdiary.presentation.view.MedicamentoDetailCreateView;
 import org.aecc.superdiary.presentation.view.activity.service.ScheduleClient;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -193,6 +196,35 @@ public class MedicamentoCreateActivity extends BaseActivity implements Medicamen
         this.medicineDetailCreatePresenter.createMedicine(medicine);
     }
 
+    @OnClick(R.id.guardarMedicamento)
+    void editClicked(){
+        anadirNotificacion();
+    }
+
+    private void anadirNotificacion() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Calendar newCal = Calendar.getInstance();
+
+        if(TextUtils.isEmpty(fechaFinMedic.getText()) || TextUtils.isEmpty(horaFinMedic.getText())){
+            Toast.makeText(this, "No se le notificará la hora de la toma de su medicamento, debe completar la fecha y la hora del aviso", Toast.LENGTH_LONG).show();
+
+        }else{
+            try {
+                newCal.setTime(dateFormat.parse(String.valueOf(fechaFinMedic.getText()) + " " + String.valueOf(horaFinMedic.getText())));
+                newCal.set(Calendar.SECOND,0);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            // Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
+            scheduleClient.setAlarmForNotification(newCal);
+            // Notify the user what they just did
+            Toast.makeText(this, "Notificacion guardada para el "+ fechaFinMedic.getText() + " a las "+ horaFinMedic.getText(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     @Override
     public void createMedicine(int medicineId) {
     }
@@ -236,6 +268,6 @@ public class MedicamentoCreateActivity extends BaseActivity implements Medicamen
         this.getApplicationComponent().inject(this);
         this.getComponent().inject(this);
         this.medicineDetailCreatePresenter.setView(this);
-        this.medicineDetailCreatePresenter.initialize(33);
+        this.medicineDetailCreatePresenter.initialize(50);
     }
 }

@@ -6,11 +6,13 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.aecc.superdiary.R;
 import org.aecc.superdiary.domain.Routine;
@@ -22,6 +24,7 @@ import org.aecc.superdiary.presentation.presenter.RoutineDetailEditPresenter;
 import org.aecc.superdiary.presentation.view.RutinaDetailEditView;
 import org.aecc.superdiary.presentation.view.activity.service.ScheduleClient;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -192,7 +195,32 @@ public class RutinaEditActivity extends BaseActivity implements RutinaDetailEdit
     @OnClick(R.id.guardarRutina)
     void editClicked(){
         this.routineDetailEditPresenter.editRoutine(this.routineId);
+        anadirNotificacion();
     }
+
+    private void anadirNotificacion() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Calendar newCal = Calendar.getInstance();
+
+        if(TextUtils.isEmpty(fechaAvisoRutina.getText()) || TextUtils.isEmpty(horaAvisoRutina.getText())){
+            Toast.makeText(this, "No se le notificará la hora de inicio de su rutina, debe completar la fecha y la hora del aviso", Toast.LENGTH_LONG).show();
+
+        }else{
+            try {
+                newCal.setTime(dateFormat.parse(String.valueOf(fechaAvisoRutina.getText()) + " " + String.valueOf(horaAvisoRutina.getText())));
+                newCal.set(Calendar.SECOND,0);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            // Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
+            scheduleClient.setAlarmForNotification(newCal);
+            // Notify the user what they just did
+            Toast.makeText(this, "Notificacion guardada para el "+ fechaAvisoRutina.getText() + " a las "+ horaAvisoRutina.getText(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     @Override
     public void editRoutine(int routineId) {
