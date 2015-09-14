@@ -10,4 +10,6 @@ public interface RutinaDetailDeleteView extends LoadDataView{
     void showMessage(String message);
 
     void renderRoutine(RoutineModel routine);
+
+    void goToList();
 }

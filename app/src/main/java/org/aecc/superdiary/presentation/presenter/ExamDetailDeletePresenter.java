@@ -43,6 +43,7 @@ public class ExamDetailDeletePresenter implements Presenter {
         public void onExamDataDeleted(Collection<Exam> examsCollection) {
             ExamDetailDeletePresenter.this.hideViewLoading();
             ExamDetailDeletePresenter.this.showOKMessage();
+            ExamDetailDeletePresenter.this.goBack();
         }
 
         @Override
@@ -127,5 +128,9 @@ public class ExamDetailDeletePresenter implements Presenter {
 
     private void persistDeletion(int examId) {
         this.deleteExamUseCase.execute(this.examId, this.deleteExamCallback);
+    }
+
+    private void goBack(){
+        this.viewDetailsView.goToList();
     }
 }

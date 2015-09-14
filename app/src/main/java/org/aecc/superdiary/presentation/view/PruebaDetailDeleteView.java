@@ -10,4 +10,6 @@ public interface PruebaDetailDeleteView extends LoadDataView{
     void showMessage(String message);
 
     void renderExam(ExamModel exam);
+
+    void goToList();
 }

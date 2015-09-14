@@ -10,4 +10,6 @@ public interface SintomaDetailDeleteView extends LoadDataView{
     void showMessage(String message);
 
     void renderSymptom(SymptomModel symptom);
+
+    void goToList();
 }

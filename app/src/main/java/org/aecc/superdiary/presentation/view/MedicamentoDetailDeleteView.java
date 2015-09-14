@@ -10,4 +10,6 @@ public interface MedicamentoDetailDeleteView extends LoadDataView{
     void showMessage(String message);
 
     void renderMedicine(MedicineModel medicine);
+
+    void goToList();
 }

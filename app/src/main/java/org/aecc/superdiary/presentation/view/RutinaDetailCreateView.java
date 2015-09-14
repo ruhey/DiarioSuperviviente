@@ -5,7 +5,7 @@ import org.aecc.superdiary.presentation.model.RoutineModel;
 
 public interface RutinaDetailCreateView extends LoadDataView {
 
-
+    void goToList();
 
     void createRoutine(int routineId);
 

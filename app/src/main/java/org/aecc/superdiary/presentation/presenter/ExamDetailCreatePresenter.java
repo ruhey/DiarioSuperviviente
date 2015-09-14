@@ -29,6 +29,7 @@ public class ExamDetailCreatePresenter implements Presenter{
         public void onExamDataCreated(Exam exam) {
             ExamDetailCreatePresenter.this.hideViewLoading();
             ExamDetailCreatePresenter.this.showOKMessage();
+            ExamDetailCreatePresenter.this.goBack();
         }
 
         @Override
@@ -112,5 +113,9 @@ public class ExamDetailCreatePresenter implements Presenter{
 
     private void persistCreation(Exam exam){
         this.createExamUseCase.execute(exam, this.createExamCallback);
+    }
+
+    private void goBack(){
+        this.viewDetailsView.goToList();
     }
 }

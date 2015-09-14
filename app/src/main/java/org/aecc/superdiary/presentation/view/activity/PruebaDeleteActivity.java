@@ -128,4 +128,9 @@ public class PruebaDeleteActivity extends BaseActivity implements PruebaDetailDe
         this.examDetailDeletePresenter.setView(this);
         this.examDetailDeletePresenter.initialize(this.examId);
     }
+
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
 }

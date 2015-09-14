@@ -128,4 +128,9 @@ public class RutinaDeleteActivity extends BaseActivity implements RutinaDetailDe
         this.routineDetailDeletePresenter.setView(this);
         this.routineDetailDeletePresenter.initialize(this.routineId);
     }
+
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
 }

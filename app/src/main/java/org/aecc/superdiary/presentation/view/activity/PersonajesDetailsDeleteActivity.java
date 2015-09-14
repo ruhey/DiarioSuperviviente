@@ -166,4 +166,9 @@ public class PersonajesDetailsDeleteActivity extends BaseActivity implements Has
     public void deleteContact(){
         this.contactDeletePresenter.deleteContact(actualContact);
     }
+
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
 }

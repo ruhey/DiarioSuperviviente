@@ -284,4 +284,9 @@ public class RutinaCreateActivity extends BaseActivity implements RutinaDetailCr
         this.routineDetailCreatePresenter.setView(this);
         this.routineDetailCreatePresenter.initialize(33);
     }
+
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
 }

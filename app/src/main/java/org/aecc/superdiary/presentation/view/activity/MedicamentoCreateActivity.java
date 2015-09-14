@@ -270,4 +270,9 @@ public class MedicamentoCreateActivity extends BaseActivity implements Medicamen
         this.medicineDetailCreatePresenter.setView(this);
         this.medicineDetailCreatePresenter.initialize(50);
     }
+
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
 }

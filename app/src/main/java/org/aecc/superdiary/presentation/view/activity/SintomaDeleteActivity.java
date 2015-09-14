@@ -128,4 +128,9 @@ public class SintomaDeleteActivity extends BaseActivity implements SintomaDetail
         this.symptomDetailDeletePresenter.setView(this);
         this.symptomDetailDeletePresenter.initialize(this.symptomId);
     }
+
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
 }

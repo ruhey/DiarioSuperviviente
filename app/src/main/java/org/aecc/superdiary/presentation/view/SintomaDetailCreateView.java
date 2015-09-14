@@ -5,7 +5,7 @@ import org.aecc.superdiary.presentation.model.RoutineModel;
 
 public interface SintomaDetailCreateView extends LoadDataView {
 
-
+    void goToList();
 
     void createSymptom(int symtomId);
 

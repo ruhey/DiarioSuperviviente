@@ -128,4 +128,9 @@ public class MedicamentoDeleteActivity extends BaseActivity implements Medicamen
         this.medicineDetailDeletePresenter.setView(this);
         this.medicineDetailDeletePresenter.initialize(this.medicineId);
     }
+
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
 }

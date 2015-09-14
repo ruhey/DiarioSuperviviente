@@ -58,4 +58,9 @@ public class CitaDeleteActivity extends DiaryBaseActivity implements CitaDeleteV
     public Context getContext() {
         return null;
     }
+
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
 }

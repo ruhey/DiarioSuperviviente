@@ -326,6 +326,11 @@ public class SintomaCreateActivity extends BaseActivity implements SintomaDetail
         this.symptomDetailCreatePresenter.setView(this);
         this.symptomDetailCreatePresenter.initialize(33);
     }
+
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
 }
 
 

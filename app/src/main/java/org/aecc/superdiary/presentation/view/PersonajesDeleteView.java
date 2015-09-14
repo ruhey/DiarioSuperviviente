@@ -10,4 +10,6 @@ public interface PersonajesDeleteView extends LoadDataView{
     void showOKMessage();
 
     void goBack();
+
+    void goToList();
 }

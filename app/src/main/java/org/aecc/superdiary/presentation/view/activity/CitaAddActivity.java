@@ -105,6 +105,11 @@ public class CitaAddActivity extends BaseActivity implements View.OnClickListene
         onBackPressed();
     }
 
+    @Override
+    public void goToList() {
+        this.onBackPressed();
+    }
+
     private void initializeInjector() {
         this.meetingComponent = DaggerMeetingComponent.builder()
                 .applicationComponent(getApplicationComponent())
