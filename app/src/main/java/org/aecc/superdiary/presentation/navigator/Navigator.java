@@ -6,6 +6,7 @@ import android.content.Intent;
 import org.aecc.superdiary.presentation.view.activity.CitaAddActivity;
 import org.aecc.superdiary.presentation.view.activity.CitaDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.CitaNoEditActivity;
+import org.aecc.superdiary.presentation.view.activity.MedicamentoCreateActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentoDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.MedicamentoEditActivity;
 import org.aecc.superdiary.presentation.view.activity.PersonajeDetailsNoEditActivity;
@@ -26,6 +27,7 @@ import org.aecc.superdiary.presentation.view.activity.RutinasActivity;
 import org.aecc.superdiary.presentation.view.activity.RutinasDetailsActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebasActivity;
 import org.aecc.superdiary.presentation.view.activity.PruebasDetailsActivity;
+import org.aecc.superdiary.presentation.view.activity.SintomaCreateActivity;
 import org.aecc.superdiary.presentation.view.activity.SintomaDeleteActivity;
 import org.aecc.superdiary.presentation.view.activity.SintomaEditActivity;
 import org.aecc.superdiary.presentation.view.activity.SintomasActivity;
@@ -122,6 +124,15 @@ public class Navigator {
             context.startActivity(intentToLaunch);
         }
     }
+
+    public void navigateToMedicineAdd(Context context){
+        if (context != null) {
+            Intent intentToLaunch = MedicamentoCreateActivity.getCallingIntent(context);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
     public void navigateToMedicineEdit(Context context, int medicineId) {
         if (context != null) {
             Intent intentToLaunch = MedicamentoEditActivity.getCallingIntent(context, medicineId);
@@ -226,6 +237,14 @@ public class Navigator {
     public void navigateToSymptomDetails(Context context, int symptomId) {
         if (context != null) {
             Intent intentToLaunch = SintomasDetailsActivity.getCallingIntent(context, symptomId);
+            context.startActivity(intentToLaunch);
+        }
+    }
+
+    public void navigateToSymptomAdd(Context context){
+        if (context != null) {
+            Intent intentToLaunch = SintomaCreateActivity.getCallingIntent(context);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }
     }

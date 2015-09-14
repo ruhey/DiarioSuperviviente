@@ -130,6 +130,10 @@
             android:label="@string/title_activity_medicamento" >
         </activity>
         <activity
+            android:name=".presentation.view.activity.MedicamentoCreateActivity"
+            android:label="@string/title_activity_medicamento" >
+        </activity>
+        <activity
             android:name=".presentation.view.activity.MedicamentoEditActivity"
             android:label="@string/title_activity_medicamento" >
         </activity>
@@ -159,6 +163,10 @@
         </activity>
         <activity
             android:name=".presentation.view.activity.SintomasDetailsActivity"
+            android:label="@string/title_activity_sintoma" >
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.SintomaCreateActivity"
             android:label="@string/title_activity_sintoma" >
         </activity>
         <activity

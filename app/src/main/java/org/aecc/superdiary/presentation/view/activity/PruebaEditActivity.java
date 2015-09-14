@@ -164,11 +164,11 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
                 "Cancelar" };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(PruebaEditActivity.this);
-        builder.setTitle("Cambiar imagen");
+        builder.setTitle("Cambiar Ima");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                if (items[item].equals("Hacer foto")) {
+                if (items[item].equals("Hacer Foto")) {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, REQUEST_CAMERA);
                 } else if (items[item].equals("Galeria")) {
