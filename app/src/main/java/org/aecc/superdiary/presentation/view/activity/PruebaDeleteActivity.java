@@ -50,7 +50,7 @@ public class PruebaDeleteActivity extends BaseActivity implements PruebaDetailDe
     TextView fechaPrueba;
     @InjectView(R.id.horaPrueba)
     TextView horaPrueba;
-    @InjectView(R.id.borrarPrueba)
+    @InjectView(R.id.borrarPrueb)
     Button borrarPrueba;
     @InjectView(R.id.fotoPrueba)
     ImageView foto;
@@ -183,7 +183,7 @@ public class PruebaDeleteActivity extends BaseActivity implements PruebaDetailDe
         return examComponent;
     }
 
-    @OnClick(R.id.borrarPrueba)
+    @OnClick(R.id.borrarPrueb)
     public void deleteExam() {
         this.examDetailDeletePresenter.deleteExam(this.examId);
     }
@@ -205,7 +205,7 @@ public class PruebaDeleteActivity extends BaseActivity implements PruebaDetailDe
 
     @Override
     public void showMessage(String message) {
-
+        this.showToastMessage("La prueba se ha borrado correctamente.");
     }
 
     @Override

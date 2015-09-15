@@ -210,7 +210,7 @@
                 android:background="#728C93" />
 
             <Button
-                android:id="@+id/borrarPrueba"
+                android:id="@+id/borrarPrueb"
                 style="?android:attr/buttonStyleSmall"
                 android:background="@color/rojoBorrado"
                 android:textColor="@color/blancoVerdoso"

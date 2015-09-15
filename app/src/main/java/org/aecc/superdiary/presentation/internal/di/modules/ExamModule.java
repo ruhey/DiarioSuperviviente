@@ -15,6 +15,7 @@ import org.aecc.superdiary.domain.interactor.exam.GetExamListUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.exam.SaveExamUseCase;
 import org.aecc.superdiary.domain.interactor.exam.SaveExamUseCaseImpl;
 import org.aecc.superdiary.presentation.internal.di.PerActivity;
+import org.aecc.superdiary.presentation.presenter.ExamDetailsPresenter;
 import org.aecc.superdiary.presentation.presenter.ExamListPresenter;
 import org.aecc.superdiary.presentation.presenter.Presenter;
 import org.aecc.superdiary.presentation.presenter.ExamDetailCreatePresenter;
@@ -67,6 +68,12 @@ public class ExamModule {
     @Provides
     @PerActivity
     Presenter providesExamDetailEditPresenter(ExamDetailEditPresenter examDetailEditPresenter){
+        return examDetailEditPresenter;
+    }
+
+    @Provides
+    @PerActivity
+    Presenter providesExamDetailsPresenter(ExamDetailsPresenter examDetailEditPresenter){
         return examDetailEditPresenter;
     }
 
