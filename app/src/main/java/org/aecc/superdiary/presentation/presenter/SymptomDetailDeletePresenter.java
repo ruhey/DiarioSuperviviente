@@ -43,6 +43,7 @@ public class SymptomDetailDeletePresenter implements Presenter {
         public void onSymptomDataDeleted(Collection<Symptom> symptomsCollection) {
             SymptomDetailDeletePresenter.this.hideViewLoading();
             SymptomDetailDeletePresenter.this.showOKMessage();
+            SymptomDetailDeletePresenter.this.goBack();
         }
 
         @Override
@@ -127,5 +128,9 @@ public class SymptomDetailDeletePresenter implements Presenter {
 
     private void persistDeletion(int symptomId) {
         this.deleteSymptomUseCase.execute(this.symptomId, this.deleteSymptomCallback);
+    }
+
+    private void goBack() {
+        this.viewDetailsView.goToList();
     }
 }

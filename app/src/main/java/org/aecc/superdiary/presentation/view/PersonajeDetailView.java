@@ -8,4 +8,6 @@ public interface PersonajeDetailView extends LoadDataView {
     void renderContact(ContactModel contact);
 
     void showOKMessage();
+
+    void goBack();
 }

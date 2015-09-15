@@ -10,4 +10,6 @@ public interface CitaDeleteView extends LoadDataView {
     void deleteMeeting(int meetingId);
 
     void goToList();
+
+    void showOkMessage();
 }

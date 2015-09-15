@@ -12,5 +12,5 @@ public interface RutinaDetailEditView extends LoadDataView {
 
     void showMessage(String message);
 
-    void goToDetail();
+    void goBack();
 }

@@ -43,6 +43,7 @@ public class RoutineDetailDeletePresenter implements Presenter {
         public void onRoutineDataDeleted(Collection<Routine> routinesCollection) {
             RoutineDetailDeletePresenter.this.hideViewLoading();
             RoutineDetailDeletePresenter.this.showOKMessage();
+            RoutineDetailDeletePresenter.this.goBack();
         }
 
         @Override
@@ -127,5 +128,9 @@ public class RoutineDetailDeletePresenter implements Presenter {
 
     private void persistDeletion(int routineId) {
         this.deleteRoutineUseCase.execute(this.routineId, this.deleteRoutineCallback);
+    }
+
+    private void goBack() {
+        this.viewDetailsView.goToList();
     }
 }

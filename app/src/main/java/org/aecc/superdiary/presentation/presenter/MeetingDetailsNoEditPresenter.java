@@ -41,6 +41,7 @@ public class MeetingDetailsNoEditPresenter implements Presenter {
         @Override
         public void onMeetingDataSaved(Meeting meeting){
             MeetingDetailsNoEditPresenter.this.showStoredDataOK();
+            MeetingDetailsNoEditPresenter.this.goBack();
         }
 
         @Override
@@ -138,5 +139,9 @@ public class MeetingDetailsNoEditPresenter implements Presenter {
 
     private void perssistMeeting(Meeting meeting){
      this.saveMeetingUseCase.execute(meeting, this.saveMeetingCallback);
+    }
+
+    private void goBack(){
+        this.viewDetailsView.goBack();
     }
 }

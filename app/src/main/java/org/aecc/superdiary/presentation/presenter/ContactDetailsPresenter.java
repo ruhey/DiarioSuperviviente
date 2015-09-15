@@ -42,6 +42,7 @@ public class ContactDetailsPresenter implements Presenter {
             ContactDetailsPresenter.this.hideViewLoading();
             ContactDetailsPresenter.this.showOkMessage();
             ContactDetailsPresenter.this.showViewRetry();
+            ContactDetailsPresenter.this.goBack();
         }
 
         @Override
@@ -51,6 +52,8 @@ public class ContactDetailsPresenter implements Presenter {
             ContactDetailsPresenter.this.showViewRetry();
         }
     };
+
+
 
     private void showOkMessage() {
         this.viewDetailsView.showOKMessage();
@@ -131,5 +134,9 @@ public class ContactDetailsPresenter implements Presenter {
 
     private void getContactDetails() {
         this.getContactDetailsUseCase.execute(this.contactId, this.contactDetailsCallback);
+    }
+
+    private void goBack() {
+        this.viewDetailsView.goBack();
     }
 }

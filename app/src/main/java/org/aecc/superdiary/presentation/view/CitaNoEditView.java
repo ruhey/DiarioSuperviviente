@@ -8,4 +8,6 @@ public interface CitaNoEditView extends LoadDataView {
     void renderMeeting(MeetingModel meeting);
 
     void saveMeeting(MeetingModel meeting);
+
+    void goBack();
 }

@@ -41,6 +41,7 @@ public class ExamDetailEditPresenter implements Presenter{
         public void onExamDataSaved(Exam exam) {
             ExamDetailEditPresenter.this.hideViewLoading();
             ExamDetailEditPresenter.this.showOKMessage();
+            ExamDetailEditPresenter.this.goBack();
         }
 
         @Override
@@ -137,5 +138,9 @@ public class ExamDetailEditPresenter implements Presenter{
 
     private void persistExam(Exam exam) {
         this.saveExamUseCase.execute(exam, this.examSaveCallback);
+    }
+
+    private void goBack() {
+        this.viewDetailsView.goBack();
     }
 }
