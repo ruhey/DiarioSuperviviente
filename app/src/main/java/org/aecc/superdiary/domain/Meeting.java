@@ -11,6 +11,43 @@ public class Meeting {
     private String hourAlarm;
     private String duration;
     private String image;
+    private String contactId;
+    private String medicationId;
+    private String testId;
+
+    public String getSympthomId() {
+        return sympthomId;
+    }
+
+    public void setSympthomId(String sympthomId) {
+        this.sympthomId = sympthomId;
+    }
+
+    public String getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(String contactId) {
+        this.contactId = contactId;
+    }
+
+    public String getMedicationId() {
+        return medicationId;
+    }
+
+    public void setMedicationId(String medicationId) {
+        this.medicationId = medicationId;
+    }
+
+    public String getTestId() {
+        return testId;
+    }
+
+    public void setTestId(String testId) {
+        this.testId = testId;
+    }
+
+    private String sympthomId;
 
     public Meeting(int meetingId) {
         this.meetingId = meetingId;
@@ -106,6 +143,10 @@ public class Meeting {
         stringBuilder.append("dateAlarm=" + this.getDateAlarm() + "\n");
         stringBuilder.append("hourAlarm=" + this.getHourAlarm() + "\n");
         stringBuilder.append("duration=" + this.getDuration() + "\n");
+        stringBuilder.append("contactId=" + this.getContactId() + "\n");
+        stringBuilder.append("medicationId=" + this.getMedicationId() + "\n");
+        stringBuilder.append("testId=" + this.getTestId() + "\n");
+        stringBuilder.append("sympthomId=" + this.getSympthomId() + "\n");
         stringBuilder.append("imageURL=" + this.getImage() + "\n");
         stringBuilder.append("*******************************");
 

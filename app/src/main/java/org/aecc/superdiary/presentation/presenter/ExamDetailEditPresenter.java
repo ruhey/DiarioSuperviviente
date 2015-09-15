@@ -67,7 +67,7 @@ public class ExamDetailEditPresenter implements Presenter{
 
     @Override
     public void resume() {
-
+        this.getExamDetails();
     }
 
     @Override
@@ -143,4 +143,7 @@ public class ExamDetailEditPresenter implements Presenter{
     private void goBack() {
         this.viewDetailsView.goBack();
     }
+
+
+
 }

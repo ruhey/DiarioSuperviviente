@@ -1,5 +1,6 @@
 package org.aecc.superdiary.presentation.view.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,6 +44,8 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
         void onContactClicked(final ContactModel contactModel);
     }
 
+    private boolean volver = true;
+
     @Inject
     ContactListPresenter contactListPresenter;
 
@@ -68,6 +71,7 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        volver  = getIntent().getBooleanExtra("LIBRE", true);
         View view = getLayoutInflater().inflate(R.layout.activity_personajes, frameLayout);
         mDrawerList.setItemChecked(position, true);
         ButterKnife.inject(this, view);
@@ -194,7 +198,16 @@ public class PersonajesActivity extends DiaryBaseActivity implements HasComponen
     }
 
     public void onContactClicked(ContactModel contactModel) {
-        this.navigator.navigateToContacDetails(this, contactModel.getContactId());
+        if (volver ){
+            this.navigator.navigateToContacDetails(this, contactModel.getContactId());
+        }else{
+            Intent intentResutl = new Intent();
+            intentResutl.putExtra("contactId", contactModel.getContactId());
+            intentResutl.putExtra("contactName", contactModel.getName());
+            setResult(Activity.RESULT_OK, intentResutl);
+            finish();
+        }
+
     }
 
     private ContactsAdapter.OnItemClickListener onItemClickListener =

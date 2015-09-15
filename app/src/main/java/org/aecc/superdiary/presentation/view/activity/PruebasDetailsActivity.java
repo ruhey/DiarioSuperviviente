@@ -239,4 +239,14 @@ public class PruebasDetailsActivity extends BaseActivity implements HasComponent
 
         return inSampleSize;
     }
+
+    @Override public void onResume() {
+        super.onResume();
+        this.examDetailsPresenter.resume();
+    }
+
+    @Override public void onPause() {
+        super.onPause();
+        this.examDetailsPresenter.pause();
+    }
 }

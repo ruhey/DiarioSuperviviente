@@ -316,7 +316,6 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inJustDecodeBounds = true;
 
-
                 // Calculate inSampleSize
                 options.inSampleSize = calculateInSampleSize(options, 300, 300);
 
@@ -327,12 +326,30 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
 
                 bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), options);
 
-
                 //viewImage.setImageBitmap(resizeImageForImageView(bitmap));
                 //viewImage.setImageBitmap( decodeSampledBitmapFromResource(getResources(), R.id.viewImage, 100, 100));
 
-
                 ivImage.setImageBitmap(bitmap);
+                File imagesFolder = new File(
+                        Environment.getExternalStorageDirectory(), "Diario");
+                imagesFolder.mkdirs();
+
+                String path = android.os.Environment.getExternalStorageDirectory()+ File.separator+ "Diario";
+                //f.delete();
+                OutputStream outFile = null;
+                File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
+                try {
+                    outFile = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
+                    outFile.flush();
+                    outFile.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -428,6 +445,16 @@ public class PruebaEditActivity extends BaseActivity implements PruebaDetailEdit
         }
 
         return inSampleSize;
+    }
+
+    @Override public void onResume() {
+        super.onResume();
+        //this.examDetailEditPresenter.resume();
+    }
+
+    @Override public void onPause() {
+        super.onPause();
+        //this.examDetailEditPresenter.pause();
     }
 
 }

@@ -214,7 +214,6 @@ public class PruebaCreateActivity extends BaseActivity implements PruebaDetailCr
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = true;
 
-
             // Calculate inSampleSize
             options.inSampleSize = calculateInSampleSize(options, 300, 300);
 
@@ -224,8 +223,6 @@ public class PruebaCreateActivity extends BaseActivity implements PruebaDetailCr
             options.inDither = true;
 
             bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), options);
-
-
 
             //viewImage.setImageBitmap(resizeImageForImageView(bitmap));
             //viewImage.setImageBitmap( decodeSampledBitmapFromResource(getResources(), R.id.viewImage, 100, 100));

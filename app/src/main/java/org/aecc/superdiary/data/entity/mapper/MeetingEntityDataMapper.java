@@ -32,6 +32,12 @@ public class MeetingEntityDataMapper {
             meeting.setDuration(meetingEntity.getDuration());
             //TODO:ver como hacer lo de la imagen
             meeting.setImage(meetingEntity.getImage());
+
+            meeting.setContactId(meetingEntity.getContactId());
+            meeting.setMedicationId(meetingEntity.getMedicationId());
+            meeting.setSympthomId(meetingEntity.getSympthomId());
+            meeting.setTestId(meetingEntity.getTestId());
+
         }
         return meeting;
     }
@@ -51,6 +57,11 @@ public class MeetingEntityDataMapper {
             meetingEntity.setDuration(meeting.getDuration());
             //TODO:ver como hacer lo de la imagen
             meetingEntity.setImage(meeting.getImage());
+
+            meetingEntity.setContactId(meeting.getContactId());
+            meetingEntity.setMedicationId(meeting.getMedicationId());
+            meetingEntity.setSympthomId(meeting.getSympthomId());
+            meetingEntity.setTestId(meeting.getTestId());
         }
         return meetingEntity;
     }

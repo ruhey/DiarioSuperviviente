@@ -15,6 +15,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.aecc.superdiary.R;
+import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.domain.Meeting;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerMeetingComponent;
@@ -33,6 +34,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class CitaNoEditActivity extends BaseActivity implements CitaNoEditView, View.OnClickListener, HasComponent<MeetingComponent>{
 
@@ -40,6 +42,10 @@ public class CitaNoEditActivity extends BaseActivity implements CitaNoEditView, 
     private static final String INSTANCE_STATE_PARAM_MEETING_ID = "org.aecc.STATE_PARAM_MEETING_ID";
 
     private int meetingId;
+    private int contactId;
+    private int medicineId;
+    private int testId;
+    private int symthomId;
     private MeetingComponent meetingComponent;
 
     @Inject
@@ -61,6 +67,8 @@ public class CitaNoEditActivity extends BaseActivity implements CitaNoEditView, 
     public EditText horaAviso;
     @InjectView(R.id.guardarcita)
     public Button botonGuardarCita;
+    @InjectView(R.id.anadirPersonaje)
+    public Button buttonContact;
 
     private DatePickerDialog fIniDatePickerDialog;
     private DatePickerDialog fFinDatePickerDialog;
@@ -183,6 +191,9 @@ public class CitaNoEditActivity extends BaseActivity implements CitaNoEditView, 
         meeting.setHourAlarm(this.horaAviso.getText().toString());
         meeting.setDateMeeting(this.fechaIniCita.getText().toString());
         meeting.setHourMeeting(this.horaIniCita.getText().toString());
+        if (this.contactId != -1){
+            meeting.setContactId(String.valueOf(this.contactId));
+        }
 
         this.meetingDetailsNoEditPresenter.saveMeeting(meeting);
     }
@@ -256,6 +267,11 @@ public class CitaNoEditActivity extends BaseActivity implements CitaNoEditView, 
     }
 
     @Override
+    public void reloadContactDetails(Contact contact) {
+        buttonContact.setText(contact.getName());
+    }
+
+    @Override
     public void showLoading() {
 
     }
@@ -295,5 +311,26 @@ public class CitaNoEditActivity extends BaseActivity implements CitaNoEditView, 
         this.getComponent().inject(this);
         this.meetingDetailsNoEditPresenter.setView(this);
         this.meetingDetailsNoEditPresenter.initialize(this.meetingId);
+    }
+
+    @OnClick(R.id.anadirPersonaje)
+    public void annadirPersonaje(){
+        Intent intent = new Intent(this, PersonajesActivity.class);
+        intent.putExtra("LIBRE", false);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 1){
+            int id = data.getIntExtra("contactId", -1);
+            if (id != -1){
+                this.contactId = id;
+            }
+            String name = data.getStringExtra("contactName");
+            if (name != null){
+                buttonContact.setText(name);
+            }
+        }
     }
 }
