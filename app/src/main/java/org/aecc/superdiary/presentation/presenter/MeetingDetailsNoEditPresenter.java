@@ -3,8 +3,10 @@ package org.aecc.superdiary.presentation.presenter;
 
 import android.support.annotation.NonNull;
 
+import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.domain.Meeting;
 import org.aecc.superdiary.domain.exception.ErrorBundle;
+import org.aecc.superdiary.domain.interactor.contact.GetContactDetailsUseCase;
 import org.aecc.superdiary.domain.interactor.meeting.GetMeetingDetailsUseCase;
 import org.aecc.superdiary.domain.interactor.meeting.SaveMeetingUseCase;
 import org.aecc.superdiary.presentation.exception.ErrorMessageFactory;
@@ -17,6 +19,7 @@ import javax.inject.Inject;
 public class MeetingDetailsNoEditPresenter implements Presenter {
 
     private final GetMeetingDetailsUseCase getMeetingDetailsUseCase;
+    private final GetContactDetailsUseCase getContactDetailsUseCase;
     private final SaveMeetingUseCase saveMeetingUseCase;
     private final MeetingModelDataMapper meetingModelDataMapper;
     private int meetingId;
@@ -52,6 +55,22 @@ public class MeetingDetailsNoEditPresenter implements Presenter {
         }
     };
 
+    private final GetContactDetailsUseCase.Callback getContactDetailsCallback = new GetContactDetailsUseCase.Callback(){
+
+        @Override
+        public void onContactDataLoaded(Contact contact) {
+            MeetingDetailsNoEditPresenter.this.reloadContactDetail(contact);
+            MeetingDetailsNoEditPresenter.this.hideViewLoading();
+        }
+
+        @Override
+        public void onError(ErrorBundle errorBundle) {
+            MeetingDetailsNoEditPresenter.this.hideViewLoading();
+            MeetingDetailsNoEditPresenter.this.showErrorMessage(errorBundle);
+            MeetingDetailsNoEditPresenter.this.showViewRetry();
+        }
+    };
+
     private void showStoredDataOK() {
         this.viewDetailsView.showError("Contacto guardado correctamente");
     }
@@ -59,9 +78,11 @@ public class MeetingDetailsNoEditPresenter implements Presenter {
     @Inject
     public MeetingDetailsNoEditPresenter (GetMeetingDetailsUseCase getMeetingDetailsUseCase,
                                           SaveMeetingUseCase saveMeetingUseCase,
+                                          GetContactDetailsUseCase getContactDetailsUseCase,
                                           MeetingModelDataMapper meetingModelDataMapper){
         this.getMeetingDetailsUseCase = getMeetingDetailsUseCase;
         this.saveMeetingUseCase = saveMeetingUseCase;
+        this.getContactDetailsUseCase = getContactDetailsUseCase;
         this.meetingModelDataMapper = meetingModelDataMapper;
     }
 
@@ -130,6 +151,18 @@ public class MeetingDetailsNoEditPresenter implements Presenter {
 
     private void showMeetingDetailsInView(Meeting meeting) {
         final MeetingModel meetingModel = this.meetingModelDataMapper.transform(meeting);
+        if(meeting.getContactId() != null){
+            this.getContactDetails(meeting.getContactId());
+        }
+        if(meeting.getMedicationId() != null){
+            this.getMedicationDetails(meeting.getContactId());
+        }
+        if(meeting.getSympthomId() != null){
+            this.getSymthomDetails(meeting.getContactId());
+        }
+        if(meeting.getTestId() != null){
+            this.getTestDetails(meeting.getContactId());
+        }
         this.viewDetailsView.renderMeeting(meetingModel);
     }
 
@@ -143,5 +176,25 @@ public class MeetingDetailsNoEditPresenter implements Presenter {
 
     private void goBack(){
         this.viewDetailsView.goBack();
+    }
+
+    private void getContactDetails(String contactId) {
+        this.getContactDetailsUseCase.execute(Integer.parseInt(contactId), this.getContactDetailsCallback);
+    }
+
+    private void getMedicationDetails(String MedicationId) {
+
+    }
+
+    private void getSymthomDetails(String symthomId) {
+
+    }
+
+    private void getTestDetails(String testId) {
+
+    }
+
+    private void reloadContactDetail(Contact contact) {
+        this.viewDetailsView.reloadContactDetails(contact);
     }
 }

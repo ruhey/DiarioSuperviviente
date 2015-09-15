@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.aecc.superdiary.R;
+import org.aecc.superdiary.domain.Contact;
 import org.aecc.superdiary.presentation.internal.di.HasComponent;
 import org.aecc.superdiary.presentation.internal.di.components.MeetingComponent;
 import org.aecc.superdiary.presentation.internal.di.components.DaggerMeetingComponent;
@@ -128,6 +129,11 @@ public class CitasDetailsActivity extends BaseActivity implements HasComponent<M
 
     public void deleteMeeting(int meetingId){
         this.navigator.navigateToMeetingDelete(getApplicationContext(), this.meetingId);
+    }
+
+    @Override
+    public void reloadContactDetails(Contact contact) {
+
     }
 
     @Override

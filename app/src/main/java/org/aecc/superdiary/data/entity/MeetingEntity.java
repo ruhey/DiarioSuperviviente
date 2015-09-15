@@ -28,11 +28,25 @@ public class MeetingEntity {
     @SerializedName("hourAlarm")
     private String hourAlarm;
 
+
+
     @SerializedName("duration")
     private String duration;
 
     @SerializedName("image")
     private String image;
+
+    @SerializedName("contactId")
+    private String contactId;
+
+    @SerializedName("medicationId")
+    private String medicationId;
+
+    @SerializedName("testId")
+    private String testId;
+
+    @SerializedName("sympthomId")
+    private String sympthomId;
 
 
     public MeetingEntity() {
@@ -119,6 +133,38 @@ public class MeetingEntity {
         this.image = image;
     }
 
+    public String getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(String contactId) {
+        this.contactId = contactId;
+    }
+
+    public String getMedicationId() {
+        return medicationId;
+    }
+
+    public void setMedicationId(String medicationId) {
+        this.medicationId = medicationId;
+    }
+
+    public String getTestId() {
+        return testId;
+    }
+
+    public void setTestId(String testId) {
+        this.testId = testId;
+    }
+
+    public String getSympthomId() {
+        return sympthomId;
+    }
+
+    public void setSympthomId(String sympthomId) {
+        this.sympthomId = sympthomId;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -133,6 +179,11 @@ public class MeetingEntity {
         stringBuilder.append("hourAlarm=" + this.getHourAlarm() + "\n");
         stringBuilder.append("duration=" + this.getDuration() + "\n");
         stringBuilder.append("imageURL=" + this.getImage() + "\n");
+        stringBuilder.append("contactId=" + this.getContactId() + "\n");
+        stringBuilder.append("medicationId=" + this.getMedicationId() + "\n");
+        stringBuilder.append("meetingId=" + this.getMeetingId() + "\n");
+        stringBuilder.append("symthomId=" + this.getSympthomId() + "\n");
+
         stringBuilder.append("*******************************");
 
         return stringBuilder.toString();

@@ -1,5 +1,7 @@
 package org.aecc.superdiary.presentation.internal.di.modules;
 
+import org.aecc.superdiary.domain.interactor.contact.GetContactDetailsUseCase;
+import org.aecc.superdiary.domain.interactor.contact.GetContactDetailsUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.meeting.CreateMeetingUseCase;
 import org.aecc.superdiary.domain.interactor.meeting.CreateMeetingUseCaseImpl;
 import org.aecc.superdiary.domain.interactor.meeting.DeleteMeetingUseCase;
@@ -52,6 +54,12 @@ public class MeetingModule {
     @PerActivity
     DeleteMeetingUseCase provideDeleteMeetingUseCase(DeleteMeetingUseCaseImpl deleteMeetingUseCase){
         return deleteMeetingUseCase;
+    }
+
+    @Provides
+    @PerActivity
+    GetContactDetailsUseCase provideGetContactDetailsUseCase(GetContactDetailsUseCaseImpl getContactDetailsUseCase) {
+        return getContactDetailsUseCase;
     }
 
     @Provides

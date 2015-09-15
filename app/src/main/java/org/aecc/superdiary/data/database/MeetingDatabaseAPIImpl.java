@@ -29,7 +29,11 @@ public class MeetingDatabaseAPIImpl implements MeetingDatabaseAPI {
             DatabaseHelper.MEETINGS_COLUMN_DATEALARM,
             DatabaseHelper.MEETINGS_COLUMN_HOURALARM,
             DatabaseHelper.MEETINGS_COLUMN_DURATION,
-            DatabaseHelper.MEETINGS_COLUMN_IMAGE};
+            DatabaseHelper.MEETINGS_COLUMN_IMAGE,
+            DatabaseHelper.MEETINGS_COLUMN_CONTACT_ID,
+            DatabaseHelper.MEETINGS_COLUMN_MEDICATION_ID,
+            DatabaseHelper.MEETINGS_COLUMN_TEST_ID,
+            DatabaseHelper.MEETINGS_COLUMN_SYMPTHOM_ID};
 
     public MeetingDatabaseAPIImpl(Context context) {
         if (context == null) {
@@ -112,6 +116,10 @@ public class MeetingDatabaseAPIImpl implements MeetingDatabaseAPI {
         values.put(DatabaseHelper.MEETINGS_COLUMN_HOURALARM, meeting.getHourAlarm());
         values.put(DatabaseHelper.MEETINGS_COLUMN_DURATION, meeting.getDuration());
         values.put(DatabaseHelper.MEETINGS_COLUMN_IMAGE, meeting.getImage());
+        values.put(DatabaseHelper.MEETINGS_COLUMN_CONTACT_ID, meeting.getContactId());
+        values.put(DatabaseHelper.MEETINGS_COLUMN_MEDICATION_ID, meeting.getMedicationId());
+        values.put(DatabaseHelper.MEETINGS_COLUMN_TEST_ID, meeting.getTestId());
+        values.put(DatabaseHelper.MEETINGS_COLUMN_SYMPTHOM_ID, meeting.getSympthomId());
 
         long insertId = database.insert(DatabaseHelper.TABLE_MEETINGS, null,
                 values);
@@ -142,6 +150,10 @@ public class MeetingDatabaseAPIImpl implements MeetingDatabaseAPI {
         values.put(DatabaseHelper.MEETINGS_COLUMN_HOURALARM, meeting.getHourAlarm());
         values.put(DatabaseHelper.MEETINGS_COLUMN_DURATION, meeting.getDuration());
         values.put(DatabaseHelper.MEETINGS_COLUMN_IMAGE, meeting.getImage());
+        values.put(DatabaseHelper.MEETINGS_COLUMN_CONTACT_ID, meeting.getContactId());
+        values.put(DatabaseHelper.MEETINGS_COLUMN_MEDICATION_ID, meeting.getMedicationId());
+        values.put(DatabaseHelper.MEETINGS_COLUMN_TEST_ID, meeting.getTestId());
+        values.put(DatabaseHelper.MEETINGS_COLUMN_SYMPTHOM_ID, meeting.getSympthomId());
         openHelper();
 
         database.update(DatabaseHelper.TABLE_MEETINGS, values, DatabaseHelper.MEETINGS_COLUMN_ID + " = ?", new String[]{String.valueOf(meeting.getMeetingId())});
@@ -204,6 +216,11 @@ public class MeetingDatabaseAPIImpl implements MeetingDatabaseAPI {
         meeting.setHourAlarm(cursor.getString(7));
         meeting.setDuration(cursor.getString(8));
         meeting.setImage(cursor.getString(9));
+
+        meeting.setContactId(cursor.getString(10));
+        meeting.setMedicationId(cursor.getString(11));
+        meeting.setSympthomId(cursor.getString(12));
+        meeting.setTestId(cursor.getString(13));
         return meeting;
     }
 }
