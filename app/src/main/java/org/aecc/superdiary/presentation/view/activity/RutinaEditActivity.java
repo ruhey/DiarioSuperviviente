@@ -298,4 +298,9 @@ public class RutinaEditActivity extends BaseActivity implements RutinaDetailEdit
         this.routineDetailEditPresenter.setView(this);
         this.routineDetailEditPresenter.initialize(this.routineId);
     }
+
+    //@Override
+    public void goToDetail() {
+        this.onBackPressed();
+    }
 }

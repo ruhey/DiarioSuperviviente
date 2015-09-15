@@ -46,6 +46,7 @@ public class SymptomDetailsPresenter implements Presenter {
 
     @Override
     public void resume() {
+        this.getSymptomDetails();
     }
 
     @Override

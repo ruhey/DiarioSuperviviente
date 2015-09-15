@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/medic_layout"
+    android:id="@+id/prueba_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,15 +25,27 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/fotoMedic"
+                    android:id="@+id/fotoPrueba"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:background="@color/blancoVerdoso"
-                    android:src="@drawable/medicamento_v" />
+                    android:src="@drawable/prueba_v" />
 
             </LinearLayout>
 
+
+            <!-- NOMBRE Y APELLIDOS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/textoDatosEntidades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¡Atención! Si pulsa el botón se borrará la prueba que se muestra a continuación. Esto es una operación irreversible ¿Esta seguro que desea realizar el borrado?" />
+                </LinearLayout>
 
             <!-- NOMBRE Y APELLIDOS -->
             <LinearLayout
@@ -49,16 +59,17 @@
                     android:orientation="horizontal">
                     <ImageView
                         style="@style/iconosCamposDescrp"
-                        android:src="@drawable/aecc_medicamento"/>
+                        android:src="@drawable/aecc_descripcion"/>
+
                     <TextView
                         style="@style/textoDatosEntidades"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="MEDICAMENTO" />
+                        android:text="PRUEBA" />
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/nombreMedic"
+                    android:id="@+id/nombrePrueba"
                     style="@style/textoInsercionCampos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,7 +83,7 @@
                 android:layout_height="1dp"
                 android:background="#728C93" />
 
-            <!-- FECHA Y HORA INICIO-->
+            <!-- FECHA Y HORA -->
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -82,9 +93,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="2"
                     android:gravity="left"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -97,16 +109,16 @@
                             style="@style/textoDatosEntidades"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                           android:text="DIA INICIO" />
+                            android:text="FECHA" />
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/fechaInicMedic"
+                        android:id="@+id/fechaPrueba"
                         style="@style/textoInsercionCampos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="@string/d_ini_med"/>
+                        android:layout_weight="2"
+                        android:hint="@string/d_ini" />
 
                 </LinearLayout>
 
@@ -114,9 +126,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="1"
                     android:gravity="left"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -124,137 +137,25 @@
                         <ImageView
                             style="@style/iconosCamposDescrp"
                             android:src="@drawable/aecc_hora"/>
-                    <TextView
-                        style="@style/textoDatosEntidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="HORA INICIO" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/horaIniMedic"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="4"
-                        android:hint="@string/h_ini_med" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- FECHA Y HORA FIN-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
-                    android:gravity="left"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <ImageView
-                            style="@style/iconosCamposDescrp"
-                            android:src="@drawable/aecc_fecha_alarma"/>
 
                         <TextView
                             style="@style/textoDatosEntidades"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="DIA FIN" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/fechaFinMedic"
-                        style="@style/textoInsercionCampos"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="@string/d_fin_med"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
-                    android:gravity="left"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <ImageView
-                            style="@style/iconosCamposDescrp"
-                            android:src="@drawable/aecc_hora_alarma"/>
-                        <TextView
-                            style="@style/textoDatosEntidades"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="HORA FIN" />
+                            android:text="HORA" />
                     </LinearLayout>
 
 
                     <TextView
-                        android:id="@+id/horaFinMedic"
+                        android:id="@+id/horaPrueba"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="4"
-                        android:hint="@string/h_fin_med"/>
+                        android:ems="5"
+                        android:hint="@string/h_ini" />
                 </LinearLayout>
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#728C93" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                    <ImageView
-                        style="@style/iconosCamposDescrp"
-                        android:src="@drawable/aecc_duracion"/>
-
-                    <TextView
-                        style="@style/textoDatosEntidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TOMAR CADA" />
-                    <SeekBar
-                        android:id="@+id/intervaloMedic"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:max="24"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:progress="1" />
-
-                    <TextView
-                        style="@style/textoDatosEntidades"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="HRS" />
-                </LinearLayout>
-
-
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -279,44 +180,37 @@
                         android:orientation="horizontal">
                         <ImageView
                             style="@style/iconosCamposDescrp"
-                            android:src="@drawable/aecc_posologia"/>
+                            android:src="@drawable/aecc_preguntas"/>
 
                         <TextView
                             style="@style/textoDatosEntidades"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="¿PARA QUÉ ES?" />
+                            android:text="DESCRIPCIÓN" />
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/descripcionMedic"
+                        android:id="@+id/descripcionPrueba"
                         style="@style/textoInsercionCampos"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="top|left"
                         android:inputType="textPersonName|textMultiLine"
-                        android:lines="10"
-                        android:minLines="4"
+                        android:lines="15"
+                        android:minLines="8"
                         android:scrollHorizontally="false"
                         android:scrollbars="vertical"
                         android:singleLine="false" />
                 </LinearLayout>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/editarMedicamento"
-                style="?android:attr/buttonStyleSmall"
-                android:background="@color/naranjaBoton"
-                android:textColor="@color/blancoVerdoso"
-                android:textAllCaps="true"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="EDITAR"
-                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#728C93" />
 
             <Button
-                android:id="@+id/borrarMedicamento"
+                android:id="@+id/borrarPrueba"
                 style="?android:attr/buttonStyleSmall"
                 android:background="@color/rojoBorrado"
                 android:textColor="@color/blancoVerdoso"

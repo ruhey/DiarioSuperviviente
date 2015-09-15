@@ -46,6 +46,7 @@ public class ExamDetailsPresenter implements Presenter {
 
     @Override
     public void resume() {
+        this.getExamDetails();
     }
 
     @Override

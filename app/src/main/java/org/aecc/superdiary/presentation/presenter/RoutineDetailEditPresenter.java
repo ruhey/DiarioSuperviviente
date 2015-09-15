@@ -41,7 +41,7 @@ public class RoutineDetailEditPresenter implements Presenter{
         public void onRoutineDataSaved(Routine routine) {
             RoutineDetailEditPresenter.this.hideViewLoading();
             RoutineDetailEditPresenter.this.showOKMessage();
-            RoutineDetailEditPresenter.this.goBack(routine);
+            RoutineDetailEditPresenter.this.goBack();
 
         }
 
@@ -68,12 +68,12 @@ public class RoutineDetailEditPresenter implements Presenter{
 
     @Override
     public void resume() {
-
+        this.loadRoutineDetails();
     }
 
     @Override
     public void pause() {
-
+        this.loadRoutineDetails();
     }
 
     public void initialize(int routineId){
@@ -146,9 +146,8 @@ public class RoutineDetailEditPresenter implements Presenter{
         this.saveRoutineUseCase.execute(routine, this.routineSaveCallback);
     }
 
-    private void goBack(Routine routine){
-        //this.viewDetailsView.renderRoutine(this.routineModelDataMapper.transform(routine));
-        //this.viewDetailsView.goToEdit();
+    private void goBack(){
+        this.viewDetailsView.goBack();
     }
 
 }
