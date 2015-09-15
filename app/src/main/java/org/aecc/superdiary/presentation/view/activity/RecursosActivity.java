@@ -44,7 +44,7 @@ public class RecursosActivity extends DiaryBaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        pagerAdapter.release();
+        //pagerAdapter.release();
     }
 
     @Override
