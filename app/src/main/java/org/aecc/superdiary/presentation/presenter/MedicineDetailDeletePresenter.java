@@ -123,7 +123,7 @@ public class MedicineDetailDeletePresenter implements Presenter {
     }
 
     private void getMedicineDetails() {
-
+        this.deleteMedicineUseCase.execute(this.medicineId, this.deleteMedicineCallback);
     }
 
     private void persistDeletion(int medicineId) {

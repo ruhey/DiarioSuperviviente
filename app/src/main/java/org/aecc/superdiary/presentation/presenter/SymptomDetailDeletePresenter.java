@@ -123,6 +123,7 @@ public class SymptomDetailDeletePresenter implements Presenter {
     }
 
     private void getSymptomDetails() {
+        this.getSymptomDetailsUseCase.execute(this.symptomId, this.symptomDetailsCallback);
 
     }
 

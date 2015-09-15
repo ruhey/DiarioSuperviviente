@@ -55,6 +55,7 @@ public class Navigator {
     public void navigateToContacDetails(Context context, int contactId) {
         if (context != null) {
             Intent intentToLaunch = PersonajeDetailsNoEditActivity.getCallingIntent(context, contactId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             context.startActivity(intentToLaunch);
         }
     }
@@ -122,6 +123,7 @@ public class Navigator {
     public void navigateToMedicineDetails(Context context, int medicineId) {
         if (context != null) {
             Intent intentToLaunch = MedicamentosDetailsActivity.getCallingIntent(context, medicineId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             context.startActivity(intentToLaunch);
         }
     }
@@ -160,6 +162,7 @@ public class Navigator {
     public void navigateToRoutineDetails(Context context, int routineId) {
         if (context != null) {
             Intent intentToLaunch = RutinasDetailsActivity.getCallingIntent(context, routineId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             context.startActivity(intentToLaunch);
         }
     }
@@ -199,6 +202,7 @@ public class Navigator {
     public void navigateToExamDetails(Context context, int examId) {
         if (context != null) {
             Intent intentToLaunch = PruebasDetailsActivity.getCallingIntent(context, examId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             context.startActivity(intentToLaunch);
         }
     }
@@ -238,6 +242,7 @@ public class Navigator {
     public void navigateToSymptomDetails(Context context, int symptomId) {
         if (context != null) {
             Intent intentToLaunch = SintomasDetailsActivity.getCallingIntent(context, symptomId);
+            intentToLaunch.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             context.startActivity(intentToLaunch);
         }
     }

@@ -147,7 +147,7 @@ public class RoutineDetailEditPresenter implements Presenter{
     }
 
     private void goBack(){
-        this.viewDetailsView.goToDetail();
+        this.viewDetailsView.goBack();
     }
 
 }

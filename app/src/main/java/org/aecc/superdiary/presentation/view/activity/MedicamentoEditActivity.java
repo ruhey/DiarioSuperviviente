@@ -263,10 +263,8 @@ public class MedicamentoEditActivity extends BaseActivity implements Medicamento
         onBackPressed();
     }
 
-
     @Override
     public void showLoading() {
-
     }
 
     @Override

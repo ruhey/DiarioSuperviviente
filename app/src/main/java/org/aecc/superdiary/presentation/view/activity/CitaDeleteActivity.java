@@ -163,7 +163,6 @@ public class CitaDeleteActivity extends BaseActivity implements HasComponent<Mee
 
     @Override
     public void goToList() {
-        //this.navigator.navigateToMeetingList(this);
         onBackPressed();
     }
 

@@ -159,13 +159,13 @@ public class PruebasDetailsActivity extends BaseActivity implements HasComponent
     }
 
     @OnClick(R.id.borrarPrueba)
-    public void deleteMeeting(){
+    public void deleteExam(){
         this.examDetailsPresenter.deleteExam(this.examId);
     }
 
     @Override
     public void deleteExam(int examId) {
-        this.navigator.navigateToExamDelete(getApplicationContext(), examId);
+        this.navigator.navigateToExamDelete(getApplicationContext(), this.examId);
     }
 
     @Override

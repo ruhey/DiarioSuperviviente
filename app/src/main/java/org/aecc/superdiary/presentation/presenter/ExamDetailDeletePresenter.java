@@ -123,7 +123,7 @@ public class ExamDetailDeletePresenter implements Presenter {
     }
 
     private void getExamDetails() {
-
+        this.deleteExamUseCase.execute(this.examId, this.deleteExamCallback);
     }
 
     private void persistDeletion(int examId) {
